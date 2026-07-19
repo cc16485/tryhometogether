@@ -87,34 +87,62 @@
 
 <section class="band-warm" id="visit-pricing">
   <div class="wrap">
-    <p class="sec-eyebrow">Simple weekly pricing</p>
-    <h2 class="sec-title">Choose your weekly plan.</h2>
-    <p class="sec-lede">Visits run every weekday, Monday through Friday. Pick how long each visit is and how many per day &mdash; billed simply by the week.</p>
-    <div class="specs-grid" style="max-width:720px">
-      <div class="spec-card">
-        <p class="wk-title">15&#8209;minute check&#8209;ins</p>
-        <p style="margin:0 0 8px;font-size:14px;color:var(--muted)">Medication, a quick vitals prompt, and a friendly hello.</p>
-        <div class="wk-rows">
-          <div class="wk-row"><span>Once a day</span><b>$75<span class="per">/wk</span></b></div>
-          <div class="wk-row"><span>Twice a day</span><b>$150<span class="per">/wk</span></b></div>
-          <div class="wk-row"><span>3&times; a day</span><b>$225<span class="per">/wk</span></b></div>
-        </div>
+    <p class="sec-eyebrow">Build your plan</p>
+    <h2 class="sec-title">Only pay for the care you want.</h2>
+    <p class="sec-lede">Pick what your loved one needs on each visit. We'll set the right visit length and show your weekly price &mdash; billed Monday through Friday.</p>
+    <div class="planner">
+      <div class="plan-tasks">
+        <fieldset class="plan-group">
+          <legend>Health tracking</legend>
+          <label class="plan-task"><input type="checkbox" data-min="3">Blood pressure check<span class="tmin">~3 min</span></label>
+          <label class="plan-task"><input type="checkbox" data-min="3">Blood sugar / glucose<span class="tmin">~3 min</span></label>
+          <label class="plan-task"><input type="checkbox" data-min="2">Pulse &amp; oxygen<span class="tmin">~2 min</span></label>
+          <label class="plan-task"><input type="checkbox" data-min="2">Weight<span class="tmin">~2 min</span></label>
+          <label class="plan-task"><input type="checkbox" data-min="2">Temperature<span class="tmin">~2 min</span></label>
+        </fieldset>
+        <fieldset class="plan-group">
+          <legend>Medication</legend>
+          <label class="plan-task"><input type="checkbox" data-min="4">Medication reminder + watch them take it<span class="tmin">~4 min</span></label>
+        </fieldset>
+        <fieldset class="plan-group">
+          <legend>Reminders &amp; coordination</legend>
+          <label class="plan-task"><input type="checkbox" data-min="2">Appointment &amp; calendar reminders<span class="tmin">~2 min</span></label>
+          <label class="plan-task"><input type="checkbox" data-min="1">Meal or hydration reminder<span class="tmin">~1 min</span></label>
+          <label class="plan-task"><input type="checkbox" data-min="3">Help join a telehealth doctor visit<span class="tmin">~3 min</span></label>
+        </fieldset>
+        <fieldset class="plan-group">
+          <legend>Companionship &amp; engagement</legend>
+          <label class="plan-task"><input type="checkbox" data-min="8">Friendly conversation &amp; companionship<span class="tmin">~8 min</span></label>
+          <label class="plan-task"><input type="checkbox" data-min="6">Activity (music, games, exercise)<span class="tmin">~6 min</span></label>
+          <label class="plan-task"><input type="checkbox" data-min="4">Reading or spiritual content<span class="tmin">~4 min</span></label>
+          <label class="plan-task"><input type="checkbox" data-min="4">Help with the TV or tech<span class="tmin">~4 min</span></label>
+        </fieldset>
       </div>
-      <div class="spec-card">
-        <p class="wk-title">30&#8209;minute visits</p>
-        <p style="margin:0 0 8px;font-size:14px;color:var(--muted)">More time to talk, do an activity, and really check in.</p>
-        <div class="wk-rows">
-          <div class="wk-row"><span>Once a day</span><b>$125<span class="per">/wk</span></b></div>
-          <div class="wk-row"><span>Twice a day</span><b>$250<span class="per">/wk</span></b></div>
-          <div class="wk-row"><span>3&times; a day</span><b>$375<span class="per">/wk</span></b></div>
+      <div class="plan-summary">
+        <p class="lbl" style="font-size:12px;color:var(--muted);margin:0 0 8px;font-weight:700;text-transform:uppercase;letter-spacing:.04em">Your visit</p>
+        <span class="plan-len-badge" id="planLen">15 minutes</span>
+        <p class="plan-note" id="planLenNote" style="margin-top:8px">A quick, focused check-in.</p>
+        <div class="plan-row">
+          <p class="lbl">Visits per day (Mon&ndash;Fri)</p>
+          <div class="freq-btns" id="freqBtns">
+            <div class="freq-btn on" data-freq="1">1&times;</div>
+            <div class="freq-btn" data-freq="2">2&times;</div>
+            <div class="freq-btn" data-freq="3">3&times;</div>
+          </div>
         </div>
+        <div class="plan-row">
+          <p class="lbl">Your weekly price</p>
+          <div class="plan-price"><span id="planPrice">$75</span><small>/week</small></div>
+          <div class="plan-pervisit" id="planPerVisit">$15 per visit</div>
+          <span class="plan-save" id="planSave" style="display:none"></span>
+        </div>
+        <a href="#pricing" class="btn btn-primary btn-lg plan-cta">Start your free trial</a>
+        <p class="plan-note">Every visit also includes a warm hello, a wellness check, and eyes‑on safety.</p>
       </div>
     </div>
-    <p style="text-align:center;color:var(--muted);margin-top:20px;font-size:15px">Every plan covers all five weekdays &mdash; that's as little as <b style="color:var(--ink)">$15 a visit</b>.</p>
     <div style="max-width:680px;margin:22px auto 0;background:var(--soft-teal);border:1px solid var(--rose);border-radius:14px;padding:16px 22px;text-align:center">
-      <p style="margin:0;font-size:15.5px;color:var(--ink);line-height:1.6"><b>Why it's such a good deal:</b> the national median for in‑home care is about <b>$33 an hour &mdash; and agencies usually require a 4‑hour minimum</b> (roughly $130 for a single visit). A HomeTogether check‑in works out to as little as <b>$15</b>.</p>
+      <p style="margin:0;font-size:15.5px;color:var(--ink);line-height:1.6"><b>Why it's such a good deal:</b> the national median for in‑home care is about <b>$33 an hour &mdash; and agencies usually require a 4‑hour minimum</b> (roughly $130 for a single visit). A HomeTogether check‑in works out to as little as <b>$12</b>.</p>
     </div>
-    <div style="text-align:center;margin-top:24px"><a href="#pricing" class="btn btn-primary btn-lg">Get started</a></div>
   </div>
 </section>
 
@@ -358,5 +386,32 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var rates={15:{1:15,2:13,3:12},30:{1:25,2:22,3:20}};
+  var base=3, freq=1;
+  var tasks=document.querySelectorAll('.plan-task input');
+  var freqBtns=document.querySelectorAll('.freq-btn');
+  if(!tasks.length) return;
+  function calc(){
+    var mins=base;
+    tasks.forEach(function(t){ if(t.checked) mins+=parseInt(t.getAttribute('data-min'),10); });
+    var len = mins>15 ? 30 : 15;
+    var per = rates[len][freq];
+    var weekly = per*freq*5;
+    var full = rates[len][1];
+    document.getElementById('planLen').textContent = len+' minutes';
+    document.getElementById('planLenNote').textContent = len===15 ? 'A quick, focused check-in.' : 'More time to talk, do an activity, and really check in.';
+    document.getElementById('planPrice').textContent = '$'+weekly;
+    document.getElementById('planPerVisit').textContent = '$'+per+' per visit'+(freq>1?' · '+freq+'×/day':'');
+    var save=document.getElementById('planSave');
+    if(per<full){ save.textContent='Save '+Math.round((1-per/full)*100)+'% for '+freq+'×/day'; save.style.display='inline-block'; }
+    else save.style.display='none';
+  }
+  tasks.forEach(function(t){ t.addEventListener('change',calc); });
+  freqBtns.forEach(function(b){ b.addEventListener('click',function(){ freq=parseInt(b.getAttribute('data-freq'),10); freqBtns.forEach(function(x){x.classList.toggle('on',x===b);}); calc(); }); });
+  calc();
+})();
+</script>
 </body>
 </html>
