@@ -139,6 +139,15 @@
   .cc-offer-price{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);margin:4px 0 4px;}
   .cc-offer-price b{color:var(--sea-deep);}
   .cc-offer p{margin:0;font-size:14px;color:var(--muted);}
+  .specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:820px;margin:0 auto;}
+  .spec-card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px 26px;}
+  .spec-card h3{font-size:19px;margin-bottom:14px;}
+  .spec-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .spec-list li{position:relative;padding-left:24px;color:var(--muted);font-size:15.5px;}
+  .spec-list li::before{content:"✓";position:absolute;left:0;color:var(--good);font-weight:900;}
+  .cc-band{background:linear-gradient(135deg,#EAF4F6,#FBEFE0);border:1px solid var(--rose);border-radius:22px;padding:34px 38px;box-shadow:var(--shadow);}
+  .cc-band-text{max-width:66ch;}
+  @media (max-width:860px){ .specs-grid{grid-template-columns:1fr;} .cc-band{padding:26px 24px;} }
 
   /* FAQ */
   .faq{max-width:760px;margin:0 auto;}
@@ -240,6 +249,34 @@
   </div>
 </section>
 
+<section class="band-warm">
+  <div class="wrap">
+    <p class="sec-eyebrow">What you get</p>
+    <h2 class="sec-title">Everything you need, nothing you don't</h2>
+    <p class="sec-lede">No boxes of cables, no confusing manuals. HomeTogether arrives ready to go.</p>
+    <div class="specs-grid">
+      <div class="spec-card">
+        <h3>📦 In the box</h3>
+        <ul class="spec-list">
+          <li>The HomeTogether device</li>
+          <li>HDMI &amp; power connection</li>
+          <li>A simple, large‑print start guide</li>
+          <li>Free shipping, right to the door</li>
+        </ul>
+      </div>
+      <div class="spec-card">
+        <h3>🏠 All you need at home</h3>
+        <ul class="spec-list">
+          <li>A TV with an HDMI port</li>
+          <li>Broadband Wi‑Fi</li>
+          <li>That's it — we handle the rest</li>
+        </ul>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--muted);margin-top:22px;font-size:15.5px;">Not sure your TV will work? <a href="#faq">See the quick requirements</a> — nearly every TV made in the last decade does.</p>
+  </div>
+</section>
+
 <section class="band" id="features">
   <div class="wrap">
     <p class="sec-eyebrow">What's inside</p>
@@ -273,6 +310,32 @@
       <h2 class="sec-title" style="max-width:20ch;">More than a screen. A seat at the table.</h2>
       <p class="sec-lede" style="margin-bottom:0;">It's Sunday dinner from two states away. It's the grandkids waving before bed. It's knowing — without having to ask — that Mom ate today and slept well. HomeTogether isn't about technology; it's about the small, ordinary moments that keep a family close, and the quiet reassurance that your loved one is never really alone.</p>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cc-band">
+      <div class="cc-band-text">
+        <p class="sec-eyebrow" style="text-align:left;margin-bottom:8px;">For Caring Companions families</p>
+        <h2 style="font-size:clamp(24px,3vw,32px);margin-bottom:12px;">Already have care with Caring Companions? Pay half.</h2>
+        <p style="color:var(--muted);font-size:17px;margin:0 0 8px;">If your loved one has virtual visits or in‑home caregiving with Caring Companions, HomeTogether is <b style="color:var(--sea-deep);">just $75/month</b> — half the standard price. It's the perfect between‑visits companion: a caregiver for the hands‑on moments, and HomeTogether keeping you connected and watchful the rest of the day.</p>
+        <p style="color:var(--muted);font-size:15px;margin:0;">Just mention it when you sign up, or tell your care coordinator.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-eyebrow">Peace of mind, built in</p>
+    <h2 class="sec-title">Safe to welcome into your family's home</h2>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic">🛡️</div><h3>30‑day money‑back guarantee</h3><p>Try HomeTogether risk‑free. If it's not right for your family, send it back — no questions, no restocking fees.</p></div>
+      <div class="feat"><div class="ic">🔒</div><h3>Private &amp; encrypted</h3><p>Every call is encrypted, and only the people you approve can ever connect. Your family's moments stay yours.</p></div>
+      <div class="feat"><div class="ic">🤝</div><h3>Real human support</h3><p>A friendly team helps with setup and any questions, by phone or email. You're never on your own.</p></div>
+    </div>
+    <div class="todo" style="max-width:680px;margin:22px auto 0;text-align:center;"><b>Testimonials slot:</b> send me your first real customer reviews and I'll build a family‑stories section right here. (No made‑up reviews will ever go live.)</div>
   </div>
 </section>
 
@@ -317,6 +380,9 @@
 
              (Both values are safe to expose publicly. Never paste a
              key that starts with sk_ — that one stays secret.)
+
+             When creating the Buy Button, set the confirmation/redirect
+             page to:  https://tryhometogether.com/thank-you.html
         ============================================================ -->
         <div class="checkout-slot">
           <a href="#" class="btn btn-primary btn-lg" id="checkout-btn">Start my 30‑day free trial</a>
