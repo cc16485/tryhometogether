@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set Up Your HomeTogether, Order &amp; Care Details</title>
+<meta name="description" content="Tell us who HomeTogether is for and a little about them, so their very first visit already feels like time with a friend. Order setup for the TV video-calling device for seniors.">
+<link rel="canonical" href="https://tryhometogether.com/order.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Set Up Your HomeTogether">
+<meta property="og:url" content="https://tryhometogether.com/order.html">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ---- Order / care-intake form (scoped to this page) ---- */
+  .ord-wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+  .ord-step{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:26px 26px 24px;margin:0 auto 22px;box-shadow:0 6px 22px rgba(13,54,95,.05);}
+  .ord-step > h2{display:flex;align-items:flex-start;gap:12px;font-size:clamp(20px,3vw,25px);line-height:1.15;margin:0 0 4px;}
+  .ord-num{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--sea);color:#fff;font-family:var(--serif);font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .ord-step > p.hint{color:var(--muted);font-size:15.5px;margin:6px 0 20px;padding-left:46px;}
+  @media(max-width:560px){ .ord-step > p.hint{padding-left:0;} }
+
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px;}
+  .fgrid .full{grid-column:1 / -1;}
+  @media(max-width:560px){ .fgrid{grid-template-columns:1fr;} }
+
+  .field{display:flex;flex-direction:column;gap:6px;}
+  .field label,.field .lab{font-weight:700;font-size:15px;color:var(--heading);}
+  .field label .req{color:var(--honey-deep);}
+  .field label .opt{color:var(--faint);font-weight:600;font-size:13px;}
+  .field input[type=text],.field input[type=tel],.field input[type=email],.field input[type=number],.field input[type=date],.field select,.field textarea{
+    font-family:var(--sans);font-size:16.5px;color:var(--ink);background:#fff;
+    border:1.5px solid var(--border);border-radius:11px;padding:12px 14px;width:100%;box-sizing:border-box;transition:border-color .15s ease,box-shadow .15s ease;}
+  .field textarea{min-height:88px;resize:vertical;line-height:1.5;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--sea);box-shadow:0 0 0 3px rgba(31,122,140,.14);}
+  .field .sub{font-size:13px;color:var(--muted);font-weight:500;}
+
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .choice{display:inline-flex;align-items:center;gap:9px;border:1.5px solid var(--border);background:#fff;border-radius:11px;padding:11px 15px;font-weight:600;font-size:15px;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s;}
+  .choice input{accent-color:var(--sea);width:17px;height:17px;cursor:pointer;}
+  .choice:hover{border-color:var(--sea);}
+  .choice:has(input:checked){border-color:var(--sea);background:var(--soft-teal);}
+
+  .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;}
+  @media(max-width:560px){ .check-grid{grid-template-columns:1fr;} }
+  .ck-item{display:flex;align-items:flex-start;gap:10px;font-size:15.5px;color:var(--ink);line-height:1.35;cursor:pointer;}
+  .ck-item input{margin-top:3px;accent-color:var(--sea);width:17px;height:17px;flex:0 0 auto;cursor:pointer;}
+
+  .mini-copy{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--sea-deep);font-weight:700;cursor:pointer;user-select:none;}
+  .mini-copy input{accent-color:var(--sea);width:16px;height:16px;cursor:pointer;}
+
+  .warm-note{background:var(--soft-teal);border-radius:12px;padding:14px 16px;font-size:14.5px;color:var(--ink);line-height:1.55;margin:0 0 20px;}
+  .warm-note b{color:var(--heading);}
+
+  .consent{display:flex;align-items:flex-start;gap:12px;background:var(--panel-warm);border:1px solid var(--rose);border-radius:14px;padding:16px 18px;font-size:14.5px;color:var(--ink);line-height:1.5;}
+  .consent input{margin-top:3px;accent-color:var(--sea);width:18px;height:18px;flex:0 0 auto;cursor:pointer;}
+
+  .ord-submit{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:8px;}
+  .ord-submit .btn{width:100%;max-width:420px;text-align:center;}
+  .ord-err{color:#b23b2e;font-weight:700;font-size:14.5px;display:none;}
+
+  .ord-done{display:none;text-align:center;background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:44px 30px;box-shadow:0 6px 22px rgba(13,54,95,.05);}
+  .ord-done .big{font-size:52px;line-height:1;color:var(--good);margin-bottom:12px;}
+  .ord-done h2{font-size:28px;margin-bottom:12px;}
+  .ord-done p{color:var(--muted);font-size:17px;max-width:46ch;margin:0 auto 8px;}
+</style>
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta property="og:image:width" content="1387">
+<meta property="og:image:height" content="1015">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap row">
+    <div class="ht-switch">
+      <button class="hs-btn" onclick="htToggleSwitch(event)" aria-haspopup="true" aria-expanded="false" aria-label="Switch HomeTogether service">
+        <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+        <span class="hs-caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="hs-menu" role="menu">
+        <div class="hs-head">Two ways to get care</div>
+        <a class="hs-item current" href="/" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+          <span class="hs-desc">Virtual caregiving through the television</span>
+          <span class="hs-here">You're here</span>
+        </a>
+        <a class="hs-item" href="/local" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm alt">Local</span></span>
+          <span class="hs-desc">Find &amp; hire a caregiver near you</span>
+        </a>
+      </div>
+    </div>
+    <input type="checkbox" id="ht-navtog" class="ht-navtog" aria-hidden="true" tabindex="-1">
+    <label for="ht-navtog" class="ht-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+    <nav class="main">
+      <a href="index.html#how">How it works</a>
+      <span class="ht-group">
+        <a href="index.html#features" class="ht-top">The device<i class="ht-caret"></i></a>
+        <span class="ht-dd">
+          <a href="index.html#features">What you get</a>
+          <a href="index.html#pricing">Device &amp; pricing</a>
+          <a href="index.html#faq">Common questions</a>
+        </span>
+      </span>
+      <span class="ht-group">
+        <a href="index.html#visits" class="ht-top">Virtual care<i class="ht-caret"></i></a>
+        <span class="ht-dd">
+          <a href="index.html#visits">Virtual visits</a>
+          <a href="index.html#visit-pricing">Build your plan<span class="ht-dd-sub">Pick tasks &amp; see your price</span></a>
+          <a href="index.html#safety">Safety &amp; alerts</a>
+        </span>
+      </span>
+      <a href="about.html">About</a>
+      <a href="help.html">Help</a>
+      <a href="local.html" class="ht-local">HomeTogether Local <span aria-hidden="true">↗</span></a>
+    </nav>
+    <span class="hdr-cta"><a href="index.html#pricing" class="btn btn-primary">Get HomeTogether</a></span>
+  </div>
+</header>
+
+<section style="padding:52px 0 14px;text-align:center;">
+  <div class="ord-wrap">
+    <p class="sec-eyebrow">Add virtual caregiving</p>
+    <h1 style="font-size:clamp(28px,5vw,42px);line-height:1.08;">Tell us about your loved one.</h1>
+    <p style="font-size:18px;color:var(--muted);margin:16px auto 0;max-width:52ch;">This sets up the optional <b>virtual caregiver add‑on</b> for your HomeTogether. A few details, who it's for, who to keep close in an emergency, and, our favorite part, a little about them, so a caregiver's very first visit already feels like time with a friend.</p>
+    <p style="font-size:14px;color:var(--faint);margin:14px auto 0;max-width:48ch;">Takes about 5 minutes. Requires a HomeTogether device, and you can add this now or anytime later. Everything you share stays private with their care team.</p>
+    <div id="planBanner" style="display:none;max-width:560px;margin:22px auto 0;background:var(--soft-teal);border:1.5px solid var(--sea);border-radius:14px;padding:14px 20px;font-size:15.5px;color:var(--ink);text-align:left;"><b style="color:var(--heading);">Your plan:</b> <span id="planBannerText"></span><span style="display:block;font-size:13px;color:var(--muted);margin-top:3px;">After you tell us about your loved one, we'll take you to secure checkout to start it.</span></div>
+  </div>
+</section>
+
+<section style="padding:14px 0 60px;">
+  <form id="orderForm" class="ord-wrap" novalidate>
+
+    <!-- 1. Who's setting this up -->
+    <div class="ord-step">
+      <h2><span class="ord-num">1</span> Who's setting this up?</h2>
+      <p class="hint">This is you, the family member or friend arranging HomeTogether. You'll be the main account contact.</p>
+      <div class="fgrid">
+        <div class="field">
+          <label for="you_name">Your full name <span class="req">*</span></label>
+          <input type="text" id="you_name" name="you_name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="you_rel">Your relationship to them <span class="req">*</span></label>
+          <select id="you_rel" name="you_rel" required>
+            <option value="">Choose one…</option>
+            <option>Son</option><option>Daughter</option><option>Spouse / partner</option>
+            <option>Grandchild</option><option>Sibling</option><option>Niece / nephew</option>
+            <option>Friend / neighbor</option><option>Power of attorney</option>
+            <option>Professional caregiver</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="you_phone">Your phone <span class="req">*</span></label>
+          <input type="tel" id="you_phone" name="you_phone" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="you_email">Your email <span class="req">*</span></label>
+          <input type="email" id="you_email" name="you_email" autocomplete="email" required>
+        </div>
+        <div class="field full">
+          <span class="lab">Best way to reach you</span>
+          <div class="choice-row">
+            <label class="choice"><input type="radio" name="you_reach" value="Call" checked> Call me</label>
+            <label class="choice"><input type="radio" name="you_reach" value="Text"> Text me</label>
+            <label class="choice"><input type="radio" name="you_reach" value="Email"> Email me</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Who it's for -->
+    <div class="ord-step">
+      <h2><span class="ord-num">2</span> Who is HomeTogether for?</h2>
+      <p class="hint">The loved one who'll use it on their TV. This is also where we'll ship the device.</p>
+      <div class="fgrid">
+        <div class="field">
+          <label for="sr_name">Their full name <span class="req">*</span></label>
+          <input type="text" id="sr_name" name="sr_name" required>
+        </div>
+        <div class="field">
+          <label for="sr_pref">What do they like to be called? <span class="opt">(optional)</span></label>
+          <input type="text" id="sr_pref" name="sr_pref" placeholder="e.g. Grandma Rose, Mr. B, Jim">
+        </div>
+        <div class="field">
+          <label for="sr_age">Their age <span class="opt">(optional)</span></label>
+          <input type="number" id="sr_age" name="sr_age" min="0" max="120" inputmode="numeric">
+        </div>
+        <div class="field">
+          <label for="sr_phone">Phone at their home <span class="opt">(optional)</span></label>
+          <input type="tel" id="sr_phone" name="sr_phone">
+        </div>
+        <div class="field full">
+          <label for="ship_street">Shipping address <span class="req">*</span></label>
+          <input type="text" id="ship_street" name="ship_street" autocomplete="street-address" placeholder="Street address" required>
+        </div>
+        <div class="field">
+          <label for="ship_city">City <span class="req">*</span></label>
+          <input type="text" id="ship_city" name="ship_city" autocomplete="address-level2" required>
+        </div>
+        <div class="field">
+          <div class="fgrid" style="gap:16px 14px;">
+            <div class="field">
+              <label for="ship_state">State <span class="req">*</span></label>
+              <input type="text" id="ship_state" name="ship_state" autocomplete="address-level1" required>
+            </div>
+            <div class="field">
+              <label for="ship_zip">ZIP <span class="req">*</span></label>
+              <input type="text" id="ship_zip" name="ship_zip" autocomplete="postal-code" inputmode="numeric" required>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="sr_living">Do they live… <span class="opt">(optional)</span></label>
+          <select id="sr_living" name="sr_living">
+            <option value="">Choose one…</option>
+            <option>Alone</option><option>With a spouse / partner</option>
+            <option>With family</option><option>In assisted living / a community</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sr_wifi">Do they have Wi‑Fi at home?</label>
+          <select id="sr_wifi" name="sr_wifi">
+            <option value="">Choose one…</option>
+            <option>Yes, they have home Wi‑Fi</option>
+            <option>No, please add the plug‑in internet device</option>
+            <option>Not sure</option>
+          </select>
+          <span class="sub">No Wi‑Fi is no problem, we can add a plug‑and‑play internet device for a small added charge.</span>
+        </div>
+        <div class="field">
+          <label for="sr_tv">Their TV has an HDMI port?</label>
+          <select id="sr_tv" name="sr_tv">
+            <option value="">Choose one…</option>
+            <option>Yes</option><option>Not sure, please help me check</option>
+          </select>
+          <span class="sub">Nearly every TV from the last decade does.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Emergency & care contacts -->
+    <div class="ord-step">
+      <h2><span class="ord-num">3</span> Emergency &amp; care contacts</h2>
+      <p class="hint">If a caregiver ever sees something concerning during a visit, these are the people we'll reach right away.</p>
+
+      <label class="mini-copy" style="margin-bottom:14px;"><input type="checkbox" id="copyMe"> Primary emergency contact is me (fill in from above)</label>
+
+      <div class="fgrid">
+        <div class="field">
+          <label for="ec1_name">Primary emergency contact <span class="req">*</span></label>
+          <input type="text" id="ec1_name" name="ec1_name" placeholder="Full name" required>
+        </div>
+        <div class="field">
+          <label for="ec1_phone">Their phone <span class="req">*</span></label>
+          <input type="tel" id="ec1_phone" name="ec1_phone" required>
+        </div>
+        <div class="field">
+          <label for="ec1_rel">Relationship <span class="opt">(optional)</span></label>
+          <input type="text" id="ec1_rel" name="ec1_rel" placeholder="e.g. Daughter">
+        </div>
+        <div class="field"></div>
+        <div class="field">
+          <label for="ec2_name">Second emergency contact <span class="opt">(optional)</span></label>
+          <input type="text" id="ec2_name" name="ec2_name" placeholder="Full name">
+        </div>
+        <div class="field">
+          <label for="ec2_phone">Their phone <span class="opt">(optional)</span></label>
+          <input type="tel" id="ec2_phone" name="ec2_phone">
+        </div>
+        <div class="field">
+          <label for="doc_name">Their doctor or clinic <span class="opt">(optional)</span></label>
+          <input type="text" id="doc_name" name="doc_name">
+        </div>
+        <div class="field">
+          <label for="doc_phone">Doctor's phone <span class="opt">(optional)</span></label>
+          <input type="tel" id="doc_phone" name="doc_phone">
+        </div>
+        <div class="field full">
+          <label for="approved">Who else may call or join visits? <span class="opt">(optional)</span></label>
+          <textarea id="approved" name="approved" placeholder="Names of family or friends you'd like approved to video‑call the TV, e.g. Sarah (daughter), Mike (grandson), Pastor Dan"></textarea>
+          <span class="sub">Only people you list here can ever connect to their TV.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Their care & daily visits -->
+    <div class="ord-step">
+      <h2><span class="ord-num">4</span> Their care &amp; daily visits</h2>
+      <p class="hint">What would you like a caregiver to help with on each visit? Pick any that apply, we'll tailor the visits to them.</p>
+
+      <div class="field full" style="margin-bottom:20px;">
+        <span class="lab" style="margin-bottom:4px;">What should visits include?</span>
+        <div class="check-grid">
+          <label class="ck-item"><input type="checkbox" name="care" value="Medication reminders + watch them take it"> Medication reminders &amp; watching them take it</label>
+          <label class="ck-item"><input type="checkbox" name="care" value="Blood pressure check"> Blood pressure check</label>
+          <label class="ck-item"><input type="checkbox" name="care" value="Blood sugar / glucose"> Blood sugar / glucose</label>
+          <label class="ck-item"><input type="checkbox" name="care" value="Other vitals (pulse, oxygen, weight, temp)"> Other vitals (pulse, weight, temp)</label>
+          <label class="ck-item"><input type="checkbox" name="care" value="Appointment & calendar reminders"> Appointment &amp; calendar reminders</label>
+          <label class="ck-item"><input type="checkbox" name="care" value="Meal / hydration reminders"> Meal &amp; hydration reminders</label>
+          <label class="ck-item"><input type="checkbox" name="care" value="Friendly conversation & companionship"> Friendly conversation &amp; companionship</label>
+          <label class="ck-item"><input type="checkbox" name="care" value="Activities (music, games, exercise)"> Activities (music, games, exercise)</label>
+          <label class="ck-item"><input type="checkbox" name="care" value="Reading or spiritual content"> Reading or spiritual content</label>
+          <label class="ck-item"><input type="checkbox" name="care" value="Help joining telehealth doctor visits"> Help joining telehealth visits</label>
+        </div>
+      </div>
+
+      <div class="fgrid">
+        <div class="field full">
+          <span class="lab">Preferred visit windows <span class="opt" id="timesHint">(pick your favorites)</span></span>
+          <div class="choice-row">
+            <label class="choice"><input type="checkbox" name="times" value="Morning 8-11am"> Morning (8-11am)</label>
+            <label class="choice"><input type="checkbox" name="times" value="Midday 11am-2pm"> Midday (11am-2pm)</label>
+            <label class="choice"><input type="checkbox" name="times" value="Afternoon 2-5pm"> Afternoon (2-5pm)</label>
+            <label class="choice"><input type="checkbox" name="times" value="Evening 5-8pm"> Evening (5-8pm)</label>
+          </div>
+        </div>
+        <div class="field full">
+          <label for="exact_times">Exact times that work best <span class="opt">(optional, e.g. "9am after breakfast and 4:30pm before dinner")</span></label>
+          <input type="text" id="exact_times" name="exact_times" placeholder="Tell us the rhythm of their day and we'll fit right into it">
+          <p style="margin:8px 0 0;font-size:13.5px;color:var(--muted);line-height:1.55;">Your care coordinator will call within one business day to lock in exact visit times with a consistent caregiver. Those become your loved one's standing times, same caregiver, same times, every weekday.</p>
+        </div>
+        <div class="field full">
+          <label for="meds">Medications we should remind about <span class="opt">(optional)</span></label>
+          <textarea id="meds" name="meds" placeholder="List medications and roughly when they're taken, e.g. blood pressure pill each morning, insulin before dinner. You don't need doses."></textarea>
+        </div>
+        <div class="field full">
+          <label for="health">Health notes for their caregiver <span class="opt">(optional)</span></label>
+          <textarea id="health" name="health" placeholder="Anything that helps us care well, e.g. hard of hearing (speak up on their left), uses a walker, early memory changes, low vision, diabetic diet, gets tired in the afternoon."></textarea>
+        </div>
+        <div class="field full">
+          <label for="allergies">Allergies <span class="opt">(optional)</span></label>
+          <input type="text" id="allergies" name="allergies" placeholder="Food, medication, or other">
+        </div>
+        <div class="field full">
+          <span class="lab">How should family calls answer?</span>
+          <div class="choice-row">
+            <label class="choice"><input type="radio" name="answer" value="Auto-answer approved family" checked> Answer automatically for approved family</label>
+            <label class="choice"><input type="radio" name="answer" value="Press one button"> They press one button to answer</label>
+          </div>
+          <span class="sub">Auto‑answer is best if using the remote is hard, all they do is look up and say hello.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Getting to know them -->
+    <div class="ord-step">
+      <h2><span class="ord-num">5</span> Getting to know <span id="theirName">them</span></h2>
+      <p class="hint">This is what turns a check‑in into a real visit. The more we know, the more every conversation feels like time with an old friend. Share whatever you'd like, all optional.</p>
+
+      <div class="warm-note"><b>Why we ask:</b> when a caregiver knows that Rose loves Patsy Cline, gardened for 40 years, and has a grandson named Eli in the Navy, that first visit isn't with a stranger, it's with someone who already cares about her world.</div>
+
+      <div class="fgrid">
+        <div class="field full">
+          <label for="interests">Their interests &amp; hobbies</label>
+          <textarea id="interests" name="interests" placeholder="Gardening, crossword puzzles, cooking, fishing, quilting, church, cards…"></textarea>
+        </div>
+        <div class="field full">
+          <label for="work">What did they do for work / in life?</label>
+          <input type="text" id="work" name="work" placeholder="e.g. Schoolteacher for 30 years, farmer, nurse, raised five kids">
+        </div>
+        <div class="field full">
+          <label for="family">Family &amp; pets <span class="opt">(names welcome!)</span></label>
+          <textarea id="family" name="family" placeholder="Children, grandchildren, a beloved dog… names give us so much to ask about."></textarea>
+        </div>
+        <div class="field">
+          <label for="roots">Where did they grow up / live?</label>
+          <input type="text" id="roots" name="roots" placeholder="e.g. Grew up in Joplin, farmed near Neosho">
+        </div>
+        <div class="field">
+          <label for="faith">Faith or spiritual life <span class="opt">(optional)</span></label>
+          <input type="text" id="faith" name="faith" placeholder="e.g. Baptist, enjoys hymns & scripture">
+        </div>
+        <div class="field full">
+          <label for="favorites">Favorites</label>
+          <textarea id="favorites" name="favorites" placeholder="Music, TV shows, sports teams, foods, seasons, anything they light up about."></textarea>
+        </div>
+        <div class="field full">
+          <label for="love_topics">Things they love to talk about</label>
+          <input type="text" id="love_topics" name="love_topics" placeholder="e.g. the grandkids, old country music, their garden, the Cardinals">
+        </div>
+        <div class="field full">
+          <label for="avoid_topics">Anything to gently avoid <span class="opt">(optional)</span></label>
+          <input type="text" id="avoid_topics" name="avoid_topics" placeholder="e.g. a recently lost spouse, a sensitive family topic">
+        </div>
+        <div class="field full">
+          <label for="anything">Anything else that helps us connect with them</label>
+          <textarea id="anything" name="anything" placeholder="Their personality, sense of humor, a story they love to tell, how they take their coffee…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Consent + submit -->
+    <div class="ord-step">
+      <label class="consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <span>I confirm I'm authorized to set up HomeTogether for this person, and I agree to share these details with their Caring Companions care team so they can provide the best possible care. I understand this information is kept private.</span>
+      </label>
+      <div class="ord-submit" style="margin-top:22px;">
+        <button type="submit" class="btn btn-primary btn-lg" id="orderSubmit">Send our details</button>
+        <p class="ord-err" id="orderErr">Please fill in the required fields marked with <span style="color:var(--honey-deep)">*</span>.</p>
+        <p class="price-fine" style="margin-top:2px;">A care coordinator will confirm everything and get the device on its way. Questions? Call <a href="tel:14172348494" style="font-weight:700;">(417) 234‑8494</a>.</p>
+      </div>
+    </div>
+  </form>
+
+  <!-- Success state -->
+  <div class="ord-wrap">
+    <div class="ord-done" id="orderDone">
+      <div class="big">✓</div>
+      <h2>Thank you, we've got everything.</h2>
+      <p>A Caring Companions coordinator will reach out shortly to confirm the details and get <span id="doneName">your loved one's</span> HomeTogether on its way.</p>
+      <p style="margin-top:14px;"><a href="index.html" class="btn btn-ghost btn-lg">Back to home</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap frow">
+    <div>
+      <div class="brand" style="font-size:19px;margin-bottom:8px;"><img src="assets/logo.png" alt="HomeTogether" style="height:30px;width:auto;display:block"></div>
+      <div>Keeping older loved ones healthy and connected, simply, through the TV.</div>
+      <div style="margin-top:14px;display:flex;align-items:center;gap:9px;"><span style="font-size:12px;color:var(--faint);white-space:nowrap;">A program of</span><a href="https://mo-care.com" target="_blank" rel="noopener" style="line-height:0" aria-label="Caring Companions"><img src="assets/caring-companions-logo.png" alt="Caring Companions" style="height:30px;width:auto;display:block;"></a></div>
+    </div>
+    <div style="text-align:right;">
+      <div><a href="index.html#how">How it works</a> · <a href="index.html#features">Features</a> · <a href="index.html#pricing">Pricing</a> · <a href="about.html">About</a> · <a href="help.html">Help</a></div>
+      <div style="margin-top:6px;"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="returns.html">Returns</a></div>
+      <div style="margin-top:8px;color:var(--faint);">Support: <a href="help.html#contact" style="color:inherit;text-decoration:underline">submit a request</a> &middot; support@tryhometogether.com · &copy; 2026 HomeTogether</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('orderForm');
+  if(!form) return;
+
+  // ---- Where the order is delivered. Filled in at go-live. ----
+  // Supabase Edge Function "hometogether-order" (see supabase/functions).
+  // The token is a light anti-spam gate, not a secret; set it to match the
+  // HT_ORDER_TOKEN you set in Supabase. If left blank, the form falls back to
+  // emailing the details so nothing is ever lost.
+  var ENDPOINT = "https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/hometogether-order";
+  var TOKEN    = "htorder_078070ed7c3e8e7619e567dcfaddfc400e43147a";                 // e.g. "htorder_xxxxx" (set at go-live)
+  var FALLBACK_EMAIL = "intake@mo-care.com";
+
+  // ---- Caregiving add-on: which plan did they pick (from ?plan=)? ----
+  var PLAN = new URLSearchParams(location.search).get('plan');
+  var CGLINKS={ '15_1':'https://buy.stripe.com/cNibITarLdMEeFmgmm0oM02','15_2':'https://buy.stripe.com/00weV543n0ZS8gYdaa0oM03','15_3':'https://buy.stripe.com/5kQ00bdDX7ogap60no0oM04','30_1':'https://buy.stripe.com/28EfZ9eI17og7cU2vw0oM05','30_2':'https://buy.stripe.com/4gMbITbvP7og40I7PQ0oM07','30_3':'https://buy.stripe.com/dRm9AL43n7og9l2fii0oM06' };
+  var PLANLABEL={ '15_1':'15-minute visit, 1x per day, Mon-Fri (5 days/week), $75/week','15_2':'15-minute visits, 2x per day, Mon-Fri (5 days/week), $130/week','15_3':'15-minute visits, 3x per day, Mon-Fri (5 days/week), $180/week','30_1':'30-minute visit, 1x per day, Mon-Fri (5 days/week), $125/week','30_2':'30-minute visits, 2x per day, Mon-Fri (5 days/week), $220/week','30_3':'30-minute visits, 3x per day, Mon-Fri (5 days/week), $300/week' };
+  var payLink = (PLAN && CGLINKS[PLAN]) ? CGLINKS[PLAN] : '';
+  if(payLink){
+    var pb=document.getElementById('planBanner'); if(pb){ document.getElementById('planBannerText').textContent=PLANLABEL[PLAN]; pb.style.display='block'; }
+    if (new URLSearchParams(location.search).get('existing') === '1') {
+      var pbs=document.querySelector('#planBanner span[style]'); 
+      var pbn=document.getElementById('planBanner');
+      if(pbn){ pbn.insertAdjacentHTML('beforeend','<span style="display:block;font-size:13px;color:var(--sea-deep);font-weight:700;margin-top:5px;">Adding visits to your existing HomeTogether device, no new device will be shipped.</span>'); }
+    }
+    var sb0=document.getElementById('orderSubmit'); if(sb0) sb0.textContent='Continue to payment →';
+    var perDay = parseInt((PLAN.split('_')[1]||'1'),10);
+    var th=document.getElementById('timesHint');
+    if(th && perDay>=1){ th.textContent='(your plan has '+perDay+' visit'+(perDay>1?'s':'')+' per day, pick '+perDay+' window'+(perDay>1?'s':'')+')'; }
+  }
+
+  // Warm touch: drop their preferred/first name into the section 5 heading.
+  var srName = document.getElementById('sr_name');
+  var srPref = document.getElementById('sr_pref');
+  function firstName(){
+    var p = (srPref.value||'').trim(); if(p) return p.split(/\s+/)[0];
+    var n = (srName.value||'').trim(); return n ? n.split(/\s+/)[0] : 'them';
+  }
+  function refreshName(){
+    document.getElementById('theirName').textContent = firstName();
+  }
+  srName.addEventListener('input', refreshName);
+  srPref.addEventListener('input', refreshName);
+
+  // "Primary emergency contact is me" — copy from section 1.
+  document.getElementById('copyMe').addEventListener('change', function(e){
+    if(e.target.checked){
+      document.getElementById('ec1_name').value  = document.getElementById('you_name').value;
+      document.getElementById('ec1_phone').value = document.getElementById('you_phone').value;
+      document.getElementById('ec1_rel').value   = (document.getElementById('you_rel').value||'');
+    }
+  });
+
+  function collect(){
+    var d = {};
+    // simple fields
+    form.querySelectorAll('input[type=text],input[type=tel],input[type=email],input[type=number],input[type=date],textarea,select').forEach(function(el){
+      if(el.name) d[el.name] = (el.value||'').trim();
+    });
+    // radios
+    ['you_reach','answer'].forEach(function(n){
+      var r = form.querySelector('input[name="'+n+'"]:checked'); if(r) d[n] = r.value;
+    });
+    // checkbox groups
+    ['care','times'].forEach(function(n){
+      d[n] = Array.prototype.map.call(form.querySelectorAll('input[name="'+n+'"]:checked'), function(c){return c.value;});
+    });
+    d.submitted_at = new Date().toISOString();
+    d.source = 'HomeTogether order form';
+    if (PLAN) { d.plan = PLAN; d.plan_label = (PLANLABEL[PLAN]||PLAN); }
+    if (new URLSearchParams(location.search).get('existing') === '1') {
+      d.existing_device = 'YES — visits-only order. Verify their HomeTogether device account (match name/email against Orders) before scheduling visits.';
+    }
+    return d;
+  }
+
+  function required(){
+    var ok = true;
+    form.querySelectorAll('[required]').forEach(function(el){
+      var bad = (el.type==='checkbox') ? !el.checked : !(el.value||'').trim();
+      el.style.borderColor = bad ? '#d98a7a' : '';
+      if(bad) ok = false;
+    });
+    return ok;
+  }
+
+  function emailFallback(d){
+    var lines = [
+      'NEW HOMETOGETHER ORDER', '',
+      'Setting up: '+d.you_name+' ('+d.you_rel+') — '+d.you_phone+' / '+d.you_email+' — reach by '+(d.you_reach||''),
+      '', 'For: '+d.sr_name+(d.sr_pref?' ("'+d.sr_pref+'")':'')+', age '+(d.sr_age||'—'),
+      'Ship to: '+d.ship_street+', '+d.ship_city+', '+d.ship_state+' '+d.ship_zip,
+      'Home phone: '+(d.sr_phone||'—')+' | Living: '+(d.sr_living||'—')+' | Wi‑Fi: '+(d.sr_wifi||'—')+' | TV/HDMI: '+(d.sr_tv||'—'),
+      '', 'Emergency 1: '+d.ec1_name+' ('+(d.ec1_rel||'')+') '+d.ec1_phone,
+      'Emergency 2: '+(d.ec2_name||'—')+' '+(d.ec2_phone||''),
+      'Doctor: '+(d.doc_name||'—')+' '+(d.doc_phone||''),
+      'Approved callers: '+(d.approved||'—'),
+      '', 'Visits include: '+((d.care||[]).join(', ')||'—'),
+      'Best times: '+((d.times||[]).join(', ')||'—')+' | Exact: '+(d.exact_times||'—')+' | Answer: '+(d.answer||''),
+      'Meds: '+(d.meds||'—'), 'Health notes: '+(d.health||'—'), 'Allergies: '+(d.allergies||'—'),
+      '', '— Getting to know them —',
+      'Interests: '+(d.interests||'—'), 'Work/life: '+(d.work||'—'), 'Family & pets: '+(d.family||'—'),
+      'Roots: '+(d.roots||'—')+' | Faith: '+(d.faith||'—'),
+      'Favorites: '+(d.favorites||'—'), 'Loves talking about: '+(d.love_topics||'—'),
+      'Avoid: '+(d.avoid_topics||'—'), 'Anything else: '+(d.anything||'—')
+    ].join('\n');
+    var url = 'mailto:'+FALLBACK_EMAIL+'?subject='+encodeURIComponent('HomeTogether order — '+d.sr_name)+'&body='+encodeURIComponent(lines);
+    window.location.href = url;
+  }
+
+  function showDone(d){
+    form.style.display='none';
+    document.getElementById('doneName').textContent = (firstName()!=='them' ? firstName()+"'s" : "your loved one's");
+    document.getElementById('orderDone').style.display='block';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var err = document.getElementById('orderErr');
+    if(!required()){ err.style.display='block'; return; }
+    err.style.display='none';
+    var btn = document.getElementById('orderSubmit');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var d = collect();
+
+    var url = ENDPOINT + (TOKEN ? '?token='+encodeURIComponent(TOKEN) : '');
+    // If the backend isn't wired yet, go straight to the email fallback.
+    if(!ENDPOINT){ emailFallback(d); showDone(d); return; }
+
+    fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d) })
+      .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json(); })
+      .then(function(){ if(payLink){ window.location.href=payLink; } else { showDone(d); } })
+      .catch(function(){ if(payLink){ window.location.href=payLink; } else { emailFallback(d); showDone(d); } })
+      .finally(function(){ btn.disabled=false; btn.textContent = payLink ? 'Continue to payment →' : 'Send our details'; });
+  });
+})();
+</script>
+<script src="accessibility.js" defer></script>
+</body>
+</html>

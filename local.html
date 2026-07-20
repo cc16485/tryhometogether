@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HomeTogether Local — Find a caregiver near you</title>
+<meta name="description" content="HomeTogether Local: find, compare, and hire vetted, background-checked in-home caregivers near you. Part of HomeTogether, a Caring Companions company.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://tryhometogether.com/local">
+<meta property="og:title" content="HomeTogether Local — Find a caregiver near you">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;
+  /* palette — navy trust, teal care, honey warmth (Caring Companions family) */
+  --navy:#0D365F; --ink:#16283A; --paper:#F8F7F3; --card:#FFFFFF;
+  --teal:#1E7A8C; --teal-deep:#155A68; --teal-soft:#E7F2F4;
+  --honey:#E9A23B; --honey-deep:#C9821C;
+  --good:#2E9B63; --good-soft:#E4F3EA;
+  --muted:#5B6B79; --faint:#8B98A4; --line:#E9E4DB; --line-2:#EFEBE3;
+  --star:#E9A23B;
+  --shadow:0 1px 2px rgba(13,54,95,.04),0 8px 26px rgba(13,54,95,.06);
+  --shadow-lg:0 18px 50px rgba(13,54,95,.14);
+  --r:16px; --r-sm:11px; --maxw:1180px;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Nunito Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+
+:root[data-theme="light"]{
+  --navy:#0D365F; --ink:#16283A; --paper:#F8F7F3; --card:#FFFFFF;
+  --teal:#1E7A8C; --teal-deep:#155A68; --teal-soft:#E7F2F4;
+  --honey:#E9A23B; --honey-deep:#C9821C; --good:#2E9B63; --good-soft:#E4F3EA;
+  --muted:#5B6B79; --faint:#8B98A4; --line:#E9E4DB; --line-2:#EFEBE3;
+  --shadow:0 1px 2px rgba(13,54,95,.04),0 8px 26px rgba(13,54,95,.06);
+  --shadow-lg:0 18px 50px rgba(13,54,95,.14);
+}
+
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);font-weight:700;letter-spacing:-.012em;margin:0;text-wrap:balance}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--teal-deep)}
+button{font-family:inherit}
+
+/* prototype banner */
+.proto{background:var(--navy);color:#fff;font-size:12.5px;text-align:center;padding:7px 16px;letter-spacing:.01em}
+.proto b{color:var(--honey)}
+
+
+:root[data-theme="light"] .proto{background:var(--navy);color:#fff}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .row{display:flex;align-items:center;gap:26px;height:66px}
+.brand{display:flex;align-items:center;gap:11px;cursor:pointer}
+.brand .mk{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--teal-deep));display:grid;place-items:center;color:#fff;box-shadow:0 4px 12px rgba(30,122,140,.35)}
+.brand .nm{font-family:var(--serif);font-weight:700;font-size:22px;color:var(--navy);line-height:1}
+.brand .sub{font-size:10.5px;color:var(--faint);letter-spacing:.02em;margin-top:2px}
+.btag{display:inline-block;background:var(--honey);color:#3a2708;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.03em;padding:1px 7px;border-radius:6px;vertical-align:middle;margin-left:3px}
+.sibling{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:var(--teal-soft);border:1px solid color-mix(in srgb,var(--teal) 28%,transparent);border-radius:14px;padding:13px 20px;margin:6px 0 0;font-size:14.5px;color:var(--ink);cursor:pointer;transition:border-color .15s}
+.sibling:hover{border-color:var(--teal)}
+.sibling b{color:var(--navy)}
+.sibling .arw{color:var(--teal-deep);font-weight:800;white-space:nowrap}
+.ht-switch{position:relative}
+.hs-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:5px 8px;border-radius:10px;font-family:var(--serif)}
+.hs-btn:hover{background:var(--teal-soft)}
+.hs-word{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--navy);line-height:1;white-space:nowrap;letter-spacing:-.01em}
+.hs-arm{color:var(--teal);margin-left:5px}
+.hs-arm.alt{color:var(--honey-deep)}
+.hs-caret{font-size:12px;color:var(--muted);transition:transform .2s ease}
+.hs-btn[aria-expanded="true"] .hs-caret{transform:rotate(180deg)}
+.hs-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:300px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:8px;z-index:90;display:none}
+.hs-menu.open{display:block}
+.hs-head{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);padding:7px 10px 9px}
+.hs-item{display:block;position:relative;padding:11px 12px;border-radius:10px;text-decoration:none}
+.hs-item:hover,.hs-item.current{background:var(--teal-soft)}
+.hs-item .hs-word{font-size:16.5px;display:block}
+.hs-desc{display:block;font-size:12.5px;color:var(--muted);font-weight:600;margin-top:3px;font-family:var(--sans)}
+.hs-here{position:absolute;top:11px;right:11px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--teal-deep);background:var(--card);border:1px solid var(--line);padding:2px 7px;border-radius:999px}
+.nav .links{display:flex;gap:22px;margin-left:auto;align-items:center}
+.nav .links a{font-size:14.5px;font-weight:600;color:var(--muted)}
+.nav .links a:hover{color:var(--ink)}
+.btn{border:none;border-radius:12px;padding:12px 20px;font-size:15px;font-weight:700;cursor:pointer;transition:transform .12s ease,box-shadow .15s ease,background .15s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.btn-teal{background:var(--teal);color:#fff;box-shadow:0 6px 16px rgba(30,122,140,.28)}
+.btn-teal:hover{background:var(--teal-deep);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--teal-deep);border:1.5px solid var(--teal)}
+.btn-ghost:hover{background:var(--teal-soft)}
+.btn-sm{padding:9px 15px;font-size:13.5px;border-radius:10px}
+.btn-honey{background:var(--honey);color:#3a2708;box-shadow:0 6px 16px rgba(233,162,59,.32)}
+.btn-honey:hover{background:var(--honey-deep);transform:translateY(-1px)}
+
+/* views */
+.view{display:none;animation:fade .4s ease}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.view{animation:none} *{transition:none!important}}
+
+/* hero */
+.hero{padding:64px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.04}
+.hero .lede{font-size:19px;color:var(--muted);margin:20px 0 4px;max-width:42ch}
+.finder{margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px}
+.finder .lab{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin-bottom:9px}
+.finder .fr{display:flex;gap:10px}
+.finder input{flex:1;border:1.5px solid var(--line);border-radius:11px;padding:13px 15px;font-size:15.5px;font-family:inherit;color:var(--ink);background:var(--paper)}
+.finder input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.hero .trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:20px}
+.hero .trust span{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--muted)}
+.hero .trust .ic{color:var(--good)}
+
+/* stacked preview cards in hero */
+.hero-vis{position:relative;min-height:380px}
+.mini{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:14px 16px;width:290px;display:flex;gap:12px;align-items:center}
+.mini .av{width:48px;height:48px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;color:#fff;font-weight:700;font-family:var(--serif);font-size:17px}
+.mini .nm{font-weight:700;color:var(--navy);font-size:15px;display:flex;align-items:center;gap:6px}
+.mini .mt{font-size:12.5px;color:var(--muted)}
+.mini .rate{margin-left:auto;text-align:right;font-weight:800;color:var(--teal-deep);font-size:15px}
+.mini .rate small{display:block;font-weight:600;color:var(--faint);font-size:10.5px}
+.m1{top:8px;left:0;transform:rotate(-2deg)}
+.m2{top:120px;right:0;transform:rotate(1.5deg);z-index:2}
+.m3{top:246px;left:26px;transform:rotate(-1deg)}
+.vbadge{width:15px;height:15px;border-radius:50%;background:var(--good);display:inline-grid;place-items:center;color:#fff;font-size:9px;flex:0 0 auto}
+
+/* section */
+.section{padding:52px 0}
+.section.alt{background:linear-gradient(180deg,color-mix(in srgb,var(--teal-soft) 55%,var(--paper)),var(--paper))}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 38px}
+.sec-head h2{font-size:clamp(26px,3.4vw,36px);margin-top:10px}
+.sec-head p{color:var(--muted);font-size:17px;margin:12px 0 0}
+
+/* how it works — a real sequence, so numbered */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;position:relative}
+.step .n{position:absolute;top:-16px;left:24px;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--serif);font-weight:700;display:grid;place-items:center;font-size:16px}
+.step h3{font-size:18px;margin:8px 0 7px}
+.step p{color:var(--muted);font-size:14.5px;margin:0}
+
+/* caregiver cards */
+.cg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cg{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:20px;cursor:pointer;transition:transform .14s ease,box-shadow .18s ease,border-color .18s}
+.cg:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--teal) 40%,var(--line))}
+.cg-top{display:flex;gap:14px;align-items:flex-start}
+.av{width:56px;height:56px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;color:#fff;font-weight:700;font-family:var(--serif);font-size:20px;position:relative}
+.av .vb{position:absolute;bottom:-2px;right:-2px;width:19px;height:19px;border-radius:50%;background:var(--good);border:2.5px solid var(--card);display:grid;place-items:center;color:#fff;font-size:10px}
+.cg .nm{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:18px;line-height:1.15}
+.cg .loc{font-size:13px;color:var(--muted);margin-top:2px}
+.rating{display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:700;color:var(--ink);margin-top:6px}
+.rating .stars{color:var(--star);letter-spacing:1px}
+.rating .ct{color:var(--faint);font-weight:600}
+.match{margin-left:auto;text-align:center;background:var(--teal-soft);color:var(--teal-deep);border-radius:11px;padding:7px 10px;font-weight:800;font-size:16px;line-height:1}
+.match small{display:block;font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal);margin-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chip{font-size:12px;font-weight:600;color:var(--teal-deep);background:var(--teal-soft);border-radius:999px;padding:5px 11px}
+.chip.plain{color:var(--muted);background:var(--line-2)}
+.cg-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:15px;border-top:1px solid var(--line)}
+.cg-foot .rate{font-weight:800;color:var(--navy);font-size:19px}
+.cg-foot .rate small{font-weight:600;color:var(--faint);font-size:12.5px}
+
+/* caregiver band */
+.band{background:linear-gradient(120deg,var(--navy),var(--teal-deep));border-radius:22px;padding:40px 44px;color:#fff;display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+.band h2{color:#fff;font-size:clamp(24px,3vw,32px);flex:1;min-width:280px}
+.band p{color:rgba(255,255,255,.85);margin:10px 0 0;font-size:16px}
+
+/* intake */
+.intake{max-width:680px;margin:0 auto;padding:48px 0 70px}
+.progress{display:flex;gap:8px;margin-bottom:30px}
+.progress .p{flex:1;height:6px;border-radius:99px;background:var(--line)}
+.progress .p.done{background:var(--teal)}
+.qstep{display:none}
+.qstep.on{display:block;animation:fade .35s ease}
+.qstep .eyebrow{margin-bottom:10px;display:block}
+.qstep h2{font-size:clamp(24px,3.4vw,32px)}
+.qstep .hint{color:var(--muted);margin:8px 0 24px;font-size:16px}
+.opts{display:grid;gap:12px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{display:flex;align-items:center;gap:13px;border:1.5px solid var(--line);background:var(--card);border-radius:13px;padding:16px 18px;cursor:pointer;font-weight:600;font-size:15.5px;transition:border-color .14s,background .14s;text-align:left}
+.opt .oi{width:24px;height:24px;flex:0 0 auto;display:grid;place-items:center;font-size:16px}
+.opt:hover{border-color:var(--teal)}
+.opt.sel{border-color:var(--teal);background:var(--teal-soft);color:var(--teal-deep)}
+.opt.sel .check{margin-left:auto;color:var(--teal)}
+.zip{width:100%;border:1.5px solid var(--line);border-radius:13px;padding:16px 18px;font-size:17px;font-family:inherit;background:var(--card);color:var(--ink)}
+.zip:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:30px}
+.link-btn{background:none;border:none;color:var(--muted);font-weight:600;font-size:15px;cursor:pointer;padding:8px}
+.link-btn:hover{color:var(--ink)}
+
+/* results */
+.results{padding:34px 0 70px}
+.res-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.res-head h2{font-size:clamp(22px,3vw,30px)}
+.res-sum{color:var(--muted);font-size:15px;margin-top:6px}
+.res-sum b{color:var(--ink)}
+.res-body{display:grid;grid-template-columns:250px 1fr;gap:28px;margin-top:22px;align-items:start}
+.filters{position:sticky;top:82px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+.filters h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin:0 0 12px;font-family:var(--sans);font-weight:800}
+.filters .fg{margin-bottom:20px}
+.filters .fg:last-child{margin-bottom:0}
+.fopt{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);padding:5px 0;cursor:pointer}
+.fopt input{accent-color:var(--teal);width:16px;height:16px}
+.res-list{display:grid;gap:18px}
+.res-list .cg{cursor:pointer}
+
+/* profile */
+.profile{padding:30px 0 70px}
+.back{background:none;border:none;color:var(--teal-deep);font-weight:700;font-size:14.5px;cursor:pointer;display:inline-flex;gap:6px;align-items:center;margin-bottom:18px;padding:6px 0}
+.p-grid{display:grid;grid-template-columns:1fr 340px;gap:34px;align-items:start}
+.p-hero{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:26px;display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
+.p-hero .av{width:88px;height:88px;font-size:30px}
+.p-hero .nm{font-family:var(--serif);font-size:28px;color:var(--navy);font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.p-hero .loc{color:var(--muted);font-size:15px;margin-top:4px}
+.verified-pill{display:inline-flex;align-items:center;gap:6px;background:var(--good-soft);color:var(--good);font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px;letter-spacing:.02em}
+.p-block{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:24px;margin-top:20px}
+.p-block h3{font-size:17px;margin:0 0 12px;font-family:var(--serif)}
+.p-block p{color:var(--ink);margin:0;font-size:15.5px;line-height:1.7}
+.cert-list{display:grid;gap:10px}
+.cert{display:flex;align-items:center;gap:11px;font-size:15px;font-weight:600}
+.cert .ck{width:22px;height:22px;border-radius:50%;background:var(--good-soft);color:var(--good);display:grid;place-items:center;font-size:12px;flex:0 0 auto}
+.avail{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;text-align:center}
+.avail .d{font-size:11px;color:var(--faint);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.avail .c{height:34px;border-radius:8px;background:var(--line-2);display:grid;place-items:center;font-size:11px;color:var(--faint);font-weight:700}
+.avail .c.y{background:var(--teal-soft);color:var(--teal-deep)}
+.review{padding:16px 0;border-top:1px solid var(--line)}
+.review:first-of-type{border-top:none;padding-top:0}
+.review .rh{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.review .rav{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;font-family:var(--serif)}
+.review .rn{font-weight:700;font-size:14.5px;color:var(--navy)}
+.review .rd{font-size:12px;color:var(--faint)}
+.review p{font-size:14.5px;color:var(--ink);margin:0}
+.review .stars{color:var(--star);font-size:13px;letter-spacing:1px}
+
+/* sticky hire card */
+.hire{position:sticky;top:82px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-lg);padding:22px}
+.hire .big{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--navy)}
+.hire .big small{font-size:14px;color:var(--faint);font-weight:600}
+.hire .mrow{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line)}
+.hire .mrow b{color:var(--ink)}
+.hire .stack{display:grid;gap:10px;margin-top:16px}
+.hire .btn{width:100%;justify-content:center}
+.hire .note{font-size:11.5px;color:var(--faint);text-align:center;margin:12px 0 0;line-height:1.5}
+
+/* footer */
+.foot{border-top:1px solid var(--line);padding:32px 0;margin-top:20px;color:var(--faint);font-size:13.5px}
+.foot .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.foot a{color:var(--muted);font-weight:600}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-vis{min-height:340px;margin-top:8px}
+  .steps,.cg-grid{grid-template-columns:1fr}
+  .res-body{grid-template-columns:1fr}
+  .filters{position:static}
+  .p-grid{grid-template-columns:1fr}
+  .hire{position:static}
+  .opts.two{grid-template-columns:1fr}
+}
+/* phones */
+html,body{overflow-x:hidden}
+svg[aria-hidden="true"]{width:1.15em;height:1.15em;display:inline-block;vertical-align:-0.18em}
+.hero-grid>*{min-width:0}
+@media (max-width:560px){
+  .finder .fr{flex-direction:column}
+  .finder .fr .btn{width:100%;justify-content:center}
+  .hero-vis{min-height:0;display:flex;flex-direction:column;gap:10px;margin-top:4px}
+  .mini{position:static!important;width:auto;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important}
+  .hero .trust{gap:12px}
+}
+@media (max-width:480px){
+  .nav .wrap{padding:0 12px}
+  .nav .row{gap:8px}
+  .nav .hs-btn .hs-word{font-size:15.5px!important}
+  .nav .hs-caret{font-size:10px}
+  .nav .links{gap:8px}
+  .nav .links a.keep{font-size:12.5px}
+  .nav .links .btn{padding:7px 9px!important;font-size:12px!important;border-radius:9px}
+}
+@media (max-width:760px){
+  .nav .row{gap:12px;height:60px}
+  .nav .links{gap:12px}
+  .nav .links a{display:none}
+  .nav .links a.keep{display:inline;font-size:13.5px}
+  .nav .links .btn{padding:9px 14px;font-size:13.5px}
+  .wrap{padding:0 18px}
+  .hero{padding:36px 0 28px}
+  .hero h1{font-size:clamp(29px,8.6vw,38px)}
+  .hero .lede{font-size:16.5px}
+  .hero-vis{min-height:0}
+  section{padding-left:0;padding-right:0}
+  .btn{padding:12px 16px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:10px}
+  .cta-row .btn{flex:1 1 auto;justify-content:center}
+  .avail{gap:4px}
+  .avail .c{height:30px;font-size:10px}
+  .avail .d{font-size:9.5px;letter-spacing:0}
+  h2{font-size:clamp(22px,6.4vw,28px)}
+  .vs .col{padding:20px 18px 22px}
+  .safecard{padding:18px}
+  .waitlist{padding:22px 18px}
+  input,select,textarea{font-size:16px!important}
+}
+
+.waitlist{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px 40px;box-shadow:var(--shadow)}
+.waitlist h2{font-size:clamp(24px,3vw,30px);margin-top:8px}
+.waitlist p{color:var(--muted);margin:12px 0 0}
+.wl-form{display:flex;flex-direction:column;gap:12px}
+.wl-form input{border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;font-size:15.5px;font-family:inherit;background:var(--paper);color:var(--ink)}
+.wl-form input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.wl-form .btn{justify-content:center}
+.wl-done{display:none;color:var(--good);font-weight:700;text-align:center;margin:2px 0 0}
+.lead-ok{background:var(--good-soft);border:1px solid color-mix(in srgb,var(--good) 32%,transparent);color:var(--teal-deep);border-radius:13px;padding:15px 18px;font-weight:600;font-size:14.5px;line-height:1.5}
+.lead-ok b{color:var(--navy)}
+
+/* comparison: big sites vs us */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:880px;margin:0 auto}
+.vs .col{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 28px;box-shadow:var(--shadow)}
+.vs .col.us{border:2px solid var(--teal);position:relative}
+.vs .col h3{font-size:19px;margin:0}
+.vs .col.them h3{color:var(--muted)}
+.vs ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:12px}
+.vs li{display:flex;gap:11px;font-size:14.5px;line-height:1.55;align-items:flex-start}
+.vs li .mk{flex:0 0 auto;font-weight:800;margin-top:1px}
+.vs .them li{color:var(--muted)}
+.vs .them .mk{color:#C15C6E}
+.vs .us .mk{color:var(--good)}
+.vs .tagme{position:absolute;top:-13px;right:18px;background:var(--honey);color:#3a2708;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:4px 11px;border-radius:999px}
+@media(max-width:760px){.vs{grid-template-columns:1fr}}
+
+/* safety */
+.safe3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.safecard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow)}
+.safecard h3{font-size:17px;margin:0 0 14px}
+.safecard p{font-size:14.5px;color:var(--ink);line-height:1.65;margin:0}
+@media(max-width:900px){.safe3{grid-template-columns:1fr}}
+
+/* reply/hired proof on cards */
+.proof{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--teal-deep);background:var(--teal-soft);border-radius:999px;padding:3px 10px;margin-top:7px}
+@media(max-width:760px){.waitlist{grid-template-columns:1fr;gap:20px;padding:26px}}
+</style>
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta property="og:image:width" content="1387">
+<meta property="og:image:height" content="1015">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "HomeTogether", "url": "https://tryhometogether.com", "logo": "https://tryhometogether.com/assets/logo.png", "email": "support@tryhometogether.com", "address": {"@type": "PostalAddress", "streetAddress": "1331 N Stewart Ave Ste B", "addressLocality": "Springfield", "addressRegion": "MO", "postalCode": "65802", "addressCountry": "US"}, "parentOrganization": {"@type": "Organization", "name": "Caring Companions In-Home Senior Care", "url": "https://mo-care.com"}, "sameAs": ["https://www.trustpilot.com/review/tryhometogether.com"]}</script>
+</head>
+<body>
+<div class="proto">Preview · sample caregivers · <b>launching in new areas soon</b> · part of HomeTogether, a Caring Companions company</div>
+
+<div class="nav">
+  <div class="wrap row">
+    <div class="ht-switch">
+      <button class="hs-btn" onclick="htToggleSwitch(event)" aria-haspopup="true" aria-expanded="false" aria-label="Switch HomeTogether service">
+        <span class="hs-word">HomeTogether<span class="hs-arm alt">Local</span></span>
+        <span class="hs-caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="hs-menu" role="menu">
+        <div class="hs-head">Two ways to get care</div>
+        <a class="hs-item current" href="/local" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm alt">Local</span></span>
+          <span class="hs-desc">Find &amp; hire a caregiver near you</span>
+          <span class="hs-here">You're here</span>
+        </a>
+        <a class="hs-item" href="/" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+          <span class="hs-desc">Virtual caregiving through the television</span>
+        </a>
+      </div>
+    </div>
+    <div class="links">
+      <a onclick="go('home')">How it works</a>
+      <a onclick="startIntake()">Find care</a>
+      <a onclick="goSafety()">Safety</a>
+      <a class="keep" onclick="go('cghome')">For caregivers</a>
+      <a onclick="goNotify()">Get notified</a>
+      <button class="btn btn-teal btn-sm" onclick="startIntake()">Get started</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HOME ============ -->
+<div class="view on" id="view-home">
+  <section class="hero"><div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">HomeTogether Local · in-home care, nationwide</span>
+      <h1>Find a caregiver your family can trust.</h1>
+      <p class="lede">Search vetted, background-checked caregivers near you, read real reviews, message the ones you like, and hire directly. No agency markup, no middleman deciding for you.</p>
+      <div class="finder">
+        <div class="lab">Where do you need care?</div>
+        <div class="fr">
+          <input id="heroZip" placeholder="City or ZIP code" value="Springfield, MO">
+          <button class="btn btn-teal" onclick="startIntake()">Find caregivers →</button>
+        </div>
+      </div>
+      <div class="trust">
+        <span><span class="ic"><svg aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg></span> Background-checked</span>
+        <span><span class="ic"><svg aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg></span> Verified reviews</span>
+        <span><span class="ic"><svg aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg></span> You choose &amp; hire directly</span>
+      </div>
+    </div>
+    <div class="hero-vis" id="heroVis"></div>
+  </div></section>
+
+  <div class="wrap"><a class="sibling" href="https://tryhometogether.com" target="_blank" rel="noopener">
+    <span>Prefer care <b>from a distance</b>? <b>HomeTogether TV</b> brings a caregiver and your family right to your loved one's television, no smartphone needed.</span>
+    <span class="arw">See HomeTogether TV →</span>
+  </a></div>
+
+  <section class="section alt"><div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Simple, and in your hands</span>
+      <h2>Care on your terms, in four steps</h2>
+      <p>We guide you to the right match, then get out of the way so you hire the person you trust.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Tell us what you need</h3><p>A few quick questions about your loved one and the kind of help they need, and we match you.</p></div>
+      <div class="step"><span class="n">2</span><h3>Compare real caregivers</h3><p>See profiles, experience, certifications, background-check status, and reviews from other families.</p></div>
+      <div class="step"><span class="n">3</span><h3>Message &amp; interview</h3><p>Chat with the caregivers you like and set up an interview, all in one place.</p></div>
+      <div class="step"><span class="n">4</span><h3>Hire the one you choose</h3><p>Bring them on directly. Add optional payroll, tax, and scheduling tools whenever you want them.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Near Springfield, MO</span>
+      <h2>Caregivers ready to help</h2>
+      <p>A glimpse of the people your family could meet. Tap any caregiver to see their full profile.</p>
+    </div>
+    <div class="cg-grid" id="featured"></div>
+    <div style="text-align:center;margin-top:30px"><button class="btn btn-teal" onclick="startIntake()">Find your match →</button></div>
+  </div></section>
+
+  <section class="section alt"><div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Why families choose us</span>
+      <h2>Not another caregiver website.</h2>
+      <p>The big sites hand you a pile of profiles and charge a monthly fee just to say hello. We do the opposite.</p>
+    </div>
+    <div class="vs">
+      <div class="col them">
+        <h3>The big caregiver sites</h3>
+        <ul>
+          <li><span class="mk">✕</span>Dozens of profiles to sift through on your own</li>
+          <li><span class="mk">✕</span>Around $39 a month just to message anyone</li>
+          <li><span class="mk">✕</span>Messages that often go unanswered</li>
+          <li><span class="mk">✕</span>Chatbots and canned emails when something goes wrong</li>
+          <li><span class="mk">✕</span>Fine print that says you're on your own</li>
+        </ul>
+      </div>
+      <div class="col us">
+        <span class="tagme">HomeTogether Local</span>
+        <h3>How we do it</h3>
+        <ul>
+          <li><span class="mk">✓</span>A real person hand-picks a short list for your family</li>
+          <li><span class="mk">✓</span>Talking to your matches is free. No subscription, no auto-renew, ever</li>
+          <li><span class="mk">✓</span>Caregivers who respond within a day, or we step in and find you another</li>
+          <li><span class="mk">✓</span>A real person answers every request, usually within hours</li>
+          <li><span class="mk">✓</span>Built by Caring Companions, real caregivers since 2017</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section" id="safety"><div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Trust, in plain English</span>
+      <h2>Safety you can actually understand.</h2>
+      <p>No legal fog. Here is what we check, what checks can and can't tell you, and what we promise your family.</p>
+    </div>
+    <div class="safe3">
+      <div class="safecard">
+        <h3>Every caregiver is checked</h3>
+        <div class="cert-list">
+          <div class="cert"><span class="ck">✓</span>Identity verified</div>
+          <div class="cert"><span class="ck">✓</span>National criminal database</div>
+          <div class="cert"><span class="ck">✓</span>Sex-offender registry search</div>
+          <div class="cert"><span class="ck">✓</span>County records where they've lived</div>
+          <div class="cert"><span class="ck">✓</span>Renewed every year they're active</div>
+        </div>
+      </div>
+      <div class="safecard">
+        <h3>The honest part</h3>
+        <p>No background check can guarantee safety, on any website, including ours. That's exactly why a real person from our team stays involved from first match to first visit, and why we help you interview before you hire. If anything ever feels off, call us and a human will help, right away.</p>
+      </div>
+      <div class="safecard">
+        <h3>Our promises</h3>
+        <div class="cert-list">
+          <div class="cert"><span class="ck">✓</span>No subscriptions or auto-renew, ever</div>
+          <div class="cert"><span class="ck">✓</span>Talking to matches is always free</div>
+          <div class="cert"><span class="ck">✓</span>Caregivers reply within a day, or we find you another</div>
+          <div class="cert"><span class="ck">✓</span>A real person replies to every request, within a day</div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section alt" id="notify"><div class="wrap">
+    <div class="waitlist">
+      <div>
+        <span class="eyebrow">Rolling out city by city</span>
+        <h2>Want HomeTogether Local near you?</h2>
+        <p>We're adding vetted, background-checked in-home caregivers area by area. Leave your details and we'll tell you the moment we're live near you.</p>
+      </div>
+      <form id="wlForm" class="wl-form" onsubmit="return submitWaitlist(event)">
+        <input id="wlName" placeholder="Your name" autocomplete="name" required>
+        <input id="wlEmail" type="email" placeholder="Email" autocomplete="email" required>
+        <input id="wlZip" placeholder="ZIP code (optional)" inputmode="numeric">
+        <button class="btn btn-honey" type="submit">Notify me &rarr;</button>
+        <p class="wl-done" id="wlDone">✓ You're on the list — we'll be in touch the moment we're near you.</p>
+      </form>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="band">
+      <div><h2>Are you a caregiver?</h2><p>Build a professional profile, set your own rates and service area, and connect directly with families who need you, nationwide.</p></div>
+      <button class="btn btn-honey" onclick="go('cghome')">Join as a caregiver →</button>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============ INTAKE ============ -->
+<div class="view" id="view-intake">
+  <div class="wrap"><div class="intake">
+    <div class="progress" id="prog"></div>
+
+    <div class="qstep on" data-step="0">
+      <span class="eyebrow">Step 1 of 5</span>
+      <h2>Who is the care for?</h2>
+      <p class="hint">This helps us understand the situation and match the right experience.</p>
+      <div class="opts two" data-single="who">
+        <button class="opt" onclick="pick(this,'who','A parent')"><span class="oi">👵</span>A parent<span class="check">›</span></button>
+        <button class="opt" onclick="pick(this,'who','My spouse')"><span class="oi">💞</span>My spouse or partner<span class="check">›</span></button>
+        <button class="opt" onclick="pick(this,'who','Myself')"><span class="oi">🙂</span>Myself<span class="check">›</span></button>
+        <button class="opt" onclick="pick(this,'who','Someone else')"><span class="oi">🤝</span>Someone else<span class="check">›</span></button>
+      </div>
+      <div class="qnav"><span></span><button class="btn btn-teal" onclick="nextStep()">Continue →</button></div>
+    </div>
+
+    <div class="qstep" data-step="1">
+      <span class="eyebrow">Step 2 of 5</span>
+      <h2>What kind of help do they need?</h2>
+      <p class="hint">Choose everything that applies. We'll surface caregivers with real experience in these.</p>
+      <div class="opts two" data-multi="care">
+        <button class="opt" onclick="pickMulti(this,'care','Companionship')"><span class="oi">💬</span>Companionship<span class="check">›</span></button>
+        <button class="opt" onclick="pickMulti(this,'care','Personal care')"><span class="oi">🛁</span>Personal care &amp; hygiene<span class="check">›</span></button>
+        <button class="opt" onclick="pickMulti(this,'care','Dementia care')"><span class="oi">🧠</span>Dementia / memory care<span class="check">›</span></button>
+        <button class="opt" onclick="pickMulti(this,'care','Mobility')"><span class="oi">🦿</span>Mobility &amp; transfers<span class="check">›</span></button>
+        <button class="opt" onclick="pickMulti(this,'care','Medication')"><span class="oi">💊</span>Medication reminders<span class="check">›</span></button>
+        <button class="opt" onclick="pickMulti(this,'care','Meal prep')"><span class="oi">🍲</span>Meals &amp; light housekeeping<span class="check">›</span></button>
+        <button class="opt" onclick="pickMulti(this,'care','Transportation')"><span class="oi">🚗</span>Transportation &amp; errands<span class="check">›</span></button>
+        <button class="opt" onclick="pickMulti(this,'care','Post-surgery')"><span class="oi">🩹</span>Post-surgery recovery<span class="check">›</span></button>
+      </div>
+      <div class="qnav"><button class="link-btn" onclick="prevStep()">← Back</button><button class="btn btn-teal" onclick="nextStep()">Continue →</button></div>
+    </div>
+
+    <div class="qstep" data-step="2">
+      <span class="eyebrow">Step 3 of 5</span>
+      <h2>How often do you need care?</h2>
+      <p class="hint">You can always adjust this later with your caregiver.</p>
+      <div class="opts" data-single="freq">
+        <button class="opt" onclick="pick(this,'freq','A few hours a week')"><span class="oi">🕐</span>A few hours a week<span class="check">›</span></button>
+        <button class="opt" onclick="pick(this,'freq','Daily help')"><span class="oi">📅</span>Daily help<span class="check">›</span></button>
+        <button class="opt" onclick="pick(this,'freq','Overnight')"><span class="oi">🌙</span>Overnight care<span class="check">›</span></button>
+        <button class="opt" onclick="pick(this,'freq','Live-in')"><span class="oi">🏠</span>Live-in / around the clock<span class="check">›</span></button>
+      </div>
+      <div class="qnav"><button class="link-btn" onclick="prevStep()">← Back</button><button class="btn btn-teal" onclick="nextStep()">Continue →</button></div>
+    </div>
+
+    <div class="qstep" data-step="3">
+      <span class="eyebrow">Step 4 of 5</span>
+      <h2>Where should we look?</h2>
+      <p class="hint">We'll find caregivers who serve this area. HomeTogether Local works nationwide.</p>
+      <input class="zip" id="zip" placeholder="City or ZIP code" value="Springfield, MO">
+      <div class="qnav"><button class="link-btn" onclick="prevStep()">← Back</button><button class="btn btn-teal" onclick="nextStep()">Continue →</button></div>
+    </div>
+
+    <div class="qstep" data-step="4">
+      <span class="eyebrow">Step 5 of 5</span>
+      <h2>Where should we send your matches?</h2>
+      <p class="hint">We'll introduce you to caregivers near you and check in to make sure it's a great fit. No cost, and no obligation to hire.</p>
+      <div style="display:grid;gap:14px">
+        <input class="zip" id="lead_name" placeholder="Your name" autocomplete="name">
+        <input class="zip" id="lead_email" type="email" placeholder="Email" autocomplete="email">
+        <input class="zip" id="lead_phone" placeholder="Phone (optional)" inputmode="tel" autocomplete="tel">
+      </div>
+      <p class="hint" style="font-size:13px;margin:14px 0 0">By continuing you agree we can reach out about caregivers near you. We never share your details.</p>
+      <div class="qnav"><button class="link-btn" onclick="prevStep()">← Back</button><button class="btn btn-teal" onclick="submitIntake()">See my matches →</button></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ============ RESULTS ============ -->
+<div class="view" id="view-results">
+  <div class="wrap"><div class="results">
+    <div class="res-head">
+      <div>
+        <button class="back" onclick="startIntake()">← Adjust my care needs</button>
+        <h2>Hand-picked for your family</h2>
+        <div class="res-sum" id="resSum"></div>
+      </div>
+    </div>
+    <div class="res-body">
+      <aside class="filters">
+        <div class="fg"><h4>Care experience</h4><div id="fCare"></div></div>
+        <div class="fg"><h4>Certifications</h4>
+          <label class="fopt"><input type="checkbox" onchange="applyFilters()" data-cert="CNA">CNA</label>
+          <label class="fopt"><input type="checkbox" onchange="applyFilters()" data-cert="Dementia Care Certified">Dementia certified</label>
+          <label class="fopt"><input type="checkbox" onchange="applyFilters()" data-cert="CPR / First Aid">CPR / First Aid</label>
+        </div>
+        <div class="fg"><h4>Only show</h4>
+          <label class="fopt"><input type="checkbox" onchange="applyFilters()" id="fVerified" checked>Background-checked</label>
+        </div>
+      </aside>
+      <div class="res-list" id="resList"></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ============ PROFILE ============ -->
+<div class="view" id="view-profile">
+  <div class="wrap"><div class="profile" id="profileBody"></div></div>
+</div>
+
+<!-- ============ CAREGIVER: LANDING ============ -->
+<div class="view" id="view-cghome">
+  <style>
+    .cgben{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:8px}
+    @media(max-width:820px){.cgben{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.cgben{grid-template-columns:1fr}}
+    .cgben .b{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+    .cgben .b .ic{font-size:26px;margin-bottom:10px}
+    .cgben .b h3{font-size:16.5px;color:var(--navy);margin:0 0 6px}
+    .cgben .b p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.55}
+    .cgearn{max-width:600px;margin:34px auto 0;background:var(--honey);color:#3a2708;border-radius:18px;padding:22px 28px;text-align:center;font-size:15px}
+    .cgearn b{font-size:20px}
+    .cg-dash{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start;max-width:900px;margin:0 auto}
+    @media(max-width:820px){.cg-dash{grid-template-columns:1fr}}
+    .jobcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;box-shadow:var(--shadow)}
+    .jobcard .jt{font-weight:700;color:var(--navy);font-size:15.5px}
+    .jobcard .jm{color:var(--muted);font-size:13.5px;margin:3px 0 10px}
+  </style>
+  <section class="hero"><div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">For caregivers · nationwide</span>
+      <h1>Caregiving, <span style="color:var(--honey-deep)">on your terms</span>.</h1>
+      <p class="lede">Set your own rates, choose who you work with, and get matched to families who need you, right in your area. No agency taking a cut of your pay.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+        <button class="btn btn-honey btn-lg" onclick="startCg()">Create your free profile →</button>
+        <button class="btn btn-ghost btn-lg" onclick="var e=document.getElementById('cghow');if(e)e.scrollIntoView({behavior:'smooth'})">How it works</button>
+      </div>
+      <div class="trust" style="display:flex;gap:18px;flex-wrap:wrap;margin-top:22px">
+        <span><span class="ic"><svg aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg></span> Keep 100% of your rate</span>
+        <span><span class="ic"><svg aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg></span> Choose your clients</span>
+        <span><span class="ic"><svg aria-hidden="true"><use href="assets/icons.svg#i-check"/></svg></span> Free to join</span>
+      </div>
+    </div>
+    <div class="hero-vis">
+      <div class="mini m1"><div class="av" style="background:linear-gradient(135deg,#1E7A8C,#155A68)">👋</div><div><div class="nm">3 families near you</div><div class="mt">are looking for a caregiver</div></div></div>
+      <div class="mini m2" style="z-index:2"><div class="av" style="background:linear-gradient(135deg,#E9A23B,#C9821C)">$</div><div><div class="nm">You set the rate</div><div class="mt">$20–$35 / hour, your call</div></div></div>
+      <div class="mini m3"><div class="av" style="background:linear-gradient(135deg,#2E9B63,#1E7A8C)">★</div><div><div class="nm">Build your reputation</div><div class="mt">Reviews from families you help</div></div></div>
+    </div>
+  </div></section>
+
+  <section class="section alt"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Why caregivers choose us</span><h2>Your work, your way.</h2></div>
+    <div class="cgben">
+      <div class="b"><div class="ic"><svg aria-hidden="true"><use href="assets/icons.svg#i-money"/></svg></div><h3>Set your own rates</h3><p>You decide what you charge, and you keep it. No agency markup skimming your pay.</p></div>
+      <div class="b"><div class="ic"><svg aria-hidden="true"><use href="assets/icons.svg#i-compass"/></svg></div><h3>Choose your clients</h3><p>Review families, pick the ones that fit your skills and schedule, say yes on your terms.</p></div>
+      <div class="b"><div class="ic"><svg aria-hidden="true"><use href="assets/icons.svg#i-pin"/></svg></div><h3>Work near home</h3><p>Set your service area and only get matched to families close to you.</p></div>
+      <div class="b"><div class="ic"><svg aria-hidden="true"><use href="assets/icons.svg#i-handshake"/></svg></div><h3>Get matched</h3><p>Families searching for exactly your skills find you, no applications into the void.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section" id="cghow"><div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Getting started</span><h2>Up and running in four steps.</h2></div>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Build your profile</h3><p>Share your experience, skills, and the kind of care you love to provide.</p></div>
+      <div class="step"><span class="n">2</span><h3>Get verified</h3><p>Complete a background check and add certifications to earn your Verified badge.</p></div>
+      <div class="step"><span class="n">3</span><h3>Match with families</h3><p>Families near you find your profile and reach out, and you choose who to work with.</p></div>
+      <div class="step"><span class="n">4</span><h3>Get hired &amp; reviewed</h3><p>Do great work, get paid your rate, and build reviews that bring you more clients.</p></div>
+    </div>
+    <div class="cgearn"><b>Caregivers set rates from $20–$35/hour</b><br>and keep what they earn, no agency cut.</div>
+    <div style="text-align:center;margin-top:30px"><button class="btn btn-honey btn-lg" onclick="startCg()">Create your free profile →</button></div>
+  </div></section>
+</div>
+
+<!-- ============ CAREGIVER: CREATE PROFILE ============ -->
+<div class="view" id="view-cgsignup">
+  <div class="wrap"><div class="intake">
+    <div class="progress" id="cgprog"></div>
+
+    <div class="qstep on" data-cgstep="0">
+      <span class="eyebrow">Step 1 of 4</span>
+      <h2>Tell us about you</h2>
+      <p class="hint">The basics families will see first.</p>
+      <div style="display:grid;gap:14px">
+        <input class="zip" id="cg_name" placeholder="Your full name" autocomplete="name">
+        <input class="zip" id="cg_email" type="email" placeholder="Email" autocomplete="email">
+        <input class="zip" id="cg_phone" placeholder="Phone" inputmode="tel" autocomplete="tel">
+        <input class="zip" id="cg_city" placeholder="Your city (e.g. Springfield, MO)">
+        <input class="zip" id="cg_years" placeholder="Years of caregiving experience" inputmode="numeric">
+        <textarea class="zip" id="cg_bio" placeholder="A short intro families will read — what you love about caregiving." style="min-height:100px;resize:vertical;font-family:inherit"></textarea>
+      </div>
+      <div class="qnav"><span></span><button class="btn btn-honey" onclick="cgNext()">Continue →</button></div>
+    </div>
+
+    <div class="qstep" data-cgstep="1">
+      <span class="eyebrow">Step 2 of 4</span>
+      <h2>What care do you provide?</h2>
+      <p class="hint">Pick everything you're comfortable with. Families search by these.</p>
+      <div class="opts two">
+        <button class="opt" onclick="pickMultiCg(this,'skills','Companionship')"><span class="oi">💬</span>Companionship<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'skills','Personal care')"><span class="oi">🛁</span>Personal care &amp; hygiene<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'skills','Dementia care')"><span class="oi">🧠</span>Dementia / memory care<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'skills','Mobility')"><span class="oi">🦿</span>Mobility &amp; transfers<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'skills','Medication')"><span class="oi">💊</span>Medication reminders<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'skills','Meal prep')"><span class="oi">🍲</span>Meals &amp; housekeeping<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'skills','Transportation')"><span class="oi">🚗</span>Transportation &amp; errands<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'skills','Overnight')"><span class="oi">🌙</span>Overnight care<span class="check">›</span></button>
+      </div>
+      <div class="qnav"><button class="link-btn" onclick="cgPrev()">← Back</button><button class="btn btn-honey" onclick="cgNext()">Continue →</button></div>
+    </div>
+
+    <div class="qstep" data-cgstep="2">
+      <span class="eyebrow">Step 3 of 4</span>
+      <h2>Certifications &amp; verification</h2>
+      <p class="hint">These earn your <b>Verified</b> badge, the biggest thing families look for.</p>
+      <div class="opts two">
+        <button class="opt" onclick="pickMultiCg(this,'certs','CNA')"><span class="oi">📜</span>CNA<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'certs','CPR / First Aid')"><span class="oi">➕</span>CPR / First Aid<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'certs','HHA')"><span class="oi">🏠</span>Home Health Aide (HHA)<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'certs','Dementia Care Certified')"><span class="oi">🧠</span>Dementia Care Certified<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'certs','Med Tech')"><span class="oi">💊</span>Med Tech<span class="check">›</span></button>
+      </div>
+      <div style="margin-top:16px;background:var(--teal-soft);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--ink);line-height:1.55">
+        <b style="color:var(--navy)">Next, we'll run a background check.</b> Upload your certifications and complete a quick identity + criminal background check to get your Verified badge. Families can filter for verified caregivers only.
+      </div>
+      <div class="qnav"><button class="link-btn" onclick="cgPrev()">← Back</button><button class="btn btn-honey" onclick="cgNext()">Continue →</button></div>
+    </div>
+
+    <div class="qstep" data-cgstep="3">
+      <span class="eyebrow">Step 4 of 4</span>
+      <h2>Rates, area &amp; availability</h2>
+      <p class="hint">You're in control, change any of this anytime.</p>
+      <div style="display:grid;gap:14px">
+        <input class="zip" id="cg_rate" placeholder="Your hourly rate (e.g. $26)">
+        <input class="zip" id="cg_area" placeholder="Service area ZIP or city, how far you'll travel">
+      </div>
+      <p class="hint" style="margin:20px 0 10px">When are you available?</p>
+      <div class="opts two">
+        <button class="opt" onclick="pickMultiCg(this,'avail','Weekdays')"><span class="oi">📅</span>Weekdays<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'avail','Weekends')"><span class="oi">🗓️</span>Weekends<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'avail','Mornings')"><span class="oi">🌅</span>Mornings<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'avail','Evenings')"><span class="oi">🌆</span>Evenings<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'avail','Overnight')"><span class="oi">🌙</span>Overnight<span class="check">›</span></button>
+        <button class="opt" onclick="pickMultiCg(this,'avail','Live-in')"><span class="oi">🏠</span>Live-in<span class="check">›</span></button>
+      </div>
+      <div class="qnav"><button class="link-btn" onclick="cgPrev()">← Back</button><button class="btn btn-honey" onclick="submitCg()">Create my profile →</button></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ============ CAREGIVER: DASHBOARD PREVIEW ============ -->
+<div class="view" id="view-cgdone">
+  <div class="wrap" style="padding:40px 24px 70px">
+    <div style="text-align:center;max-width:600px;margin:0 auto 32px">
+      <div style="font-size:48px;line-height:1">🎉</div>
+      <h2 style="font-size:clamp(26px,4vw,34px);margin:12px 0 0">Your profile is live!</h2>
+      <p style="color:var(--muted);font-size:17px;margin:14px auto 0;max-width:46ch">Once your background check clears, families near you can find and message you. Here's a peek at your caregiver dashboard.</p>
+    </div>
+    <div class="cg-dash" id="cgDash"></div>
+    <div style="text-align:center;margin-top:34px"><button class="btn btn-ghost" onclick="go('cghome')">← Back to caregiver home</button></div>
+  </div>
+</div>
+
+<div class="foot"><div class="wrap row">
+  <div>© 2026 HomeTogether Local · part of HomeTogether · a Caring Companions company · Prototype for demonstration</div>
+  <div style="display:flex;gap:18px"><a onclick="go('home')">Home</a><a onclick="startIntake()">Find care</a><a onclick="goSafety()">Safety</a><a onclick="go('cghome')">For caregivers</a><a href="/caregivers/">Browse by city</a></div>
+</div></div>
+
+<script>
+/* ---------- site switcher ---------- */
+(function(){
+  function q(s){return document.querySelector(s);}
+  function setOpen(open){var m=q('.hs-menu'),b=q('.hs-btn');if(!m||!b)return;m.classList.toggle('open',open);b.setAttribute('aria-expanded',open?'true':'false');}
+  function markSeen(){try{sessionStorage.setItem('htSwitchSeen','1');}catch(e){}}
+  function wasSeen(){try{return sessionStorage.getItem('htSwitchSeen');}catch(e){return null;}}
+  window.htToggleSwitch=function(e){if(e)e.stopPropagation();var m=q('.hs-menu');if(!m)return;setOpen(!m.classList.contains('open'));markSeen();};
+  document.addEventListener('click',function(ev){var m=q('.hs-menu');if(m&&m.classList.contains('open')&&!(ev.target.closest&&ev.target.closest('.ht-switch'))){setOpen(false);markSeen();}});
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'){var m=q('.hs-menu');if(m&&m.classList.contains('open')){setOpen(false);markSeen();}}});
+  if(!wasSeen()){setTimeout(function(){if(!wasSeen()){setOpen(true);markSeen();}},700);}
+})();
+
+/* ---------- theme ---------- */
+function toggleTheme(){
+  var cur=document.documentElement.getAttribute('data-theme');
+  var next = cur==='dark' ? 'light' : cur==='light' ? 'dark' : (matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');
+  document.documentElement.setAttribute('data-theme',next);
+}
+
+/* ---------- mock caregivers ---------- */
+var GRAD=['linear-gradient(135deg,#1E7A8C,#155A68)','linear-gradient(135deg,#0D365F,#1E7A8C)','linear-gradient(135deg,#E9A23B,#C9821C)','linear-gradient(135deg,#2E9B63,#1E7A8C)','linear-gradient(135deg,#7A5CA8,#4A3A78)','linear-gradient(135deg,#C15C6E,#8A3D4D)'];
+function initials(n){return n.split(' ').map(function(w){return w[0]}).join('').slice(0,2)}
+/* local social proof: families hired through us + typical reply time */
+var HIRED={1:14,2:9,3:11,4:12,5:7,6:10};
+var REPLY={1:'about 1 hr',2:'about 2 hrs',3:'about 1 hr',4:'about 3 hrs',5:'about 2 hrs',6:'about 1 hr'};
+var CG=[
+ {id:1,name:'Maria Delgado',city:'Springfield, MO',near:1,rate:26,years:12,rating:4.9,reviews:86,g:0,
+  skills:['Dementia care','Personal care','Companionship','Medication'],
+  certs:['CNA','CPR / First Aid','Dementia Care Certified'],
+  services:['Dementia & memory care','Bathing & hygiene','Medication reminders','Companionship','Meal preparation'],
+  bio:"I've spent twelve years caring for older adults, most of them living with dementia. I believe the day should move at their pace, with patience, dignity, and a lot of warmth. Families tell me their loved one is calmer and happier within a week.",
+  avail:[1,1,1,1,1,0,0],
+  rev:[{n:'Karen P.',d:'2 weeks ago',s:5,t:"Maria is a godsend. My mother has Alzheimer's and Maria brings such calm to the house. She noticed a UTI before any of us did."},
+       {n:'David L.',d:'1 month ago',s:5,t:"Reliable, kind, and genuinely skilled. Dad looks forward to her visits every day."}]},
+ {id:2,name:'James Okafor',city:'Kansas City, MO',near:0,rate:24,years:8,rating:4.8,reviews:54,g:1,
+  skills:['Mobility','Post-surgery','Companionship','Transportation'],
+  certs:['CNA','CPR / First Aid'],
+  services:['Mobility & transfers','Post-surgery recovery','Transportation & errands','Companionship'],
+  bio:"Former hospital aide turned private caregiver. I'm strong, steady, and great with clients recovering from surgery or working to stay mobile. I keep families updated after every visit.",
+  avail:[1,1,1,1,1,1,0],
+  rev:[{n:'Susan M.',d:'3 weeks ago',s:5,t:"James helped my husband recover after his hip replacement. Careful, encouraging, and always on time."},
+       {n:'Ray T.',d:'2 months ago',s:4,t:"Great with transfers and very dependable. Would recommend."}]},
+ {id:3,name:'Linda Hartmann',city:'Joplin, MO',near:1,rate:23,years:15,rating:5.0,reviews:39,g:2,
+  skills:['Companionship','Meal prep','Medication','Transportation'],
+  certs:['CPR / First Aid','HHA'],
+  services:['Companionship','Meals & light housekeeping','Medication reminders','Transportation & errands'],
+  bio:"After raising my own family, caregiving became my calling. I love conversation, a tidy kitchen, and making sure no one spends the day alone. Fifteen years and I still adore this work.",
+  avail:[1,1,1,1,1,0,0],
+  rev:[{n:'Nancy W.',d:'1 week ago',s:5,t:"Linda feels like family now. Mom's face lights up when she arrives."},
+       {n:'Gary H.',d:'6 weeks ago',s:5,t:"Wonderful cook and even better company. Truly caring person."}]},
+ {id:4,name:'Grace Nguyen',city:'St. Louis, MO',near:0,rate:28,years:10,rating:4.9,reviews:72,g:3,
+  skills:['Dementia care','Medication','Personal care','Companionship'],
+  certs:['CNA','Dementia Care Certified','Med Tech'],
+  services:['Dementia & memory care','Medication management','Personal care','Companionship'],
+  bio:"I specialize in memory care and medication management. I'm calm under pressure and detail-oriented, families trust me to keep track of everything so they can just be family again.",
+  avail:[1,1,1,1,1,1,1],
+  rev:[{n:'Michael B.',d:'2 weeks ago',s:5,t:"Grace organized my father's medications and caught a dangerous interaction. Sharp and compassionate."},
+       {n:'Ellen R.',d:'5 weeks ago',s:5,t:"She's endlessly patient with my mother's repetition. A real professional."}]},
+ {id:5,name:'Robert Ellis',city:'Columbia, MO',near:0,rate:25,years:6,rating:4.7,reviews:41,g:4,
+  skills:['Mobility','Companionship','Meal prep','Post-surgery'],
+  certs:['CNA','CPR / First Aid'],
+  services:['Overnight care','Mobility & transfers','Companionship','Meal preparation'],
+  bio:"I do a lot of overnight and weekend care, the hours other people can't cover. I'm a light sleeper, steady on my feet, and calm in the middle of the night when it matters most.",
+  avail:[0,0,1,1,1,1,1],
+  rev:[{n:'Patty K.',d:'3 weeks ago',s:5,t:"Robert does overnights for my dad so I can finally sleep. Total peace of mind."},
+       {n:'Jim F.',d:'2 months ago',s:4,t:"Dependable and kind. Handles the hard nights well."}]},
+ {id:6,name:'Aisha Rahman',city:'Springfield, MO',near:1,rate:27,years:9,rating:4.9,reviews:63,g:5,
+  skills:['Personal care','Companionship','Medication','Post-surgery'],
+  certs:['CNA','CPR / First Aid','HHA'],
+  services:['Personal care & hygiene','Hospice & comfort care','Medication reminders','Companionship'],
+  bio:"Gentle, respectful hands-on care is what I do best, including hospice and end-of-life comfort care. I treat every client like my own grandmother: with tenderness and total respect.",
+  avail:[1,1,1,1,1,1,0],
+  rev:[{n:'Teresa V.',d:'1 week ago',s:5,t:"Aisha cared for my mother in her final months with such grace. I will never forget her kindness."},
+       {n:'Omar S.',d:'7 weeks ago',s:5,t:"Professional, warm, and deeply respectful. The whole family trusts her."}]}
+];
+
+/* ---------- state ---------- */
+var LEAD_ENDPOINT='https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/lead-intake?token=cclead_b36832b06f2bb8d58b7d6302';
+var A={who:'',care:[],freq:'',zip:'Springfield, MO',lead:null};
+var STEP=0, TOTAL=5;
+
+/* ---------- router ---------- */
+function go(v){
+  document.querySelectorAll('.view').forEach(function(x){x.classList.remove('on')});
+  document.getElementById('view-'+v).classList.add('on');
+  window.scrollTo(0,0);
+}
+
+/* ---------- home visuals + featured ---------- */
+function heroCard(c,cls){
+  return '<div class="mini '+cls+'"><div class="av" style="background:'+GRAD[c.g]+'">'+initials(c.name)+'</div>'+
+    '<div><div class="nm">'+c.name.split(' ')[0]+' '+c.name.split(' ')[1][0]+'. <span class="vbadge">✓</span></div>'+
+    '<div class="mt">'+c.city+' · ★ '+c.rating.toFixed(1)+'</div></div>'+
+    '<div class="rate">$'+c.rate+'<small>/hr</small></div></div>';
+}
+function renderHome(){
+  document.getElementById('heroVis').innerHTML = heroCard(CG[0],'m1')+heroCard(CG[3],'m2')+heroCard(CG[5],'m3');
+  document.getElementById('featured').innerHTML = [CG[0],CG[5],CG[2]].map(function(c){return cgCard(c,false)}).join('');
+}
+
+/* ---------- intake ---------- */
+function startIntake(){ go('intake'); STEP=0; showStep(); }
+function showStep(){
+  document.querySelectorAll('.qstep').forEach(function(s){s.classList.toggle('on', +s.dataset.step===STEP)});
+  document.getElementById('prog').innerHTML = Array.from({length:TOTAL}).map(function(_,i){return '<div class="p'+(i<=STEP?' done':'')+'"></div>'}).join('');
+  window.scrollTo(0,0);
+}
+function nextStep(){ if(STEP<TOTAL-1){STEP++;showStep();} }
+function prevStep(){ if(STEP>0){STEP--;showStep();} }
+function pick(el,key,val){
+  A[key]=val;
+  el.parentElement.querySelectorAll('.opt').forEach(function(o){o.classList.remove('sel')});
+  el.classList.add('sel');
+}
+function pickMulti(el,key,val){
+  el.classList.toggle('sel');
+  var i=A[key].indexOf(val);
+  if(i>=0)A[key].splice(i,1); else A[key].push(val);
+}
+
+/* ---------- matching ---------- */
+function scoreOf(c){
+  var s=64;
+  A.care.forEach(function(k){ if(c.skills.indexOf(k)>=0) s+=8; });
+  if(A.freq==='Overnight'||A.freq==='Live-in'){ if(c.avail[0]||c.avail[6]) s+=6; }
+  if(c.near) s+=7;
+  s+=Math.round((c.rating-4.5)*10);
+  return Math.max(72,Math.min(99,s));
+}
+function whyChips(c){
+  var w=[];
+  A.care.forEach(function(k){ if(c.skills.indexOf(k)>=0) w.push(k); });
+  if(c.near) w.push('Near you');
+  return w.slice(0,4);
+}
+
+/* ---------- caregiver card ---------- */
+function cgCard(c,showMatch){
+  var chips = showMatch ? whyChips(c) : c.skills.slice(0,3);
+  var chipHtml = chips.map(function(k){return '<span class="chip">'+k+'</span>'}).join('') + (showMatch&&whyChips(c).length<2 ? c.skills.slice(0,2).map(function(k){return '<span class="chip plain">'+k+'</span>'}).join(''):'');
+  return '<div class="cg" onclick="openProfile('+c.id+')">'+
+    '<div class="cg-top">'+
+      '<div class="av" style="background:'+GRAD[c.g]+'">'+initials(c.name)+'<span class="vb">✓</span></div>'+
+      '<div><div class="nm">'+c.name+'</div><div class="loc">'+c.city+' · '+c.years+' yrs experience</div>'+
+      '<div class="rating"><span class="stars">'+stars(c.rating)+'</span> '+c.rating.toFixed(1)+' <span class="ct">('+c.reviews+')</span></div>'+
+      '<div class="proof">Hired by '+HIRED[c.id]+' families · replies in '+REPLY[c.id]+'</div></div>'+
+      (showMatch?'<div class="match">'+scoreOf(c)+'%<small>match</small></div>':'')+
+    '</div>'+
+    '<div class="chips">'+chipHtml+'</div>'+
+    '<div class="cg-foot"><div class="rate">$'+c.rate+' <small>/ hour</small></div>'+
+      '<button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openProfile('+c.id+')">View profile</button></div>'+
+  '</div>';
+}
+function stars(r){var f=Math.round(r);return '★★★★★'.slice(0,f)+'☆☆☆☆☆'.slice(0,5-f);}
+
+/* ---------- results ---------- */
+function submitIntake(){
+  var zEl=document.getElementById('zip');
+  A.zip = (zEl && zEl.value) ? zEl.value : 'your area';
+  var nEl=document.getElementById('lead_name'), eEl=document.getElementById('lead_email'), pEl=document.getElementById('lead_phone');
+  if(nEl){
+    var name=nEl.value.trim(), email=eEl?eEl.value.trim():'', phone=pEl?pEl.value.trim():'';
+    if(!name || !email){ alert('Please add your name and email so we can send your matches.'); return; }
+    A.lead={name:name,email:email,phone:phone};
+    postFamilyLead();
+  }
+  buildCareFilters();
+  go('results');
+  renderResults();
+}
+function postFamilyLead(){
+  var L=A.lead||{};
+  var msg='HomeTogether Local — family looking for a caregiver.'
+    +'\nCare for: '+(A.who||'—')
+    +'\nHelp needed: '+(A.care.length?A.care.join(', '):'—')
+    +'\nFrequency: '+(A.freq||'—')
+    +'\nArea: '+(A.zip||'—')
+    +(L.phone?'\nPhone: '+L.phone:'');
+  fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:L.name,email:L.email,phone:L.phone,message:msg,care_for:'In-home caregiver (HomeTogether Local)'})
+  }).then(function(r){return r.json();}).catch(function(){});
+}
+function buildCareFilters(){
+  var all=['Companionship','Personal care','Dementia care','Mobility','Medication','Meal prep','Transportation','Post-surgery'];
+  document.getElementById('fCare').innerHTML = all.map(function(k){
+    var on = A.care.indexOf(k)>=0;
+    return '<label class="fopt"><input type="checkbox" onchange="applyFilters()" data-care="'+k+'"'+(on?' checked':'')+'>'+k+'</label>';
+  }).join('');
+}
+function currentList(){
+  var careF = Array.from(document.querySelectorAll('#fCare input:checked')).map(function(i){return i.dataset.care});
+  var certF = Array.from(document.querySelectorAll('.filters input[data-cert]:checked')).map(function(i){return i.dataset.cert});
+  var vOnly = document.getElementById('fVerified').checked;
+  var list = CG.filter(function(c){
+    if(careF.length && !careF.every(function(k){return c.skills.indexOf(k)>=0})) return false;
+    if(certF.length && !certF.every(function(k){return c.certs.indexOf(k)>=0})) return false;
+    return true; /* all sample caregivers are verified */
+  });
+  list.sort(function(a,b){return scoreOf(b)-scoreOf(a)});
+  return list;
+}
+function renderResults(){
+  var list=currentList();
+  var careTxt = A.care.length ? A.care.join(', ') : 'general care';
+  document.getElementById('resSum').innerHTML = 'For <b>'+(A.who||'your loved one')+'</b> · <b>'+careTxt+'</b> · <b>'+(A.freq||'flexible')+'</b> · near <b>'+A.zip+'</b>';
+  var banner = (A.lead && A.lead.email)
+    ? '<div class="lead-ok">✓ Thanks'+(A.lead.name?', '+cgEsc(A.lead.name.split(' ')[0]):'')+', your request is in. A real person from our team (not a bot) will reach out about caregivers near <b>'+cgEsc(A.zip)+'</b>, usually the same day. In the meantime, here are examples of the kind of caregivers we match families with.</div>'
+    : '';
+  document.getElementById('resList').innerHTML = banner + (list.length ? list.map(function(c){return cgCard(c,true)}).join('')
+    : '<div class="cg" style="cursor:default;text-align:center;color:var(--muted)">No caregivers match every filter. Try removing one.</div>');
+}
+function applyFilters(){ renderResults(); }
+
+/* ---------- profile ---------- */
+function openProfile(id){
+  var c=CG.filter(function(x){return x.id===id})[0]; if(!c) return;
+  var days=['S','M','T','W','T','F','S'];
+  document.getElementById('profileBody').innerHTML =
+  '<button class="back" onclick="go(\'results\')">← Back to results</button>'+
+  '<div class="p-grid"><div>'+
+    '<div class="p-hero">'+
+      '<div class="av" style="background:'+GRAD[c.g]+'">'+initials(c.name)+'<span class="vb">✓</span></div>'+
+      '<div style="flex:1;min-width:200px"><div class="nm">'+c.name+' <span class="verified-pill">✓ Background-checked</span></div>'+
+        '<div class="loc">'+c.city+' · '+c.years+' years of experience</div>'+
+        '<div class="rating" style="margin-top:8px"><span class="stars">'+stars(c.rating)+'</span> '+c.rating.toFixed(1)+' <span class="ct">('+c.reviews+' reviews)</span></div>'+
+        '<div class="proof">Hired by '+HIRED[c.id]+' families through HomeTogether · replies in '+REPLY[c.id]+'</div>'+
+        '<div class="chips" style="margin-top:12px">'+c.skills.map(function(k){return '<span class="chip">'+k+'</span>'}).join('')+'</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="p-block"><h3>About '+c.name.split(' ')[0]+'</h3><p>'+c.bio+'</p></div>'+
+    '<div class="p-block"><h3>Services offered</h3><div class="chips">'+c.services.map(function(k){return '<span class="chip plain">'+k+'</span>'}).join('')+'</div></div>'+
+    '<div class="p-block"><h3>Certifications &amp; verification</h3><div class="cert-list">'+
+       c.certs.map(function(k){return '<div class="cert"><span class="ck">✓</span>'+k+'</div>'}).join('')+
+       '<div class="cert"><span class="ck">✓</span>Identity verified</div>'+
+       '<div class="cert"><span class="ck">✓</span>Criminal background check · cleared '+['Mar','Apr','Jan','Feb','May','Jun'][c.g]+' 2026</div>'+
+       '<div class="cert"><span class="ck">✓</span>Sex-offender registry · clear</div>'+
+       '<div class="cert"><span class="ck">✓</span>Renewed every year while active</div>'+
+       '<p style="font-size:12.5px;color:var(--faint);margin:10px 0 0;line-height:1.55">What checks can and can\'t tell you, in plain English: <a onclick="goSafety()" style="color:var(--teal-deep);font-weight:700;cursor:pointer">our safety promise</a>.</p>'+
+     '</div></div>'+
+    '<div class="p-block"><h3>Typical availability</h3><div class="avail">'+
+      days.map(function(d){return '<div class="d">'+d+'</div>'}).join('')+
+      c.avail.map(function(a){return '<div class="c'+(a?' y':'')+'">'+(a?'✓':'—')+'</div>'}).join('')+
+     '</div></div>'+
+    '<div class="p-block"><h3>Reviews from families</h3>'+
+      c.rev.map(function(r){return '<div class="review"><div class="rh"><div class="rav" style="background:'+GRAD[(c.g+2)%6]+'">'+initials(r.n)+'</div>'+
+        '<div><div class="rn">'+r.n+'</div><div class="rd">'+r.d+'</div></div>'+
+        '<div style="margin-left:auto" class="stars">'+stars(r.s)+'</div></div><p>'+r.t+'</p></div>'}).join('')+
+    '</div>'+
+  '</div>'+
+  '<aside><div class="hire">'+
+    '<div class="big">$'+c.rate+' <small>/ hour</small></div>'+
+    '<div style="margin-top:14px">'+
+      '<div class="mrow"><span>Experience</span><b>'+c.years+' years</b></div>'+
+      '<div class="mrow"><span>Rating</span><b>'+c.rating.toFixed(1)+' ('+c.reviews+')</b></div>'+
+      '<div class="mrow"><span>Typically replies</span><b>'+REPLY[c.id]+'</b></div>'+
+      '<div class="mrow"><span>Background check</span><b style="color:var(--good)">Cleared</b></div>'+
+    '</div>'+
+    '<div class="stack">'+
+      '<button class="btn btn-teal" onclick="demoAct(\'Message '+c.name.split(' ')[0]+'\')">Message '+c.name.split(' ')[0]+'</button>'+
+      '<button class="btn btn-ghost" onclick="demoAct(\'Request an interview\')">Request an interview</button>'+
+      '<button class="btn btn-honey" onclick="demoAct(\'Hire '+c.name.split(' ')[0]+'\')">Hire '+c.name.split(' ')[0]+' directly</button>'+
+    '</div>'+
+    '<p class="note">You hire '+c.name.split(' ')[0]+' directly. Add optional payroll, tax filing, and scheduling tools any time from your dashboard.</p>'+
+  '</div></aside>'+
+  '</div>';
+  go('profile');
+}
+function demoAct(label){ alert('Prototype: “'+label+'”. In the live product this opens secure messaging / booking between you and the caregiver.'); }
+
+/* ---------- init ---------- */
+/* ---------- waitlist ---------- */
+function goNotify(){ go('home'); setTimeout(function(){ var n=document.getElementById('notify'); if(n) n.scrollIntoView({behavior:'smooth'}); }, 60); }
+function goSafety(){ go('home'); setTimeout(function(){ var n=document.getElementById('safety'); if(n) n.scrollIntoView({behavior:'smooth'}); }, 60); }
+function submitWaitlist(e){
+  e.preventDefault();
+  var name=document.getElementById('wlName').value.trim();
+  var email=document.getElementById('wlEmail').value.trim();
+  var zip=document.getElementById('wlZip').value.trim();
+  var btn=e.target.querySelector('button'); btn.disabled=true; btn.textContent='Sending…';
+  fetch('https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/lead-intake?token=cclead_b36832b06f2bb8d58b7d6302',{
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:name,email:email,message:'HomeTogether Local waitlist'+(zip?' — ZIP '+zip:'')+'. Wants an in-home caregiver near them.',care_for:'In-home caregiver (HomeTogether Local)'})
+  }).then(function(r){return r.json();}).catch(function(){}).finally(function(){
+    var f=document.getElementById('wlForm'); f.querySelectorAll('input,button').forEach(function(x){x.style.display='none';});
+    document.getElementById('wlDone').style.display='block';
+  });
+  return false;
+}
+
+/* ---------- caregiver side ---------- */
+function cgEsc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+var CGS={name:'',email:'',phone:'',city:'',years:'',bio:'',skills:[],certs:[],rate:'',area:'',avail:[]};
+var CGSTEP=0, CGTOTAL=4;
+function startCg(){
+  CGS={name:'',email:'',phone:'',city:'',years:'',bio:'',skills:[],certs:[],rate:'',area:'',avail:[]};
+  document.querySelectorAll('#view-cgsignup .opt').forEach(function(o){o.classList.remove('sel');});
+  ['cg_name','cg_email','cg_phone','cg_city','cg_years','cg_bio','cg_rate','cg_area'].forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
+  go('cgsignup'); CGSTEP=0; showCgStep();
+}
+function showCgStep(){
+  document.querySelectorAll('#view-cgsignup .qstep').forEach(function(s){s.classList.toggle('on',+s.dataset.cgstep===CGSTEP);});
+  document.getElementById('cgprog').innerHTML=Array.from({length:CGTOTAL}).map(function(_,i){return '<div class="p'+(i<=CGSTEP?' done':'')+'"></div>';}).join('');
+  window.scrollTo(0,0);
+}
+function cgNext(){ if(CGSTEP<CGTOTAL-1){CGSTEP++;showCgStep();} }
+function cgPrev(){ if(CGSTEP>0){CGSTEP--;showCgStep();} }
+function pickMultiCg(el,key,val){ el.classList.toggle('sel'); var a=CGS[key], i=a.indexOf(val); if(i>=0)a.splice(i,1); else a.push(val); }
+function cgVal(id){ var e=document.getElementById(id); return e?e.value.trim():''; }
+function cgInitials(n){ var p=(n||'').trim().split(/\s+/); return (((p[0]||'')[0]||'')+((p[1]||'')[0]||'')).toUpperCase()||'YOU'; }
+function submitCg(){
+  CGS.name=cgVal('cg_name')||'Your Name'; CGS.city=cgVal('cg_city')||'Your City';
+  CGS.years=cgVal('cg_years'); CGS.rate=cgVal('cg_rate'); CGS.area=cgVal('cg_area');
+  CGS.email=cgVal('cg_email'); CGS.phone=cgVal('cg_phone'); CGS.bio=cgVal('cg_bio');
+  postCaregiverLead();
+  renderCgDash(); go('cgdone');
+}
+function postCaregiverLead(){
+  if(!CGS.email && !CGS.phone) return; /* no way to reach them — skip */
+  var msg='HomeTogether Local — caregiver signup.'
+    +'\nName: '+CGS.name+'\nCity: '+CGS.city+'\nExperience: '+(CGS.years||'—')+' yrs'
+    +'\nSkills: '+(CGS.skills.join(', ')||'—')
+    +'\nCertifications: '+(CGS.certs.join(', ')||'—')
+    +'\nRate: '+(CGS.rate||'—')+'\nService area: '+(CGS.area||'—')
+    +'\nAvailability: '+(CGS.avail.join(', ')||'—')
+    +(CGS.phone?'\nPhone: '+CGS.phone:'')
+    +(CGS.bio?'\nBio: '+CGS.bio:'');
+  fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:CGS.name,email:CGS.email,phone:CGS.phone,message:msg,care_for:'Caregiver applicant (HomeTogether Local)'})
+  }).then(function(r){return r.json();}).catch(function(){});
+}
+function renderCgDash(){
+  var d=document.getElementById('cgDash'); if(!d) return;
+  var rate=CGS.rate ? (String(CGS.rate).charAt(0)==='$'?CGS.rate:'$'+CGS.rate) : '$26';
+  var skills=(CGS.skills.length?CGS.skills:['Companionship']).slice(0,4);
+  var profile='<div class="cg" style="cursor:default">'+
+    '<div class="cg-top"><div class="av" style="background:linear-gradient(135deg,#1E7A8C,#155A68)">'+cgEsc(cgInitials(CGS.name))+'<span class="vb" style="background:var(--faint)">…</span></div>'+
+    '<div><div class="nm">'+cgEsc(CGS.name)+'</div><div class="loc">'+cgEsc(CGS.city)+(CGS.years?' · '+cgEsc(CGS.years)+' yrs':'')+'</div>'+
+    '<div style="margin-top:8px"><span style="background:var(--teal-soft);color:var(--teal-deep);padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:800">● Verification pending</span></div></div></div>'+
+    '<div class="chips" style="margin-top:14px">'+skills.map(function(s){return '<span class="chip">'+cgEsc(s)+'</span>';}).join('')+'</div>'+
+    '<div class="cg-foot"><div class="rate">'+cgEsc(rate)+' <small>/ hour</small></div></div></div>';
+  var city=(CGS.city.split(',')[0]||'your area');
+  var matches=[
+    {t:'Family looking for dementia care', m:city+' · weekday mornings · '+(CGS.skills.indexOf('Dementia care')>=0?'matches your skills':'2 mi away')},
+    {t:'Post-surgery help needed', m:city+' · a few hours a week · flexible schedule'}
+  ];
+  var right='<div><h3 style="font-family:var(--serif);font-size:18px;color:var(--navy);margin:0 0 12px">Families near you</h3>'+
+    matches.map(function(j){return '<div class="jobcard"><div class="jt">'+cgEsc(j.t)+'</div><div class="jm">'+cgEsc(j.m)+'</div><button class="btn btn-honey btn-sm" onclick="demoAct(\'Respond to this family\')">Respond</button></div>';}).join('')+
+    '<h3 style="font-family:var(--serif);font-size:18px;color:var(--navy);margin:22px 0 10px">Your reviews</h3>'+
+    '<div class="jobcard" style="color:var(--muted);font-size:14px">⭐ Reviews from families you help will appear here after your first visits.</div></div>';
+  d.innerHTML=profile+right;
+}
+
+renderHome();
+
+/* deep links: /local#caregivers → caregiver landing, /local#join → signup, /local#safety → safety section */
+(function(){
+  var h=location.hash;
+  if(h==='#caregivers'){ go('cghome'); }
+  else if(h==='#join'){ startCg(); }
+  else if(h==='#safety'){ setTimeout(goSafety,80); }
+})();
+</script>
+</body>
+</html>

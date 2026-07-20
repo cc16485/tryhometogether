@@ -150,8 +150,8 @@
   .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   .feat{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px;}
   .feat .ic{width:46px;height:46px;border-radius:12px;background:var(--panel-warm);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;}
-  /* Brand-tint decorative emoji icons (renders them as a solid teal silhouette) */
-  .step .ic, .feat .ic{color:transparent;text-shadow:0 0 0 var(--sea);}
+  .ic svg{width:1.35em;height:1.35em;display:block;}
+  .bi svg{width:1.1em;height:1.1em;display:inline-block;vertical-align:-0.2em;}
   .feat h3{font-size:18px;margin-bottom:6px;}
   .feat p{margin:0;color:var(--muted);font-size:15px;}
   @media (max-width:860px){ .prob-grid,.steps,.feat-grid{grid-template-columns:1fr;} }
@@ -171,8 +171,6 @@
   .checkout-slot{margin-top:6px;}
   .cc-offer{background:linear-gradient(135deg,#EAF4F6,#FBEFE0);border:1px solid var(--rose);border-radius:16px;padding:16px 18px;margin:0 0 20px;text-align:center;}
   .cc-offer-tag{font-weight:800;font-size:13px;letter-spacing:.02em;color:var(--sea-deep);text-transform:uppercase;}
-  /* Brand-tinted emoji icon (solid teal silhouette) */
-  .bi{color:transparent;text-shadow:0 0 0 var(--sea);}
   .cc-offer-price{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);margin:4px 0 4px;}
   .cc-offer-price b{color:var(--sea-deep);}
   .cc-offer p{margin:0;font-size:14px;color:var(--muted);}
@@ -254,3 +252,29 @@
 .callout-legal{background:var(--soft-teal);border:1px solid var(--rose);border-radius:12px;padding:16px 20px;margin:2px 0 22px;font-size:16px;line-height:1.6;color:var(--ink);}
 .callout-legal b{color:var(--heading);}
 .narrow{max-width:760px;margin:0 auto;}
+
+/* ---- "HomeTogether Local" outbound nav link ---- */
+nav.main > a.ht-local{display:inline-flex;align-items:center;gap:5px;background:var(--soft-teal);color:var(--sea-deep);border:1px solid color-mix(in srgb,var(--sea) 32%,transparent);border-radius:999px;padding:6px 13px;font-weight:800;}
+nav.main > a.ht-local:hover{background:var(--sea);color:#fff;}
+nav.main > a.ht-local span{font-size:15px;}
+
+/* ---- brand / site switcher (HomeTogether TV ⇄ Local) ---- */
+.ht-switch{position:relative}
+.hs-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:5px 8px;border-radius:10px;font-family:var(--serif)}
+.hs-btn:hover{background:var(--soft-teal)}
+.hs-word{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--heading);line-height:1;white-space:nowrap;letter-spacing:-.01em}
+.hs-arm{color:var(--sea);margin-left:5px}
+.hs-arm.alt{color:var(--honey-deep)}
+.hs-caret{font-size:12px;color:var(--muted);transition:transform .2s ease}
+.hs-btn[aria-expanded="true"] .hs-caret{transform:rotate(180deg)}
+.hs-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:300px;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:0 18px 44px rgba(13,54,95,.16);padding:8px;z-index:90;display:none}
+.hs-menu.open{display:block;animation:hsIn .16s ease}
+@keyframes hsIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.hs-head{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);padding:7px 10px 9px}
+.hs-item{display:block;position:relative;padding:11px 12px;border-radius:10px;text-decoration:none}
+.hs-item:hover{background:var(--soft-teal)}
+.hs-item.current{background:var(--soft-teal)}
+.hs-item .hs-word{font-size:16.5px;display:block}
+.hs-desc{display:block;font-size:12.5px;color:var(--muted);font-weight:600;margin-top:3px;font-family:var(--sans)}
+.hs-here{position:absolute;top:11px;right:11px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--sea-deep);background:#fff;border:1px solid var(--rose);padding:2px 7px;border-radius:999px}
+@media(prefers-reduced-motion:reduce){.hs-menu.open{animation:none}.hs-caret{transition:none}}

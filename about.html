@@ -14,23 +14,38 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta property="og:image:width" content="1387">
+<meta property="og:image:height" content="1015">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "HomeTogether", "url": "https://tryhometogether.com", "logo": "https://tryhometogether.com/assets/logo.png", "email": "support@tryhometogether.com", "address": {"@type": "PostalAddress", "streetAddress": "1331 N Stewart Ave Ste B", "addressLocality": "Springfield", "addressRegion": "MO", "postalCode": "65802", "addressCountry": "US"}, "parentOrganization": {"@type": "Organization", "name": "Caring Companions In-Home Senior Care", "url": "https://mo-care.com"}, "sameAs": ["https://www.trustpilot.com/review/tryhometogether.com"]}</script>
 </head>
 <body>
 
 <header class="site">
   <div class="wrap row">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="HomeTogether" class="brand-logo"></a>
+    <div class="ht-switch">
+      <button class="hs-btn" onclick="htToggleSwitch(event)" aria-haspopup="true" aria-expanded="false" aria-label="Switch HomeTogether service">
+        <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+        <span class="hs-caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="hs-menu" role="menu">
+        <div class="hs-head">Two ways to get care</div>
+        <a class="hs-item current" href="/" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+          <span class="hs-desc">Virtual caregiving through the television</span>
+          <span class="hs-here">You're here</span>
+        </a>
+        <a class="hs-item" href="/local" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm alt">Local</span></span>
+          <span class="hs-desc">Find &amp; hire a caregiver near you</span>
+        </a>
+      </div>
+    </div>
     <input type="checkbox" id="ht-navtog" class="ht-navtog" aria-hidden="true" tabindex="-1">
     <label for="ht-navtog" class="ht-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
     <nav class="main">
-      <span class="ht-group">
-        <a href="index.html#visits" class="ht-top">Virtual care<i class="ht-caret"></i></a>
-        <span class="ht-dd">
-          <a href="index.html#visits">Virtual visits</a>
-          <a href="index.html#visit-pricing">Build your plan<span class="ht-dd-sub">Pick tasks &amp; see your price</span></a>
-          <a href="index.html#safety">Safety &amp; alerts</a>
-        </span>
-      </span>
       <a href="index.html#how">How it works</a>
       <span class="ht-group">
         <a href="index.html#features" class="ht-top">The device<i class="ht-caret"></i></a>
@@ -40,10 +55,19 @@
           <a href="index.html#faq">Common questions</a>
         </span>
       </span>
+      <span class="ht-group">
+        <a href="index.html#visits" class="ht-top">Virtual care<i class="ht-caret"></i></a>
+        <span class="ht-dd">
+          <a href="index.html#visits">Virtual visits</a>
+          <a href="index.html#visit-pricing">Build your plan<span class="ht-dd-sub">Pick tasks &amp; see your price</span></a>
+          <a href="index.html#safety">Safety &amp; alerts</a>
+        </span>
+      </span>
       <a href="about.html">About</a>
       <a href="help.html">Help</a>
+      <a href="local.html" class="ht-local">HomeTogether Local <span aria-hidden="true">↗</span></a>
     </nav>
-    <span class="hdr-cta"><a href="index.html#pricing" class="btn btn-primary">Start free trial</a></span>
+    <span class="hdr-cta"><a href="index.html#pricing" class="btn btn-primary">Get HomeTogether</a></span>
   </div>
 </header>
 
@@ -68,7 +92,7 @@
 
     <h2>The Caring Companions connection</h2>
     <img src="assets/caring-companions-logo.png" alt="Caring Companions, Quality Caregivers 24/7/365" style="height:56px;width:auto;margin:4px 0 16px;display:block;">
-    <p>Because HomeTogether grew out of hands‑on caregiving, it works beautifully alongside it. Families who have virtual visits or in‑home care with Caring Companions get HomeTogether at <b>half price, $75/month</b>, a caregiver for the hands‑on moments, and HomeTogether keeping everyone close the rest of the day.</p>
+    <p>Because HomeTogether grew out of hands‑on caregiving, it works beautifully alongside it, a caregiver for the hands‑on moments, and HomeTogether keeping everyone close the rest of the day.</p>
   </div>
 </section>
 
@@ -77,7 +101,7 @@
     <div class="final">
       <h2>Bring your family closer today.</h2>
       <p>Give your loved one connection, and give yourself peace of mind, starting this week.</p>
-      <a href="index.html#pricing" class="btn btn-primary btn-lg">Start your 30‑day free trial</a>
+      <a href="index.html#pricing" class="btn btn-primary btn-lg">Get HomeTogether</a>
     </div>
   </div>
 </section>
@@ -92,7 +116,7 @@
     <div style="text-align:right;">
       <div><a href="index.html#how">How it works</a> · <a href="index.html#features">Features</a> · <a href="index.html#pricing">Pricing</a> · <a href="about.html">About</a> · <a href="help.html">Help</a></div>
       <div style="margin-top:6px;"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="returns.html">Returns</a></div>
-      <div style="margin-top:8px;color:var(--faint);">Support: (417) 234-8494 &middot; support@tryhometogether.com · &copy; 2026 HomeTogether</div>
+      <div style="margin-top:8px;color:var(--faint);">Support: <a href="help.html#contact" style="color:inherit;text-decoration:underline">submit a request</a> &middot; support@tryhometogether.com · &copy; 2026 HomeTogether</div>
     </div>
   </div>
 </footer>

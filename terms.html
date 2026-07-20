@@ -11,23 +11,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <!-- NOTE (not shown to visitors): this is a starting template. Have it reviewed by a licensed attorney and confirm every specific (billing, liability, arbitration, governing law) before relying on it. -->
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta property="og:image:width" content="1387">
+<meta property="og:image:height" content="1015">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
 </head>
 <body>
 
 <header class="site">
   <div class="wrap row">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="HomeTogether" class="brand-logo"></a>
+    <div class="ht-switch">
+      <button class="hs-btn" onclick="htToggleSwitch(event)" aria-haspopup="true" aria-expanded="false" aria-label="Switch HomeTogether service">
+        <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+        <span class="hs-caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="hs-menu" role="menu">
+        <div class="hs-head">Two ways to get care</div>
+        <a class="hs-item current" href="/" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+          <span class="hs-desc">Virtual caregiving through the television</span>
+          <span class="hs-here">You're here</span>
+        </a>
+        <a class="hs-item" href="/local" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm alt">Local</span></span>
+          <span class="hs-desc">Find &amp; hire a caregiver near you</span>
+        </a>
+      </div>
+    </div>
     <input type="checkbox" id="ht-navtog" class="ht-navtog" aria-hidden="true" tabindex="-1">
     <label for="ht-navtog" class="ht-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
     <nav class="main">
-      <span class="ht-group">
-        <a href="index.html#visits" class="ht-top">Virtual care<i class="ht-caret"></i></a>
-        <span class="ht-dd">
-          <a href="index.html#visits">Virtual visits</a>
-          <a href="index.html#visit-pricing">Build your plan<span class="ht-dd-sub">Pick tasks &amp; see your price</span></a>
-          <a href="index.html#safety">Safety &amp; alerts</a>
-        </span>
-      </span>
       <a href="index.html#how">How it works</a>
       <span class="ht-group">
         <a href="index.html#features" class="ht-top">The device<i class="ht-caret"></i></a>
@@ -37,10 +51,19 @@
           <a href="index.html#faq">Common questions</a>
         </span>
       </span>
+      <span class="ht-group">
+        <a href="index.html#visits" class="ht-top">Virtual care<i class="ht-caret"></i></a>
+        <span class="ht-dd">
+          <a href="index.html#visits">Virtual visits</a>
+          <a href="index.html#visit-pricing">Build your plan<span class="ht-dd-sub">Pick tasks &amp; see your price</span></a>
+          <a href="index.html#safety">Safety &amp; alerts</a>
+        </span>
+      </span>
       <a href="about.html">About</a>
       <a href="help.html">Help</a>
+      <a href="local.html" class="ht-local">HomeTogether Local <span aria-hidden="true">↗</span></a>
     </nav>
-    <span class="hdr-cta"><a href="index.html#pricing" class="btn btn-primary">Start free trial</a></span>
+    <span class="hdr-cta"><a href="index.html#pricing" class="btn btn-primary">Get HomeTogether</a></span>
   </div>
 </header>
 
@@ -65,13 +88,13 @@
     <p>HomeTogether includes a TV-based Wellness Hub and platform (video calling, reminders, wellness features, and optional connected devices), and, where selected, <b>virtual caregiver visits</b> performed by Caring Companions caregivers. Caregiver visits are scheduled, non-medical check-ins (for example, observing medication, prompting vitals, giving reminders, and companionship). Virtual visits are currently available Monday through Friday. Features may change or improve over time.</p>
 
     <h2>3. Subscriptions, billing &amp; trial</h2>
-    <p>HomeTogether is offered on a subscription basis (for example, the monthly device plan and weekly caregiver-visit plans described at checkout). By subscribing, you authorize recurring charges to your payment method until you cancel. New subscriptions include a <b>30-day risk-free trial</b>; you may cancel during the trial for a full refund of the trial-period charges as described in our <a href="returns.html">Return &amp; Refund Policy</a>. Prices, plans, and any discounts (such as reduced pricing for existing Caring Companions clients) are shown at the time of purchase and may change on a going-forward basis.</p>
+    <p>HomeTogether is offered on a subscription basis (for example, the monthly device plan and weekly caregiver-visit plans described at checkout). By subscribing, you authorize recurring charges to your payment method until you cancel. New subscriptions include a <b>30-day money-back guarantee</b>; if you cancel within 30 days of your first charge, we refund it in full as described in our <a href="returns.html">Return &amp; Refund Policy</a>. Prices, plans, and any discounts (such as reduced pricing for existing Caring Companions clients) are shown at the time of purchase and may change on a going-forward basis.</p>
 
     <h2>4. Cancellation</h2>
-    <p>You can cancel anytime by contacting us. Cancellation stops future charges; it does not create a right to a refund of charges already incurred except as stated in our <a href="returns.html">Return &amp; Refund Policy</a>. On cancellation you must return any leased equipment as described there.</p>
+    <p>You can cancel anytime by contacting us. Cancellation stops future charges; it does not create a right to a refund of charges already incurred except as stated in our <a href="returns.html">Return &amp; Refund Policy</a>. When you cancel, we email you a prepaid return shipping label for the equipment; returning it is free and takes just a few minutes.</p>
 
     <h2>5. Equipment</h2>
-    <p>The Wellness Hub and accessories are provided for use with the service and remain part of your subscription. Please keep the equipment in good condition. Defective units will be replaced; units that are lost, damaged beyond normal wear, or not returned after cancellation may be charged at their replacement value.</p>
+    <p>The Wellness Hub and accessories are provided for use with the service, remain the property of HomeTogether (or its equipment supplier), and must be returned when your subscription ends. Normal wear is expected and fine. When you cancel, we email you a prepaid return shipping label; please mail the equipment back within <b>30 days</b> of cancellation. If the equipment is not returned within 30 days, or is lost or damaged beyond normal wear, a <b>device non-return fee of $300</b> (its replacement cost) may be charged to your payment method on file. We will always send you at least two email reminders before any non-return fee is charged, and the fee is waived as soon as the equipment is received. Defective units are replaced free of charge.</p>
 
     <h2>6. Your responsibilities</h2>
     <ul>
@@ -94,7 +117,7 @@
     <p>We may update these Terms; material changes take effect when posted (with an updated date). We may suspend or end the service for non-payment, misuse, or as required by law.</p>
 
     <h2>Contact us</h2>
-    <p><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a> · <a href="tel:14172348494">(417)&nbsp;234-8494</a><br>
+    <p><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a> · <a href="help.html#contact">submit a request</a><br>
     Caring Companions In-Home Senior Care · 1331 N Stewart Ave Ste B, Springfield, MO 65802.</p>
   </div>
 </section>
@@ -109,7 +132,7 @@
     <div style="text-align:right;">
       <div><a href="index.html#how">How it works</a> · <a href="index.html#features">Features</a> · <a href="index.html#pricing">Pricing</a> · <a href="about.html">About</a> · <a href="help.html">Help</a></div>
       <div style="margin-top:6px;"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="returns.html">Returns</a></div>
-      <div style="margin-top:8px;color:var(--faint);">Support: (417) 234-8494 &middot; support@tryhometogether.com · &copy; 2026 HomeTogether</div>
+      <div style="margin-top:8px;color:var(--faint);">Support: <a href="help.html#contact" style="color:inherit;text-decoration:underline">submit a request</a> &middot; support@tryhometogether.com · &copy; 2026 HomeTogether</div>
     </div>
   </div>
 </footer>

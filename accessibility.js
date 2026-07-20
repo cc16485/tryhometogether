@@ -170,3 +170,46 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
   else build();
 })();
+
+/* HomeTogether brand switcher (TV / Local) — shared across every page */
+(function () {
+  function q(s) { return document.querySelector(s); }
+  function setOpen(open) {
+    var m = q('.hs-menu'), b = q('.hs-btn');
+    if (!m || !b) return;
+    m.classList.toggle('open', open);
+    b.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function markSeen() { try { sessionStorage.setItem('htSwitchSeen', '1'); } catch (e) {} }
+  function wasSeen() { try { return sessionStorage.getItem('htSwitchSeen'); } catch (e) { return null; } }
+
+  // inline onclick="htToggleSwitch(event)" in the header calls this
+  window.htToggleSwitch = function (e) {
+    if (e) e.stopPropagation();
+    var m = q('.hs-menu'); if (!m) return;
+    setOpen(!m.classList.contains('open'));
+    markSeen();
+  };
+
+  function initSwitch() {
+    var m = q('.hs-menu'), b = q('.hs-btn');
+    if (!m || !b) return;
+    // click outside the switcher collapses it
+    document.addEventListener('click', function (ev) {
+      if (m.classList.contains('open') && !(ev.target.closest && ev.target.closest('.ht-switch'))) {
+        setOpen(false); markSeen();
+      }
+    });
+    // Escape collapses it
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && m.classList.contains('open')) { setOpen(false); markSeen(); }
+    });
+    // Auto-open once per visit so people notice there are two ways to get care.
+    if (!wasSeen()) {
+      setTimeout(function () { if (!wasSeen()) { setOpen(true); markSeen(); } }, 700);
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSwitch);
+  else initSwitch();
+})();

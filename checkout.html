@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | HomeTogether</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://tryhometogether.com/checkout.html">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .co-wrap{max-width:1080px;margin:0 auto;padding:34px 20px 70px;}
+  .co-head{text-align:center;margin-bottom:30px;}
+  .co-head h1{font-family:var(--serif);color:var(--heading);font-size:34px;margin:14px 0 8px;}
+  .co-head p{color:var(--muted);font-size:16.5px;max-width:56ch;margin:0 auto;}
+  .co-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:26px;align-items:start;}
+  @media(max-width:880px){.co-grid{grid-template-columns:1fr;}}
+  .co-card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:26px 26px;}
+  .co-card h2{font-size:19px;color:var(--heading);margin:0 0 14px;}
+  .co-step{display:flex;gap:13px;align-items:flex-start;margin:0 0 16px;}
+  .co-step svg{width:30px;height:30px;flex:0 0 auto;margin-top:2px;}
+  .co-step b{display:block;color:var(--heading);font-size:15.5px;}
+  .co-step span{color:var(--muted);font-size:14.5px;line-height:1.5;}
+  .co-trust{background:var(--panel-warm);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--muted);line-height:1.55;margin-top:16px;}
+  .co-trust b{color:var(--heading);}
+  .co-sum{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--muted);}
+  .co-sum b{color:var(--heading);font-size:16px;}
+  .co-sum:last-of-type{border-bottom:none;}
+  #checkout{margin-top:18px;min-height:60px;}
+  #fallback{display:none;margin-top:18px;}
+  #fallback .btn{width:100%;text-align:center;}
+  .co-note{font-size:13px;color:var(--faint);text-align:center;margin-top:12px;line-height:1.5;}
+  .co-help{text-align:center;margin-top:22px;font-size:14.5px;color:var(--muted);}
+  .co-help a{color:var(--sea);font-weight:700;}
+  .co-back{display:inline-block;margin-bottom:6px;color:var(--sea);font-weight:700;text-decoration:none;font-size:14.5px;}
+</style>
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta property="og:image:width" content="1387">
+<meta property="og:image:height" content="1015">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+</head>
+<body>
+<div class="co-wrap">
+  <a href="/" class="co-back" onclick="if(history.length>1){history.back();return false;}">&larr; Back</a>
+  <div class="co-head">
+    <a href="/" style="text-decoration:none;"><span style="font-family:var(--serif);font-weight:700;font-size:27px;color:var(--heading);letter-spacing:-.01em;white-space:nowrap;">HomeTogether<span style="color:var(--sea);margin-left:6px;">TV</span></span></a>
+    <h1>You're one step from staying close.</h1>
+    <p>Take your time. Here's exactly what happens when you order, and everything is backed by our 30-day money-back guarantee.</p>
+  </div>
+
+  <div class="co-grid">
+    <div>
+      <div class="co-card">
+        <h2>What happens next</h2>
+        <div class="co-step"><svg aria-hidden="true"><use href="assets/icons.svg#i-box"/></svg>
+          <div><b>1. Your device ships free</b><span>It arrives in 2-3 days with the simple remote and easy picture instructions.</span></div></div>
+        <div class="co-step"><svg aria-hidden="true"><use href="assets/icons.svg#i-plug"/></svg>
+          <div><b>2. Plug it into the TV</b><span>One cable into the HDMI port, the same plug a streaming stick uses. We're on the phone with you if you'd like help.</span></div></div>
+        <div class="co-step"><svg aria-hidden="true"><use href="assets/icons.svg#i-family"/></svg>
+          <div><b>3. Family appears on screen</b><span>Video calls, wellness reminders and check-ins, right on the TV they already watch. No smartphone needed.</span></div></div>
+        <div class="co-trust">
+          <b>Your payment is safe.</b> Checkout is handled by Stripe, the same secure payment system trusted by millions of businesses. Your card details go directly to Stripe, we never see or store your card number.
+        </div>
+        <div class="co-trust">
+          <b>No risk to try it.</b> 30-day money-back guarantee, cancel anytime with no contracts and no cancellation fees. If it isn't right for your family, you get your money back, simple as that.
+        </div>
+        <div class="co-trust">
+          <b>The device is part of your subscription.</b> If you ever cancel, we email you a prepaid return label, sending it back is easy and free. By subscribing you agree to our <a href="terms.html" style="color:var(--sea);">Terms</a> and <a href="returns.html" style="color:var(--sea);">Return Policy</a>.
+        </div>
+      </div>
+      <div class="co-help">Questions first? <a href="help.html#contact">Ask our support team</a> or read <a href="help.html">common questions</a>, we're happy to help before you buy.</div>
+      <div class="co-card" style="margin-top:22px;">
+        <h2>Already have HomeTogether?</h2>
+        <p style="font-size:14.5px;color:var(--muted);line-height:1.55;margin:0 0 12px;">You can add caregiver visits to the device you already own, no need to buy anything twice. Pick a plan and we'll confirm it against your existing HomeTogether account before the first visit.</p>
+        <select id="cgOnlyPlan" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;background:#fff;margin-bottom:10px;">
+          <option value="">Choose a visit plan&hellip;</option>
+          <option value="15_1">15-minute visit, 1x per day, Mon-Fri (5 days/week), $75/week</option>
+          <option value="15_2">15-minute visits, 2x per day, Mon-Fri (5 days/week), $130/week</option>
+          <option value="15_3">15-minute visits, 3x per day, Mon-Fri (5 days/week), $180/week</option>
+          <option value="30_1">30-minute visit, 1x per day, Mon-Fri (5 days/week), $125/week</option>
+          <option value="30_2">30-minute visits, 2x per day, Mon-Fri (5 days/week), $220/week</option>
+          <option value="30_3">30-minute visits, 3x per day, Mon-Fri (5 days/week), $300/week</option>
+        </select>
+        <button class="btn btn-primary" style="width:100%;" onclick="var v=document.getElementById('cgOnlyPlan').value; if(!v){alert('Pick a visit plan first.');return;} location.href='order.html?plan='+v+'&existing=1';">Add visits to my device &rarr;</button>
+        <div style="border-top:1px solid var(--border);margin:18px 0 14px;"></div>
+        <div style="font-weight:700;color:var(--heading);font-size:15px;margin-bottom:8px;">Or add device add-ons</div>
+        <label style="display:flex;gap:9px;align-items:flex-start;font-size:14px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="ex-addon" value="Built-in cellular internet ($35/month)" style="margin-top:3px;"><span>Built-in cellular internet, $35/month</span></label>
+        <label style="display:flex;gap:9px;align-items:flex-start;font-size:14px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="ex-addon" id="exSensors" value="sensors" style="margin-top:3px;"><span>Whole-home safety sensing, from $15/month</span></label>
+        <select id="exSensorQty" style="display:none;width:100%;padding:8px 10px;font-size:14px;border:1px solid var(--border);border-radius:8px;background:#fff;margin-bottom:8px;">
+          <option value="1 extra room ($15/month)">1 extra room, $15/month</option>
+          <option value="2 extra rooms ($20/month)">2 extra rooms, $20/month</option>
+          <option value="3 extra rooms ($25/month)">3 extra rooms, $25/month</option>
+          <option value="4 extra rooms ($30/month)">4 extra rooms, $30/month</option>
+        </select>
+        <label style="display:flex;gap:9px;align-items:flex-start;font-size:14px;margin-bottom:12px;cursor:pointer;"><input type="checkbox" class="ex-addon" value="Connected health readings ($10/month)" style="margin-top:3px;"><span>Connected health readings, $10/month</span></label>
+        <input type="text" id="exName" placeholder="Your name" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;">
+        <input type="email" id="exEmail" placeholder="Email on your HomeTogether account" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;margin-bottom:10px;">
+        <button class="btn btn-secondary" id="exSubmit" style="width:100%;border:1.5px solid var(--sea);color:var(--sea-deep);background:#fff;border-radius:10px;padding:12px;font-weight:700;cursor:pointer;">Request my add-ons &rarr;</button>
+        <div id="exDone" style="display:none;font-size:14px;color:var(--sea-deep);font-weight:600;margin-top:10px;text-align:center;">Request received! We'll add it to your subscription and confirm by email, usually within one business day.</div>
+        <div style="font-size:12.5px;color:var(--faint);margin-top:8px;line-height:1.5;">Add-ons are added to your existing monthly bill, nothing new to set up. We'll confirm everything by email before any change.</div>
+      </div>
+    </div>
+
+    <div class="co-card">
+      <h2>Your order</h2>
+      <div class="co-sum"><span>HomeTogether Connect device + service</span><b>$99/month</b></div>
+      <div class="co-sum"><span>Shipping</span><b>Free</b></div>
+      <div class="co-sum"><span>Contract</span><b>None, cancel anytime</b></div>
+      <div style="margin-top:16px;background:var(--panel-warm);border-radius:12px;padding:14px 16px;">
+        <div style="font-weight:700;color:var(--heading);font-size:15px;margin-bottom:4px;">Optional: add real caregiver visits</div>
+        <div style="font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:10px;">A trained caregiver visits on screen Monday through Friday, checks medications, and keeps them company. Billed weekly, cancel anytime. Why weekdays? It lets the same amazing caregiver come at the same times every day. That steady rhythm is how real trust and friendship grow, and weekends stay family time, with your video calling working 24/7 every day of the week.</div>
+        <select id="cgPlan" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;background:#fff;">
+          <option value="">No visits for now, just HomeTogether TV</option>
+          <option value="15_1">15-minute visit, 1x per day, Mon-Fri (5 days/week), $75/week</option>
+          <option value="15_2">15-minute visits, 2x per day, Mon-Fri (5 days/week), $130/week</option>
+          <option value="15_3">15-minute visits, 3x per day, Mon-Fri (5 days/week), $180/week</option>
+          <option value="30_1">30-minute visit, 1x per day, Mon-Fri (5 days/week), $125/week</option>
+          <option value="30_2">30-minute visits, 2x per day, Mon-Fri (5 days/week), $220/week</option>
+          <option value="30_3">30-minute visits, 3x per day, Mon-Fri (5 days/week), $300/week</option>
+        </select>
+        <div id="cgNote" style="display:none;font-size:13px;color:var(--muted);line-height:1.5;margin-top:9px;">Great choice. Finish your device checkout below first, then on the confirmation page we'll take you straight to setting up the visits (a few questions about your loved one, then their own checkout).</div>
+      </div>
+      <div style="margin-top:14px;background:var(--panel-warm);border-radius:12px;padding:14px 16px;">
+        <div style="font-weight:700;color:var(--heading);font-size:15px;margin-bottom:8px;">Optional add-ons</div>
+        <label style="display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;margin-bottom:10px;cursor:pointer;">
+          <input type="checkbox" class="ht-addon" value="internet" data-price="35" style="margin-top:3px;">
+          <span><b style="color:var(--heading);">Built-in cellular internet, $35/month.</b> No home Wi-Fi? No problem, we include a plug-and-play internet device so HomeTogether works anywhere.</span>
+        </label>
+        <label style="display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;margin-bottom:10px;cursor:pointer;">
+          <input type="checkbox" class="ht-addon" value="sensors" data-price="15" style="margin-top:3px;">
+          <span><b style="color:var(--heading);">Whole-home safety sensing, from $15/month.</b> Your Wellness Hub already watches over the main room with built-in radar. This extends that safety net to the rest of the home, bedroom, hallway, doors, with small wireless sensors.
+          <span id="sensorQtyWrap" style="display:none;margin-top:8px;">
+            <select id="sensorQty" style="width:100%;padding:8px 10px;font-size:14px;border:1px solid var(--border);border-radius:8px;background:#fff;">
+              <option value="1">1 extra room, $15/month</option>
+              <option value="2">2 extra rooms, $20/month</option>
+              <option value="3">3 extra rooms, $25/month</option>
+              <option value="4">4 extra rooms, $30/month</option>
+            </select>
+          </span></span>
+        </label>
+        <label style="display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;cursor:pointer;">
+          <input type="checkbox" class="ht-addon" value="health" data-price="10" style="margin-top:3px;">
+          <span><b style="color:var(--heading);">Connected health readings, $10/month.</b> Blood pressure, weight, pulse-ox and glucose readings from supported home devices appear automatically for the whole family. Works with popular brands like Omron and A&amp;D.</span>
+        </label>
+        <div id="addonNote" style="display:none;font-size:13px;color:var(--muted);line-height:1.5;margin-top:10px;">We'll activate your add-ons with your device and confirm them on your monthly bill within one business day.</div>
+      </div>
+      <div class="co-sum" style="margin-top:14px;border-top:2px solid var(--border);border-bottom:none;"><span style="font-weight:700;color:var(--heading);">Your monthly total</span><b id="coTotal" style="font-size:19px;">$99/month</b></div>
+      <div class="co-sum" id="coWeeklyRow" style="display:none;border-bottom:none;padding-top:0;"><span style="color:var(--muted);">+ Caregiver visits (billed weekly, own checkout)</span><b id="coWeekly" style="color:var(--sea-deep);"></b></div>
+      <div id="checkout"></div>
+      <div id="fallback">
+        <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/eVq7sDbvP4c49l2eee0oM01">Continue to secure payment &rarr;</a>
+        <div class="co-note">You'll finish on Stripe's secure page and return here when you're done.</div>
+      </div>
+      <div class="co-note">🔒 Encrypted checkout powered by Stripe</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var CG_PRICES={'15_1':75,'15_2':130,'15_3':180,'30_1':125,'30_2':220,'30_3':300};
+  function recalcAddons(){
+    var cg=document.getElementById('cgPlan');
+    var wr=document.getElementById('coWeeklyRow');
+    if(cg && cg.value && CG_PRICES[cg.value]){ document.getElementById('coWeekly').textContent='$'+CG_PRICES[cg.value]+'/week'; wr.style.display='flex'; }
+    else { wr.style.display='none'; }
+    var total=99, picked=[];
+    var sq=document.getElementById('sensorQty');
+    document.querySelectorAll('.ht-addon:checked').forEach(function(c){
+      var p=parseInt(c.dataset.price,10);
+      if(c.value==='sensors'){ p=15+(parseInt(sq.value,10)-1)*5; }
+      total+=p; picked.push(c.value);
+    });
+    var sensorsOn=!!document.querySelector('.ht-addon[value=sensors]:checked');
+    document.getElementById('sensorQtyWrap').style.display=sensorsOn?'block':'none';
+    if(sensorsOn) localStorage.setItem('ht_sensors_qty',sq.value); else localStorage.removeItem('ht_sensors_qty');
+    document.getElementById('coTotal').textContent='$'+total+'/month';
+    document.getElementById('addonNote').style.display=picked.length?'block':'none';
+    if(picked.length) localStorage.setItem('ht_addons',JSON.stringify(picked)); else localStorage.removeItem('ht_addons');
+  }
+  document.querySelectorAll('.ht-addon').forEach(function(c){ c.addEventListener('change',recalcAddons); });
+  document.getElementById('sensorQty').addEventListener('change',recalcAddons);
+  var exS=document.getElementById('exSensors');
+  if(exS){ exS.addEventListener('change',function(){ document.getElementById('exSensorQty').style.display=exS.checked?'block':'none'; }); }
+  var exBtn=document.getElementById('exSubmit');
+  if(exBtn){ exBtn.addEventListener('click',function(){
+    var picks=[];
+    document.querySelectorAll('.ex-addon:checked').forEach(function(c){
+      picks.push(c.value==='sensors' ? 'Whole-home safety sensing, '+document.getElementById('exSensorQty').value : c.value);
+    });
+    var nm=document.getElementById('exName').value.trim(), em=document.getElementById('exEmail').value.trim();
+    if(!picks.length){ alert('Pick at least one add-on.'); return; }
+    if(!nm || !em || em.indexOf('@')<0){ alert('Please add your name and the email on your HomeTogether account.'); return; }
+    exBtn.disabled=true; exBtn.textContent='Sending...';
+    fetch('https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/ht-support?token=htorder_078070ed7c3e8e7619e567dcfaddfc400e43147a',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:nm,email:em,topic:'Add-ons for existing device',
+        message:'Existing subscriber requests add-ons: '+picks.join(' + ')+'. Verify their device account, add the matching catalog products to their Stripe subscription, and enable the modules in the HomeSight portal.'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d && (d.ok||d.ticket_no||d.status)){ exBtn.style.display='none'; document.getElementById('exDone').style.display='block'; }
+      else { throw new Error('failed'); }
+    }).catch(function(){ exBtn.disabled=false; exBtn.textContent='Request my add-ons \u2192'; alert('That did not go through, please try again or email support@tryhometogether.com'); });
+  }); }
+  var sel=document.getElementById('cgPlan');
+  if(sel){ sel.addEventListener('change',function(){
+    if(sel.value){ localStorage.setItem('ht_addon_plan',sel.value); document.getElementById('cgNote').style.display='block'; }
+    else { localStorage.removeItem('ht_addon_plan'); document.getElementById('cgNote').style.display='none'; }
+    recalcAddons();
+  }); }
+  var FN='https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/stripe-checkout';
+  var PK='pk_live_51Tv0wt0PZxOGndTo6he5xA1cwcRfx7lDcpaFZWqxYiyqYQWSEMQ573gW6zkPYpB6dd4LQX3vHuS52XGv16N6kI7o00B6Gf4uXQ';
+  function fallback(){ document.getElementById('fallback').style.display='block'; }
+  fetch(FN,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({embedded:true,addons:JSON.parse(localStorage.getItem('ht_addons')||'[]'),sensors_qty:parseInt(localStorage.getItem('ht_sensors_qty')||'1',10)})})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(!d || !d.client_secret){ fallback(); return; }
+      var s=document.createElement('script'); s.src='https://js.stripe.com/v3/';
+      s.onload=function(){
+        Stripe(PK).initEmbeddedCheckout({clientSecret:d.client_secret})
+          .then(function(co){ co.mount('#checkout'); })
+          .catch(fallback);
+      };
+      s.onerror=fallback;
+      document.head.appendChild(s);
+    })
+    .catch(fallback);
+})();
+</script>
+</body>
+</html>

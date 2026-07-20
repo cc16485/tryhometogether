@@ -4,30 +4,44 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Return &amp; Refund Policy, HomeTogether</title>
-<meta name="description" content="HomeTogether's 30-day risk-free trial, returns, refunds, shipping, and cancellation policy.">
+<meta name="description" content="HomeTogether's 30-day money-back guarantee, returns, refunds, shipping, and cancellation policy.">
 <link rel="canonical" href="https://tryhometogether.com/returns.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <!-- NOTE (not shown to visitors): starting template. Confirm the specifics (who pays return shipping, restocking, refund timing, proration) match how you actually operate, and have it reviewed. -->
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta property="og:image:width" content="1387">
+<meta property="og:image:height" content="1015">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
 </head>
 <body>
 
 <header class="site">
   <div class="wrap row">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="HomeTogether" class="brand-logo"></a>
+    <div class="ht-switch">
+      <button class="hs-btn" onclick="htToggleSwitch(event)" aria-haspopup="true" aria-expanded="false" aria-label="Switch HomeTogether service">
+        <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+        <span class="hs-caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="hs-menu" role="menu">
+        <div class="hs-head">Two ways to get care</div>
+        <a class="hs-item current" href="/" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+          <span class="hs-desc">Virtual caregiving through the television</span>
+          <span class="hs-here">You're here</span>
+        </a>
+        <a class="hs-item" href="/local" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm alt">Local</span></span>
+          <span class="hs-desc">Find &amp; hire a caregiver near you</span>
+        </a>
+      </div>
+    </div>
     <input type="checkbox" id="ht-navtog" class="ht-navtog" aria-hidden="true" tabindex="-1">
     <label for="ht-navtog" class="ht-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
     <nav class="main">
-      <span class="ht-group">
-        <a href="index.html#visits" class="ht-top">Virtual care<i class="ht-caret"></i></a>
-        <span class="ht-dd">
-          <a href="index.html#visits">Virtual visits</a>
-          <a href="index.html#visit-pricing">Build your plan<span class="ht-dd-sub">Pick tasks &amp; see your price</span></a>
-          <a href="index.html#safety">Safety &amp; alerts</a>
-        </span>
-      </span>
       <a href="index.html#how">How it works</a>
       <span class="ht-group">
         <a href="index.html#features" class="ht-top">The device<i class="ht-caret"></i></a>
@@ -37,10 +51,19 @@
           <a href="index.html#faq">Common questions</a>
         </span>
       </span>
+      <span class="ht-group">
+        <a href="index.html#visits" class="ht-top">Virtual care<i class="ht-caret"></i></a>
+        <span class="ht-dd">
+          <a href="index.html#visits">Virtual visits</a>
+          <a href="index.html#visit-pricing">Build your plan<span class="ht-dd-sub">Pick tasks &amp; see your price</span></a>
+          <a href="index.html#safety">Safety &amp; alerts</a>
+        </span>
+      </span>
       <a href="about.html">About</a>
       <a href="help.html">Help</a>
+      <a href="local.html" class="ht-local">HomeTogether Local <span aria-hidden="true">↗</span></a>
     </nav>
-    <span class="hdr-cta"><a href="index.html#pricing" class="btn btn-primary">Start free trial</a></span>
+    <span class="hdr-cta"><a href="index.html#pricing" class="btn btn-primary">Get HomeTogether</a></span>
   </div>
 </header>
 
@@ -56,10 +79,10 @@
   <div class="wrap prose">
     <p>We want HomeTogether to feel right for your family. If it isn't, returning it is simple.</p>
 
-    <div class="callout-legal"><b>30-day risk-free trial.</b> Try HomeTogether for 30 days from the date your device ships. If it's not right, contact us within that window for a full refund of your device and subscription charges, no restocking fees.</div>
+    <div class="callout-legal"><b>30-day money-back guarantee.</b> Try HomeTogether for 30 days from the date your device ships. If it's not right, contact us within that window for a full refund of your device and subscription charges, no restocking fees.</div>
 
     <h2>How to start a return</h2>
-    <p>Email <a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a> or call <a href="tel:14172348494">(417)&nbsp;234-8494</a>. We'll confirm your return, send simple instructions, and provide a return authorization for the equipment.</p>
+    <p>Email <a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a> or <a href="help.html#contact">submit a request</a>. We'll confirm your return, send simple instructions, and provide a return authorization for the equipment.</p>
 
     <h2>What to send back</h2>
     <p>Please return the Wellness Hub and included accessories (remote, cables, and any sensors or connected devices provided) in good condition. Normal use is fine, we just ask that the equipment isn't damaged beyond ordinary wear.</p>
@@ -70,14 +93,23 @@
     <h2>Shipping</h2>
     <p>Shipping to you is <b>free</b>. For trial returns, we'll provide return instructions when you contact us. Please keep your tracking information until your refund is confirmed.</p>
 
-    <h2>After the trial, cancellations</h2>
-    <p>After the 30-day trial, you can cancel your subscription anytime by contacting us. Cancellation stops future billing; charges already incurred for the current period are generally non-refundable. When you cancel, we'll arrange the return of the Wellness Hub and accessories; equipment not returned may be charged at its replacement value, as described in our <a href="terms.html">Terms of Service</a>.</p>
+    <h2>Cancelling later on</h2>
+    <p>You can cancel your subscription anytime by contacting us. Cancellation stops future billing; charges already incurred for the current period are generally non-refundable.</p>
+
+    <h2>Returning your device after you cancel</h2>
+    <p>The Wellness Hub is part of your subscription, so it comes back to us when you cancel, and we make that easy:</p>
+    <ol style="margin:8px 0 12px 22px;line-height:1.7;">
+      <li>When you cancel, we email you a <b>prepaid return shipping label</b>. Returning the device is free.</li>
+      <li>Place the Wellness Hub, remote, and cables in any sturdy box, stick on the label, and drop it off within <b>30 days</b>.</li>
+      <li>That's it. Once it arrives, you'll get a confirmation email and your account is fully closed.</li>
+    </ol>
+    <p>Normal wear is completely fine, we don't charge for scuffs or everyday use. If the device isn't returned within 30 days of cancellation, a $300 non-return fee (its replacement cost) may apply as described in our <a href="terms.html">Terms of Service</a>, and we'll always send friendly reminders before that ever happens. The fee is waived the moment the device arrives.</p>
 
     <h2>Defective or damaged equipment</h2>
     <p>If your device arrives damaged or stops working through no fault of your own, contact us and we'll replace it at no charge.</p>
 
     <h2>Questions</h2>
-    <p>We're happy to help: <a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a> · <a href="tel:14172348494">(417)&nbsp;234-8494</a>.<br>
+    <p>We're happy to help: <a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a> · <a href="help.html#contact">submit a request</a>.<br>
     Caring Companions In-Home Senior Care · 1331 N Stewart Ave Ste B, Springfield, MO 65802.</p>
   </div>
 </section>
@@ -92,7 +124,7 @@
     <div style="text-align:right;">
       <div><a href="index.html#how">How it works</a> · <a href="index.html#features">Features</a> · <a href="index.html#pricing">Pricing</a> · <a href="about.html">About</a> · <a href="help.html">Help</a></div>
       <div style="margin-top:6px;"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="returns.html">Returns</a></div>
-      <div style="margin-top:8px;color:var(--faint);">Support: (417) 234-8494 &middot; support@tryhometogether.com · &copy; 2026 HomeTogether</div>
+      <div style="margin-top:8px;color:var(--faint);">Support: <a href="help.html#contact" style="color:inherit;text-decoration:underline">submit a request</a> &middot; support@tryhometogether.com · &copy; 2026 HomeTogether</div>
     </div>
   </div>
 </footer>

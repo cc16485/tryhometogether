@@ -9,23 +9,37 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta property="og:image:width" content="1387">
+<meta property="og:image:height" content="1015">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
 </head>
 <body>
 
 <header class="site">
   <div class="wrap row">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="HomeTogether" class="brand-logo"></a>
+    <div class="ht-switch">
+      <button class="hs-btn" onclick="htToggleSwitch(event)" aria-haspopup="true" aria-expanded="false" aria-label="Switch HomeTogether service">
+        <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+        <span class="hs-caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="hs-menu" role="menu">
+        <div class="hs-head">Two ways to get care</div>
+        <a class="hs-item current" href="/" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm">TV</span></span>
+          <span class="hs-desc">Virtual caregiving through the television</span>
+          <span class="hs-here">You're here</span>
+        </a>
+        <a class="hs-item" href="/local" role="menuitem">
+          <span class="hs-word">HomeTogether<span class="hs-arm alt">Local</span></span>
+          <span class="hs-desc">Find &amp; hire a caregiver near you</span>
+        </a>
+      </div>
+    </div>
     <input type="checkbox" id="ht-navtog" class="ht-navtog" aria-hidden="true" tabindex="-1">
     <label for="ht-navtog" class="ht-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
     <nav class="main">
-      <span class="ht-group">
-        <a href="index.html#visits" class="ht-top">Virtual care<i class="ht-caret"></i></a>
-        <span class="ht-dd">
-          <a href="index.html#visits">Virtual visits</a>
-          <a href="index.html#visit-pricing">Build your plan<span class="ht-dd-sub">Pick tasks &amp; see your price</span></a>
-          <a href="index.html#safety">Safety &amp; alerts</a>
-        </span>
-      </span>
       <a href="index.html#how">How it works</a>
       <span class="ht-group">
         <a href="index.html#features" class="ht-top">The device<i class="ht-caret"></i></a>
@@ -35,10 +49,19 @@
           <a href="index.html#faq">Common questions</a>
         </span>
       </span>
+      <span class="ht-group">
+        <a href="index.html#visits" class="ht-top">Virtual care<i class="ht-caret"></i></a>
+        <span class="ht-dd">
+          <a href="index.html#visits">Virtual visits</a>
+          <a href="index.html#visit-pricing">Build your plan<span class="ht-dd-sub">Pick tasks &amp; see your price</span></a>
+          <a href="index.html#safety">Safety &amp; alerts</a>
+        </span>
+      </span>
       <a href="about.html">About</a>
       <a href="help.html">Help</a>
+      <a href="local.html" class="ht-local">HomeTogether Local <span aria-hidden="true">↗</span></a>
     </nav>
-    <span class="hdr-cta"><a href="index.html#pricing" class="btn btn-primary">Start free trial</a></span>
+    <span class="hdr-cta"><a href="index.html#pricing" class="btn btn-primary">Get HomeTogether</a></span>
   </div>
 </header>
 
@@ -46,15 +69,24 @@
   <div class="wrap narrow">
     <div class="check">✓</div>
     <h1 style="font-size:clamp(30px,5vw,42px);line-height:1.08;">Welcome to the family.</h1>
-    <p style="font-size:19px;color:var(--muted);margin:14px auto 0;max-width:46ch;">Your order is confirmed, and you just made staying close a whole lot easier. Here's what happens next.</p>
+    <p style="font-size:19px;color:var(--muted);margin:14px auto 0;max-width:46ch;">Your HomeTogether device is confirmed and on its way. Here's what happens next.</p>
   </div>
 </section>
 
 <div class="wrap narrow" style="padding-bottom:20px;">
+  <div class="card" style="border:2px solid var(--sea);background:var(--soft-teal);text-align:center;margin-bottom:22px;">
+    <div style="font-size:40px;line-height:1;color:transparent;text-shadow:0 0 0 var(--sea);margin-bottom:8px;">💛</div>
+    <div style="font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--sea-deep);margin-bottom:8px;">Optional add‑on</div>
+    <h2 style="font-size:24px;margin-bottom:10px;">Want a real caregiver checking in too?</h2>
+    <p style="color:var(--muted);font-size:16.5px;max-width:46ch;margin:0 auto 20px;">Add virtual caregiving to your HomeTogether. Tell us a little about your loved one, and a trained caregiver can begin gentle daily visits, right on the TV. About 5 minutes, and you can do it now or anytime later.</p>
+    <a href="order.html" class="btn btn-primary btn-lg">Add virtual caregiving &rarr;</a>
+    <p style="color:var(--faint);font-size:13.5px;margin:14px 0 0;">Optional, your device works great on its own. This just adds a caring human touch.</p>
+  </div>
+
   <div class="card">
     <h2 style="font-size:22px;margin-bottom:20px;">What happens now</h2>
     <div class="steps-v">
-      <div class="step-v"><span class="n">1</span><div><h3>Your device ships free</h3><p>We're packing your HomeTogether now. You'll get a confirmation email with tracking, and it'll arrive ready to go.</p></div></div>
+      <div class="step-v"><span class="n">1</span><div><h3>Your device ships free</h3><p>We're packing your HomeTogether now. You'll get a confirmation email with tracking, and it arrives ready to go.</p></div></div>
       <div class="step-v"><span class="n">2</span><div><h3>Set it up in minutes</h3><p>Plug it into the TV's HDMI port and connect to Wi‑Fi using the simple included guide. Prefer a hand? Our team will walk you through it.</p></div></div>
       <div class="step-v"><span class="n">3</span><div><h3>Add your family &amp; make the first call</h3><p>Download the companion app to manage contacts and schedule calls, then say hello on the big screen.</p></div></div>
     </div>
@@ -63,7 +95,7 @@
   <div class="support">
     <h3>Questions? We're here to help.</h3>
     <p>Our support team is happy to help with setup or anything else.<br>
-    <a href="tel:14172348494" style="font-weight:700;">(417) 234-8494</a> &nbsp;·&nbsp; <a href="mailto:support@tryhometogether.com" style="font-weight:700;">support@tryhometogether.com</a></p>
+    <a href="help.html#contact" style="font-weight:700;">Submit a request</a> &nbsp;·&nbsp; <a href="mailto:support@tryhometogether.com" style="font-weight:700;">support@tryhometogether.com</a></p>
     
   </div>
 
@@ -80,11 +112,44 @@
     <div style="text-align:right;">
       <div><a href="index.html#how">How it works</a> · <a href="index.html#features">Features</a> · <a href="index.html#pricing">Pricing</a> · <a href="about.html">About</a> · <a href="help.html">Help</a></div>
       <div style="margin-top:6px;"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="returns.html">Returns</a></div>
-      <div style="margin-top:8px;color:var(--faint);">Support: (417) 234-8494 &middot; support@tryhometogether.com · &copy; 2026 HomeTogether</div>
+      <div style="margin-top:8px;color:var(--faint);">Support: <a href="help.html#contact" style="color:inherit;text-decoration:underline">submit a request</a> &middot; support@tryhometogether.com · &copy; 2026 HomeTogether</div>
     </div>
   </div>
 </footer>
 
 <script src="accessibility.js" defer></script>
+<script>
+(function(){
+  var LABELS={'15_1':'15-minute visit, 1x per day, Mon-Fri (5 days/week), $75/week','15_2':'15-minute visits, 2x per day, Mon-Fri (5 days/week), $130/week','15_3':'15-minute visits, 3x per day, Mon-Fri (5 days/week), $180/week','30_1':'30-minute visit, 1x per day, Mon-Fri (5 days/week), $125/week','30_2':'30-minute visits, 2x per day, Mon-Fri (5 days/week), $220/week','30_3':'30-minute visits, 3x per day, Mon-Fri (5 days/week), $300/week'};
+  var sq=parseInt(localStorage.getItem('ht_sensors_qty')||'1',10);
+  var ADDON_LABELS={internet:'Built-in cellular internet ($35/month)',sensors:'Whole-home safety sensing, '+sq+' extra room'+(sq>1?'s':'')+' ($'+(15+(sq-1)*5)+'/month)',health:'Connected health readings ($10/month)'};
+  var addons=[]; try{ addons=JSON.parse(localStorage.getItem('ht_addons')||'[]'); }catch(e){}
+  if(addons.length){
+    var ad=document.createElement('div');
+    ad.style.cssText='max-width:560px;margin:26px auto 0;background:#EAF4F6;border:1.5px solid #1F7A8C;border-radius:16px;padding:20px 24px;text-align:center;';
+    ad.innerHTML='<div style="font-weight:800;color:#0D365F;font-size:17px;margin-bottom:6px;">Your add-ons are on the way</div>'
+      +'<div style="font-size:14.5px;color:#55677a;line-height:1.6;">'+addons.map(function(a){return ADDON_LABELS[a]||a;}).join('<br>')
+      +'<br><span style="display:block;margin-top:8px;">We\'ll activate everything with your device and confirm on your monthly bill within one business day.</span></div>';
+    (document.querySelector('main')||document.body).appendChild(ad);
+    if(!localStorage.getItem('ht_addons_sent')){
+      fetch('https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/ht-support?token=htorder_078070ed7c3e8e7619e567dcfaddfc400e43147a',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:'Checkout add-ons (auto)',email:'samantha@mo-care.com',topic:'Activate add-ons for newest order',
+          message:'A customer just checked out with add-ons: '+addons.map(function(a){return ADDON_LABELS[a]||a;}).join(' + ')
+          +'. Match to the newest Stripe subscription ('+new Date().toLocaleString()+'), add the add-on prices to their subscription, and enable the modules in the HomeSight portal.'})
+      }).then(function(){ localStorage.setItem('ht_addons_sent','1'); localStorage.removeItem('ht_addons'); localStorage.removeItem('ht_sensors_qty'); }).catch(function(){});
+    }
+  }
+  var p=localStorage.getItem('ht_addon_plan');
+  if(!p||!LABELS[p]) return;
+  var div=document.createElement('div');
+  div.style.cssText='max-width:560px;margin:26px auto 0;background:#FBEFE0;border:1.5px solid #F0A63A;border-radius:16px;padding:20px 24px;text-align:center;';
+  div.innerHTML='<div style="font-weight:800;color:#0D365F;font-size:17px;margin-bottom:6px;">One more step: your caregiver visits</div>'
+    +'<div style="font-size:14.5px;color:#55677a;line-height:1.55;margin-bottom:14px;">You chose <b>'+LABELS[p]+'</b>. Tell us a little about your loved one and start the visits, it takes about 3 minutes.</div>'
+    +'<a href="order.html?plan='+p+'" class="btn btn-primary" onclick="localStorage.removeItem(\'ht_addon_plan\')" style="display:inline-block;">Set up my visits &rarr;</a>';
+  var main=document.querySelector('main')||document.body;
+  main.appendChild(div);
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,673 @@
+<title>Caring Companions &mdash; Client Growth Playbook</title>
+<style>
+  :root {
+    --ground:#faf9f6; --panel:#ffffff; --panel-2:#f5f2ea;
+    --ink:#1b2a38; --muted:#5f6b78; --faint:#8a94a0;
+    --heading:#0d365f; --bronze:#8a5f22; --bronze-line:#c9a86a;
+    --border:#e7e2d7; --border-soft:#efe9dd;
+    --free:#2c6f4f; --free-bg:#e7f1ea;
+    --paid:#8a5a2a; --paid-bg:#f6ecda;
+    --shadow:0 1px 2px rgba(20,30,40,.04), 0 8px 24px rgba(20,30,40,.05);
+    --serif:Georgia,'Iowan Old Style','Source Serif 4',Cambria,serif;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground:#13161b; --panel:#1a1e25; --panel-2:#20252e;
+      --ink:#e9edf1; --muted:#a3aeb9; --faint:#78838f;
+      --heading:#cfe0f3; --bronze:#d0a45f; --bronze-line:#7a5c30;
+      --border:#2a2f38; --border-soft:#242a32;
+      --free:#77cfa4; --free-bg:#182720;
+      --paid:#e0ab6a; --paid-bg:#2a2114;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --ground:#faf9f6; --panel:#ffffff; --panel-2:#f5f2ea;
+    --ink:#1b2a38; --muted:#5f6b78; --faint:#8a94a0;
+    --heading:#0d365f; --bronze:#8a5f22; --bronze-line:#c9a86a;
+    --border:#e7e2d7; --border-soft:#efe9dd;
+    --free:#2c6f4f; --free-bg:#e7f1ea; --paid:#8a5a2a; --paid-bg:#f6ecda;
+    --shadow:0 1px 2px rgba(20,30,40,.04), 0 8px 24px rgba(20,30,40,.05);
+  }
+  :root[data-theme="dark"] {
+    --ground:#13161b; --panel:#1a1e25; --panel-2:#20252e;
+    --ink:#e9edf1; --muted:#a3aeb9; --faint:#78838f;
+    --heading:#cfe0f3; --bronze:#d0a45f; --bronze-line:#7a5c30;
+    --border:#2a2f38; --border-soft:#242a32;
+    --free:#77cfa4; --free-bg:#182720; --paid:#e0ab6a; --paid-bg:#2a2114;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing:border-box; }
+  body { margin:0; }
+  .pb { background:var(--ground); color:var(--ink); font-family:var(--sans); line-height:1.6;
+        -webkit-font-smoothing:antialiased; font-size:16px; }
+  .wrap { max-width:940px; margin:0 auto; padding:0 22px; }
+
+  /* Header */
+  .pb-head { padding:44px 0 20px; border-bottom:1px solid var(--border); }
+  .eyebrow { font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--bronze); margin:0 0 12px; }
+  .pb-head h1 { font-family:var(--serif); font-weight:600; font-size:clamp(28px,5vw,40px); line-height:1.1;
+                letter-spacing:-.01em; color:var(--heading); margin:0 0 12px; text-wrap:balance; }
+  .pb-head .lede { font-size:17px; color:var(--muted); margin:0; max-width:64ch; }
+  .pb-meta { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:18px; font-size:13px; color:var(--faint); }
+  .pb-meta b { color:var(--muted); font-weight:600; }
+
+  /* Jump nav */
+  .jump { position:sticky; top:0; z-index:10; background:color-mix(in srgb, var(--ground) 90%, transparent);
+          backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:1px solid var(--border);
+          margin-top:0; }
+  .jump-inner { display:flex; gap:6px; overflow-x:auto; padding:11px 0; scrollbar-width:none; }
+  .jump-inner::-webkit-scrollbar { display:none; }
+  .jump a { flex:0 0 auto; font-size:13px; font-weight:600; color:var(--muted); text-decoration:none;
+            padding:7px 13px; border-radius:999px; border:1px solid var(--border); background:var(--panel);
+            white-space:nowrap; transition:all .15s ease; }
+  .jump a:hover { color:var(--heading); border-color:var(--bronze-line); }
+
+  section { padding:40px 0 8px; }
+  .sec-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0 0 6px; }
+  .sec-num { font-family:var(--serif); font-size:15px; color:var(--bronze); font-weight:600; font-variant-numeric:tabular-nums; }
+  h2 { font-family:var(--serif); font-weight:600; font-size:clamp(23px,3.4vw,29px); color:var(--heading);
+       margin:0; letter-spacing:-.01em; text-wrap:balance; }
+  h3 { font-size:16px; font-weight:700; color:var(--ink); margin:26px 0 10px; letter-spacing:-.005em; }
+  .sec-sub { color:var(--muted); font-size:15.5px; margin:8px 0 4px; max-width:66ch; }
+  p { margin:0 0 14px; }
+
+  .tag { display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:700; letter-spacing:.04em;
+         text-transform:uppercase; padding:4px 9px; border-radius:6px; }
+  .tag.free { color:var(--free); background:var(--free-bg); }
+  .tag.paid { color:var(--paid); background:var(--paid-bg); }
+
+  /* Priority ladder */
+  .ladder { display:flex; flex-direction:column; gap:10px; margin:18px 0 4px; counter-reset:step; }
+  .rung { display:grid; grid-template-columns:auto 1fr auto; gap:16px; align-items:center;
+          background:var(--panel); border:1px solid var(--border); border-radius:13px; padding:16px 18px; box-shadow:var(--shadow); }
+  .rung .idx { width:32px; height:32px; border-radius:50%; background:var(--heading); color:#fff; font-weight:700;
+               font-size:15px; display:flex; align-items:center; justify-content:center; font-variant-numeric:tabular-nums; }
+  .rung h4 { margin:0 0 2px; font-size:15.5px; color:var(--ink); }
+  .rung p { margin:0; font-size:13.5px; color:var(--muted); }
+
+  /* Cards & lists */
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:22px 24px;
+          box-shadow:var(--shadow); margin:16px 0; }
+  .card.tint { background:var(--panel-2); box-shadow:none; }
+  ul.clean { list-style:none; padding:0; margin:12px 0; display:flex; flex-direction:column; gap:9px; }
+  ul.clean li { position:relative; padding-left:26px; font-size:15px; color:var(--ink); }
+  ul.clean li::before { content:""; position:absolute; left:4px; top:9px; width:7px; height:7px; border-radius:50%;
+                        background:var(--bronze-line); }
+  ul.clean li b { color:var(--ink); }
+  .muted { color:var(--muted); }
+  .small { font-size:13.5px; }
+
+  /* Check list (tickable) */
+  .checks { display:flex; flex-direction:column; gap:2px; margin:12px 0; }
+  .checks label { display:flex; gap:11px; align-items:flex-start; padding:9px 4px; border-bottom:1px solid var(--border-soft);
+                  font-size:15px; cursor:pointer; }
+  .checks label:last-child { border-bottom:none; }
+  .checks input { margin:3px 0 0; width:17px; height:17px; accent-color:var(--free); flex:0 0 auto; cursor:pointer; }
+  .checks input:checked + span { color:var(--faint); text-decoration:line-through; }
+  .checks span b { font-weight:600; }
+
+  /* Ranked contact list */
+  .ranked { display:flex; flex-direction:column; gap:0; margin:12px 0; }
+  .ranked .row { display:grid; grid-template-columns:auto 1fr; gap:14px; padding:12px 0; border-bottom:1px solid var(--border-soft); }
+  .ranked .row:last-child { border-bottom:none; }
+  .ranked .pri { font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px;
+                 border-radius:5px; height:fit-content; white-space:nowrap; }
+  .ranked .pri.a { color:var(--free); background:var(--free-bg); }
+  .ranked .pri.b { color:var(--bronze); background:var(--paid-bg); }
+  .ranked .who b { font-size:15px; }
+  .ranked .who p { margin:2px 0 0; font-size:13.5px; color:var(--muted); }
+
+  /* Template block */
+  .tmpl { border:1px solid var(--border); border-radius:12px; overflow:hidden; margin:14px 0; background:var(--panel); }
+  .tmpl-bar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:11px 15px;
+              background:var(--panel-2); border-bottom:1px solid var(--border); }
+  .tmpl-bar .t { font-size:12.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--bronze); }
+  .copy { font-family:var(--sans); font-size:12.5px; font-weight:600; color:var(--heading); background:transparent;
+          border:1px solid var(--border); border-radius:7px; padding:6px 12px; cursor:pointer; transition:all .15s ease; }
+  .copy:hover { border-color:var(--bronze-line); }
+  .copy.done { color:var(--free); border-color:var(--free); }
+  .tmpl-body { margin:0; padding:16px 17px; font-family:var(--sans); font-size:14px; line-height:1.62; color:var(--ink);
+               white-space:pre-wrap; }
+  .tmpl-body .fill { color:var(--bronze); font-weight:600; }
+
+  /* Two-col */
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0; }
+  @media (max-width:680px){ .cols { grid-template-columns:1fr; } }
+
+  /* Keyword / copy chips */
+  .kw { display:flex; flex-wrap:wrap; gap:7px; margin:10px 0 16px; }
+  .kw span { font-size:13px; color:var(--ink); background:var(--panel-2); border:1px solid var(--border);
+             border-radius:7px; padding:6px 11px; font-variant-numeric:tabular-nums; }
+  .neg span { color:var(--paid); }
+
+  .lines { display:flex; flex-direction:column; gap:7px; margin:10px 0 16px; }
+  .lines .ln { display:grid; grid-template-columns:auto 1fr; gap:11px; font-size:14.5px; align-items:baseline; }
+  .lines .ln .n { font-size:12px; color:var(--faint); font-variant-numeric:tabular-nums; padding-top:1px; }
+  .lines .ln .c { color:var(--ink); }
+  .lines .ln .len { color:var(--faint); font-size:11.5px; }
+
+  .callout { border-left:3px solid var(--bronze-line); background:var(--panel-2); border-radius:0 10px 10px 0;
+             padding:14px 18px; margin:16px 0; font-size:14.5px; color:var(--ink); }
+  .callout b { color:var(--heading); }
+
+  .scorecard { width:100%; border-collapse:collapse; margin:14px 0; font-size:14.5px; }
+  .scorecard th, .scorecard td { text-align:left; padding:11px 12px; border-bottom:1px solid var(--border-soft); }
+  .scorecard th { font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--faint); font-weight:700; }
+  .scorecard td.n { font-variant-numeric:tabular-nums; color:var(--muted); }
+
+  .divider { height:1px; background:var(--border); margin:34px 0 0; border:none; }
+
+  .pb-foot { padding:34px 0 60px; color:var(--muted); font-size:14px; }
+  .pb-foot a { color:var(--heading); font-weight:600; }
+  a.inline { color:var(--heading); font-weight:600; text-decoration:none; border-bottom:1px solid var(--bronze-line); }
+
+  .toast { position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px);
+           background:var(--heading); color:#fff; padding:10px 18px; border-radius:9px; font-size:13.5px; font-weight:600;
+           opacity:0; pointer-events:none; transition:all .25s ease; z-index:50; box-shadow:0 8px 24px rgba(0,0,0,.2); }
+  .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+  @media (prefers-reduced-motion:reduce){ * { transition:none !important; } }
+</style>
+
+<div class="pb">
+  <header class="pb-head">
+    <div class="wrap">
+      <p class="eyebrow">Caring Companions &middot; Internal</p>
+      <h1>Client Growth Playbook</h1>
+      <p class="lede">Everything you need to bring in new clients &mdash; the free channels that work fastest first, then the paid ones. Scripts, checklists, and campaigns are ready to copy and use today.</p>
+      <div class="pb-meta">
+        <span><b>For:</b> Samantha &amp; the CC team</span>
+        <span><b>Phone:</b> (417) 234-8494</span>
+        <span><b>Leave-behind:</b> guide.mo-care.com/refer</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="jump">
+    <div class="wrap jump-inner">
+      <a href="#start">Start here</a>
+      <a href="#referrals">1 &middot; Referrals</a>
+      <a href="#gbp">2 &middot; Google Profile</a>
+      <a href="#reviews">3 &middot; Reviews</a>
+      <a href="#googleads">4 &middot; Google Ads</a>
+      <a href="#facebook">5 &middot; Facebook</a>
+      <a href="#hometogether">6 &middot; HomeTogether</a>
+      <a href="#track">Track results</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+
+    <!-- START HERE -->
+    <section id="start">
+      <div class="sec-head"><h2>Start here: this week's five moves</h2></div>
+      <p class="sec-sub">Do them in this order. The first three are free and bring clients fastest &mdash; most home-care clients come from professional referrals and Google, not ads. Start the paid ones once the free ones are rolling.</p>
+      <div class="ladder">
+        <div class="rung"><span class="idx">1</span><div><h4>Visit 10 referral sources &mdash; hospitals &amp; senior centers <span class="tag free">Free &middot; fastest</span></h4><p>Drop off the <b>/refer</b> one-pager to discharge planners and senior-center directors. This is the #1 source of steady clients.</p></div></div>
+        <div class="rung"><span class="idx">2</span><div><h4>Fully optimize your Google Business Profile <span class="tag free">Free</span></h4><p>It's how &ldquo;home care near me&rdquo; searches find you. Complete every field and post weekly.</p></div></div>
+        <div class="rung"><span class="idx">3</span><div><h4>Ask your last 15 happy families for a Google review <span class="tag free">Free</span></h4><p>Reviews drive both the map ranking and whether callers trust you. Text them the link.</p></div></div>
+        <div class="rung"><span class="idx">4</span><div><h4>Turn on Google Local Services Ads <span class="tag paid">Paid</span></h4><p>&ldquo;Google Guaranteed&rdquo; pay-per-lead ads that sit at the very top of search. Fastest paid leads for home care.</p></div></div>
+        <div class="rung"><span class="idx">5</span><div><h4>Launch one Facebook lead ad <span class="tag paid">Paid</span></h4><p>Reach adult daughters and sons caring for aging parents in your service area.</p></div></div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- REFERRALS -->
+    <section id="referrals">
+      <div class="sec-head"><span class="sec-num">01</span><h2>Referral outreach <span class="tag free">Free &middot; highest ROI</span></h2></div>
+      <p class="sec-sub">Discharge planners, senior centers, and skilled-nursing facilities send home-care agencies a steady stream of clients &mdash; because they need somewhere safe to send people going home. You already have a 270-organization contact list built. Work it in this order.</p>
+
+      <h3>Who to contact first</h3>
+      <div class="ranked">
+        <div class="row"><span class="pri a">Start here</span><div class="who"><b>Hospital discharge planners &amp; case managers</b><p>CoxHealth &amp; Mercy (Springfield), Citizens Memorial (Bolivar), Lake Regional, Ozarks Community. Highest volume &mdash; people going home who need help <em>now</em>.</p></div></div>
+        <div class="row"><span class="pri a">Start here</span><div class="who"><b>Skilled nursing &amp; rehab facilities</b><p>Ask for the social worker / discharge coordinator. Residents going home after rehab are ideal clients.</p></div></div>
+        <div class="row"><span class="pri a">Start here</span><div class="who"><b>Senior centers &amp; SeniorAge case managers</b><p>They talk to families who are just realizing they need help. Warm, local, and free to reach.</p></div></div>
+        <div class="row"><span class="pri b">Next</span><div class="who"><b>Assisted living communities</b><p>For residents who need supplemental one-on-one care the community doesn't provide.</p></div></div>
+        <div class="row"><span class="pri b">Next</span><div class="who"><b>Hospice &amp; home-health agencies</b><p>You provide the non-medical hours between their skilled visits. Complementary, not competitive.</p></div></div>
+        <div class="row"><span class="pri b">Next</span><div class="who"><b>Elder-law attorneys &amp; financial planners</b><p>Their clients are doing Medicaid &amp; long-term-care planning. You help with HCBS applications.</p></div></div>
+      </div>
+
+      <div class="callout"><b>Your pitch in one line:</b> &ldquo;We're a local, family-owned agency whose caregivers are screened, insured W-2 employees &mdash; and we can usually start care the same or next day, including nights and weekends.&rdquo; Fast starts + reliability is exactly what a discharge planner needs.</div>
+
+      <h3>Cold email to a discharge planner or social worker</h3>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Email</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">Subject: A reliable home-care option for your patients going home
+
+Hi <span class="fill">[Name]</span>,
+
+I'm Samantha with Caring Companions, a family-owned in-home senior care agency here in <span class="fill">[Springfield / their town]</span>. I wanted to introduce myself as a resource for patients you're discharging who need help at home.
+
+A few things that make us easy to refer to:
+&bull; Our caregivers are screened, insured, bonded W-2 employees &mdash; not contractors.
+&bull; We can usually assess and start care the same or next day, including nights and weekends.
+&bull; We're available 24/7, and we help families apply for Medicaid, VA, and Medicare GUIDE benefits at no cost.
+
+I've attached a one-page overview for your referral binder. If it's helpful, I'd love to drop off a few copies and learn how your team likes to receive referrals.
+
+Thank you for the work you do for these families.
+
+Samantha <span class="fill">[Last name]</span>
+Caring Companions In-Home Senior Care
+(417) 234-8494 &middot; fax (417) 719-7870
+guide.mo-care.com/refer</div>
+      </div>
+
+      <h3>Phone script &mdash; getting to the right person</h3>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Call script</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">You: &ldquo;Hi, this is Samantha with Caring Companions, a local home-care agency. Could you point me to the person who coordinates discharges or home-care referrals?&rdquo;
+
+(When you reach them:)
+&ldquo;Thanks for taking a second. I won't keep you &mdash; I just wanted you to have us on your list for patients going home who need in-home help. What makes us easy to work with is that we can usually start care same or next day, our caregivers are insured employees, and we're available 24/7.
+
+Could I drop off a couple of one-pagers for your referral binder this week? And is there a particular way your team likes to send referrals &mdash; fax, phone, or a form?&rdquo;
+
+(Get the fax/preferred method. Then:)
+&ldquo;Perfect. If you ever have a family that needs help fast, my direct line is (417) 234-8494. Thank you!&rdquo;</div>
+      </div>
+
+      <div class="cols">
+        <div>
+          <h3>Voicemail (keep it 15 seconds)</h3>
+          <div class="tmpl">
+            <div class="tmpl-bar"><span class="t">Voicemail</span><button class="copy" type="button">Copy</button></div>
+            <div class="tmpl-body">&ldquo;Hi <span class="fill">[Name]</span>, this is Samantha with Caring Companions, a local in-home senior care agency. I'd love to be a resource for your patients going home who need help. We can usually start same or next day. My number is (417) 234-8494 &mdash; that's (417) 234-8494. Thank you!&rdquo;</div>
+          </div>
+        </div>
+        <div>
+          <h3>In-person drop-in</h3>
+          <div class="tmpl">
+            <div class="tmpl-bar"><span class="t">Drop-in</span><button class="copy" type="button">Copy</button></div>
+            <div class="tmpl-body">&ldquo;Hi! I'm Samantha with Caring Companions &mdash; I won't take your time. I just wanted to leave a few of these one-pagers for your referral binder in case you have families who need in-home care. We start fast and we're available around the clock. Is there a coordinator I should also hand one to?&rdquo;
+
+(Smile, leave 3&ndash;5 copies + a business card, thank them.)</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Follow-up rhythm that builds the relationship</h3>
+      <ul class="clean">
+        <li><b>Week 1</b> &mdash; Intro visit or call + leave the one-pager.</li>
+        <li><b>Week 2</b> &mdash; Short thank-you email with a helpful family resource attached (e.g. your Fall Prevention or Hospital Discharge guide from the Resource Library). You're being useful, not just selling.</li>
+        <li><b>Monthly</b> &mdash; Quick check-in: &ldquo;Anything I can help a family with this week?&rdquo; Stay top of mind.</li>
+        <li><b>Every referral</b> &mdash; Same-day thank-you, and (with family consent) close the loop that care started. This is what earns the <em>next</em> referral.</li>
+      </ul>
+      <p class="small muted">Leave-behind sheet to print or email: <a class="inline" href="https://guide.mo-care.com/refer">guide.mo-care.com/refer</a> &middot; Online referral form: <a class="inline" href="https://guide.mo-care.com/referral-partners.html">guide.mo-care.com/referral-partners</a></p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- GBP -->
+    <section id="gbp">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Google Business Profile <span class="tag free">Free</span></h2></div>
+      <p class="sec-sub">When someone searches &ldquo;home care near me&rdquo; or &ldquo;senior care in Springfield,&rdquo; Google shows a map with three businesses. Getting into that pack is the single biggest free lead source in local home care. Here's how to earn it.</p>
+
+      <h3>Optimization checklist</h3>
+      <div class="checks">
+        <label><input type="checkbox"><span><b>Claim &amp; verify</b> your profile at business.google.com (search &ldquo;Caring Companions Springfield&rdquo; first to make sure there isn't a duplicate).</span></label>
+        <label><input type="checkbox"><span><b>Primary category:</b> &ldquo;Home health care service&rdquo; or &ldquo;Home care service.&rdquo; Add secondary: Aged care, Non-profit? no &mdash; Elder-care, Nursing agency.</span></label>
+        <label><input type="checkbox"><span><b>Service area:</b> list your real towns/counties (Springfield, Nixa, Ozark, Bolivar, Branson, Republic, and the 7 counties).</span></label>
+        <label><input type="checkbox"><span><b>Phone:</b> (417) 234-8494 &mdash; the same number as your website (must match exactly everywhere).</span></label>
+        <label><input type="checkbox"><span><b>Website:</b> your live site. <b>Hours:</b> mark &ldquo;Open 24 hours&rdquo; &mdash; a real differentiator.</span></label>
+        <label><input type="checkbox"><span><b>Services:</b> add each one (Companion Care, Personal Care, Live-In, Overnight, 24-Hour, Respite, Private Duty Nursing) with a sentence each.</span></label>
+        <label><input type="checkbox"><span><b>Description:</b> 750 characters &mdash; who you serve, your area, &ldquo;family-owned since 2017,&rdquo; employees not contractors, 24/7.</span></label>
+        <label><input type="checkbox"><span><b>Photos:</b> logo, a few real caregiver/team photos, office exterior. Profiles with photos get far more calls.</span></label>
+        <label><input type="checkbox"><span><b>Turn on messaging</b> and the &ldquo;Call&rdquo; button so people can reach you in one tap.</span></label>
+        <label><input type="checkbox"><span><b>Post weekly</b> (see below) &mdash; active profiles rank higher and look alive.</span></label>
+      </div>
+
+      <h3>Five ready-to-post updates</h3>
+      <p class="small muted">Post one a week in the &ldquo;Add update&rdquo; / &ldquo;Offer&rdquo; section. Each ends with a call to action.</p>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Post 1 &middot; Intro</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">Caring for an aging parent and not sure where to start? We're a local, family-owned home-care agency helping seniors across Southwest Missouri stay safe at home &mdash; from a few hours a week to 24/7. Free consultation, no pressure. Call (417) 234-8494.</div>
+      </div>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Post 2 &middot; Medicare GUIDE respite</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">Did you know? If your loved one has a dementia diagnosis, Medicare's GUIDE program may cover up to 75 hours of in-home respite care a year &mdash; and we're an approved provider. Let us check your eligibility free. Call (417) 234-8494.</div>
+      </div>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Post 3 &middot; Care may be free (Medicaid)</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">In-home care may cost your family nothing. Many Missouri seniors qualify for Medicaid programs that fully cover caregiving at home &mdash; and we help you apply at no charge. Find out if you qualify: (417) 234-8494.</div>
+      </div>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Post 4 &middot; Employees, not contractors</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">Not all &ldquo;caregivers&rdquo; are the same. Ours are screened, background-checked, insured, and bonded &mdash; real employees we stand behind, with backup coverage if someone's out. Peace of mind for your family. (417) 234-8494.</div>
+      </div>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Post 5 &middot; Free consultation</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">Free, no-pressure consultation this week. We'll come to you, learn what your family needs, and build a simple plan &mdash; even if you're just starting to think about it. Book at guide.mo-care.com/book or call (417) 234-8494.</div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- REVIEWS -->
+    <section id="reviews">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Your reviews engine <span class="tag free">Free</span></h2></div>
+      <p class="sec-sub">Reviews are the deciding factor for most families &mdash; and they lift your Google map ranking. The agencies that win just <em>ask, every time</em>. Aim for 2&ndash;4 new reviews a month.</p>
+
+      <h3>When to ask</h3>
+      <ul class="clean">
+        <li>About <b>2 weeks in</b>, once a family is happy with their caregiver.</li>
+        <li>Right after a <b>compliment</b> &mdash; &ldquo;We love Maria!&rdquo; is your cue: &ldquo;That means so much &mdash; would you share that in a quick Google review?&rdquo;</li>
+        <li>After you've <b>solved a problem</b> or covered an emergency shift.</li>
+      </ul>
+
+      <div class="cols">
+        <div>
+          <h3>Text message ask</h3>
+          <div class="tmpl">
+            <div class="tmpl-bar"><span class="t">SMS</span><button class="copy" type="button">Copy</button></div>
+            <div class="tmpl-body">Hi <span class="fill">[Name]</span>, it's Samantha at Caring Companions. It's been a joy caring for <span class="fill">[Mom/Dad's name]</span>. If you have 60 seconds, would you share your experience in a Google review? It helps other families find us: <span class="fill">[your Google review link]</span> &mdash; thank you so much!</div>
+          </div>
+        </div>
+        <div>
+          <h3>Email ask</h3>
+          <div class="tmpl">
+            <div class="tmpl-bar"><span class="t">Email</span><button class="copy" type="button">Copy</button></div>
+            <div class="tmpl-body">Subject: A quick favor &#128155;
+
+Hi <span class="fill">[Name]</span>,
+
+It's been our privilege to care for <span class="fill">[Mom/Dad]</span>. Reviews are how other Southwest Missouri families find trustworthy care &mdash; if you'd be willing to share a few words about your experience, it would mean the world.
+
+It takes about a minute: <span class="fill">[your Google review link]</span>
+
+With gratitude,
+Samantha &middot; Caring Companions
+(417) 234-8494</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout"><b>Get your review link once:</b> in your Google Business Profile, tap <b>Ask for reviews</b> &mdash; Google gives you a short link. Paste it into both templates above and save them in your phone. <b>Always reply</b> to every review, good or bad, within a day &mdash; future families read the replies.</div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- GOOGLE ADS -->
+    <section id="googleads">
+      <div class="sec-head"><span class="sec-num">04</span><h2>Google Ads &amp; Local Services <span class="tag paid">Paid &middot; fastest volume</span></h2></div>
+      <p class="sec-sub">Two Google products, in priority order. Start with Local Services Ads &mdash; they're pay-per-lead and sit above everything.</p>
+
+      <h3>A. Local Services Ads (&ldquo;Google Guaranteed&rdquo;)</h3>
+      <ul class="clean">
+        <li>These show at the <b>very top</b> of search with your rating and a green check. You <b>pay per lead</b> (a call or message), not per click.</li>
+        <li>Set up at <b>ads.google.com/local-services-ads</b>. You'll verify your <b>license/registration, insurance, and pass background checks</b> &mdash; which also builds trust.</li>
+        <li>Set your service area (your counties), your services, and a weekly budget. <b>Start modest</b> (e.g. a few leads/week), then raise it as calls convert.</li>
+        <li><b>Dispute junk leads</b> &mdash; Google credits wrong-number or out-of-area leads if you report them promptly.</li>
+        <li>Answer fast. LSA rewards businesses that pick up; missed calls hurt your ranking and waste spend.</li>
+      </ul>
+
+      <h3>B. Search campaign &mdash; structure</h3>
+      <p class="small muted">Point every ad to a fast, single-purpose page with a phone number and short form. Good targets you already have: <a class="inline" href="https://guide.mo-care.com/getting-started.html">/getting-started</a> or <a class="inline" href="https://guide.mo-care.com/book.html">/book</a>. Add a <b>call extension</b> so mobile users tap to call.</p>
+
+      <h3>Keywords to start (phrase &amp; exact match)</h3>
+      <div class="kw">
+        <span>"home care springfield mo"</span><span>"in home care near me"</span><span>"senior care at home"</span><span>"elderly care services"</span><span>"24 hour home care"</span><span>"live in caregiver"</span><span>"respite care [town]"</span><span>"private duty nursing"</span><span>"in home caregiver near me"</span><span>"dementia care at home"</span><span>"home care agency near me"</span><span>"caregiver for elderly parents"</span>
+      </div>
+      <h3>Negative keywords (so you don't pay for the wrong clicks)</h3>
+      <div class="kw neg">
+        <span>jobs</span><span>hiring</span><span>careers</span><span>salary</span><span>pay</span><span>free</span><span>nursing home</span><span>assisted living</span><span>hospital</span><span>volunteer</span><span>training</span><span>certification</span>
+      </div>
+
+      <h3>15 headlines (mix &amp; match &mdash; 30 characters each)</h3>
+      <div class="lines">
+        <div class="ln"><span class="n">1</span><span class="c">In-Home Senior Care</span></div>
+        <div class="ln"><span class="n">2</span><span class="c">Caring Companions Home Care</span></div>
+        <div class="ln"><span class="n">3</span><span class="c">Care Can Start Tomorrow</span></div>
+        <div class="ln"><span class="n">4</span><span class="c">Screened, Insured Caregivers</span></div>
+        <div class="ln"><span class="n">5</span><span class="c">Available 24/7 &middot; Call Now</span></div>
+        <div class="ln"><span class="n">6</span><span class="c">Family-Owned, Local Care</span></div>
+        <div class="ln"><span class="n">7</span><span class="c">Free In-Home Consultation</span></div>
+        <div class="ln"><span class="n">8</span><span class="c">Help With Medicaid &amp; VA</span></div>
+        <div class="ln"><span class="n">9</span><span class="c">From a Few Hours to 24-Hour</span></div>
+        <div class="ln"><span class="n">10</span><span class="c">Keep Mom &amp; Dad Safe at Home</span></div>
+        <div class="ln"><span class="n">11</span><span class="c">Springfield's Trusted Care</span></div>
+        <div class="ln"><span class="n">12</span><span class="c">Respite for Family Caregivers</span></div>
+        <div class="ln"><span class="n">13</span><span class="c">Dementia &amp; Alzheimer's Care</span></div>
+        <div class="ln"><span class="n">14</span><span class="c">Personal Care &amp; Companionship</span></div>
+        <div class="ln"><span class="n">15</span><span class="c">Serving All of SW Missouri</span></div>
+      </div>
+      <h3>4 descriptions (90 characters each)</h3>
+      <div class="lines">
+        <div class="ln"><span class="n">1</span><span class="c">Compassionate in-home care from screened, insured caregivers. Free consultation &mdash; call today.</span></div>
+        <div class="ln"><span class="n">2</span><span class="c">Family-owned and local. Care can often start the same or next day, 24/7. We're here to help.</span></div>
+        <div class="ln"><span class="n">3</span><span class="c">From companionship to 24-hour care. We help with Medicaid, VA &amp; Medicare GUIDE benefits too.</span></div>
+        <div class="ln"><span class="n">4</span><span class="c">Serving Springfield &amp; all of Southwest Missouri. Trusted, dependable, and always available.</span></div>
+      </div>
+      <div class="callout"><b>Budget guidance:</b> start around <b>$30&ndash;$50/day</b>, all on Search + Local Services. Watch <b>cost per call/lead</b> for the first two weeks and shift budget toward the keywords and ads that actually ring the phone. Home-care leads are competitive, so a tight service area and strong negatives matter more than a big budget.</div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- FACEBOOK -->
+    <section id="facebook">
+      <div class="sec-head"><span class="sec-num">05</span><h2>Facebook &amp; Instagram ads <span class="tag paid">Paid</span></h2></div>
+      <p class="sec-sub">Google reaches people already searching. Facebook reaches the adult children who <em>haven't searched yet</em> but are worrying about Mom or Dad. Your buyer is usually a daughter, 45&ndash;65, near you.</p>
+
+      <h3>Audience</h3>
+      <ul class="clean">
+        <li><b>Location:</b> Springfield + a 25&ndash;40 mile radius (or target your 7 counties). This keeps spend on real prospects.</li>
+        <li><b>Age:</b> 45&ndash;70. <b>Gender:</b> all, but expect most leads from women (daughters are the primary decision-makers).</li>
+        <li><b>Detailed targeting (optional):</b> interests like <em>Caregiver</em>, <em>Aging</em>, <em>AARP</em>, <em>Alzheimer's Association</em>, <em>Elderly care</em>. Facebook may show these as broad &mdash; that's fine; the location + age does most of the work.</li>
+        <li><b>Objective:</b> <em>Leads</em> (an instant form: name + phone) or <em>Calls</em>. Both keep the prospect on Facebook and are cheaper than sending them to the site.</li>
+      </ul>
+
+      <h3>Three ads to test</h3>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Ad 1 &middot; The worry (safety)</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">Primary text:
+Worried about Mom or Dad living alone? You're not alone &mdash; and you don't have to figure it out by yourself. Caring Companions provides trusted, in-home help across Southwest Missouri: companionship, personal care, meals, medication reminders, and more. Screened, insured caregivers. Care can start this week.
+
+Headline: Keep Your Parent Safe at Home
+Button: Learn More / Get a free consultation</div>
+      </div>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Ad 2 &middot; Caregiver relief (respite)</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">Primary text:
+Caring for a parent while raising your own family &mdash; and running on empty? Let us give you a break. Our respite care lets you rest while someone kind and capable steps in. From a few hours to overnight. You deserve support too.
+
+Headline: A Break for Family Caregivers
+Button: Get Started</div>
+      </div>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Ad 3 &middot; Aging in place (hope)</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">Primary text:
+A nursing home isn't the only option. With the right support at home, many seniors live safely and happily right where they want to be. Caring Companions is a local, family-owned agency helping Southwest Missouri families do exactly that &mdash; and we'll help you check for Medicaid and VA benefits that may cover it.
+
+Headline: There's Another Way to Age
+Button: See If You Qualify</div>
+      </div>
+
+      <h3>Creative direction</h3>
+      <ul class="clean">
+        <li>Use <b>warm, real photos</b> &mdash; a caregiver and senior smiling together, not stock-clinical images. A short 10&ndash;15 sec video of Samantha talking to camera outperforms almost anything.</li>
+        <li>Keep your <b>logo and phone number</b> on the image. Add a caption line: &ldquo;Serving Springfield &amp; SW Missouri &middot; (417) 234-8494.&rdquo;</li>
+        <li><b>Budget:</b> $10&ndash;$20/day per ad for the first week. Turn off the losers, put the budget on the winner.</li>
+        <li>Always follow up a lead-form lead within <b>5 minutes</b> if you can &mdash; speed is the whole game.</li>
+      </ul>
+    </section>
+
+    <hr class="divider">
+
+    <!-- HOMETOGETHER -->
+    <section id="hometogether">
+      <div class="sec-head"><span class="sec-num">06</span><h2>HomeTogether &mdash; a new way to grow <span class="tag paid">New product line</span></h2></div>
+      <p class="sec-sub">HomeTogether is our own product, part of the Caring Companions family. It turns any TV into easy family video calls and gentle daily wellness check-ins, with no smartphone for the senior to learn. It sells nationwide, not just Southwest Missouri, so it reaches families you could never staff in person. And every device is a doorway to virtual caregiving, which keeps the care revenue growing too.</p>
+
+      <h3>The offer at a glance</h3>
+      <div class="ranked">
+        <div class="row"><span class="pri a">The device</span><div class="who"><b>$99 / month &middot; free shipping &middot; cancel anytime</b><p>Backed by a 30-day money-back guarantee. The TV device is the whole product. It works great on its own, and there is nothing for the senior to set up.</p></div></div>
+        <div class="row"><span class="pri b">Optional add-on</span><div class="who"><b>Virtual caregiver visits</b><p>Once a family has the device, they can add real caregiver visits right on the TV. Six plans by number and length of visits. This is the upsell, and it can be added any time later.</p></div></div>
+        <div class="row"><span class="pri b">Where to send people</span><div class="who"><b>tryhometogether.com/get</b><p>The launch page. One offer, one button, checkout in a couple of taps. Point every ad, post, and link here.</p></div></div>
+      </div>
+      <div class="callout"><b>Who buys it:</b> the adult daughter or son of an aging parent, often living a few hours or a few states away, who worries about Mom being alone and isolated. Same buyer as your Facebook ads, just without a service-area limit. Your second audience is families you already serve who want to stay connected between visits.</div>
+
+      <h3>Who to reach first</h3>
+      <ul class="clean">
+        <li><b>Long-distance adult children</b> &middot; the core buyer. They can't drop by, so a simple way to see Mom's face every day is worth a lot. Reach them with ads (below) and social.</li>
+        <li><b>Families you already serve</b> &middot; your coordinators can offer it at intake and at every care review. It is a warm, no-pressure add for families who want more connection. Use the script below.</li>
+        <li><b>Out-of-area referral families</b> &middot; when a discharge planner or a caller is outside Southwest Missouri and you can't staff them, HomeTogether is something helpful you can still offer instead of a dead end.</li>
+      </ul>
+
+      <h3>Launch announcement &mdash; email to your family &amp; contact list</h3>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Email</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">Subject: A new way to stay close to Mom, right through her TV
+
+Hi <span class="fill">[Name]</span>,
+
+I'm excited to share something new from our family at Caring Companions. It's called HomeTogether, and it turns the TV your loved one already uses into an easy way to video-call family and get gentle daily wellness check-ins. No smartphone, no new gadgets to learn. She just looks up and sees your face.
+
+It was built for families who can't always be there in person, which is so many of us. Here's what it costs:
+
+&bull; $99 a month, with free shipping
+&bull; Cancel anytime, plus a 30-day money-back guarantee
+&bull; Optional: add a real caregiver who checks in right on the TV
+
+If staying connected to someone you love has been on your mind, take a look:
+tryhometogether.com/get
+
+As always, I'm one call away at (417) 234-8494.
+
+Warmly,
+Samantha
+Caring Companions</div>
+      </div>
+
+      <div class="cols">
+        <div>
+          <h3>Text message announcement</h3>
+          <div class="tmpl">
+            <div class="tmpl-bar"><span class="t">SMS</span><button class="copy" type="button">Copy</button></div>
+            <div class="tmpl-body">Hi <span class="fill">[Name]</span>, it's Samantha at Caring Companions. We just launched HomeTogether, an easy way to video-call and check in on Mom or Dad right through their TV. No smartphone needed. $99/mo, cancel anytime, 30-day money-back. Take a peek: tryhometogether.com/get</div>
+          </div>
+        </div>
+        <div>
+          <h3>Social post (Facebook / Instagram)</h3>
+          <div class="tmpl">
+            <div class="tmpl-bar"><span class="t">Social</span><button class="copy" type="button">Copy</button></div>
+            <div class="tmpl-body">Miss seeing Mom's face? Introducing HomeTogether from Caring Companions. It turns any TV into simple family video calls and daily wellness check-ins, with nothing for your parent to learn. She just looks up and sees you.
+
+$99/mo &middot; free shipping &middot; cancel anytime &middot; 30-day money-back guarantee.
+
+Stay close, even from far away: tryhometogether.com/get</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Coordinator cross-sell script &mdash; offering it to a family you already serve</h3>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Script</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">&ldquo;One more thing that some of our families have loved. We launched a little device called HomeTogether that turns the TV into an easy video call and daily check-in, so family who live farther away can see <span class="fill">[Mom/Dad]</span> every day. There's nothing for <span class="fill">[Mom/Dad]</span> to learn, it just comes up on the screen.
+
+It's completely optional and separate from the care we already provide. It's $99 a month, you can cancel anytime, and there's a 30-day money-back guarantee. If you'd like, I can text you the link so you can look it over: tryhometogether.com/get.
+
+And if you ever want, one of our caregivers can even check in right on the TV too.&rdquo;</div>
+      </div>
+      <p class="small muted">Keep it light and optional. This is a gift-style add for families who want more connection, never a pressure sell on top of care.</p>
+
+      <h3>Ready-to-run ad copy</h3>
+      <div class="tmpl">
+        <div class="tmpl-bar"><span class="t">Facebook / Instagram ad</span><button class="copy" type="button">Copy</button></div>
+        <div class="tmpl-body">Primary text:
+Worried about Mom living alone, especially when you can't be there? HomeTogether turns her TV into an easy way to video-call family and get gentle daily wellness check-ins. No smartphone. No new gadgets. She just looks up and sees your face. $99/mo, cancel anytime, 30-day money-back guarantee.
+
+Headline: Stay Close to Mom, Right Through Her TV
+Button: Learn More &rarr; tryhometogether.com/get</div>
+      </div>
+      <div class="cols">
+        <div>
+          <h3>Google search headlines (30 char)</h3>
+          <div class="lines">
+            <div class="ln"><span class="n">1</span><span class="c">Video Call Mom on Her TV</span></div>
+            <div class="ln"><span class="n">2</span><span class="c">No Smartphone Needed</span></div>
+            <div class="ln"><span class="n">3</span><span class="c">Stay Close From Far Away</span></div>
+            <div class="ln"><span class="n">4</span><span class="c">Senior TV Video Calling</span></div>
+            <div class="ln"><span class="n">5</span><span class="c">$99/mo &middot; Cancel Anytime</span></div>
+          </div>
+        </div>
+        <div>
+          <h3>Keywords to start</h3>
+          <div class="kw">
+            <span>"video call for seniors"</span><span>"tv video calling for elderly"</span><span>"how to video call grandma"</span><span>"senior video call device"</span><span>"stay connected aging parent"</span><span>"remote wellness check senior"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout"><b>The positioning in one line:</b> HomeTogether is connection for families who can't always be there, from the caregivers who've looked after Southwest Missouri families since 2017. The device stands on its own, and virtual caregiving is the natural next step whenever a family wants a real person checking in too.</div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- TRACK -->
+    <section id="track">
+      <div class="sec-head"><h2>Track what's working</h2></div>
+      <p class="sec-sub">Your site already has Google Analytics and the Facebook pixel installed, so calls, form fills, and booking clicks are being measured. Keep a simple weekly tally so you spend where the clients actually come from.</p>
+      <div class="card tint">
+        <table class="scorecard">
+          <thead><tr><th>Channel</th><th>What to count</th><th>This week</th></tr></thead>
+          <tbody>
+            <tr><td>Referrals</td><td>Sources visited &middot; referrals received</td><td class="n">___ / ___</td></tr>
+            <tr><td>Google Profile</td><td>Calls &amp; direction requests (in the profile)</td><td class="n">___</td></tr>
+            <tr><td>Reviews</td><td>New reviews this week</td><td class="n">___</td></tr>
+            <tr><td>Local Services / Google Ads</td><td>Leads &middot; cost per lead</td><td class="n">___ / $___</td></tr>
+            <tr><td>Facebook</td><td>Leads &middot; cost per lead</td><td class="n">___ / $___</td></tr>
+            <tr><td><b>New clients started</b></td><td>The number that actually matters</td><td class="n">___</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">Rule of thumb: every new client is worth thousands over their time with you, so even a handful of leads a week from these channels adds up fast. Double down on whatever line of this table grows first.</p>
+    </section>
+
+    <footer class="pb-foot">
+      <p><b>Caring Companions In-Home Senior Care</b> &middot; 1331 N Stewart Ave Ste B, Springfield, MO 65802 &middot; (417) 234-8494 &middot; fax (417) 719-7870</p>
+      <p>Referral one-pager: <a href="https://guide.mo-care.com/refer">guide.mo-care.com/refer</a> &nbsp;&middot;&nbsp; Online referrals: <a href="https://guide.mo-care.com/referral-partners.html">/referral-partners</a> &nbsp;&middot;&nbsp; Book: <a href="https://guide.mo-care.com/book.html">/book</a></p>
+    </footer>
+  </div>
+</div>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script>
+  (function () {
+    var toast = document.getElementById('toast');
+    var t;
+    function showToast(msg) {
+      toast.textContent = msg; toast.classList.add('show');
+      clearTimeout(t); t = setTimeout(function(){ toast.classList.remove('show'); }, 1600);
+    }
+    document.querySelectorAll('.copy').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var body = btn.closest('.tmpl').querySelector('.tmpl-body');
+        var text = body.innerText.replace(/ /g, ' ');
+        function done() {
+          btn.textContent = 'Copied'; btn.classList.add('done');
+          showToast('Copied to clipboard');
+          setTimeout(function(){ btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1600);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(function(){ fallback(text, done); });
+        } else { fallback(text, done); }
+      });
+    });
+    function fallback(text, cb) {
+      var ta = document.createElement('textarea'); ta.value = text;
+      ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta);
+      ta.select(); try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta); cb();
+    }
+    // smooth-scroll jump links
+    document.querySelectorAll('.jump a').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var el = document.querySelector(a.getAttribute('href'));
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  })();
+</script>
