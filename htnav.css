@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;700;800&display=swap');
 .htnav{display:block;margin:0;position:sticky;top:0;z-index:100;background:#FAF9F6;border-bottom:1px solid #E4E1D8;font-family:'Nunito Sans',-apple-system,system-ui,sans-serif}
 .htnav *{box-sizing:border-box}
-.htnav .in{max-width:1120px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:20px}
+.htnav .in{max-width:1200px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:20px}
 .htnav a{text-decoration:none}
 .htnav .brand{display:flex;align-items:center;gap:5px;position:relative}
 .htnav .switch{position:static}
@@ -52,7 +52,7 @@
 .htfoot{background:#0D365F;color:#cfdce8;font-family:'Nunito Sans',-apple-system,system-ui,sans-serif;margin-top:44px}
 .htfoot a{color:#cfdce8;text-decoration:none}
 .htfoot a:hover{color:#fff}
-.htfoot .ftin{max-width:1120px;margin:0 auto;padding:40px 22px 26px;display:grid;grid-template-columns:1.25fr 2fr;gap:36px}
+.htfoot .ftin{max-width:1200px;margin:0 auto;padding:40px 22px 26px;display:grid;grid-template-columns:1.25fr 2fr;gap:36px}
 .htfoot .ftwm{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:22px;color:#fff}
 .htfoot .ftwm b{color:#F0A63A}
 .htfoot .ftbrand p{font-size:13.5px;margin-top:10px;line-height:1.6;max-width:40ch;color:#9fb4c8}
