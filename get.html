@@ -23,15 +23,15 @@
   .lp-head .cta{margin-left:auto}
   .lp-offer{background:var(--heading);color:#fff;text-align:center;padding:11px 16px;font-size:14.5px;font-weight:600}
   .lp-offer b{color:var(--honey)}
-  .lp-benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:820px;margin:36px auto 0}
+  .lp-benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:1000px;margin:36px auto 0}
   @media(max-width:640px){.lp-benefits{grid-template-columns:1fr}}
   .lp-ben{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow,0 6px 22px rgba(13,54,95,.05))}
   .lp-ben .bi{font-size:26px;line-height:1;flex:0 0 auto}
   .lp-ben h3{font-size:17px;color:var(--heading);margin:0 0 4px}
   .lp-ben p{font-size:14.5px;color:var(--muted);margin:0;line-height:1.55}
-  .lp-cc{max-width:720px;margin:0 auto;text-align:center}
+  .lp-cc{max-width:880px;margin:0 auto;text-align:center}
   .lp-cc img{height:40px;width:auto;margin:0 auto 14px;display:block}
-  .lp-final{background:linear-gradient(120deg,var(--sea-deep),var(--sea));border-radius:22px;padding:44px 32px;text-align:center;color:#fff;max-width:760px;margin:0 auto}
+  .lp-final{background:linear-gradient(120deg,var(--sea-deep),var(--sea));border-radius:22px;padding:44px 32px;text-align:center;color:#fff;max-width:940px;margin:0 auto}
   .lp-final h2{color:#fff;font-size:clamp(26px,4vw,34px);margin:0 0 10px}
   .lp-final p{color:rgba(255,255,255,.9);font-size:17px;margin:0 0 24px}
   .lp-final .btn-primary{background:var(--honey);color:#3a2708}
@@ -42,18 +42,30 @@
 <meta property="og:image:height" content="1015">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "HomeTogether TV", "description": "Turns any TV into an easy video-calling and wellness device for seniors. No smartphone needed. Family video calls, medication reminders, radar safety sensing with an automatic camera privacy shutter, and included engagement channels.", "image": "https://tryhometogether.com/assets/hero-family-tv.jpg", "brand": {"@type": "Brand", "name": "HomeTogether"}, "offers": {"@type": "Offer", "price": "99.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://tryhometogether.com/checkout.html", "description": "$99 per month, free shipping, 30-day money-back guarantee, cancel anytime."}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "HomeTogether TV", "description": "Turns any TV into an easy video-calling and wellness device for seniors. No smartphone needed. Family video calls, medication reminders, radar safety sensing with an automatic camera privacy shutter, and included engagement channels.", "image": "https://tryhometogether.com/assets/hero-family-tv.jpg", "brand": {"@type": "Brand", "name": "HomeTogether"}, "offers": {"@type": "Offer", "price": "99.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://tryhometogether.com/checkout", "description": "$99 per month, free shipping, 30-day money-back guarantee, cancel anytime."}}</script>
+<link rel="stylesheet" href="/htnav.css">
 </head>
 <body>
 
 <div class="lp-offer"><b>$99/month</b> · Free shipping · Cancel anytime · <b>30-day money-back guarantee</b></div>
 
-<header class="lp-head">
-  <div class="wrap row">
-    <a href="index.html" class="lp-wm">HomeTogether <b>TV</b></a>
-    <span class="cta"><a href="checkout.html" class="btn btn-primary">Get HomeTogether</a></span>
-  </div>
-</header>
+<header class="htnav tv"><div class="in">
+  <span class="brand"><a class="wm" href="/">HomeTogether <b>TV</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">Two ways to get care</div>
+      <a class="si current" href="/"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small><span class="here">You're here</span></a>
+      <a class="si" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/#how" class="hide-sm">How it works</a>
+    <a href="/#features" class="hide-sm">The device</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/guides">Guides</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="cta" href="/get">Get HomeTogether</a>
+</div></header>
 
 <section class="hero">
   <div class="wrap hero-grid">
@@ -62,7 +74,7 @@
       <h1>Stay close to Mom, even from <span class="u">far away</span>.</h1>
       <p class="sub">HomeTogether turns the TV she already uses into an easy way to video-call family and get gentle daily wellness check-ins. No smartphone. No new gadgets. She just looks up and sees your face.</p>
       <div class="cta-row">
-        <a href="checkout.html" class="btn btn-primary btn-lg">Get HomeTogether →</a>
+        <a href="checkout" class="btn btn-primary btn-lg">Get HomeTogether →</a>
         <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
       </div>
       <p class="price-note"><b>$99/month</b> · Free shipping · Cancel anytime · 30-day money-back guarantee</p>
@@ -78,6 +90,21 @@
       <div class="float-badge fb2"><span class="ic" style="background:#EAF4F6"><svg aria-hidden="true"><use href="assets/icons.svg#i-bell"/></svg></span>“Time for your medication, Mom”</div>
     </div>
   </div>
+</section>
+
+<section class="trust-band"><div class="wrap"><div class="trust-strip">
+  <span><svg aria-hidden="true"><use href="assets/icons.svg#i-heart"/></svg> Family-owned Caring Companions, caring for seniors since 2017</span>
+  <span><svg aria-hidden="true"><use href="assets/icons.svg#i-tv"/></svg> No smartphone, ever, it all lives on the TV</span>
+  <span><svg aria-hidden="true"><use href="assets/icons.svg#i-shield"/></svg> 30-day money-back guarantee</span>
+  <span><svg aria-hidden="true"><use href="assets/icons.svg#i-handshake"/></svg> Real human support</span>
+</div></div>
+<style>
+  .trust-band{padding:15px 0;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .trust-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:11px 26px}
+  .trust-strip span{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--ink)}
+  .trust-strip svg{width:20px;height:20px;flex:none;color:var(--sea-deep)}
+  @media(max-width:760px){.trust-strip span{font-size:12.5px}}
+</style>
 </section>
 
 <section class="band-warm" style="padding:46px 0;">
@@ -144,25 +171,43 @@
     <div class="lp-final">
       <h2>Bring your family closer, this week.</h2>
       <p>Give your loved one connection, and give yourself peace of mind.</p>
-      <a href="checkout.html" class="btn btn-primary btn-lg">Get HomeTogether →</a>
+      <a href="checkout" class="btn btn-primary btn-lg">Get HomeTogether →</a>
       <p style="font-size:13.5px;margin:16px 0 0;color:rgba(255,255,255,.8)">$99/month · Free shipping · Cancel anytime · 30-day money-back guarantee</p>
     </div>
   </div>
 </section>
 
-<footer class="site">
-  <div class="wrap frow">
-    <div>
-      <div class="brand" style="font-size:19px;margin-bottom:8px;"><img src="assets/logo.png" alt="HomeTogether" style="height:30px;width:auto;display:block"></div>
-      <div>Keeping older loved ones healthy and connected, simply, through the TV.</div>
-      <div style="margin-top:14px;display:flex;align-items:center;gap:9px;"><span style="font-size:12px;color:var(--faint);white-space:nowrap;">A program of</span><a href="https://mo-care.com" target="_blank" rel="noopener" style="line-height:0" aria-label="Caring Companions"><img src="assets/caring-companions-logo.png" alt="Caring Companions" style="height:30px;width:auto;display:block;"></a></div>
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4>
+      <a href="/directory">Browse caregivers</a>
+      <a href="/membership">Membership</a>
+      <a href="/resources">Resources</a>
+      <a href="/caregiver">For caregivers</a>
     </div>
-    <div style="text-align:right;">
-      <div><a href="index.html">Full site</a> · <a href="index.html#faq">FAQ</a> · <a href="help.html">Help</a></div>
-      <div style="margin-top:6px;"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="returns.html">Returns</a></div>
-      <div style="margin-top:8px;color:var(--faint);">Support: <a href="help.html#contact" style="color:inherit;text-decoration:underline">submit a request</a> &middot; support@tryhometogether.com · &copy; 2026 HomeTogether</div>
+    <div class="ftcol"><h4>HomeTogether TV</h4>
+      <a href="/">How it works</a>
+      <a href="/get">The device</a>
+      <a href="/guides">Guides</a>
+    </div>
+    <div class="ftcol"><h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/help">Help &amp; contact</a>
+      <a href="/resources">Resource center</a>
+    </div>
+    <div class="ftcol"><h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/returns">Returns</a>
     </div>
   </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
 </footer>
 
 <script src="accessibility.js" defer></script>
