@@ -32,6 +32,9 @@
   .co-help{text-align:center;margin-top:22px;font-size:14.5px;color:var(--muted);}
   .co-help a{color:var(--sea);font-weight:700;}
   .co-back{display:inline-block;margin-bottom:6px;color:var(--sea);font-weight:700;text-decoration:none;font-size:14.5px;}
+  .co-stepnum{display:flex;align-items:center;gap:9px;margin:22px 0 11px;font-family:var(--serif);color:var(--heading);font-size:17px;font-weight:700;}
+  .co-stepnum .n{width:25px;height:25px;border-radius:50%;background:var(--sea);color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;font-family:'Nunito Sans',sans-serif;font-weight:800;}
+  .co-stepnum .opt{margin-left:auto;font-family:'Nunito Sans',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:var(--panel-warm);border-radius:20px;padding:3px 10px;}
 </style>
 <meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
 <meta property="og:image:width" content="1387">
@@ -71,12 +74,15 @@
       <div class="co-help">Questions first? <a href="help#contact">Ask our support team</a> or read <a href="help">common questions</a>, we're happy to help before you buy.</div>      </div>
 
     <div class="co-card">
-      <h2>Your order</h2>
+      <h2>Build your order</h2>
+      <p style="font-size:13.5px;color:var(--muted);margin:-6px 0 4px;line-height:1.5;">Your device is all most families need. Add visits or extras below if you'd like, then pay, all in one place.</p>
+      <div class="co-stepnum"><span class="n">1</span> Your device <span class="opt">Included</span></div>
       <div class="co-sum"><span>HomeTogether TV device + service</span><b>$99/month</b></div>
       <div class="co-sum"><span>Shipping</span><b>Free</b></div>
       <div class="co-sum"><span>Contract</span><b>None, cancel anytime</b></div>
-      <div style="margin-top:16px;background:var(--panel-warm);border-radius:12px;padding:14px 16px;">
-        <div style="font-weight:700;color:var(--heading);font-size:15px;margin-bottom:4px;">Optional: add real caregiver visits</div>
+      <div class="co-stepnum"><span class="n">2</span> Add caregiver visits <span class="opt">Optional</span></div>
+      <div style="margin-top:0;background:var(--panel-warm);border-radius:12px;padding:14px 16px;">
+        <div style="font-weight:700;color:var(--heading);font-size:15px;margin-bottom:4px;">Real caregiver check-ins, on the TV</div>
         <div style="font-size:13.5px;color:var(--muted);line-height:1.5;margin-bottom:10px;">A trained caregiver visits on screen Monday through Friday, checks medications, and keeps them company. Billed weekly, cancel anytime. Why weekdays? It lets the same amazing caregiver come at the same times every day. That steady rhythm is how real trust and friendship grow, and weekends stay family time, with your video calling working 24/7 every day of the week.</div>
         <select id="cgPlan" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;background:#fff;">
           <option value="">No visits for now, just HomeTogether TV</option>
@@ -89,8 +95,9 @@
         </select>
         <div id="cgNote" style="display:none;font-size:13px;color:var(--muted);line-height:1.5;margin-top:9px;">Great choice. Finish your device checkout below first, then on the confirmation page we'll take you straight to setting up the visits (a few questions about your loved one, then their own checkout).</div>
       </div>
-      <div style="margin-top:14px;background:var(--panel-warm);border-radius:12px;padding:14px 16px;">
-        <div style="font-weight:700;color:var(--heading);font-size:15px;margin-bottom:8px;">Optional add-ons</div>
+      <div class="co-stepnum"><span class="n">3</span> Add device extras <span class="opt">Optional</span></div>
+      <div style="margin-top:0;background:var(--panel-warm);border-radius:12px;padding:14px 16px;">
+        <div style="font-weight:700;color:var(--heading);font-size:15px;margin-bottom:8px;">Device extras</div>
         <label style="display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;margin-bottom:10px;cursor:pointer;">
           <input type="checkbox" class="ht-addon" value="internet" data-price="35" style="margin-top:3px;">
           <span><b style="color:var(--heading);">Built-in cellular internet, $35/month.</b> No home Wi-Fi? No problem, we include a plug-and-play internet device so HomeTogether works anywhere.</span>
@@ -115,6 +122,7 @@
       </div>
       <div class="co-sum" style="margin-top:14px;border-top:2px solid var(--border);border-bottom:none;"><span style="font-weight:700;color:var(--heading);">Your monthly total</span><b id="coTotal" style="font-size:19px;">$99/month</b></div>
       <div class="co-sum" id="coWeeklyRow" style="display:none;border-bottom:none;padding-top:0;"><span style="color:var(--muted);">+ Caregiver visits (billed weekly, own checkout)</span><b id="coWeekly" style="color:var(--sea-deep);"></b></div>
+      <div class="co-stepnum"><span class="n">4</span> Enter payment</div>
       <div id="checkout"></div>
       <div id="fallback">
         <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/eVq7sDbvP4c49l2eee0oM01">Continue to secure payment &rarr;</a>
