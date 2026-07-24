@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Support Center: Hire &amp; Manage a Caregiver | HomeTogether Hire</title>
+<meta name="description" content="Practical guidance, interactive tools, and family caregiver training for every step of hiring privately: finding the right caregiver, becoming a prepared employer, managing care, handling difficult moments, and learning caregiving skills.">
+<link rel="canonical" href="https://tryhometogether.com/resources">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HomeTogether Family Support Center">
+<meta property="og:description" content="Guidance and tools for every step of hiring and managing a caregiver at home.">
+<meta property="og:url" content="https://tryhometogether.com/resources">
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/htnav.css">
+<style>
+:root{--navy:#0D365F;--navy-deep:#092647;--teal:#1F7A8C;--teal-deep:#155A68;--teal-soft:#EAF4F6;--honey:#F0A63A;--honey-deep:#C17A12;--good:#2E9B63;--ink:#16283a;--muted:#55677a;--faint:#8a978f;--line:#e4e1d8;--card:#fff;--bg:#FAF9F6;--panel:#F2F0E9;
+--serif:'Fraunces',Georgia,serif;--sans:'Nunito Sans',-apple-system,system-ui,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);letter-spacing:-.012em;text-wrap:balance}
+a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+.crumbs{font-size:13px;color:var(--faint);padding:18px 0 0}.crumbs a{color:var(--muted);font-weight:700}
+.hero{padding:30px 0 6px;text-align:center}
+.eye{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:12px}
+.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.06;margin:0 auto 14px;max-width:18ch}
+.hero p{font-size:18px;color:var(--muted);max-width:60ch;margin:0 auto 22px}
+.search{max-width:560px;margin:0 auto;position:relative}
+.search input{width:100%;font-family:var(--sans);font-size:16.5px;padding:15px 18px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);box-shadow:0 8px 24px rgba(13,54,95,.06)}
+.search input:focus{outline:none;border-color:var(--teal)}
+.search .hint{margin-top:10px;font-size:13px;color:var(--faint)}
+.search .hint b{color:var(--teal-deep);cursor:pointer;font-weight:800}
+.count{font-size:13.5px;color:var(--muted);margin:14px 0 0;font-weight:700;display:none}
+/* journey cards */
+.jour{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:30px 0 8px}
+.jc{display:block;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:0 1px 2px rgba(13,54,95,.04),0 10px 26px rgba(13,54,95,.05);transition:transform .12s,box-shadow .12s}
+.jc:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(13,54,95,.06),0 16px 34px rgba(13,54,95,.09)}
+.jc .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--teal-soft);color:var(--teal-deep);font-family:var(--serif);font-weight:700;margin-bottom:10px}
+.jc h3{font-size:20px;margin-bottom:5px}
+.jc p{color:var(--muted);font-size:14.5px}
+/* sections */
+section.cat{padding:40px 0 6px;border-top:1px solid var(--line);margin-top:34px}
+section.cat.first{border-top:none;margin-top:22px}
+.cat .lead{display:flex;align-items:flex-start;gap:14px;margin-bottom:6px}
+.cat .lead .num{flex:none;width:40px;height:40px;border-radius:11px;background:var(--navy);color:#fff;font-family:var(--serif);font-weight:700;font-size:19px;display:grid;place-items:center}
+.cat h2{font-size:clamp(22px,3.3vw,28px)}
+.cat .desc{color:var(--muted);font-size:16px;margin:2px 0 14px}
+.list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ri{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:14.5px;font-weight:700;color:var(--ink)}
+.ri a{color:var(--ink)}
+.ri.live{border-color:#bfe0c9}
+.ri .t{margin-left:auto;flex:none;font-size:10.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.t.live{background:#e6f5ec;color:#1c7a45}
+.t.tool{background:#eae6fb;color:#4a3b9c}
+.t.soon{background:#f0ede6;color:#8a7d63}
+.advice{background:#FFF7E6;border:1px solid var(--honey);border-radius:14px;padding:16px 20px;margin:16px 0 4px;color:#5c4a22;font-size:14.5px}
+.advice b{color:var(--navy)}
+.learnband{margin-top:10px;background:linear-gradient(120deg,var(--navy),var(--teal-deep));border-radius:16px;color:#fff;padding:22px 24px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.learnband h3{color:#fff;font-size:20px}.learnband p{color:rgba(255,255,255,.86);font-size:14.5px;margin-top:3px}
+.learnband a{margin-left:auto;background:var(--honey);color:#3a2708;border-radius:11px;padding:11px 18px;font-weight:800;white-space:nowrap}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:26px 0 46px;font-size:13px;color:var(--faint)}
+footer .fl{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:10px}footer a{color:var(--muted);font-weight:700}
+.nores{display:none;color:var(--muted);padding:20px 0;font-size:15px}
+@media(max-width:760px){.jour,.list{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://tryhometogether.com/"},
+{"@type":"ListItem","position":2,"name":"Resources","item":"https://tryhometogether.com/resources"}
+]}
+</script>
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">Two ways to get care</div>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/directory">Browse caregivers</a>
+    <details class="res"><summary>Resources ▾</summary>
+      <div class="menu">
+        <div class="gh">A guided family support center</div>
+        <a href="/resources#find">Find the right caregiver<small>Interview, compare, check references</small></a>
+        <a href="/resources#employer">Become a prepared employer<small>Pay, agreements, payroll, records</small></a>
+        <a href="/resources#manage">Manage care successfully<small>Routines, schedules, care plans</small></a>
+        <a href="/resources#difficult">Handle difficult moments<small>Calm help when something's wrong</small></a>
+        <div class="sep"></div>
+        <a href="/resources#learn">Caregiving Learning Center<small>Dementia course, care skills</small></a>
+        <a href="/resources">All resources →</a>
+      </div></details>
+    <a href="/membership" class="hide-sm">Membership</a>
+    <a href="/caregiver" class="hide-sm">For caregivers</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="cta" href="/directory">Find a caregiver</a>
+</div></header>
+
+<div class="wrap">
+<div class="crumbs"><a href="/">Home</a> › Resources</div>
+
+<div class="hero">
+  <p class="eye">Family support center</p>
+  <h1>Resources for every step of hiring care</h1>
+  <p>Practical guidance, interactive tools, and family caregiver training, from a family who understands care at home. Not a blog, a place to actually get the next thing done.</p>
+  <div class="search">
+    <input id="q" type="text" placeholder="What do you need help with today?" aria-label="Search resources">
+    <div class="hint">Try:
+      <b onclick="setq('interview')">interviewing someone</b> ·
+      <b onclick="setq('payroll pay employer')">payroll &amp; pay</b> ·
+      <b onclick="setq('called off missed shift')">a missed shift</b> ·
+      <b onclick="setq('bathing refuses')">refusing care</b>
+    </div>
+  </div>
+  <div class="count" id="count"></div>
+</div>
+
+<div class="jour" id="jour">
+  <a class="jc" href="#find"><span class="n">1</span><h3>Find the right caregiver</h3><p>Interview, compare, check references, and hire safely.</p></a>
+  <a class="jc" href="#employer"><span class="n">2</span><h3>Become a prepared employer</h3><p>Set pay, create an agreement, understand payroll, and organize records.</p></a>
+  <a class="jc" href="#manage"><span class="n">3</span><h3>Manage care successfully</h3><p>Build routines, schedules, care plans, and communication systems.</p></a>
+  <a class="jc" href="#difficult"><span class="n">4</span><h3>Handle difficult moments</h3><p>Calm, practical guidance when something isn't going as planned.</p></a>
+</div>
+
+<p class="nores" id="nores">No matches for that yet. This support center is growing fast, tell us what you were looking for via <a href="/help#contact">Help</a> and we'll prioritize it.</p>
+
+<section class="cat first" id="find">
+  <div class="lead"><span class="num">1</span><div><h2>Find the right caregiver</h2><div class="desc">Everything you need before you make a decision.</div></div></div>
+  <div class="list">
+    <div class="ri live" data-k="how to hire caregiver guide steps"><a href="/guides/how-to-hire-a-caregiver">How to hire a caregiver you trust</a><span class="t live">Guide</span></div>
+    <div class="ri live" data-k="tour family dashboard compare organize applicants"><a href="/family-tour">Tour the family dashboard</a><span class="t live">Tool</span></div>
+    <div class="ri live" data-k="interview question builder scenario"><a href="/tools/interview-builder">Interview question builder</a><span class="t tool">Tool</span></div>
+    <div class="ri live" data-k="caregiver comparison worksheet score compare"><a href="/tools/caregiver-comparison">Caregiver comparison worksheet</a><span class="t tool">Tool</span></div>
+    <div class="ri live" data-k="reference check guide call script"><a href="/tools/reference-check-script">Reference check guide &amp; call script</a><span class="t tool">Tool</span></div>
+    <div class="ri live" data-k="background check guide"><a href="/guides/background-check-guide">Background check guide</a><span class="t live">Guide</span></div>
+    <div class="ri live" data-k="red flags green flags warning signs"><a href="/guides/red-flags-green-flags">Red flags &amp; green flags</a><span class="t live">Guide</span></div>
+    <div class="ri live" data-k="dementia experience trial shift evaluate"><a href="/guides/trial-shift-guide">Trial shift &amp; safety guide</a><span class="t live">Guide</span></div>
+  </div>
+</section>
+
+<section class="cat" id="employer">
+  <div class="lead"><span class="num">2</span><div><h2>Become a prepared employer</h2><div class="desc">Define the job clearly, and understand what hiring in your home involves.</div></div></div>
+  <div class="advice"><b>Hiring someone in your home may make you a household employer.</b> We'll help you understand the steps and decide whether to manage them yourself or use a payroll service. This is general information, not legal or tax advice.</div>
+  <div class="list">
+    <div class="ri live" data-k="cost of care pay rates what caregivers cost"><a href="/guides/cost-of-in-home-care-missouri">What in-home care costs</a><span class="t live">Guide</span></div>
+    <div class="ri live" data-k="pay calculator wage fair pay overtime employer cost"><a href="/tools/pay-calculator">Caregiver pay calculator</a><span class="t tool">Tool</span></div>
+    <div class="ri live" data-k="job description builder"><a href="/tools/job-description-builder">Job description builder</a><span class="t tool">Tool</span></div>
+    <div class="ri live" data-k="work agreement builder contract e-sign"><a href="/tools/work-agreement-builder">Work agreement builder</a><span class="t tool">Tool</span></div>
+    <div class="ri live" data-k="household employer basics payroll ein tax"><a href="/guides/household-employer-basics">Household employer basics</a><span class="t live">Guide</span></div>
+    <div class="ri live" data-k="employee vs independent contractor 1099 w2"><a href="/guides/employee-vs-contractor">Employee vs. contractor guide</a><span class="t live">Guide</span></div>
+    <div class="ri live" data-k="payroll setup checklist provider questions"><a href="/tools/payroll-setup-checklist">Payroll setup checklist</a><span class="t tool">Checklist</span></div>
+    <div class="ri live" data-k="first day orientation checklist home access"><a href="/tools/first-day-checklist">First-day &amp; orientation checklist</a><span class="t tool">Checklist</span></div>
+  </div>
+</section>
+
+<section class="cat" id="manage">
+  <div class="lead"><span class="num">3</span><div><h2>Manage care successfully</h2><div class="desc">Keep care working smoothly after the hire, this is what a marketplace can't do.</div></div></div>
+  <div class="list">
+    <div class="ri live" data-k="care plan builder"><a href="/tools/care-plan-builder">Care plan builder</a><span class="t tool">Tool</span></div>
+    <div class="ri live" data-k="daily routine weekly schedule builder"><a href="/tools/weekly-schedule">Weekly care schedule</a><span class="t tool">Tool</span></div>
+    <div class="ri live" data-k="task list caregiver duties builder"><a href="/tools/task-list-builder">Caregiver task list builder</a><span class="t tool">Tool</span></div>
+    <div class="ri live" data-k="visit note guide communication preferences"><a href="/guides/visit-notes-communication">Visit notes &amp; communication</a><span class="t live">Guide</span></div>
+    <div class="ri live" data-k="backup care plan call off coverage"><a href="/tools/backup-care-plan">Backup &amp; coverage plan</a><span class="t tool">Tool</span></div>
+    <div class="ri live" data-k="family care team roles emergency prep"><a href="/guides/family-care-team">Family care team &amp; emergency prep</a><span class="t live">Guide</span></div>
+    <div class="ri live" data-k="30 day check in feedback performance raise bonus"><a href="/guides/giving-caregiver-feedback">30-day check-in &amp; feedback guide</a><span class="t live">Guide</span></div>
+    <div class="ri live" data-k="boundaries burnout ending employment respectfully"><a href="/guides/caregiver-boundaries-burnout">Boundaries, burnout &amp; ending well</a><span class="t live">Guide</span></div>
+  </div>
+</section>
+
+<section class="cat" id="difficult">
+  <div class="lead"><span class="num">4</span><div><h2>Handle difficult moments</h2><div class="desc">Calm, step-by-step decision guides for the moments families search for at 2am.</div></div></div>
+  <div class="list">
+    <div class="ri live" data-k="caregiver called off missed shift no show coverage"><a href="/tools/caregiver-called-off">My caregiver called off</a><span class="t tool">Guide</span></div>
+    <div class="ri live" data-k="caregiver late repeatedly attendance"><a href="/tools/caregiver-repeatedly-late">My caregiver is repeatedly late</a><span class="t tool">Guide</span></div>
+    <div class="ri live" data-k="parent does not like caregiver dislikes"><a href="/tools/parent-doesnt-like-caregiver">My parent doesn't like the caregiver</a><span class="t tool">Guide</span></div>
+    <div class="ri live" data-k="parent refuses help care resistance"><a href="/tools/parent-refuses-help">My parent refuses help</a><span class="t tool">Guide</span></div>
+    <div class="ri live" data-k="reported a fall injury"><a href="/tools/caregiver-reported-a-fall">The caregiver reported a fall</a><span class="t tool">Guide</span></div>
+    <div class="ri live" data-k="something missing theft money valuables"><a href="/tools/something-missing">Something valuable is missing</a><span class="t tool">Guide</span></div>
+    <div class="ri live" data-k="neglect mistreatment abuse concern safety"><a href="/tools/concerned-about-mistreatment">I'm concerned about mistreatment</a><span class="t tool">Guide</span></div>
+    <div class="ri live" data-k="replace caregiver quickly needs agency higher care"><a href="/tools/replace-care-fast">I need to replace care quickly</a><span class="t tool">Guide</span></div>
+  </div>
+</section>
+
+<section class="cat" id="learn">
+  <div class="lead"><span class="num">5</span><div><h2>Caregiving Learning Center</h2><div class="desc">Learn the actual care skills, from people who do this every day.</div></div></div>
+  <div class="learnband">
+    <div><h3>The Dementia Journey</h3><p>A free, 9-module family course: staying calm, communicating, and caring with confidence.</p></div>
+    <a href="https://mo-care.com/dementia-journey/" target="_blank" rel="noopener">Start the course →</a>
+  </div>
+  <div class="list" style="margin-top:14px">
+    <div class="ri live" data-k="personal care needs bathing dressing"><a href="/guides/personal-care-needs">Understanding personal care needs</a><span class="t live">Lesson</span></div>
+    <div class="ri live" data-k="fall prevention home safety"><a href="/guides/fall-prevention">Fall prevention at home</a><span class="t live">Lesson</span></div>
+    <div class="ri live" data-k="safe mobility transfers lifting"><a href="/guides/safe-mobility-transfers">Safe mobility &amp; transfers</a><span class="t live">Lesson</span></div>
+    <div class="ri live" data-k="nutrition hydration incontinence"><a href="/guides/nutrition-hydration">Nutrition, hydration &amp; incontinence</a><span class="t live">Lesson</span></div>
+    <div class="ri live" data-k="meaningful activities engagement"><a href="/guides/meaningful-activities">Meaningful activities</a><span class="t live">Lesson</span></div>
+    <div class="ri live" data-k="when more care needed report to professional signs"><a href="/guides/when-more-care-needed">When more care may be needed</a><span class="t live">Lesson</span></div>
+  </div>
+</section>
+</div>
+
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4>
+      <a href="/directory">Browse caregivers</a>
+      <a href="/membership">Membership</a>
+      <a href="/resources">Resources</a>
+      <a href="/caregiver">For caregivers</a>
+    </div>
+    <div class="ftcol"><h4>HomeTogether TV</h4>
+      <a href="/">How it works</a>
+      <a href="/get">The device</a>
+      <a href="/guides">Guides</a>
+    </div>
+    <div class="ftcol"><h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/help">Help &amp; contact</a>
+      <a href="/resources">Resource center</a>
+    </div>
+    <div class="ftcol"><h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/returns">Returns</a>
+    </div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+</footer>
+
+<script>
+var q=document.getElementById('q'),count=document.getElementById('count'),nores=document.getElementById('nores'),jour=document.getElementById('jour');
+function setq(v){q.value=v;filter();q.focus();}
+function filter(){
+  var term=q.value.trim().toLowerCase();
+  var items=document.querySelectorAll('.ri'),cats=document.querySelectorAll('section.cat'),shown=0;
+  if(!term){items.forEach(function(i){i.style.display='';});cats.forEach(function(c){c.style.display='';});count.style.display='none';nores.style.display='none';jour.style.display='';return;}
+  var words=term.split(/\s+/);
+  items.forEach(function(i){
+    var hay=(i.getAttribute('data-k')+' '+i.textContent).toLowerCase();
+    var hit=words.some(function(w){return hay.indexOf(w)>-1;});
+    i.style.display=hit?'':'none';if(hit)shown++;
+  });
+  cats.forEach(function(c){var any=c.querySelectorAll('.ri:not([style*="none"])').length;c.style.display=any?'':'none';});
+  jour.style.display='none';
+  count.style.display='';count.textContent=shown?(shown+' resource'+(shown>1?'s':'')+' match "'+q.value+'"'):'';
+  nores.style.display=shown?'none':'';
+}
+q.addEventListener('input',filter);
+</script>
+</body>
+</html>

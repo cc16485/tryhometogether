@@ -140,7 +140,7 @@
           sent = true;
           document.getElementById('main').style.display = 'none';
           var low = rating <= 3;
-          document.getElementById('thanksEmoji').textContent = low ? '🤝' : '\u2665';
+          document.getElementById('thanksEmoji').textContent = low ? '<svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-handshake"/></svg>' : '\u2665';
           document.getElementById('thanksHead').textContent = low ? 'Thank you for telling us' : 'Thank you!';
           document.getElementById('thanksSub').textContent = low
             ? 'Samantha, our owner, will read this herself.' + (document.getElementById('fb-contact').value.trim() ? ' Since you left a way to reach you, expect a personal follow-up soon.' : ' You can also reach us anytime at support@tryhometogether.com.')

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find a Caregiver · HomeTogether Hire</title>
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#143A5E;--navy-deep:#0e2c49;--teal:#1E7A8C;--teal-deep:#155A68;--teal-soft:#e6f1f3;--honey:#EFCE85;--honey-deep:#C9821C;--ink:#16283a;--muted:#5b6b7a;--line:#e4e8ee;--card:#fff;--bg:#f6f8fa;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:1200px;margin:0 auto;padding:26px 20px 90px}
+.brandbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.brand{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--navy)}
+.brand small{display:block;font-family:'Nunito Sans';font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
+h1{font-family:'Fraunces',serif;font-weight:700;color:var(--navy);font-size:clamp(24px,4vw,32px);margin-bottom:6px;text-wrap:balance}
+.lede{color:var(--muted);font-size:16px;margin-bottom:20px}
+.filters{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:20px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.filters input{flex:1;min-width:180px;font:inherit;padding:10px 13px;border:1.5px solid var(--line);border-radius:10px}
+.filters label{font-size:14px;font-weight:700;color:var(--navy);display:flex;gap:8px;align-items:center;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.cg{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;cursor:pointer;transition:box-shadow .15s,transform .15s}
+.cg:hover{box-shadow:0 6px 20px rgba(20,58,94,.1);transform:translateY(-2px)}
+.cg-top{display:flex;gap:12px;align-items:center}
+.av{width:56px;height:56px;border-radius:50%;object-fit:cover;background:var(--teal-soft);border:1.5px solid var(--line);flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--teal-deep)}
+.nm{font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:var(--navy)}
+.loc{font-size:13px;color:var(--muted)}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.b{font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 9px}
+.b.check{background:#e8f6ee;color:#15803d}.b.intv{background:var(--teal-soft);color:var(--teal-deep)}
+.b.pending{background:#f1f3f5;color:#6b7280}
+.bigcheck{display:inline-flex;align-items:center;gap:7px;background:#e8f6ee;color:#15803d;border:1.5px solid #bfe6cd;border-radius:999px;padding:6px 14px;font-weight:800;font-size:14px}
+.bigcheck .sh{font-size:16px}
+.bigpending{display:inline-flex;align-items:center;gap:7px;background:#f1f3f5;color:#6b7280;border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:700;font-size:13.5px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.chip{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:12.5px;font-weight:700;color:var(--muted)}
+.rate{margin-top:12px;font-weight:800;color:var(--navy)}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:40px 24px;text-align:center;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:12px 22px;font:inherit;font-weight:800;cursor:pointer;background:var(--teal);color:#fff;text-decoration:none}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(14,44,73,.55);display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow:auto;z-index:50}
+.modal.on{display:flex}
+.sheet{background:#fff;border-radius:18px;max-width:620px;width:100%;padding:26px}
+.sheet .x{float:right;cursor:pointer;font-size:22px;color:var(--muted);border:none;background:none}
+audio{width:100%;margin-top:10px}
+@media(max-width:520px){.filters{flex-direction:column;align-items:stretch}}
+</style>
+<link rel="stylesheet" href="/htnav.css">
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">Two ways to get care</div>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/directory">Browse caregivers</a>
+    <details class="res"><summary>Resources ▾</summary>
+      <div class="menu">
+        <div class="gh">A guided family support center</div>
+        <a href="/resources#find">Find the right caregiver<small>Interview, compare, check references</small></a>
+        <a href="/resources#employer">Become a prepared employer<small>Pay, agreements, payroll, records</small></a>
+        <a href="/resources#manage">Manage care successfully<small>Routines, schedules, care plans</small></a>
+        <a href="/resources#difficult">Handle difficult moments<small>Calm help when something's wrong</small></a>
+        <div class="sep"></div>
+        <a href="/resources#learn">Caregiving Learning Center<small>Dementia course, care skills</small></a>
+        <a href="/resources">All resources →</a>
+      </div></details>
+    <a href="/membership" class="hide-sm">Membership</a>
+    <a href="/caregiver" class="hide-sm">For caregivers</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="cta" href="/directory">Find a caregiver</a>
+</div></header>
+<div class="wrap">
+  <div class="brandbar" style="justify-content:flex-end">
+    <a class="btn" href="/family">Post a job / my account →</a>
+  </div>
+  <p style="font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:6px">Caregiver directory</p>
+  <h1>Good people, ready to meet</h1>
+  <p class="lede">Every caregiver here has built a profile and been reviewed by our team. Those with a ✓ have passed a background check. Browse, then post a job to invite the ones you like.</p>
+
+  <div class="filters">
+    <input id="q" placeholder="Search by city or name…" oninput="render()">
+    <label><input type="checkbox" id="onlyChecked" onchange="render()"> Background-checked only</label>
+  </div>
+
+  <div id="grid" class="grid"></div>
+  <div id="empty" class="empty" style="display:none"></div>
+  <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:26px">New to hiring a caregiver? <a href="/guides/how-to-hire-a-caregiver" style="color:var(--teal-deep);font-weight:700">How to hire someone you trust</a> · <a href="/guides/cost-of-in-home-care-missouri" style="color:var(--teal-deep);font-weight:700">What care costs in Missouri</a></p>
+</div>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="sheet" id="sheet"></div>
+</div>
+
+<script type="module">
+import { sb, esc } from './account.js';
+const $=id=>document.getElementById(id);
+let CGS=[];
+
+function initials(n){const p=String(n||'').trim().split(/\s+/);return((p[0]||'')[0]||'')+((p[1]||'')[0]||'')||'HT';}
+
+async function load(){
+  const {data,error}=await sb.from('htl_caregivers')
+    .select('id,display_name,city,state,service_area,years,hourly_rate,skills,certs,availability,bio,photo_url,background_checked,badge_verified,interview_done,interview,video_intro_url')
+    .eq('published',true).order('background_checked',{ascending:false});
+  CGS=data||[];
+  const cityParam=new URLSearchParams(location.search).get('city');
+  if(cityParam && $('q')) $('q').value=cityParam;
+  // attach public reviews
+  const ids=CGS.map(c=>c.id);
+  if(ids.length){
+    const {data:revs}=await sb.from('htl_reviews').select('caregiver_id,rating,body,family_name,created_at').in('caregiver_id',ids);
+    const by={};(revs||[]).forEach(r=>{(by[r.caregiver_id]=by[r.caregiver_id]||[]).push(r);});
+    CGS.forEach(c=>{const rs=by[c.id]||[];c._reviews=rs;c._avg=rs.length?(rs.reduce((s,r)=>s+(r.rating||0),0)/rs.length):0;});
+  }
+  render();
+}
+function starsFor(avg){const full=Math.round(avg);let s='';for(let i=1;i<=5;i++)s+=(i<=full?'★':'☆');return s;}
+
+window.render=function(){
+  const q=$('q').value.trim().toLowerCase();
+  const onlyChecked=$('onlyChecked').checked;
+  let list=CGS.filter(c=>{
+    if(onlyChecked && !c.background_checked) return false;
+    if(q){ const hay=((c.display_name||'')+' '+(c.city||'')+' '+(c.skills||[]).join(' ')).toLowerCase(); if(!hay.includes(q)) return false; }
+    return true;
+  });
+  if(!CGS.length){ $('grid').innerHTML=''; $('empty').style.display=''; $('empty').innerHTML='No caregivers are published in the directory yet. As caregivers finish their interview and review, they will appear here. <br><br><a class="btn" href="/family">Post a job to start receiving applicants →</a>'; return; }
+  $('empty').style.display= list.length?'none':'';
+  if(!list.length) $('empty').innerHTML='No caregivers match that search yet. Try clearing the filters.';
+  $('grid').innerHTML=list.map(c=>card(c)).join('');
+};
+
+function card(c){
+  const av=c.photo_url?'<img class="av" src="'+esc(c.photo_url)+'" alt="">':'<div class="av">'+esc(initials(c.display_name))+'</div>';
+  const rate=c.hourly_rate?('$'+Number(c.hourly_rate)+' / hour'):'';
+  return '<div class="cg" onclick="openCg(\''+c.id+'\')">'
+    +'<div class="cg-top">'+av+'<div><div class="nm">'+esc(c.display_name||'Caregiver')+'</div>'
+    +'<div class="loc">'+esc(c.city||'')+(c.years?' · '+c.years+' yrs experience':'')+'</div></div></div>'
+    +'<div class="badges">'+(c.background_checked?'<span class="b check">✓ Background checked</span>':'<span class="b pending">Background check pending</span>')+((c.interview_done||c.video_intro_url)?'<span class="b intv">Interviewed</span>':'')+'</div>'
+    +(c._reviews&&c._reviews.length?'<div style="margin-top:8px;color:var(--honey-deep);font-weight:800;font-size:14px">'+starsFor(c._avg)+' <span style="color:var(--muted);font-weight:600">'+c._avg.toFixed(1)+' · '+c._reviews.length+' review'+(c._reviews.length===1?'':'s')+'</span></div>':'')
+    +'<div class="chips">'+(c.skills||[]).slice(0,4).map(s=>'<span class="chip">'+esc(s)+'</span>').join('')+'</div>'
+    +(rate?'<div class="rate">'+rate+'</div>':'')+'</div>';
+}
+
+window.openCg=function(id){
+  const c=CGS.find(x=>x.id===id); if(!c) return;
+  const av=c.photo_url?'<img class="av" style="width:72px;height:72px" src="'+esc(c.photo_url)+'" alt="">':'<div class="av" style="width:72px;height:72px;font-size:22px">'+esc(initials(c.display_name))+'</div>';
+  const vid=c.video_intro_url?'<h3 style="font-family:Fraunces,serif;color:var(--navy);margin:16px 0 6px">Meet '+esc((c.display_name||'them').split(' ')[0])+'</h3><video controls playsinline src="'+esc(c.video_intro_url)+'" style="width:100%;border-radius:12px;background:#000;max-height:360px"></video>':'';
+  const clip=(!c.video_intro_url&&c.interview&&c.interview.recordingUrl)?'<h3 style="font-family:Fraunces,serif;color:var(--navy);margin:16px 0 4px">Hear their interview</h3><audio controls src="'+esc(c.interview.recordingUrl)+'"></audio>':'';
+  const revs=(c._reviews||[]).slice().sort((a,b)=>(b.created_at||'').localeCompare(a.created_at||''));
+  const reviews=revs.length?'<h3 style="font-family:Fraunces,serif;color:var(--navy);margin:16px 0 6px">Reviews from families ('+c._avg.toFixed(1)+' ★)</h3>'
+    +revs.map(r=>'<div style="border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px"><div style="color:var(--honey-deep);font-weight:800">'+starsFor(r.rating||0)+'</div>'+(r.body?'<p style="font-size:14px;margin:4px 0">'+esc(r.body)+'</p>':'')+'<div class="loc">— '+esc(r.family_name||'A family')+'</div></div>').join(''):'';
+  $('sheet').innerHTML='<button class="x" onclick="closeModal()">×</button>'
+    +'<div style="display:flex;gap:14px;align-items:center">'+av+'<div><div class="nm" style="font-size:22px">'+esc(c.display_name||'Caregiver')+'</div><div class="loc">'+esc(c.city||'')+(c.service_area?' · serves '+esc(c.service_area):'')+'</div>'
+    +'<div class="badges">'+((c.interview_done||c.video_intro_url)?'<span class="b intv">Interviewed</span>':'')+'</div></div></div>'
+    +'<div style="margin-top:14px">'+(c.background_checked
+        ? '<span class="bigcheck"><span class="sh"><svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-shield"/></svg></span> Background check passed</span>'
+        : '<span class="bigpending">Background check not yet completed</span>')+'</div>'
+    +(c.bio?'<p style="margin-top:14px;font-size:15px">'+esc(c.bio)+'</p>':'')
+    +(c.hourly_rate?'<div class="rate">$'+Number(c.hourly_rate)+' / hour</div>':'')
+    +((c.skills||[]).length?'<div class="chips" style="margin-top:12px">'+c.skills.map(s=>'<span class="chip">'+esc(s)+'</span>').join('')+'</div>':'')
+    +((c.certs||[]).length?'<p style="margin-top:10px;font-size:14px"><b>Certifications:</b> '+esc(c.certs.join(', '))+'</p>':'')
+    +((c.availability||[]).length?'<p style="font-size:14px"><b>Available:</b> '+esc(c.availability.join(', '))+'</p>':'')
+    +vid
+    +clip
+    +reviews
+    +'<div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">'
+    +'<button class="btn" onclick="messageCg(\''+c.id+'\',\''+esc((c.display_name||'them').split(' ')[0])+'\')">Message '+esc((c.display_name||'them').split(' ')[0])+'</button>'
+    +'<a class="btn" style="background:var(--honey);color:var(--navy-deep)" href="/family">Invite to a job →</a></div>'
+    +'<div id="msgArea"></div>';
+  $('modal').classList.add('on');
+};
+window.closeModal=function(){ $('modal').classList.remove('on'); };
+
+const BILLING_EP='https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-billing?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966';
+const NOTIFY_EP='https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-notify?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966';
+async function notify(action,payload){ try{ const {data:{session}}=await sb.auth.getSession(); await fetch(NOTIFY_EP,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(session?.access_token||'')},body:JSON.stringify(Object.assign({action},payload))}); }catch(e){} }
+window.subscribeNow=async function(btn){
+  btn.disabled=true; btn.textContent='Opening secure checkout…';
+  const {data:{session}}=await sb.auth.getSession();
+  const r=await fetch(BILLING_EP,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(session?.access_token||'')},body:JSON.stringify({action:'subscribe'})});
+  const d=await r.json();
+  if(d&&d.url){ location.href=d.url; } else { btn.disabled=false; btn.textContent='Become a member — $25/month'; alert((d&&d.error)||'Could not start checkout.'); }
+};
+window.messageCg=async function(cgId,name){
+  const {data:{user}}=await sb.auth.getUser();
+  const area=$('msgArea');
+  if(!user){
+    area.innerHTML='<div style="margin-top:14px;background:var(--bg);border-radius:10px;padding:14px"><p style="margin-bottom:10px">Create a free family account (or log in) to message '+esc(name)+'. You’ll see their replies there.</p><a class="btn" href="/family">Sign in / create account →</a></div>';
+    return;
+  }
+  const {data:fam}=await sb.from('htl_families').select('subscription_status').eq('user_id',user.id).maybeSingle();
+  if(!fam || fam.subscription_status!=='active'){
+    area.innerHTML='<div style="margin-top:14px;background:#fff7e6;border:1px solid var(--honey);border-radius:10px;padding:14px"><p style="margin-bottom:10px;color:#7a5312">To message '+esc(name)+' and hire directly, become a HomeTogether Hire member. <b>$25/month, cancel anytime.</b></p><button class="btn" style="background:var(--honey);color:var(--navy-deep)" onclick="subscribeNow(this)">Become a member — $25/month</button> <a href="/family-tour" style="color:var(--teal-deep);font-weight:800;margin-left:8px">See what’s inside →</a></div>';
+    return;
+  }
+  area.innerHTML='<div style="margin-top:14px;border-top:1px solid var(--line);padding-top:14px">'
+    +'<h3 style="font-family:Fraunces,serif;color:var(--navy);margin-bottom:6px">Message '+esc(name)+'</h3>'
+    +'<textarea id="msgBody" style="width:100%;min-height:90px;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;font:inherit" placeholder="Introduce your family and what you’re looking for. For example: who needs care, the schedule, and what matters most to you."></textarea>'
+    +'<div style="margin-top:10px"><button class="btn" id="msgSend" onclick="sendMessage(\''+cgId+'\',\''+esc(name)+'\')">Send message</button></div>'
+    +'<div id="msgResult" style="margin-top:8px"></div></div>';
+  document.getElementById('msgBody').focus();
+};
+window.sendMessage=async function(cgId,name){
+  const body=(document.getElementById('msgBody').value||'').trim();
+  if(!body){ document.getElementById('msgResult').innerHTML='<span style="color:#b91c1c;font-weight:700">Please write a short note first.</span>'; return; }
+  const btn=document.getElementById('msgSend'); btn.disabled=true; btn.textContent='Sending…';
+  const {data:{user}}=await sb.auth.getUser();
+  let {data:fam}=await sb.from('htl_families').select('name,email').eq('user_id',user.id).maybeSingle();
+  if(!fam){ await sb.from('htl_families').insert({user_id:user.id,email:user.email}); fam={name:'',email:user.email}; }
+  const {data:reqRow,error}=await sb.from('htl_contact_requests').insert({family_user_id:user.id,caregiver_id:cgId,family_name:(fam.name||user.email),family_contact:user.email,message:body}).select('id').maybeSingle();
+  if(error){ btn.disabled=false; btn.textContent='Send message'; document.getElementById('msgResult').innerHTML='<span style="color:#b91c1c;font-weight:700">'+esc(error.message)+'</span>'; return; }
+  if(reqRow&&reqRow.id) notify('message',{request_id:reqRow.id});
+  document.getElementById('msgArea').innerHTML='<div style="margin-top:14px;background:#e8f6ee;border-radius:10px;padding:14px;font-weight:700;color:#15803d">Sent! '+esc(name)+' will see your message in their account and can reply. You’ll find the conversation in your family dashboard under “Messages.”</div>';
+};
+
+load();
+</script>
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4>
+      <a href="/directory">Browse caregivers</a>
+      <a href="/membership">Membership</a>
+      <a href="/resources">Resources</a>
+      <a href="/caregiver">For caregivers</a>
+    </div>
+    <div class="ftcol"><h4>HomeTogether TV</h4>
+      <a href="/">How it works</a>
+      <a href="/get">The device</a>
+      <a href="/guides">Guides</a>
+    </div>
+    <div class="ftcol"><h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/help">Help &amp; contact</a>
+      <a href="/resources">Resource center</a>
+    </div>
+    <div class="ftcol"><h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/returns">Returns</a>
+    </div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+</footer>
+</body>
+</html>

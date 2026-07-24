@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caregiver Interview Question Builder (Free) | HomeTogether Hire</title>
+<meta name="description" content="Build a tailored caregiver interview in minutes. Pick the care your loved one needs and get the right questions, real situation scenarios, what strong answers sound like, red flags to listen for, and space for private notes. Free and printable.">
+<link rel="canonical" href="https://tryhometogether.com/tools/interview-builder">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Caregiver Interview Question Builder">
+<meta property="og:description" content="Pick the care you need and get a tailored interview: questions, scenarios, strong answers, and red flags.">
+<meta property="og:url" content="https://tryhometogether.com/tools/interview-builder">
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/htnav.css">
+<style>
+:root{--navy:#0D365F;--navy-deep:#092647;--teal:#1F7A8C;--teal-deep:#155A68;--teal-soft:#EAF4F6;--honey:#F0A63A;--honey-deep:#C17A12;--good:#2E9B63;--red:#b23b3b;--ink:#16283a;--muted:#55677a;--faint:#8a978f;--line:#e4e1d8;--card:#fff;--bg:#FAF9F6;--panel:#F2F0E9;
+--serif:'Fraunces',Georgia,serif;--sans:'Nunito Sans',-apple-system,system-ui,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);letter-spacing:-.012em;text-wrap:balance}
+a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.crumbs{font-size:13px;color:var(--faint);padding:18px 0 0}.crumbs a{color:var(--muted);font-weight:700}
+.hero{padding:26px 0 4px}
+.eye{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:10px}
+.hero h1{font-size:clamp(28px,4.6vw,40px);line-height:1.08;margin-bottom:12px}
+.hero p{font-size:17px;color:var(--muted);max-width:62ch}
+.picker{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0}
+.picker h2{font-size:19px;margin-bottom:4px}
+.picker .s{color:var(--muted);font-size:14.5px;margin-bottom:14px}
+.needs{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.need{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-weight:700;font-size:14.5px;cursor:pointer;background:var(--bg);color:var(--ink)}
+.need input{width:18px;height:18px;accent-color:var(--teal)}
+.need.on{border-color:var(--teal);background:var(--teal-soft);color:var(--navy-deep)}
+.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.btn{background:var(--honey);color:#3a2708;border-radius:12px;padding:12px 22px;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:var(--sans)}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--teal-deep)}
+.count{color:var(--muted);font-size:14px;font-weight:700}
+#out{margin-top:8px}
+.qgroup{margin:26px 0}
+.qgroup>h2{font-size:22px;border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:6px}
+.qgroup>.gtag{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:12px;display:block}
+.q{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 1px 2px rgba(13,54,95,.04)}
+.q .qt{font-family:var(--serif);font-weight:600;color:var(--navy);font-size:17.5px;margin-bottom:10px}
+.q .cue{font-size:14px;margin:6px 0;padding-left:26px;position:relative}
+.q .cue.good::before{content:"✓";position:absolute;left:0;color:var(--good);font-weight:900}
+.q .cue.flag::before{content:"!";position:absolute;left:2px;color:var(--red);font-weight:900}
+.q .cue .lab{font-weight:800;color:var(--navy)}
+.q .cue.good .lab{color:var(--good)}.q .cue.flag .lab{color:var(--red)}
+.q textarea{width:100%;margin-top:12px;min-height:52px;border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-family:var(--sans);font-size:14px;color:var(--ink);background:#fffef9;resize:vertical}
+.q textarea:focus{outline:none;border-color:var(--teal)}
+.empty{color:var(--muted);text-align:center;padding:30px 0;font-size:15px}
+.advice{background:var(--panel);border-radius:12px;padding:14px 16px;margin:16px 0;font-size:13.5px;color:var(--muted)}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:24px 0 46px;font-size:13px;color:var(--faint)}
+footer a{color:var(--muted);font-weight:700;margin-right:14px}
+@media print{
+  header.htnav,.crumbs,.picker .bar,.btn,footer,.need input{display:none!important}
+  .picker{border:none;padding:0}.needs{display:none}
+  body{background:#fff}.q{break-inside:avoid;box-shadow:none}
+  .q textarea{border:1px solid #ccc;background:#fff}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://tryhometogether.com/"},
+{"@type":"ListItem","position":2,"name":"Resources","item":"https://tryhometogether.com/resources"},
+{"@type":"ListItem","position":3,"name":"Interview builder","item":"https://tryhometogether.com/tools/interview-builder"}
+]}
+</script>
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">Two ways to get care</div>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/directory">Browse caregivers</a>
+    <details class="res"><summary>Resources ▾</summary>
+      <div class="menu">
+        <div class="gh">A guided family support center</div>
+        <a href="/resources#find">Find the right caregiver<small>Interview, compare, check references</small></a>
+        <a href="/resources#employer">Become a prepared employer<small>Pay, agreements, payroll, records</small></a>
+        <a href="/resources#manage">Manage care successfully<small>Routines, schedules, care plans</small></a>
+        <a href="/resources#difficult">Handle difficult moments<small>Calm help when something's wrong</small></a>
+        <div class="sep"></div>
+        <a href="/resources#learn">Caregiving Learning Center<small>Dementia course, care skills</small></a>
+        <a href="/resources">All resources →</a>
+      </div></details>
+    <a href="/membership" class="hide-sm">Membership</a>
+    <a href="/caregiver" class="hide-sm">For caregivers</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="cta" href="/directory">Find a caregiver</a>
+</div></header>
+
+<div class="wrap">
+<div class="crumbs"><a href="/">Home</a> › <a href="/resources">Resources</a> › Interview builder</div>
+
+<div class="hero">
+  <p class="eye">Find the right caregiver</p>
+  <h1>Build your caregiver interview</h1>
+  <p>Pick the care your loved one needs, and we'll build the right questions, real situations to ask about, what strong answers sound like, and the red flags to listen for. Add your own notes, then print it and bring it to the interview.</p>
+</div>
+
+<div class="picker">
+  <h2>What kind of care do you need?</h2>
+  <p class="s">Choose all that apply. Core questions are always included.</p>
+  <div class="needs" id="needs"></div>
+  <div class="bar">
+    <button class="btn" onclick="build()">Build my interview →</button>
+    <button class="btn ghost" onclick="window.print()">Print</button>
+    <span class="count" id="count"></span>
+  </div>
+</div>
+
+<div id="out"></div>
+
+<div class="advice">Tip: there are no perfect answers. You're listening for patience, honesty, and good judgment, and for how they'd treat someone you love. Trust your gut alongside these notes.</div>
+
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4>
+      <a href="/directory">Browse caregivers</a>
+      <a href="/membership">Membership</a>
+      <a href="/resources">Resources</a>
+      <a href="/caregiver">For caregivers</a>
+    </div>
+    <div class="ftcol"><h4>HomeTogether TV</h4>
+      <a href="/">How it works</a>
+      <a href="/get">The device</a>
+      <a href="/guides">Guides</a>
+    </div>
+    <div class="ftcol"><h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/help">Help &amp; contact</a>
+      <a href="/resources">Resource center</a>
+    </div>
+    <div class="ftcol"><h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/returns">Returns</a>
+    </div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+</footer>
+
+<script>
+var NEEDS=[
+ ["companionship","Companionship"],["personal","Personal care (bathing, dressing)"],
+ ["dementia","Dementia or memory care"],["transfers","Mobility &amp; transfers"],
+ ["meds","Medication reminders"],["meals","Meal preparation"],
+ ["transport","Driving &amp; appointments"],["overnight","Overnight care"]
+];
+var CORE=[
+ {qt:"Tell me about your caregiving experience, and who you've cared for.",good:"Specific stories, a range of situations, warmth when they talk about past clients.",flag:"Vague, can't give examples, or speaks about past clients with irritation."},
+ {qt:"Why do you do this work?",good:"A genuine reason rooted in caring for people, not just 'I need a job.'",flag:"Only pay or convenience; no real connection to the work."},
+ {qt:"What does a good day with someone you care for look like to you?",good:"Focus on the person's comfort, dignity, and small joys, not just tasks completed.",flag:"Only a checklist of chores; the person isn't really in the picture."},
+ {qt:"Can you share two references I can call, ideally past families or employers?",good:"Offers names readily, recent, relevant.",flag:"Reluctant, only friends/relatives, or 'I don't really have any.'"},
+ {qt:"Our schedule is [your days and hours] in [your area]. Does that work for you long-term?",good:"Clear yes, reliable transportation, realistic about commitments.",flag:"Unsure, over-committed elsewhere, or vague about reliability."}
+];
+var BANK={
+ companionship:[{qt:"How do you keep someone engaged and connected, not just watched?",good:"Talks about conversation, hobbies, music, outings, learning the person's interests.",flag:"Sees the job as sitting nearby while on their phone."}],
+ personal:[{qt:"If my father refused to let you help him bathe, what would you do?",good:"Patience, offers choices, protects dignity, tries later, never forces or shames.",flag:"Would force it, guilt him, or 'just get it done.'"},
+   {qt:"How do you protect someone's dignity during personal care?",good:"Privacy, explains before doing, goes at their pace, treats them as an adult.",flag:"Brushes off the question or seems uncomfortable with it."}],
+ dementia:[{qt:"If my mother insisted it was 30 years ago and asked for someone long gone, how would you respond?",good:"Meets her in her reality, stays calm and kind, gently redirects, does not argue or correct.",flag:"Would 'remind' her of the truth, argue, or correct her repeatedly."},
+   {qt:"If she became upset and accused you of stealing or hiding something, what would you do?",good:"Stays calm, doesn't take it personally, reassures, looks for the unmet need, helps 'look' together.",flag:"Gets defensive, argues, or raises their voice."}],
+ transfers:[{qt:"Walk me through how you'd safely help someone from the bed to a wheelchair.",good:"Describes a real technique (gait belt, body mechanics, clearing the path), and knows when to get help.",flag:"Would lift alone with no technique, or dismisses the safety question."}],
+ meds:[{qt:"How do you handle medication reminders, and what if you thought a dose was missed?",good:"Reminds within their role, documents it, contacts family or the nurse, never changes doses.",flag:"Casual about meds, or would adjust or give doses on their own."}],
+ meals:[{qt:"How would you handle a special diet, or a day when they have no appetite?",good:"Knows common diets, makes food appealing, encourages fluids, is patient without forcing.",flag:"Dismissive of diet needs, or would pressure them to eat."}],
+ transport:[{qt:"Are you able to drive my mom to appointments? Tell me about your license and insurance.",good:"Valid license, insured, comfortable and patient with mobility needs.",flag:"No license or insurance, or vague and evasive."}],
+ overnight:[{qt:"What's your approach to overnight care and staying aware of someone's needs at night?",good:"Clear on the agreed arrangement (awake or on-call), checks in, prioritizes safety, gives a morning update.",flag:"Plans to sleep through everything, or unclear about what overnight care means."}]
+};
+var sel={};
+var nc=document.getElementById('needs');
+NEEDS.forEach(function(n){
+  var d=document.createElement('label');d.className='need';d.innerHTML='<input type="checkbox" data-k="'+n[0]+'"> <span>'+n[1]+'</span>';
+  d.querySelector('input').addEventListener('change',function(e){sel[n[0]]=e.target.checked;d.classList.toggle('on',e.target.checked);});
+  nc.appendChild(d);
+});
+function qcard(q,idx){
+  return '<div class="q"><div class="qt">'+q.qt+'</div>'+
+    '<div class="cue good"><span class="lab">Strong answer:</span> '+q.good+'</div>'+
+    '<div class="cue flag"><span class="lab">Red flag:</span> '+q.flag+'</div>'+
+    '<textarea data-n="'+idx+'" placeholder="Your notes during the interview…" oninput="save(this)"></textarea></div>';
+}
+function build(){
+  var out=document.getElementById('out'),html='',i=0;
+  html+='<div class="qgroup"><h2>Core questions</h2><span class="gtag">Ask everyone</span>'+CORE.map(function(q){return qcard(q,i++);}).join('')+'</div>';
+  var any=false;
+  NEEDS.forEach(function(n){
+    if(sel[n[0]] && BANK[n[0]]){any=true;
+      html+='<div class="qgroup"><h2>'+n[1]+'</h2><span class="gtag">Because you chose this</span>'+BANK[n[0]].map(function(q){return qcard(q,i++);}).join('')+'</div>';
+    }
+  });
+  if(!any){html+='<p class="empty">Add a care type above for tailored situation questions. Core questions are ready either way.</p>';}
+  out.innerHTML=html;
+  document.getElementById('count').textContent=i+' questions ready';
+  restore();
+  out.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function save(t){try{localStorage.setItem('ib_'+t.getAttribute('data-n'),t.value);}catch(e){}}
+function restore(){document.querySelectorAll('#out textarea').forEach(function(t){try{var v=localStorage.getItem('ib_'+t.getAttribute('data-n'));if(v)t.value=v;}catch(e){}});}
+build();
+</script>
+</body>
+</html>

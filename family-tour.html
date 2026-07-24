@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Look Inside: Your Family Hiring Dashboard | HomeTogether Hire</title>
+<meta name="description" content="See exactly what you get with a HomeTogether Hire membership: browse and shortlist background-checked caregivers, watch their video interviews, keep private notes and scores, message them, and organize everyone by stage. $25/month, cancel anytime.">
+<link rel="canonical" href="https://tryhometogether.com/family-tour">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A Look Inside Your Family Hiring Dashboard">
+<meta property="og:description" content="See what a HomeTogether Hire membership actually gives you, before you join.">
+<meta property="og:url" content="https://tryhometogether.com/family-tour">
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D365F;--navy-deep:#092647;--teal:#1F7A8C;--teal-deep:#155A68;--teal-soft:#EAF4F6;--honey:#F0A63A;--honey-deep:#C17A12;--good:#2E9B63;--ink:#16283a;--muted:#55677a;--faint:#8a978f;--line:#e4e1d8;--card:#fff;--bg:#FAF9F6;--panel:#F2F0E9;
+--serif:'Fraunces',Georgia,serif;--sans:'Nunito Sans',-apple-system,system-ui,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);letter-spacing:-.012em;text-wrap:balance}
+a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+header.site{border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 92%,transparent);position:sticky;top:0;z-index:30;backdrop-filter:blur(8px)}
+header.site .row{display:flex;align-items:center;gap:16px;height:62px}
+.wm{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--navy)}.wm b{color:var(--honey-deep)}
+header .nav{margin-left:auto;display:flex;gap:18px;align-items:center}
+header .nav a{font-size:14.5px;font-weight:700;color:var(--muted)}
+header .nav a.btn{background:var(--teal);color:#fff;border-radius:11px;padding:10px 18px}
+.crumbs{font-size:13px;color:var(--faint);padding:18px 0 0}.crumbs a{color:var(--muted);font-weight:700}
+/* hero */
+.hero{padding:30px 0 10px;text-align:center}
+.eye{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:12px}
+.hero h1{font-size:clamp(32px,5.4vw,50px);line-height:1.05;margin:0 auto 16px;max-width:16ch}
+.hero p.lede{font-size:19px;color:var(--muted);max-width:60ch;margin:0 auto 22px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:center}
+.btn-lg{background:var(--honey);color:#3a2708;border-radius:12px;padding:14px 26px;font-weight:800;font-size:16px;display:inline-block}
+.btn-lg:hover{background:var(--honey-deep);color:#fff}
+.btn-ghost{color:var(--teal-deep);font-weight:800;font-size:15px}
+.note{display:flex;gap:10px;align-items:center;justify-content:center;margin:26px auto 0;max-width:640px;background:var(--teal-soft);border:1px solid #cfe6ea;border-radius:12px;padding:12px 18px;color:var(--navy);font-size:14px;font-weight:600}
+.note b{color:var(--navy-deep)}
+/* tour steps */
+.step{padding:44px 0 8px}
+.step .cap{max-width:640px;margin:0 auto 22px;text-align:center}
+.step .k{font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:8px}
+.step h2{font-size:clamp(24px,3.6vw,32px);margin-bottom:8px}
+.step .cap p{color:var(--muted);font-size:17px}
+/* app mock frame */
+.app{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 2px 4px rgba(13,54,95,.05),0 20px 50px rgba(13,54,95,.10);overflow:hidden}
+.app .bar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:#F6F5F0;border-bottom:1px solid var(--line)}
+.app .bar i{width:11px;height:11px;border-radius:50%;background:#d9d5cc;display:block}
+.app .bar .u{margin-left:12px;font-size:12.5px;color:var(--faint);font-weight:700;font-family:ui-monospace,Menlo,monospace}
+.app .body{padding:22px}
+.app h4{font-family:var(--serif);color:var(--navy);font-size:19px;margin-bottom:14px}
+/* pipeline */
+.pipe{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.lane{background:var(--panel);border-radius:12px;padding:12px}
+.lane .lh{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--navy);font-size:13px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+.lane .lh .ct{background:#fff;border:1px solid var(--line);border-radius:999px;padding:1px 9px;font-size:12px;color:var(--muted)}
+.cg{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 11px;margin-bottom:9px;display:flex;gap:10px;align-items:center}
+.cg .av{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;font-family:var(--serif)}
+.cg .nm{font-weight:800;color:var(--navy);font-size:14px;line-height:1.15}
+.cg .mt{font-size:12px;color:var(--muted)}
+.chk{color:var(--good);font-weight:800;font-size:11.5px;white-space:nowrap}
+.stars{color:var(--honey);font-size:12.5px;letter-spacing:1px}
+/* applicant detail */
+.appl{display:grid;grid-template-columns:1.1fr 1fr;gap:20px}
+.vid{position:relative;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#123a5e,#155A68);aspect-ratio:16/10;display:grid;place-items:center}
+.vid .play{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
+.vid .play::after{content:"";border-left:18px solid var(--navy);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+.vid .lab{position:absolute;left:12px;bottom:12px;color:#fff;font-weight:800;font-size:13px;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.who{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.who .av{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-family:var(--serif);font-size:19px}
+.who .nm{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:19px}
+.who .mt{font-size:13px;color:var(--muted)}
+.score{background:var(--panel);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.score .row2{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;padding:4px 0}
+.score .row2 span{color:var(--muted);font-weight:700}
+.notebox{border:1px dashed var(--line);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--ink);background:#fffef9}
+.notebox .nl{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:5px}
+/* messages */
+.thread{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:80%;padding:10px 14px;border-radius:14px;font-size:14.5px;line-height:1.45}
+.msg.them{align-self:flex-start;background:var(--panel);color:var(--ink);border-bottom-left-radius:4px}
+.msg.me{align-self:flex-end;background:var(--teal);color:#fff;border-bottom-right-radius:4px}
+.msg .t{display:block;font-size:11px;margin-top:4px;opacity:.7;font-weight:700}
+/* post a job */
+.jobcard{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.jobcard .ph{width:96px;height:96px;border-radius:14px;background:linear-gradient(135deg,#E7F2F4,#cfe6ea);display:grid;place-items:center;color:var(--teal-deep);font-weight:800;font-size:12px;text-align:center;padding:8px}
+.jobcard h5{font-family:var(--serif);color:var(--navy);font-size:18px;margin-bottom:4px}
+.jobcard .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.jobcard .tags span{background:var(--teal-soft);color:var(--teal-deep);border-radius:999px;padding:4px 11px;font-size:12.5px;font-weight:800}
+.pay{color:var(--good);font-weight:800}
+/* value + final */
+.problem{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 30px}
+.problem h2{font-size:clamp(22px,3.3vw,29px);margin-bottom:10px}
+.problem .lead2{color:var(--muted);font-size:16.5px;margin-bottom:16px;max-width:64ch}
+.chaos{display:flex;flex-wrap:wrap;gap:10px}
+.chaos span{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:14px;font-weight:700;color:var(--ink)}
+.chaos span:nth-child(odd){transform:rotate(-1.4deg)}.chaos span:nth-child(even){transform:rotate(1.1deg)}
+.problem .pain{margin-top:16px;color:var(--ink);font-size:15.5px;border-left:3px solid var(--honey);padding-left:14px;line-height:1.6}
+.cabinet .cabtabs{display:flex;gap:4px;padding:10px 12px 0;flex-wrap:wrap;background:#F6F5F0;border-bottom:1px solid var(--line)}
+.cabinet .tab{background:#EAE4D7;border:1px solid var(--line);border-bottom:none;border-radius:9px 9px 0 0;padding:8px 14px;font-size:13px;font-weight:800;color:var(--muted);position:relative;top:1px}
+.cabinet .tab.on{background:#fff;color:var(--navy)}
+.glance{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:6px}
+.gcard{background:var(--panel);border-radius:12px;padding:14px;text-align:center}
+.gcard b{display:block;font-family:var(--serif);color:var(--navy);font-size:28px;line-height:1}
+.gcard span{font-size:12.5px;color:var(--muted);font-weight:700}
+@media(max-width:760px){.glance{grid-template-columns:1fr 1fr}}
+.train{margin:44px 0 8px;background:#FBF3E3;border:1px solid rgba(201,130,28,.35);border-radius:18px;padding:28px 30px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+.train .ti{width:66px;height:66px;border-radius:16px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:30px;flex:none}
+.train .kk{font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:4px}
+.train h2{font-size:clamp(22px,3.2vw,28px);margin:0 0 8px}
+.train p{color:#5c4a22;font-size:16px}
+.train a{display:inline-block;margin-top:12px;color:var(--honey-deep);font-weight:800;text-decoration:none}
+@media(max-width:760px){.train{grid-template-columns:1fr}}
+.value{margin:36px 0 8px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.v{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;gap:12px}
+.v .ic{color:var(--good);font-weight:900;font-size:18px;flex:none}
+.v b{color:var(--navy)}.v p{color:var(--muted);font-size:14px;margin-top:2px}
+.final{margin:36px 0 10px;background:linear-gradient(120deg,var(--navy),var(--teal-deep));border-radius:20px;color:#fff;text-align:center;padding:44px 28px}
+.final h2{color:#fff;font-size:clamp(26px,4vw,36px)}
+.final p{color:rgba(255,255,255,.88);max-width:52ch;margin:12px auto 20px}
+.final .price{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:4px}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:26px 0 46px;font-size:13px;color:var(--faint)}
+footer .fl{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:10px}footer a{color:var(--muted);font-weight:700}
+@media(max-width:760px){.pipe{grid-template-columns:1fr}.appl{grid-template-columns:1fr}.value{grid-template-columns:1fr}header .nav a:not(.btn){display:none}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://tryhometogether.com/"},
+{"@type":"ListItem","position":2,"name":"Hire","item":"https://tryhometogether.com/directory"},
+{"@type":"ListItem","position":3,"name":"A look inside the family dashboard","item":"https://tryhometogether.com/family-tour"}
+]}
+</script>
+<link rel="stylesheet" href="/htnav.css">
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">Two ways to get care</div>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/directory">Browse caregivers</a>
+    <details class="res"><summary>Resources ▾</summary>
+      <div class="menu">
+        <div class="gh">A guided family support center</div>
+        <a href="/resources#find">Find the right caregiver<small>Interview, compare, check references</small></a>
+        <a href="/resources#employer">Become a prepared employer<small>Pay, agreements, payroll, records</small></a>
+        <a href="/resources#manage">Manage care successfully<small>Routines, schedules, care plans</small></a>
+        <a href="/resources#difficult">Handle difficult moments<small>Calm help when something's wrong</small></a>
+        <div class="sep"></div>
+        <a href="/resources#learn">Caregiving Learning Center<small>Dementia course, care skills</small></a>
+        <a href="/resources">All resources →</a>
+      </div></details>
+    <a href="/membership" class="hide-sm">Membership</a>
+    <a href="/caregiver" class="hide-sm">For caregivers</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="cta" href="/directory">Find a caregiver</a>
+</div></header>
+
+<div class="wrap">
+<div class="crumbs"><a href="/">Home</a> › <a href="/directory">Hire</a> › A look inside</div>
+
+<section class="hero">
+  <p class="eye">A look inside your dashboard</p>
+  <h1>Your own place to hire, all in one link.</h1>
+  <p class="lede">HomeTogether Hire isn't just a list of names. It's your tool to hire a caregiver: post your job, share one link, and organize every applicant in one calm place, with video interviews, private notes, scores, and a simple pipeline. Plus a growing directory of background-checked caregivers.</p>
+  <div class="cta-row">
+    <a class="btn-lg" href="/membership">Join for $25/month →</a>
+    <a class="btn-ghost" href="/directory">Browse caregivers free first</a>
+  </div>
+  <div class="note"><b>This is a preview.</b>&nbsp;Your own dashboard fills in as you post a job and invite caregivers to apply.</div>
+</section>
+
+<!-- the problem -->
+<section class="step" style="padding-top:22px">
+  <div class="problem">
+    <div class="k" style="text-align:left">The old way</div>
+    <h2>Hiring help shouldn't take over your life</h2>
+    <p class="lead2">Right now, finding a caregiver means posting the same plea in a dozen places, then trying to hold it all in your head:</p>
+    <div class="chaos">
+      <span>Facebook groups</span><span>Care.com &amp; hiring sites</span><span>The church bulletin</span><span>School &amp; parent groups</span><span>Nextdoor</span><span>Word of mouth</span>
+    </div>
+    <p class="pain">Then you check every one of them, every day. You hand your personal cell number to strangers. Calls and texts come at all hours, and a week later you can't remember who Karen was, or which one had the good references. It becomes a second job, on top of everything else you're carrying.</p>
+  </div>
+</section>
+
+<!-- one organized place -->
+<section class="step">
+  <div class="cap">
+    <div class="k">The HomeTogether way</div>
+    <h2>One organized place, like a filing cabinet</h2>
+    <p>Everything about your search lives in one dashboard, sorted into simple tabs. No more scattered channels, no more handing out your number. Just open the drawer you need.</p>
+  </div>
+  <div class="app cabinet">
+    <div class="cabtabs">
+      <div class="tab on">Applicants</div>
+      <div class="tab">Your job</div>
+      <div class="tab">Messages</div>
+      <div class="tab">Family team</div>
+      <div class="tab">Documents</div>
+      <div class="tab">People you've met</div>
+      <div class="tab">Directory</div>
+      <div class="tab">Training</div>
+    </div>
+    <div class="body">
+      <h4>Caregiver for Mom · 6 applicants</h4>
+      <div class="glance">
+        <div class="gcard"><b>2</b><span>New to review</span></div>
+        <div class="gcard"><b>2</b><span>Interviewing</span></div>
+        <div class="gcard"><b>1</b><span>Hired</span></div>
+        <div class="gcard"><b>3</b><span>New messages</span></div>
+      </div>
+      <p style="margin-top:14px;color:var(--muted);font-size:14px">Next up: interview Anita P. — Friday at 2pm</p>
+    </div>
+  </div>
+</section>
+
+<!-- 1: post a job -->
+<section class="step">
+  <div class="cap">
+    <div class="k">The Jobs tab · post &amp; collect</div>
+    <h2>Post your job, share one link</h2>
+    <p>Found caregivers through friends, church, or a CNA class, or already have someone in mind? Describe the role, add a photo of your loved one, and set the pay. Share one link, and everyone who applies lands in one place, yours to organize.</p>
+  </div>
+  <div class="app">
+    <div class="bar"><i></i><i></i><i></i><span class="u">Post a job</span></div>
+    <div class="body">
+      <div class="jobcard">
+        <div class="ph">Add a photo of your loved one</div>
+        <div>
+          <h5>Kind, patient caregiver for my mom Margaret</h5>
+          <div style="color:var(--muted);font-size:14px">Mornings, 3 days a week · companionship, meals, and light help around the house in west Springfield.</div>
+          <div class="tags"><span>Mon / Wed / Fri</span><span>Companion care</span><span class="pay">$20–24 / hr</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2: pipeline -->
+<section class="step">
+  <div class="cap">
+    <div class="k">The Applicants tab · stay organized</div>
+    <h2>Keep your whole search straight</h2>
+    <p>Hiring means juggling several people at once. Your dashboard sorts everyone by stage, so you always know who you've talked to, who's next, and who you've chosen.</p>
+  </div>
+  <div class="app">
+    <div class="bar"><i></i><i></i><i></i><span class="u">Your jobs &amp; applicants</span></div>
+    <div class="body">
+      <h4>Caregiver for Mom · 6 applicants</h4>
+      <div class="pipe">
+        <div class="lane"><div class="lh">New <span class="ct">2</span></div>
+          <div class="cg"><span class="av" style="background:#1F7A8C">RD</span><div><div class="nm">Rosa D.</div><div class="mt">CNA · applied today</div></div></div>
+          <div class="cg"><span class="av" style="background:#7a8b99">TM</span><div><div class="nm">Tara M.</div><div class="mt">Companion · applied today</div></div></div>
+        </div>
+        <div class="lane"><div class="lh">Interviewing <span class="ct">2</span></div>
+          <div class="cg"><span class="av" style="background:#155A68">JW</span><div><div class="nm">James W.</div><div class="mt">Phone call done</div></div></div>
+          <div class="cg"><span class="av" style="background:#C17A12">AP</span><div><div class="nm">Anita P.</div><div class="mt">Meeting Fri 2pm</div></div></div>
+        </div>
+        <div class="lane"><div class="lh">Hired <span class="ct">1</span></div>
+          <div class="cg"><span class="av" style="background:#2E9B63">LG</span><div><div class="nm">Linda G.</div><div class="mt">Starts Monday <svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-celebrate"/></svg></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3: applicant detail -->
+<section class="step">
+  <div class="cap">
+    <div class="k">Inside an applicant · vet with confidence</div>
+    <h2>Watch, score, and remember everyone</h2>
+    <p>Open any caregiver to watch their video interview, jot private notes, and rate them on what matters to your family. No more trying to remember who was who.</p>
+  </div>
+  <div class="app">
+    <div class="bar"><i></i><i></i><i></i><span class="u">Rosa D. · applicant</span></div>
+    <div class="body">
+      <div class="appl">
+        <div>
+          <div class="vid"><div class="play"></div><span class="lab">Meet Rosa · 1:42</span></div>
+        </div>
+        <div>
+          <div class="who"><span class="av" style="background:#1F7A8C">RD</span><div><div class="nm">Rosa Delgado</div><div class="mt">CNA · 8 years · $22/hr · Springfield</div><div class="chk" style="margin-top:2px">✓ Background checked · renewed 2026</div></div></div>
+          <div class="score">
+            <div class="row2"><span>Warmth with Mom</span><span class="stars">★★★★★</span></div>
+            <div class="row2"><span>Reliability</span><span class="stars">★★★★★</span></div>
+            <div class="row2"><span>Dementia experience</span><span class="stars">★★★★☆</span></div>
+          </div>
+          <div class="notebox"><div class="nl">Your private notes</div>"Lovely on the phone. Cared for her own mother with Alzheimer's. Available mornings, exactly what we need. Calling references Thursday."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4: messages -->
+<section class="step">
+  <div class="cap">
+    <div class="k">The Messages tab · reach out</div>
+    <h2>Message caregivers, all in one place</h2>
+    <p>Talk to the caregivers you like directly, no phone tag, no lost texts. Every conversation stays here, right next to their profile and your notes.</p>
+  </div>
+  <div class="app">
+    <div class="bar"><i></i><i></i><i></i><span class="u">Messages · Rosa D.</span></div>
+    <div class="body">
+      <div class="thread">
+        <div class="msg me">Hi Rosa! We loved your video. Would you have time for a call this week about helping with my mom?<span class="t">You · Tue 9:14am</span></div>
+        <div class="msg them">Hi! Thank you so much. I'd love to. I'm free Wednesday afternoon or Thursday morning, whichever is easier for you.<span class="t">Rosa · Tue 9:31am</span></div>
+        <div class="msg me">Thursday at 10 would be perfect. Talk then!<span class="t">You · Tue 9:35am</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5: directory bonus -->
+<section class="step">
+  <div class="cap">
+    <div class="k">The Directory tab · a growing bonus</div>
+    <h2>And our growing directory of vetted caregivers</h2>
+    <p>On top of anyone you invite, your membership opens our always-growing directory of qualified, background-checked caregivers, each with a video interview. As it fills in near you, you'll have even more good people to choose from.</p>
+  </div>
+  <div class="app">
+    <div class="bar"><i></i><i></i><i></i><span class="u">tryhometogether.com/directory</span></div>
+    <div class="body">
+      <h4>Caregivers near Springfield, MO</h4>
+      <div class="pipe" style="grid-template-columns:repeat(3,1fr)">
+        <div class="cg" style="display:block"><div style="display:flex;gap:10px;align-items:center;margin-bottom:8px"><span class="av" style="background:#1F7A8C">RD</span><div><div class="nm">Rosa D.</div><div class="mt">CNA · 8 yrs · $22/hr</div></div></div><div class="chk">✓ Background checked</div> <span class="stars">★★★★★</span> <span style="font-size:11.5px;color:var(--honey-deep);font-weight:800">▶ Video</span></div>
+        <div class="cg" style="display:block"><div style="display:flex;gap:10px;align-items:center;margin-bottom:8px"><span class="av" style="background:#155A68">JW</span><div><div class="nm">James W.</div><div class="mt">Companion · 5 yrs · $19/hr</div></div></div><div class="chk">✓ Background checked</div> <span class="stars">★★★★☆</span> <span style="font-size:11.5px;color:var(--honey-deep);font-weight:800">▶ Video</span></div>
+        <div class="cg" style="display:block"><div style="display:flex;gap:10px;align-items:center;margin-bottom:8px"><span class="av" style="background:#C17A12">AP</span><div><div class="nm">Anita P.</div><div class="mt">HHA · 11 yrs · $24/hr</div></div></div><div class="chk">✓ Background checked</div> <span class="stars">★★★★★</span> <span style="font-size:11.5px;color:var(--honey-deep);font-weight:800">▶ Video</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- family team -->
+<section class="step">
+  <div class="cap">
+    <div class="k">The Family team tab · everyone on the same page</div>
+    <h2>Bring the whole family in, with the right access</h2>
+    <p>Caring for someone is a team effort. Invite siblings, a spouse, even a niece or nephew, and give each person exactly the access that fits their role. Then decide together who's doing what, so nothing slips and no one steps on toes.</p>
+  </div>
+  <div class="app">
+    <div class="bar"><i></i><i></i><i></i><span class="u">Family team · Caregiver for Mom</span></div>
+    <div class="body">
+      <h4>Your family team</h4>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px 14px">
+          <span class="av" style="background:#1F7A8C">SF</span>
+          <div style="flex:1"><div class="nm">Sarah (you)</div><div class="mt">Daughter · organizing the search</div></div>
+          <span style="background:var(--navy);color:#fff;font-size:11px;font-weight:800;border-radius:999px;padding:4px 11px;white-space:nowrap">Owner</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px 14px">
+          <span class="av" style="background:#155A68">MB</span>
+          <div style="flex:1"><div class="nm">Michael</div><div class="mt">Brother · doing the phone interviews</div></div>
+          <span style="background:var(--teal-soft);color:var(--teal-deep);font-size:11px;font-weight:800;border-radius:999px;padding:4px 11px;white-space:nowrap">Can hire &amp; message</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px 14px">
+          <span class="av" style="background:#7a5cb0">LK</span>
+          <div style="flex:1"><div class="nm">Linda</div><div class="mt">Sister · keeps the schedule</div></div>
+          <span style="background:var(--teal-soft);color:var(--teal-deep);font-size:11px;font-weight:800;border-radius:999px;padding:4px 11px;white-space:nowrap">Can hire &amp; message</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px 14px">
+          <span class="av" style="background:#C17A12">EM</span>
+          <div style="flex:1"><div class="nm">Emma</div><div class="mt">Niece · posting the job &amp; sharing on Facebook</div></div>
+          <span style="background:#FBF3E3;color:var(--honey-deep);font-size:11px;font-weight:800;border-radius:999px;padding:4px 11px;white-space:nowrap">Posts &amp; shares only</span>
+        </div>
+      </div>
+      <p style="margin-top:12px;font-size:13px;color:var(--muted)"><b style="color:var(--navy)">Three simple roles.</b> Owners do everything. Members can browse, message, and hire. Helpers can post and share the job, perfect for the younger relative spreading the word online, without seeing private notes or messages.</p>
+    </div>
+  </div>
+</section>
+
+<!-- documents -->
+<section class="step">
+  <div class="cap">
+    <div class="k">The Documents tab · sign &amp; store, safely</div>
+    <h2>Every document, signed and in one place</h2>
+    <p>Made a work agreement or a consent form? Send it to your caregiver to sign online, it lands in their portal to e-sign and comes back completed. Prefer to print and sign in person? Upload the signed copy instead. Either way it's stored securely, where the whole family can see it.</p>
+  </div>
+  <div class="app">
+    <div class="bar"><i></i><i></i><i></i><span class="u">Documents · Caregiver for Mom</span></div>
+    <div class="body">
+      <h4>Documents</h4>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <div style="display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:11px;padding:12px 14px">
+          <span class="av" style="background:var(--teal-soft);color:var(--teal-deep);width:34px;height:34px;font-size:12px">DOC</span>
+          <div style="flex:1"><b style="color:var(--navy)">Work agreement</b><div class="mt">Sent to Rosa for e-signature · Jul 21</div></div>
+          <span style="background:#FFF7E6;color:#8a6d1f;font-size:11px;font-weight:800;border-radius:999px;padding:4px 11px;white-space:nowrap">Awaiting signature</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;border:1px solid #bfe0c9;border-radius:11px;padding:12px 14px;background:#f4fbf6">
+          <span class="av" style="background:#e6f5ec;color:#1c7a45;width:34px;height:34px;font-size:12px">DOC</span>
+          <div style="flex:1"><b style="color:var(--navy)">Background check consent</b><div class="mt">Signed by Rosa · Jul 20</div></div>
+          <span style="background:#e6f5ec;color:#1c7a45;font-size:11px;font-weight:800;border-radius:999px;padding:4px 11px;white-space:nowrap">✓ Signed</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:11px;padding:12px 14px">
+          <span class="av" style="background:var(--panel);color:var(--muted);width:34px;height:34px;font-size:12px">PDF</span>
+          <div style="flex:1"><b style="color:var(--navy)">Emergency contacts &amp; care plan</b><div class="mt">Printed, signed in person, uploaded by Michael</div></div>
+          <span style="background:var(--teal-soft);color:var(--teal-deep);font-size:11px;font-weight:800;border-radius:999px;padding:4px 11px;white-space:nowrap">Uploaded</span>
+        </div>
+      </div>
+      <p style="margin-top:12px;font-size:13px;color:var(--muted)">Build a <a href="/tools/work-agreement-builder" style="color:var(--teal-deep);font-weight:700">work agreement</a> in minutes, then send it straight from here to sign.</p>
+    </div>
+  </div>
+</section>
+
+<!-- included: family training -->
+<div class="train">
+  <div class="ti"><svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-book"/></svg></div>
+  <div>
+    <div class="kk">You're hiring help. We'll help you care, too.</div>
+    <h2>Free family caregiver courses, included</h2>
+    <p>Families who hire privately are usually hands-on caregivers themselves. So HomeTogether gives you a growing library of family caregiver courses, free, in plain language, right inside your dashboard on its own tab. It starts with our complete <b>Dementia Journey</b>, and we're adding more. Hire good help, and feel steadier in your own care.</p>
+    <a href="https://mo-care.com/dementia-journey/" target="_blank" rel="noopener">Explore the courses →</a>
+  </div>
+</div>
+
+<!-- value -->
+<div class="value">
+  <div class="v"><span class="ic">✓</span><div><b>Post a job, get every applicant in one place</b><p>Share one link and let caregivers apply to you, from anywhere you find them.</p></div></div>
+  <div class="v"><span class="ic">✓</span><div><b>Bring the whole family in, with roles</b><p>Invite siblings and even a niece or nephew, and set who can hire, who can help, and who just shares the job.</p></div></div>
+  <div class="v"><span class="ic">✓</span><div><b>Sign &amp; store documents in one place</b><p>Send agreements to e-sign or upload signed copies, safe where the whole family can see them.</p></div></div>
+  <div class="v"><span class="ic">✓</span><div><b>Organize everyone in a simple pipeline</b><p>Video interviews, private notes, and scores, so you hire with a clear head.</p></div></div>
+  <div class="v"><span class="ic">✓</span><div><b>Message and hire directly</b><p>Reach the people you like yourself, with no agency markup on their pay.</p></div></div>
+  <div class="v"><span class="ic">✓</span><div><b>Plus a growing directory of vetted caregivers</b><p>Qualified, background-checked, and always growing near you.</p></div></div>
+</div>
+
+<div class="final">
+  <div class="price">$25 / month · cancel anytime</div>
+  <h2>Everything you need to hire someone you trust.</h2>
+  <p>Your own place to post a job, organize every applicant, and hire with confidence, plus a growing directory of background-checked caregivers. Cancel the moment you've found your person.</p>
+  <a class="btn-lg" href="/membership">Join HomeTogether Hire →</a>
+</div>
+</div>
+
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4>
+      <a href="/directory">Browse caregivers</a>
+      <a href="/membership">Membership</a>
+      <a href="/resources">Resources</a>
+      <a href="/caregiver">For caregivers</a>
+    </div>
+    <div class="ftcol"><h4>HomeTogether TV</h4>
+      <a href="/">How it works</a>
+      <a href="/get">The device</a>
+      <a href="/guides">Guides</a>
+    </div>
+    <div class="ftcol"><h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/help">Help &amp; contact</a>
+      <a href="/resources">Resource center</a>
+    </div>
+    <div class="ftcol"><h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/returns">Returns</a>
+    </div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+</footer>
+</body>
+</html>

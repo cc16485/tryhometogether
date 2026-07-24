@@ -1,12 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tryhometogether.com/</loc></url>
-  <url><loc>https://tryhometogether.com/local</loc></url>
+  <url><loc>https://tryhometogether.com/hire</loc></url>
   <url><loc>https://tryhometogether.com/get</loc></url>
-  <url><loc>https://tryhometogether.com/about.html</loc></url>
-  <url><loc>https://tryhometogether.com/help.html</loc></url>
+  <url><loc>https://tryhometogether.com/about</loc></url>
+  <url><loc>https://tryhometogether.com/help</loc></url>
+  <url><loc>https://tryhometogether.com/directory</loc></url>
+  <url><loc>https://tryhometogether.com/membership</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver</loc></url>
+  <url><loc>https://tryhometogether.com/family</loc></url>
+  <url><loc>https://tryhometogether.com/family-tour</loc></url>
+  <url><loc>https://tryhometogether.com/resources</loc></url>
+  <url><loc>https://tryhometogether.com/tools/pay-calculator</loc></url>
+  <url><loc>https://tryhometogether.com/tools/interview-builder</loc></url>
+  <url><loc>https://tryhometogether.com/tools/work-agreement-builder</loc></url>
+  <url><loc>https://tryhometogether.com/tools/caregiver-called-off</loc></url>
+  <url><loc>https://tryhometogether.com/tools/caregiver-repeatedly-late</loc></url>
+  <url><loc>https://tryhometogether.com/tools/parent-refuses-help</loc></url>
+  <url><loc>https://tryhometogether.com/tools/caregiver-reported-a-fall</loc></url>
+  <url><loc>https://tryhometogether.com/tools/something-missing</loc></url>
+  <url><loc>https://tryhometogether.com/tools/replace-care-fast</loc></url>
+  <url><loc>https://tryhometogether.com/tools/job-description-builder</loc></url>
+  <url><loc>https://tryhometogether.com/guides/household-employer-basics</loc></url>
+  <url><loc>https://tryhometogether.com/guides/employee-vs-contractor</loc></url>
+  <url><loc>https://tryhometogether.com/tools/payroll-setup-checklist</loc></url>
+  <url><loc>https://tryhometogether.com/tools/first-day-checklist</loc></url>
+  <url><loc>https://tryhometogether.com/tools/care-plan-builder</loc></url>
+  <url><loc>https://tryhometogether.com/tools/weekly-schedule</loc></url>
+  <url><loc>https://tryhometogether.com/tools/task-list-builder</loc></url>
+  <url><loc>https://tryhometogether.com/tools/backup-care-plan</loc></url>
+  <url><loc>https://tryhometogether.com/tools/reference-check-script</loc></url>
+  <url><loc>https://tryhometogether.com/tools/caregiver-comparison</loc></url>
+  <url><loc>https://tryhometogether.com/guides/background-check-guide</loc></url>
+  <url><loc>https://tryhometogether.com/guides/red-flags-green-flags</loc></url>
+  <url><loc>https://tryhometogether.com/guides/trial-shift-guide</loc></url>
+  <url><loc>https://tryhometogether.com/guides/personal-care-needs</loc></url>
+  <url><loc>https://tryhometogether.com/guides/fall-prevention</loc></url>
+  <url><loc>https://tryhometogether.com/guides/safe-mobility-transfers</loc></url>
+  <url><loc>https://tryhometogether.com/guides/nutrition-hydration</loc></url>
+  <url><loc>https://tryhometogether.com/guides/meaningful-activities</loc></url>
+  <url><loc>https://tryhometogether.com/guides/when-more-care-needed</loc></url>
+  <url><loc>https://tryhometogether.com/tools/parent-doesnt-like-caregiver</loc></url>
+  <url><loc>https://tryhometogether.com/tools/concerned-about-mistreatment</loc></url>
+  <url><loc>https://tryhometogether.com/guides/giving-caregiver-feedback</loc></url>
+  <url><loc>https://tryhometogether.com/guides/caregiver-boundaries-burnout</loc></url>
+  <url><loc>https://tryhometogether.com/guides/visit-notes-communication</loc></url>
+  <url><loc>https://tryhometogether.com/guides/family-care-team</loc></url>
   <url><loc>https://tryhometogether.com/caregivers/</loc></url>
   <url><loc>https://tryhometogether.com/caregiver-jobs/</loc></url>
+  <url><loc>https://tryhometogether.com/guides</loc></url>
+  <url><loc>https://tryhometogether.com/guides/how-to-hire-a-caregiver</loc></url>
+  <url><loc>https://tryhometogether.com/guides/cost-of-in-home-care-missouri</loc></url>
+  <url><loc>https://tryhometogether.com/guides/video-call-a-parent-who-cant-use-a-smartphone</loc></url>
+  <url><loc>https://tryhometogether.com/guides/staying-connected-with-a-parent-who-has-dementia</loc></url>
+  <url><loc>https://tryhometogether.com/guides/best-video-calling-device-for-seniors</loc></url>
   <url><loc>https://tryhometogether.com/caregivers/springfield</loc></url>
   <url><loc>https://tryhometogether.com/caregivers/nixa</loc></url>
   <url><loc>https://tryhometogether.com/caregivers/ozark</loc></url>
@@ -57,6 +104,36 @@
   <url><loc>https://tryhometogether.com/caregivers/atlanta</loc></url>
   <url><loc>https://tryhometogether.com/caregivers/miami</loc></url>
   <url><loc>https://tryhometogether.com/caregivers/minneapolis</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/birmingham</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/anchorage</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/little-rock</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/hartford</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/wilmington</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/honolulu</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/boise</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/des-moines</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/wichita</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/new-orleans</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/portland-maine</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/baltimore</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/detroit</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/jackson</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/billings</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/omaha</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/manchester</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/newark</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/albuquerque</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/fargo</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/oklahoma-city</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/providence</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/charleston</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/sioux-falls</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/salt-lake-city</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/burlington</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/virginia-beach</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/huntington</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/milwaukee</loc></url>
+  <url><loc>https://tryhometogether.com/caregivers/cheyenne</loc></url>
   <url><loc>https://tryhometogether.com/caregiver-jobs/springfield</loc></url>
   <url><loc>https://tryhometogether.com/caregiver-jobs/nixa</loc></url>
   <url><loc>https://tryhometogether.com/caregiver-jobs/ozark</loc></url>
@@ -107,4 +184,34 @@
   <url><loc>https://tryhometogether.com/caregiver-jobs/atlanta</loc></url>
   <url><loc>https://tryhometogether.com/caregiver-jobs/miami</loc></url>
   <url><loc>https://tryhometogether.com/caregiver-jobs/minneapolis</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/birmingham</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/anchorage</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/little-rock</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/hartford</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/wilmington</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/honolulu</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/boise</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/des-moines</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/wichita</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/new-orleans</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/portland-maine</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/baltimore</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/detroit</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/jackson</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/billings</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/omaha</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/manchester</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/newark</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/albuquerque</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/fargo</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/oklahoma-city</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/providence</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/charleston</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/sioux-falls</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/salt-lake-city</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/burlington</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/virginia-beach</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/huntington</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/milwaukee</loc></url>
+  <url><loc>https://tryhometogether.com/caregiver-jobs/cheyenne</loc></url>
 </urlset>

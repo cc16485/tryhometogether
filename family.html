@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Account · HomeTogether Hire</title>
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#143A5E; --navy-deep:#0e2c49; --teal:#1E7A8C; --teal-deep:#155A68;
+  --teal-soft:#e6f1f3; --honey:#EFCE85; --honey-deep:#C9821C;
+  --ink:#16283a; --muted:#5b6b7a; --line:#e4e8ee; --card:#ffffff; --bg:#f6f8fa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:1280px;margin:0 auto;padding:26px 28px 90px}
+#authView{max-width:560px;margin:0 auto}
+.brandbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.brand{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--navy)}
+.brand small{display:block;font-family:'Nunito Sans';font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
+h1{font-family:'Fraunces',serif;font-weight:700;color:var(--navy);font-size:clamp(24px,4vw,30px);margin-bottom:6px;text-wrap:balance}
+h2{font-family:'Fraunces',serif;font-weight:600;color:var(--navy);font-size:20px;margin:0 0 12px}
+h3{font-family:'Fraunces',serif;font-weight:600;color:var(--navy);font-size:16px;margin:0 0 8px}
+.lede{color:var(--muted);font-size:16px;margin-bottom:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:0 1px 2px rgba(20,58,94,.04)}
+label.fld{display:block;font-weight:700;font-size:13px;color:var(--navy);margin:14px 0 5px}
+input,textarea,select{width:100%;font:inherit;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--teal)}
+textarea{min-height:80px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:12px 22px;font:inherit;font-weight:800;cursor:pointer}
+.btn-teal{background:var(--teal);color:#fff}.btn-honey{background:var(--honey);color:var(--navy-deep)}
+.btn-ghost{background:transparent;color:var(--teal-deep);border:1.5px solid var(--line)}
+.btn-sm{padding:8px 14px;font-size:13px}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tab{flex:1;text-align:center;padding:10px;border-radius:10px;border:1.5px solid var(--line);font-weight:800;cursor:pointer;color:var(--muted);background:#fff}
+.tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chip{border:1.5px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:700;cursor:pointer;background:#fff;color:var(--muted);display:inline-block;margin:3px 4px 0 0}
+.chip.sel{background:var(--teal-soft);color:var(--teal-deep);border-color:var(--teal)}
+.msg{padding:11px 14px;border-radius:10px;font-size:14px;font-weight:700;margin:12px 0;display:none}
+.msg.err{display:block;background:#fdecec;color:#b91c1c}.msg.ok{display:block;background:#e8f6ee;color:#15803d}
+.hint{color:var(--muted);font-size:13px;margin-top:4px}
+.job{border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px;background:#fff}
+.invite{display:flex;gap:8px;align-items:center;background:var(--teal-soft);border-radius:10px;padding:10px 12px;margin:10px 0;font-size:13px;flex-wrap:wrap}
+.invite code{font-weight:800;color:var(--teal-deep);word-break:break-all}
+.applicant{border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:10px;background:var(--bg)}
+.score{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;margin:4px 0;font-size:13.5px}
+.stars{display:flex;gap:3px}
+.star{cursor:pointer;font-size:19px;color:#d3d9df;line-height:1}
+.star.on{color:var(--honey-deep)}
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:800}
+.acc{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;background:#fff}
+.acc summary{cursor:pointer;padding:14px 16px;font-weight:800;color:var(--navy);list-style:none}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::before{content:'+ ';color:var(--teal)}
+.acc[open] summary::before{content:'– '}
+.acc .body{padding:0 16px 16px;font-size:14.5px;color:var(--ink)}
+.acc .body li{margin:5px 0 5px 18px}
+.copybtn{cursor:pointer}
+.eyebrow2{font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:6px}
+.journey{background:linear-gradient(135deg,#143A5E,#0e2c49);border-radius:16px;padding:18px 20px;margin:16px 0 6px;overflow-x:auto}
+.jrail{display:flex;align-items:flex-start;min-width:430px}
+.jstep{display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;flex:none;width:100px}
+.jdot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;background:rgba(255,255,255,.14);color:rgba(255,255,255,.6)}
+.jstep.done .jdot{background:var(--honey);color:var(--navy-deep)}
+.jstep.now .jdot{background:#fff;color:var(--navy)}
+.jlbl{font-size:12px;color:rgba(255,255,255,.6);font-weight:700;line-height:1.2}
+.jstep.done .jlbl,.jstep.now .jlbl{color:#fff}
+.jline{flex:1;height:2px;background:rgba(255,255,255,.18);margin:15px -8px 0}
+.attn{background:#fff7e6;border:1px solid var(--honey);border-radius:10px;padding:10px 14px;margin-top:12px;font-weight:700;color:#7a5312;display:flex;align-items:center;gap:8px}
+.adot{width:8px;height:8px;border-radius:50%;background:var(--honey-deep);flex:none}
+.wstep{display:none}.wstep.on{display:block}
+.pipe{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.pipe-seg{font-size:12px;font-weight:700;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.pipe-seg b{color:var(--navy)}
+.stage{margin-top:14px}
+.stage-h{font-weight:800;font-size:12.5px;color:var(--navy);text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid var(--line);padding-bottom:5px;margin-bottom:4px;display:flex;justify-content:space-between}
+.stage-h span:last-child{color:var(--muted)}
+.jwprog{display:flex;gap:6px;margin-bottom:16px}
+.jwdot{height:6px;flex:1;border-radius:99px;background:var(--line)}
+.jwdot.on{background:var(--teal)}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:10px}
+.link-btn{background:none;border:none;color:var(--muted);font:inherit;font-weight:700;cursor:pointer;padding:8px}
+/* filing-cabinet tabs */
+.ftabs{display:flex;gap:3px;flex-wrap:nowrap;overflow-x:auto;margin:22px 0 0;padding:0 2px;scrollbar-width:none}
+.ftabs::-webkit-scrollbar{display:none}
+.ftab{flex:none;background:#eaeef2;border:1px solid var(--line);border-bottom:none;border-radius:11px 11px 0 0;padding:10px 14px 11px;font-weight:800;font-size:13px;color:var(--muted);cursor:pointer;white-space:nowrap;position:relative;top:1px;display:flex;align-items:center;gap:6px}
+.ftab:hover{background:#e2e8ee;color:var(--navy)}
+.ftab.on{background:#fff;color:var(--navy);border-color:var(--line);box-shadow:inset 0 3px 0 var(--teal)}
+.ftab .badge{background:var(--honey-deep);color:#fff;border-radius:999px;font-size:10.5px;line-height:1;padding:3px 6px;font-weight:800}
+.ftab .badge:empty{display:none}
+.folder{background:#fff;border:1px solid var(--line);border-radius:0 14px 14px 14px;padding:22px;min-height:220px;box-shadow:0 1px 3px rgba(20,58,94,.05)}
+.pane{display:none}.pane.on{display:block}
+.pane>h2:first-child{margin-top:0}
+.docrow{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-top:10px;flex-wrap:wrap}
+.docrow .dm{min-width:0}
+.docrow .di{width:34px;height:34px;border-radius:9px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;flex:none}
+.docrow .dm{flex:1}.docrow .dm b{color:var(--navy)}.docrow .dm small{display:block;color:var(--muted);font-size:12.5px}
+/* family board: votes + discussion */
+.votecard{border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px;background:#fff}
+.votecard.closed{opacity:.72}
+.voteq{font-family:'Fraunces',serif;font-weight:600;color:var(--navy);font-size:16px;margin-bottom:2px}
+.voteopt{position:relative;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;margin-top:8px;cursor:pointer;overflow:hidden;font-weight:700;font-size:14px;color:var(--ink)}
+.voteopt .fill{position:absolute;inset:0 auto 0 0;background:var(--teal-soft);z-index:0;transition:width .3s}
+.voteopt .lbl,.voteopt .cnt{position:relative;z-index:1}
+.voteopt .cnt{float:right;color:var(--muted);font-weight:800}
+.voteopt.mine{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.voteopt.mine .lbl::before{content:'✓ ';color:var(--teal-deep);font-weight:900}
+.voteopt[aria-disabled=true]{cursor:default}
+.voters{font-size:12px;color:var(--muted);margin-top:8px}
+.bmsg{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.bmsg:last-child{border-bottom:none}
+.bmsg .bav{width:32px;height:32px;border-radius:50%;background:var(--teal-soft);color:var(--teal-deep);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
+.bmsg .bb{flex:1}
+.bmsg .bb .bn{font-weight:800;color:var(--navy);font-size:13.5px}
+.bmsg .bb .bn small{font-weight:600;color:var(--muted);font-size:11.5px;margin-left:6px}
+.bmsg .bb .bt{font-size:14.5px;margin-top:1px;white-space:pre-wrap}
+/* who's doing what: tasks */
+.task{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px 13px;margin-top:8px;flex-wrap:wrap}
+.task.done{opacity:.6}
+.task.done .tt{text-decoration:line-through}
+.task .tt{flex:1;min-width:140px;font-weight:700;color:var(--ink)}
+.task .tcheck{width:22px;height:22px;border:2px solid var(--teal);border-radius:6px;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:14px;background:#fff}
+.task .tcheck.tdone{cursor:pointer}
+.task.done .tcheck{background:#15803d;border-color:#15803d}
+.tassign{background:var(--teal-soft);color:var(--teal-deep);border-radius:999px;padding:5px 11px;font-weight:800;font-size:12.5px}
+.tdel{border:none;background:none;color:var(--muted);cursor:pointer;font-size:16px;line-height:1;padding:2px 4px}
+.tdel:hover{color:#b91c1c}
+/* budget */
+.calcgrid{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.calccard{flex:1;min-width:120px;background:var(--teal-soft);border-radius:12px;padding:13px 15px}
+.calccard.impact{background:#fff7e6;border:1px solid var(--honey)}
+.calccard.over{background:#fdecec;border:1px solid #f3b4b4}
+.calccard .cl{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.calccard .cv{font-family:'Fraunces',serif;font-weight:700;color:var(--navy);font-size:23px;margin-top:2px;font-variant-numeric:tabular-nums}
+.calccard .cs{font-size:12.5px;color:var(--muted);margin-top:2px}
+.bbar{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.bbar>span{display:block;height:100%;background:var(--teal);border-radius:99px}
+.bbar.over>span{background:#b91c1c}
+.expense{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding:10px 0;flex-wrap:wrap}
+.expense:last-child{border-bottom:none}
+.expense .el{flex:1;min-width:130px;font-weight:700;color:var(--ink)}
+.expense .el small{display:block;color:var(--muted);font-weight:600;font-size:12.5px}
+.expense .ea{font-weight:800;font-variant-numeric:tabular-nums;color:var(--navy)}
+.split{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.split:last-child{border-bottom:none}
+.split b{font-variant-numeric:tabular-nums}
+.owe{color:#b45309;font-weight:800}.owed{color:#15803d;font-weight:800}
+.mrow{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.mrow:last-child{border-bottom:none}
+.mav{width:38px;height:38px;border-radius:50%;background:var(--teal-soft);color:var(--teal-deep);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex:none}
+.mmeta{flex:1;min-width:130px}
+.mmeta b{color:var(--navy)}
+.mmeta small{display:block;color:var(--muted);font-size:12.5px}
+.rbadge{display:inline-block;padding:3px 11px;border-radius:999px;font-size:11.5px;font-weight:800;white-space:nowrap}
+.rbadge.owner{background:#eae2f6;color:#5b3ea6}
+.rbadge.member{background:var(--teal-soft);color:var(--teal-deep)}
+.rbadge.helper{background:#fff2df;color:#a5661a}
+.rbadge.inv{background:#eef1f4;color:#6b7280}
+.hhbar{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:12px;padding:12px 15px;margin-bottom:16px;flex-wrap:wrap}
+.hhbar .rbadge{margin-left:auto}
+.rolepick{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0}
+.rolepick label{flex:1;min-width:150px;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;display:flex;gap:9px;align-items:flex-start}
+.rolepick label:has(input:checked){border-color:var(--teal);background:var(--teal-soft)}
+.rolepick input{width:auto;margin-top:3px}
+.rolepick b{color:var(--navy);font-size:14px}
+.rolepick small{display:block;color:var(--muted);font-size:12.5px}
+@media(max-width:600px){
+  .row,.row3{grid-template-columns:1fr}
+  .wrap{padding:16px 12px 80px}
+  /* tabs become wrapped pills so all of them stay visible on a phone */
+  .ftabs{flex-wrap:wrap;overflow:visible;gap:6px;margin:16px 0 12px}
+  .ftab{top:0;border:1px solid var(--line);border-radius:999px;padding:8px 13px;font-size:12.5px;box-shadow:none}
+  .ftab.on{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:none}
+  .ftab.on .badge{background:#fff;color:var(--navy)}
+  .folder{border-radius:14px;padding:16px 14px}
+  h1{font-size:23px}
+  .votecard,.docrow{padding:13px}
+}
+</style>
+<link rel="stylesheet" href="/htnav.css">
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">Two ways to get care</div>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/directory">Browse caregivers</a>
+    <a href="/resources">Resources</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost btn-sm" id="logoutBtn" href="#" style="display:none">Log out</a>
+</div></header>
+<div class="wrap">
+  
+
+  <div id="cfgWarn" class="msg err" style="display:none">This page isn't connected yet. (Setup in progress.)</div>
+
+  <!-- ============ LOGGED OUT ============ -->
+  <section id="authView" style="display:none">
+    <div id="inviteHi" class="card" style="display:none;background:var(--teal-soft);border-color:#bfe0e6"></div>
+    <h1>Find and hire a caregiver, your way</h1>
+    <p class="lede">Create a free account to post your job and share it anywhere caregivers look, browse vetted caregivers near you, invite people you already know, and keep every applicant and note in one place.</p>
+    <div class="card">
+      <div class="tabs">
+        <div class="tab on" id="tabSignup" onclick="showTab('signup')">Create account</div>
+        <div class="tab" id="tabLogin" onclick="showTab('login')">Log in</div>
+      </div>
+      <div id="authMsg" class="msg"></div>
+      <label class="fld">Your name</label>
+      <input id="authName" placeholder="Your name" autocomplete="name">
+      <label class="fld">Email</label>
+      <input id="authEmail" type="email" autocomplete="email" placeholder="you@email.com">
+      <label class="fld">Password</label>
+      <input id="authPass" type="password" autocomplete="current-password" placeholder="At least 8 characters">
+      <div style="margin-top:18px"><button class="btn btn-teal" id="authBtn" onclick="doAuth()">Create my account →</button></div>
+      <p class="hint" id="loginHelp" style="display:none">Forgot your password? <a href="#" onclick="doReset(event)">Email me a reset link</a></p>
+    </div>
+    <p class="hint">Are you a caregiver? <a href="/caregiver">Build your caregiver profile →</a></p>
+  </section>
+
+  <!-- ============ LOGGED IN ============ -->
+  <section id="dashView" style="display:none">
+    <div id="hhBanner" style="display:none"></div>
+    <div id="homeHead"></div>
+
+    <!-- MEMBERSHIP (account-level, above the cabinet) -->
+    <div class="card" id="memberCard" style="display:none"></div>
+
+    <!-- ============ FILING-CABINET TABS ============ -->
+    <div class="ftabs" id="ftabs"></div>
+    <div class="folder">
+
+      <!-- APPLICANTS -->
+      <div class="pane" data-pane="applicants">
+        <h2>Your jobs &amp; applicants</h2>
+        <div id="jobsList"><p class="hint">Your posted jobs will appear here.</p></div>
+      </div>
+
+      <!-- POST A JOB (wizard) -->
+      <div class="pane" data-pane="post">
+        <h2>Post a job</h2>
+        <div id="jobMsg" class="msg"></div>
+        <div class="jwprog" id="jwProg"></div>
+
+        <!-- step 1: the loved one -->
+        <div class="wstep on" data-wstep="0">
+          <p class="hint" style="margin-bottom:8px">Start with the person. Caregivers who feel a connection to your loved one apply warmer.</p>
+          <h3 style="margin-top:0">About your loved one</h3>
+          <div class="row">
+            <div><label class="fld">Their name (or how you refer to them)</label><input id="j_rname" placeholder="e.g. Ruth, or 'my mother'"></div>
+            <div><label class="fld">Age (optional)</label><input id="j_rage" inputmode="numeric" placeholder="82"></div>
+          </div>
+          <label class="fld">A little about them</label>
+          <textarea id="j_rabout" placeholder="Who they are, what they love, a bit of their story. This is what makes a caregiver want to help."></textarea>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:12px">
+            <img id="lovedImg" alt="" style="width:66px;height:66px;border-radius:12px;object-fit:cover;border:1.5px solid var(--line);background:var(--teal-soft);display:none">
+            <div>
+              <input id="lovedPhoto" type="file" accept="image/*" style="display:none" onchange="uploadLoved(this)">
+              <button class="btn btn-ghost btn-sm" type="button" onclick="document.getElementById('lovedPhoto').click()">Add a photo (optional)</button>
+              <p class="hint">Only people with your private link can see it.</p>
+            </div>
+          </div>
+          <div class="qnav"><span></span><button class="btn btn-teal" onclick="jwNext()">Continue →</button></div>
+        </div>
+
+        <!-- step 2: the care -->
+        <div class="wstep" data-wstep="1">
+          <h3 style="margin-top:0">The care they need</h3>
+          <label class="fld">What help is needed</label>
+          <div id="needsOpts"></div>
+          <div class="row" style="margin-top:12px">
+            <div><label class="fld">Schedule</label><input id="j_sched" placeholder="e.g. Mon-Fri, 9am-1pm"></div>
+            <div><label class="fld">Hours per week</label><input id="j_hours" placeholder="e.g. about 20"></div>
+          </div>
+          <div class="row">
+            <div><label class="fld">City</label><input id="j_city" placeholder="Springfield"></div>
+            <div><label class="fld">Start date</label><input id="j_start" placeholder="e.g. As soon as possible"></div>
+          </div>
+          <label class="fld">Home notes (pets, smoking, stairs, anything to know)</label>
+          <input id="j_home" placeholder="e.g. Friendly dog, no stairs, non-smoking home">
+          <div class="qnav"><button class="link-btn" onclick="jwPrev()">← Back</button><button class="btn btn-teal" onclick="jwNext()">Continue →</button></div>
+        </div>
+
+        <!-- step 3: pay & post -->
+        <div class="wstep" data-wstep="2">
+          <h3 style="margin-top:0">What you're offering, and a title</h3>
+          <div class="row3">
+            <div><label class="fld">Amount ($)</label><input id="j_rate" placeholder="e.g. 22 or 20-25"></div>
+            <div><label class="fld">Per</label><select id="j_unit"><option>per hour</option><option>per day</option><option>per week</option><option>live-in</option></select></div>
+            <div><label class="fld">Pay notes</label><input id="j_paynotes" placeholder="e.g. paid weekly"></div>
+          </div>
+          <label class="fld">Job title</label>
+          <input id="j_title" placeholder="e.g. Daytime companion for my mother">
+          <label class="fld">Anything else about the role</label>
+          <textarea id="j_desc" placeholder="A short description of the job and the kind of person you're hoping to find."></textarea>
+          <div class="qnav"><button class="link-btn" onclick="jwPrev()">← Back</button><button class="btn btn-teal" id="postBtn" onclick="postJob()">Post job & get my shareable link</button></div>
+        </div>
+      </div>
+
+      <!-- MESSAGES -->
+      <div class="pane" data-pane="messages">
+        <h2>Messages with caregivers</h2>
+        <div id="msgList"></div>
+      </div>
+
+      <!-- PEOPLE YOU'VE MET -->
+      <div class="pane" data-pane="people">
+        <h2>People you've met</h2>
+        <p style="color:var(--muted);margin-bottom:12px">Everyone you've interviewed, hired, or decided against, so you always know who you've already spoken with.</p>
+        <div id="historyList"></div>
+      </div>
+
+      <!-- FAMILY TEAM -->
+      <div class="pane" data-pane="team">
+        <div id="teamCard"></div>
+      </div>
+
+      <!-- FAMILY BOARD (discussion + votes) -->
+      <div class="pane" data-pane="board">
+        <h2>Family board</h2>
+        <p style="color:var(--muted);margin-bottom:6px">Talk through what needs to be hired or done, share the work, and put decisions to a family vote. Everyone on your family team can join in.</p>
+
+        <div id="taskSection">
+          <h3 style="margin:20px 0 4px">Who's doing what</h3>
+          <p class="hint" style="margin-bottom:8px">Keep track of what needs doing and who's handling it, so nothing lands on one person.</p>
+          <div id="taskAdd" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 6px">
+            <input id="taskTitle" placeholder="What needs doing? e.g. Call Maria's references" style="flex:1;min-width:180px">
+            <select id="taskAssignee" style="width:auto;min-width:120px"></select>
+            <button class="btn btn-teal btn-sm" id="taskAddBtn" onclick="addTask(this)">Add</button>
+          </div>
+          <div id="taskList"></div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin:26px 0 4px;flex-wrap:wrap">
+          <h3 style="margin:0">Votes &amp; decisions</h3>
+          <button class="btn btn-honey btn-sm" id="newVoteBtn" onclick="toggleVoteForm()">＋ Start a vote</button>
+        </div>
+        <div id="voteForm" class="card" style="display:none;background:var(--bg);margin:10px 0">
+          <div id="voteMsg" class="msg"></div>
+          <div class="rolepick" id="voteKindRow" style="margin-bottom:10px"></div>
+          <label class="fld">What should the family decide?</label>
+          <input id="vq" placeholder="e.g. Should we hire Maria for weekday mornings?">
+          <div id="pollArea">
+            <label class="fld">Choices</label>
+            <div id="voptWrap">
+              <input class="vopt" placeholder="Yes" style="margin-bottom:6px">
+              <input class="vopt" placeholder="No" style="margin-bottom:6px">
+            </div>
+            <button class="btn btn-ghost btn-sm" type="button" onclick="addVoteOption()">＋ Add another choice</button>
+          </div>
+          <div id="candArea" style="display:none">
+            <label class="fld">Which candidates should the family choose between?</label>
+            <div id="candList"></div>
+          </div>
+          <div style="margin-top:14px;display:flex;gap:8px"><button class="btn btn-teal" id="startVoteBtn" onclick="startVote(this)">Post this vote</button><button class="link-btn" onclick="toggleVoteForm()">Cancel</button></div>
+        </div>
+        <div id="voteList"></div>
+
+        <div id="decisionWrap" style="display:none">
+          <h3 style="margin:26px 0 4px">Decisions made</h3>
+          <p class="hint" style="margin-bottom:4px">A record of what the family has settled, so it doesn't get re-argued later.</p>
+          <div id="decisionList"></div>
+        </div>
+
+        <h3 style="margin:26px 0 4px">Discussion</h3>
+        <div id="boardFeed"></div>
+        <div id="boardCompose" style="margin-top:12px;display:flex;gap:8px">
+          <input id="boardInput" placeholder="Share what needs doing, or reply…" style="flex:1">
+          <button class="btn btn-teal" id="boardSend" onclick="postBoard(this)">Post</button>
+        </div>
+        <p id="boardViewNote" class="hint" style="display:none;margin-top:12px">You're viewing this family board. You can read everything here, but only members can post or vote.</p>
+      </div>
+
+      <!-- BUDGET -->
+      <div class="pane" data-pane="budget">
+        <h2>Care budget</h2>
+        <p style="color:var(--muted);margin-bottom:6px">See what a caregiver will cost, set a monthly budget, and keep the family's spending clear. This is a planner, not a payment system.</p>
+
+        <h3 style="margin:20px 0 4px">Plan a hire</h3>
+        <p class="hint" style="margin-bottom:8px">Enter a rate and hours to see what it would cost, and what it leaves in your budget.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
+          <div><label class="fld">Hourly rate ($)</label><input id="calcRate" inputmode="decimal" placeholder="e.g. 22" oninput="calcCost()" style="max-width:130px"></div>
+          <div><label class="fld">Hours per week</label><input id="calcHours" inputmode="decimal" placeholder="e.g. 20" oninput="calcCost()" style="max-width:150px"></div>
+        </div>
+        <div id="calcOut"></div>
+
+        <h3 style="margin:26px 0 4px">Monthly care budget</h3>
+        <div id="budgetSet"></div>
+        <div id="budgetBar" style="margin-top:12px"></div>
+
+        <h3 style="margin:26px 0 4px">Expenses this month</h3>
+        <div id="expenseAdd" style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-bottom:8px">
+          <div style="flex:1;min-width:150px"><label class="fld">What for</label><input id="expLabel" placeholder="e.g. Caregiver, week of the 14th"></div>
+          <div><label class="fld">Amount ($)</label><input id="expAmount" inputmode="decimal" placeholder="480" style="max-width:110px"></div>
+          <div><label class="fld">Paid by</label><select id="expPaidBy" style="width:auto;min-width:110px"></select></div>
+          <div><label class="fld">Date</label><input id="expDate" type="date" style="width:auto"></div>
+          <button class="btn btn-teal btn-sm" id="expAddBtn" onclick="addExpense(this)">Add</button>
+        </div>
+        <div id="expenseList"></div>
+        <div id="splitBox" style="margin-top:14px"></div>
+      </div>
+
+      <!-- DOCUMENTS -->
+      <div class="pane" data-pane="documents">
+        <h2>Documents</h2>
+        <p style="color:var(--muted);margin-bottom:6px">Upload a document and send it to a caregiver to e-sign, or keep a signed copy on file. Everything stays in one safe place the whole family can see.</p>
+        <div id="docAdd" style="border:1px solid var(--line);border-radius:12px;padding:15px;margin:14px 0;background:var(--bg)">
+          <label class="fld" style="margin-top:0">Add a document</label>
+          <input id="docTitle" placeholder="e.g. Work agreement for Maria" style="margin-bottom:8px">
+          <div class="row" style="gap:8px">
+            <div><label class="fld">Choose a file (PDF or image)</label><input id="docFile" type="file" accept=".pdf,.doc,.docx,image/*"></div>
+            <div><label class="fld">Send to a caregiver to sign (optional)</label><select id="docCaregiver"></select></div>
+          </div>
+          <div id="docMsg" class="msg"></div>
+          <div style="margin-top:10px"><button class="btn btn-teal btn-sm" id="docAddBtn" onclick="uploadDoc(this)">Add document</button></div>
+          <p class="hint" style="margin-top:8px">Need a work agreement first? <a href="/tools/work-agreement-builder">Open the builder →</a>, save it, then upload it here.</p>
+        </div>
+        <div id="docList"></div>
+      </div>
+
+      <!-- DIRECTORY -->
+      <div class="pane" data-pane="directory">
+        <h2>Browse vetted caregivers near you</h2>
+        <p style="color:var(--muted);margin-bottom:14px">See caregivers who've been interviewed and background-checked, then invite the ones you like to your job.</p>
+        <a class="btn btn-teal" href="/directory">Browse the directory →</a>
+      </div>
+
+      <!-- TOOLKIT -->
+      <div class="pane" data-pane="toolkit">
+        <h2>Your hiring toolkit</h2>
+        <p style="color:var(--muted);margin-bottom:14px">Everything you need to interview well and hire with confidence.</p>
+        <div id="resources"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script type="module">
+import { sb, isConfigured, esc } from './account.js';
+
+const NEEDS=['Companionship','Personal care','Dementia / memory care','Mobility & transfers','Medication reminders','Meals & housekeeping','Transportation','Overnight'];
+const SCORE_CATS=[['communication','Communication'],['experience','Experience'],['warmth','Warmth & patience'],['reliability','Reliability'],['gut','Gut feeling']];
+const needSel=new Set();
+let USER=null, FAMILY=null, JOBS=[], lovedUrl='';
+let HOUSEHOLD=null, MYROLE='owner', MEMBERS=[], MEMBERSHIPS=[], MYNAME='';
+const ownerView=()=>MYROLE==='owner';
+const canSeeApplicants=()=>['owner','member','viewer'].includes(MYROLE); // can view the pipeline
+const canAct=()=>['owner','member'].includes(MYROLE);                     // triage, message, hire
+const canPost=()=>['owner','member','helper'].includes(MYROLE);           // post a job
+const canBoardWrite=()=>['owner','member','helper'].includes(MYROLE);     // chat + vote
+const isViewer=()=>MYROLE==='viewer';
+const $=id=>document.getElementById(id);
+const show=(id,on)=>{$(id).style.display=on?'':'none';};
+const msg=(el,t,k)=>{const m=$(el);m.textContent=t;m.className='msg '+(k||'');};
+let MODE='signup';
+
+// chips for care needs
+$('needsOpts').innerHTML=NEEDS.map(n=>'<span class="chip" data-v="'+esc(n)+'">'+esc(n)+'</span>').join('');
+$('needsOpts').querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const v=c.dataset.v;needSel.has(v)?(needSel.delete(v),c.classList.remove('sel')):(needSel.add(v),c.classList.add('sel'));});
+
+window.showTab=function(m){MODE=m;$('tabSignup').classList.toggle('on',m==='signup');$('tabLogin').classList.toggle('on',m==='login');$('authBtn').textContent=m==='signup'?'Create my account →':'Log in →';$('authName').style.display=m==='signup'?'':'none';$('authName').previousElementSibling.style.display=m==='signup'?'':'none';show('loginHelp',m==='login');msg('authMsg','','');};
+
+function friendly(e){const m=(e&&e.message)||'Something went wrong.';if(/already registered/i.test(m))return 'That email already has an account. Try logging in.';if(/invalid login/i.test(m))return 'Email or password not recognized.';return m;}
+
+window.doAuth=async function(){
+  const email=$('authEmail').value.trim(),pass=$('authPass').value,name=$('authName').value.trim();
+  if(!email||!pass){msg('authMsg','Please enter your email and a password.','err');return;}
+  if(MODE==='signup'&&pass.length<8){msg('authMsg','Please use at least 8 characters.','err');return;}
+  $('authBtn').disabled=true;
+  try{
+    if(MODE==='signup'){
+      const {data,error}=await sb.auth.signUp({email,password:pass});
+      if(error)throw error;
+      if(!data.session){msg('authMsg','Almost there — check your email to confirm, then log in.','ok');$('authBtn').disabled=false;return;}
+      await sb.from('htl_families').insert({user_id:data.user.id,email,name});
+    } else {
+      const {error}=await sb.auth.signInWithPassword({email,password:pass});
+      if(error)throw error;
+    }
+    await boot();
+  }catch(e){msg('authMsg',friendly(e),'err');$('authBtn').disabled=false;}
+};
+window.doReset=async function(ev){ev.preventDefault();const email=$('authEmail').value.trim();if(!email){msg('authMsg','Enter your email above first.','err');return;}const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+'/family.html'});msg('authMsg',error?friendly(error):'Sent. Check your email.',error?'err':'ok');};
+$('logoutBtn').onclick=async(e)=>{e.preventDefault();await sb.auth.signOut();location.reload();};
+
+window.uploadLoved=async function(input){
+  const f=input.files&&input.files[0];if(!f||!USER)return;
+  const ext=(f.name.split('.').pop()||'jpg').toLowerCase();
+  const path=USER.id+'/loved-'+Date.now()+'.'+ext;
+  const {error}=await sb.storage.from('job-photos').upload(path,f,{upsert:true,contentType:f.type});
+  if(error){msg('jobMsg','Photo upload failed: '+error.message,'err');return;}
+  const {data}=sb.storage.from('job-photos').getPublicUrl(path);
+  lovedUrl=data.publicUrl;$('lovedImg').src=lovedUrl+'?t='+Date.now();$('lovedImg').style.display='';
+};
+
+// ---------- post-a-job wizard ----------
+let JW=0; const JW_TOTAL=3;
+function renderJwProg(){ $('jwProg').innerHTML=Array.from({length:JW_TOTAL}).map((_,i)=>'<div class="jwdot'+(i<=JW?' on':'')+'"></div>').join(''); }
+function showJwStep(){ document.querySelectorAll('.wstep').forEach(s=>s.classList.toggle('on',+s.dataset.wstep===JW)); renderJwProg(); }
+window.jwNext=function(){
+  if(JW===0 && !$('j_rname').value.trim() && !$('j_title').value.trim()){ /* soft: allow, no block */ }
+  if(JW<JW_TOTAL-1){JW++;showJwStep();}
+};
+window.jwPrev=function(){ if(JW>0){JW--;showJwStep();} };
+showJwStep();
+
+window.postJob=async function(){
+  if(!USER)return;
+  let title=$('j_title').value.trim();
+  if(!title){ const rn=$('j_rname').value.trim(); title=rn?('Caregiver for '+rn):'In-home caregiver'; }
+  $('postBtn').disabled=true;
+  const row={
+    family_user_id:HOUSEHOLD,title:title,description:$('j_desc').value.trim(),
+    city:$('j_city').value.trim(),schedule:$('j_sched').value.trim(),hours_per_week:$('j_hours').value.trim(),
+    start_date:$('j_start').value.trim(),care_needs:[...needSel],
+    recipient_name:$('j_rname').value.trim(),recipient_age:parseInt($('j_rage').value)||null,
+    recipient_about:$('j_rabout').value.trim(),recipient_photo_url:lovedUrl||null,home_notes:$('j_home').value.trim(),
+    rate:$('j_rate').value.trim(),pay_unit:$('j_unit').value,pay_notes:$('j_paynotes').value.trim(),
+  };
+  const {data,error}=await sb.from('htl_jobs').insert(row).select().maybeSingle();
+  $('postBtn').disabled=false;
+  if(error){msg('jobMsg',error.message,'err');return;}
+  msg('jobMsg','Posted! Your invite link is ready below.','ok');
+  ['j_title','j_desc','j_city','j_sched','j_hours','j_start','j_rname','j_rage','j_rabout','j_home','j_rate','j_paynotes'].forEach(i=>$(i).value='');
+  needSel.clear();$('needsOpts').querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));
+  lovedUrl='';$('lovedImg').style.display='none';
+  JW=0;showJwStep();
+  await loadJobs();
+};
+
+let ALL_APPS=[];
+async function loadJobs(){
+  const {data}=await sb.from('htl_jobs').select('*').eq('family_user_id',HOUSEHOLD).order('created_at',{ascending:false});
+  JOBS=data||[];
+  ALL_APPS=[];
+  if(!JOBS.length){$('jobsList').innerHTML='<p class="hint">Your posted jobs will appear here.</p>';renderHome();renderHistory();return;}
+  const ids=JOBS.map(j=>j.id);
+  const {data:apps}=await sb.from('htl_applications').select('*').in('job_id',ids).order('created_at',{ascending:false});
+  ALL_APPS=apps||[];
+  const byJob={};ALL_APPS.forEach(a=>{(byJob[a.job_id]=byJob[a.job_id]||[]).push(a);});
+  $('jobsList').innerHTML=JOBS.map(j=>renderJob(j,byJob[j.id]||[])).join('');
+  renderHome();renderHistory();
+}
+function greeting(){const h=new Date().getHours();return h<12?'Good morning':h<17?'Good afternoon':'Good evening';}
+function renderHome(){
+  const el=$('homeHead'); if(!el) return;
+  const fname=(((FAMILY&&FAMILY.name)||'').split(' ')[0])||'there';
+  const total=ALL_APPS.length;
+  const newCount=ALL_APPS.filter(a=>a.status==='new').length;
+  const hired=ALL_APPS.some(a=>a.status==='hired');
+  const advanced=ALL_APPS.some(a=>['contacted','interviewing','finalist','offered'].includes(a.status));
+  const stage = JOBS.length===0 ? 0 : (hired?3 : (advanced?2 : 1));
+  const steps=['Post a job','Review applicants','Interview','Choose & hire'];
+  let title,sub;
+  if(JOBS.length===0){title="Let's find someone wonderful for your family.";sub="Post a job, then share your link anywhere caregivers look. It only takes a few minutes.";}
+  else if(hired){title="You've found your caregiver.";sub="Their details and your notes stay here whenever you need them.";}
+  else if(total===0){title="Your job is live.";sub="Share your private link to start receiving applicants, or browse the directory and invite caregivers you like.";}
+  else{title="Here's how your search is going.";sub=newCount?("You have "+newCount+" new applicant"+(newCount===1?'':'s')+" to review."):"Review your applicants and set up interviews when you're ready.";}
+  const rail='<div class="journey"><div class="jrail">'+steps.map((s,i)=>
+    '<div class="jstep '+(i<stage?'done':(i===stage?'now':''))+'"><span class="jdot">'+(i<stage?'✓':(i+1))+'</span><span class="jlbl">'+s+'</span></div>'
+  ).join('<span class="jline"></span>')+'</div></div>';
+  el.innerHTML='<p class="eyebrow2">'+greeting()+', '+esc(fname)+'</p><h1>'+esc(title)+'</h1><p class="lede">'+esc(sub)+'</p>'+rail
+    +(newCount?'<div class="attn"><span class="adot"></span>'+newCount+' new applicant'+(newCount===1?'':'s')+' waiting for your review.</div>':'');
+  setBadge('applicants',newCount);
+}
+
+function renderJob(j,apps){
+  const link='https://tryhometogether.com/apply?job='+j.invite_code;
+  return '<div class="job"><div style="display:flex;justify-content:space-between;align-items:start;gap:10px;flex-wrap:wrap">'
+    +'<div><h3 style="margin-bottom:2px">'+esc(j.title||'Untitled job')+'</h3>'
+    +'<span class="hint">'+esc(j.city||'')+(j.rate?' · $'+esc(j.rate)+' '+esc(j.pay_unit||''):'')+' · '+(apps.length)+' applicant'+(apps.length===1?'':'s')+'</span></div>'
+    +'<span class="pill" style="background:'+(j.status==='open'?'#e8f6ee;color:#15803d':'#eee;color:#777')+'">'+esc(j.status||'open')+'</span></div>'
+    +'<div class="invite"><span>Your job link:</span> <code>'+esc(link)+'</code>'
+    +'<button class="btn btn-ghost btn-sm copybtn" onclick="copyLink(this,\''+esc(link)+'\')">Copy</button></div>'
+    +'<details class="acc" style="margin:6px 0 2px"><summary>Where to share your job link to find caregivers</summary><div class="body">'
+    +'<p style="color:#5b6b7a;margin-bottom:8px">Post this link anywhere caregivers look. Anyone who opens it sees your job and can apply, and only you see the applicants.</p>'
+    +'<ul>'
+    +'<li><b>Browse HomeTogether Hire\'s directory</b> (below) and invite vetted, background-checked caregivers directly.</li>'
+    +'<li><b>Facebook</b> — local community groups, "caregiver jobs [your town]" groups, and Marketplace.</li>'
+    +'<li><b>Nextdoor</b> — your neighborhood is a great source of nearby, trusted help.</li>'
+    +'<li><b>Local CNA & nursing programs</b> — community colleges and trade schools; students and new grads make wonderful caregivers.</li>'
+    +'<li><b>Churches, senior centers, and your Area Agency on Aging</b> — bulletin boards and staff often know someone.</li>'
+    +'<li><b>Indeed or Craigslist</b> (gigs / jobs) if you want wider reach.</li>'
+    +'<li><b>People you already know</b> — friends, neighbors, and your loved one\'s own circle. Word of mouth finds some of the best caregivers.</li>'
+    +'</ul></div></details>'
+    +(canSeeApplicants()?renderPipeline(apps):'<p class="hint" style="background:var(--teal-soft);border-radius:10px;padding:10px 12px">Applicants and messages are kept with the family organizer and members. Thank you for helping get this job in front of caregivers!</p>')
+    +'</div>';
+}
+const PIPE_STAGES=[['new','New'],['reviewing','Reviewing'],['contacted','Contacted'],['interviewing','Interviewing'],['hired','Hired'],['declined','Not selected'],['former','No longer with us']];
+function renderPipeline(apps){
+  if(!apps.length) return '<p class="hint">No applicants yet. Share your link in a few of the places above to start receiving them.</p>';
+  const by={}; apps.forEach(a=>{const k=a.status||'new';(by[k]=by[k]||[]).push(a);});
+  const summary='<div class="pipe">'+PIPE_STAGES.filter(([k])=>by[k]&&by[k].length).map(([k,label])=>'<span class="pipe-seg">'+label+' <b>'+by[k].length+'</b></span>').join('')+'</div>';
+  const groups=PIPE_STAGES.map(([k,label])=>{ const g=by[k]; if(!g||!g.length) return ''; return '<div class="stage"><div class="stage-h"><span>'+esc(label)+'</span><span>'+g.length+'</span></div>'+g.map(a=>renderApplicant(a)).join('')+'</div>'; }).join('');
+  return summary+groups;
+}
+
+function viewerApplicant(a){
+  const contact=(a.applicant_phone||a.applicant_email)&&FAMILY_ACTIVE
+    ? '<p class="hint">'+(a.applicant_phone?esc(a.applicant_phone):'')+(a.applicant_email?' · '+esc(a.applicant_email):'')+'</p>' : '';
+  const rating=a.family_rating?('<div class="hint" style="margin-top:4px">Family rating: '+'★'.repeat(a.family_rating)+'☆'.repeat(Math.max(0,5-a.family_rating))+'</div>'):'';
+  const notes=a.family_notes?('<div style="margin-top:6px;font-size:14px"><b>Notes:</b> '+esc(a.family_notes)+'</div>'):'';
+  return '<div class="applicant"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center">'
+    +'<b>'+esc(a.applicant_name||'Applicant')+'</b>'
+    +'<span class="pill" style="background:#eef1f4;color:#55677A">'+esc(a.status||'new')+'</span></div>'
+    +contact
+    +(a.message?'<p style="font-size:14px;margin:6px 0">'+esc(a.message)+'</p>':'')
+    +rating+notes+'</div>';
+}
+function renderApplicant(a){
+  if(!canAct()) return viewerApplicant(a);
+  const scores=a.family_scores||{};
+  const stars=SCORE_CATS.map(([k,label])=>{
+    let row='<div class="score"><span>'+label+'</span><span class="stars" data-cat="'+k+'" data-app="'+a.id+'">';
+    for(let n=1;n<=5;n++) row+='<span class="star'+((scores[k]||0)>=n?' on':'')+'" data-n="'+n+'">★</span>';
+    return row+'</span></div>';
+  }).join('');
+  const chk=(a.check_status&&a.check_status!=='none')||a.check_waived;
+  const chkLabel=a.check_waived?'proceeding without a check':('check: '+a.check_status);
+  const statuses=['new','reviewing','contacted','interviewing','hired','declined','former'];
+  const itypes=[['','Not interviewed yet'],['phone','Phone interview'],['in_person','In-person interview'],['both','Phone + in person']];
+  const canReview=a.caregiver_id && (a.status==='hired'||a.status==='former');
+  return '<div class="applicant" data-app="'+a.id+'"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center">'
+    +'<b>'+esc(a.applicant_name||'Applicant')+'</b>'
+    +'<select class="appstatus" data-app="'+a.id+'" style="width:auto;padding:5px 10px">'
+    +statuses.map(s=>'<option'+(a.status===s?' selected':'')+'>'+s+'</option>').join('')+'</select></div>'
+    +((a.applicant_phone||a.applicant_email)?(FAMILY_ACTIVE
+        ? '<p class="hint">'+(a.applicant_phone?'<a href="tel:'+esc(a.applicant_phone)+'">'+esc(a.applicant_phone)+'</a>':'')+(a.applicant_email?' · '+esc(a.applicant_email):'')+'</p>'
+        : '<p class="hint" style="background:#fff7e6;border:1px solid var(--honey);border-radius:8px;padding:6px 10px;color:#7a5312"><svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-lock"/></svg> Contact details are members-only. <a href="#" onclick="document.getElementById(\'memberCard\').scrollIntoView({behavior:\'smooth\'});return false" style="color:var(--honey-deep);font-weight:800">Become a member to reach them &rarr;</a></p>'):'')
+    +(a.message?'<p style="font-size:14px;margin:6px 0">'+esc(a.message)+'</p>':'')
+    +'<div style="margin-top:8px">'+stars+'</div>'
+    +'<div style="margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px">'
+    +'<div style="font-weight:800;font-size:12px;color:var(--navy);margin-bottom:6px">Interview</div>'
+    +'<div class="row" style="gap:8px">'
+    +'<select class="appitype">'+itypes.map(t=>'<option value="'+t[0]+'"'+((a.interview_type||'')===t[0]?' selected':'')+'>'+t[1]+'</option>').join('')+'</select>'
+    +'<input class="appidate" placeholder="Date (e.g. Jul 24)" value="'+esc(a.interview_date||'')+'">'
+    +'</div>'
+    +'<input class="appioutcome" style="margin-top:8px" placeholder="How did it go? (e.g. warm, great with Mom / too far to travel)" value="'+esc(a.interview_outcome||'')+'">'
+    +'</div>'
+    +'<label class="fld" style="margin-top:8px">Your private notes</label>'
+    +'<textarea class="appnotes" placeholder="What stood out, questions to follow up on…">'+esc(a.family_notes||'')+'</textarea>'
+    +'<input class="appreason" style="margin-top:8px" placeholder="If not a fit, or no longer with you — why? (private)" value="'+esc(a.end_reason||'')+'">'
+    +'<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">'
+    +'<button class="btn btn-teal btn-sm appsave" data-app="'+a.id+'">Save</button>'
+    +(canReview?'<button class="btn btn-honey btn-sm" onclick="leaveReview(\''+a.caregiver_id+'\',this)">★ Leave a public review</button>':'')
+    +(chk?'<span class="pill" style="background:#e6f1f3;color:#155A68">'+esc(chkLabel)+'</span>'
+        :'<button class="btn btn-ghost btn-sm" onclick="checkInfo(this)">Run background check…</button>'
+        +'<button class="btn btn-ghost btn-sm" onclick="waiveCheck(\''+a.id+'\',this)">Hire without a check</button>')
+    +'</div><div class="checknote hint" style="display:none;margin-top:6px"></div></div>';
+}
+
+window.copyLink=function(btn,link){navigator.clipboard.writeText(link).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',1500);});};
+window.checkInfo=function(btn){const n=btn.closest('.applicant').querySelector('.checknote');n.style.display='';n.innerHTML='A background check runs through Checkr ($45, with the caregiver\'s consent). It\'s free if they already carry a HomeTogether Hire ✓ badge. This step turns on when the background-check system finishes moving to this project.';};
+window.waiveCheck=async function(id,btn){
+  if(!confirm('Mark this candidate as "hiring without a background check"? You can still run one later.'))return;
+  await sb.from('htl_applications').update({check_waived:true}).eq('id',id);
+  const n=btn.closest('.applicant').querySelector('.checknote');n.style.display='';
+  n.textContent='Noted: proceeding without a background check. (Recorded for your files.)';
+};
+
+// event delegation for stars, save, status
+document.addEventListener('click',async e=>{
+  const star=e.target.closest('.star');
+  if(star){const wrap=star.closest('.stars');const cat=wrap.dataset.cat;const n=+star.dataset.n;
+    [...wrap.children].forEach((s,i)=>s.classList.toggle('on',i<n));wrap.dataset.val=n;return;}
+  const save=e.target.closest('.appsave');
+  if(save){const id=save.dataset.app;const app=document.querySelector('.applicant[data-app="'+id+'"]');
+    const scores={};app.querySelectorAll('.stars').forEach(w=>{if(w.dataset.cat==='review')return;const v=+w.dataset.val|| [...w.children].filter(s=>s.classList.contains('on')).length; if(v)scores[w.dataset.cat]=v;});
+    const overall=Object.values(scores).length?Math.round(Object.values(scores).reduce((a,b)=>a+b,0)/Object.values(scores).length):null;
+    const g=s=>{const el=app.querySelector(s);return el&&el.value?el.value:null;};
+    const core={family_notes:g('.appnotes'),family_scores:scores,family_rating:overall};
+    const extra={interview_type:g('.appitype'),interview_date:g('.appidate'),interview_outcome:g('.appioutcome'),end_reason:g('.appreason')};
+    save.disabled=true;save.textContent='Saving…';
+    const {error}=await sb.from('htl_applications').update(core).eq('id',id);
+    // new fields need migration 3; best-effort so core always saves
+    sb.from('htl_applications').update(extra).eq('id',id).then(()=>{},()=>{});
+    save.disabled=false;save.textContent=error?'Try again':'Saved ✓';setTimeout(()=>save.textContent='Save',1500);
+    if(!error){const a=ALL_APPS.find(x=>x.id===id);if(a)Object.assign(a,core,extra);renderHistory();}
+    return;}
+});
+document.addEventListener('change',async e=>{
+  const sel=e.target.closest('.appstatus');
+  if(sel){const st=sel.value;const rel=st==='hired'?'hired':(st==='former'?'former':'candidate');
+    await sb.from('htl_applications').update({status:st}).eq('id',sel.dataset.app);
+    sb.from('htl_applications').update({relationship:rel}).eq('id',sel.dataset.app).then(()=>{},()=>{}); // needs migration 3
+    await loadJobs();}
+});
+function renderHistory(){
+  const list=$('historyList'); if(!list) return;
+  if(!canSeeApplicants()) return;
+  const seen=ALL_APPS.filter(a=>['contacted','interviewing','hired','declined','former'].includes(a.status)||a.interview_type||a.end_reason);
+  if(!seen.length){ list.innerHTML='<p class="hint">As you contact, interview, and hire caregivers, they\'ll be listed here so you always remember who you\'ve spoken with.</p>'; return; }
+  const jobTitle=id=>{const j=JOBS.find(x=>x.id===id);return j?(j.title||'a job'):'a job';};
+  const badge=s=>{const m={hired:['Hired','#15803d','#e8f6ee'],former:['No longer with us','#b45309','#fef3e2'],declined:['Not hired','#6b7280','#eef1f4'],interviewing:['Interviewing','#155A68','#e6f1f3'],contacted:['Contacted','#155A68','#e6f1f3']};const x=m[s]||['',''];return '<span class="pill" style="background:'+x[2]+';color:'+x[1]+'">'+x[0]+'</span>';};
+  const itype={phone:'Phone interview',in_person:'In-person interview',both:'Phone + in-person'};
+  list.innerHTML=seen.sort((a,b)=>(b.created_at||'').localeCompare(a.created_at||'')).map(a=>
+    '<div style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px">'
+    +'<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center"><b>'+esc(a.applicant_name||'Applicant')+'</b>'+badge(a.status)+'</div>'
+    +'<div class="hint">for '+esc(jobTitle(a.job_id))+(a.applicant_phone?' · '+esc(a.applicant_phone):'')+'</div>'
+    +(a.interview_type&&itype[a.interview_type]?'<div style="font-size:13.5px;margin-top:4px">'+itype[a.interview_type]+(a.interview_date?' · '+esc(a.interview_date):'')+(a.interview_outcome?' — '+esc(a.interview_outcome):'')+'</div>':'')
+    +(a.end_reason?'<div style="font-size:13.5px;margin-top:4px;color:var(--muted)"><b>Why:</b> '+esc(a.end_reason)+'</div>':'')
+    +'</div>'
+  ).join('');
+}
+window.leaveReview=function(cgId,btn){
+  const wrap=btn.closest('.applicant');
+  if(wrap.querySelector('.revpanel'))return;
+  const stars=[1,2,3,4,5].map(n=>'<span class="star" data-n="'+n+'">★</span>').join('');
+  const div=document.createElement('div');
+  div.className='revpanel';div.style.cssText='margin-top:10px;background:#fff7e6;border:1px solid var(--honey);border-radius:10px;padding:12px 14px;width:100%';
+  div.innerHTML='<div style="font-weight:800;font-size:12px;color:#7a5312;margin-bottom:6px">Your public review</div>'
+    +'<p class="hint" style="margin-bottom:6px">This appears on their profile to help other families. Please be fair and honest.</p>'
+    +'<div class="score"><span>Rating</span><span class="stars" data-cat="review">'+stars+'</span></div>'
+    +'<textarea class="revbody" style="margin-top:6px" placeholder="How did they do? What should other families know?"></textarea>'
+    +'<button class="btn btn-honey btn-sm revsubmit" style="margin-top:8px" data-cg="'+cgId+'">Post public review</button>';
+  btn.parentNode.parentNode.appendChild(div);
+};
+document.addEventListener('click',async e=>{
+  const rb=e.target.closest('.revsubmit'); if(!rb)return;
+  const panel=rb.closest('.revpanel');
+  const rating=+((panel.querySelector('.stars')||{}).dataset||{}).val||0;
+  const body=(panel.querySelector('.revbody')||{}).value||'';
+  if(!rating){alert('Please tap a star rating first.');return;}
+  rb.disabled=true;rb.textContent='Posting…';
+  const {error}=await sb.from('htl_reviews').insert({caregiver_id:rb.dataset.cg,family_user_id:USER.id,family_name:(FAMILY&&FAMILY.name)||'A family',rating,body:body.trim()||null});
+  if(error){rb.disabled=false;rb.textContent='Post public review';alert(error.message);return;}
+  panel.innerHTML='<div style="font-weight:700;color:#15803d">Thank you. Your review is posted.</div>';
+});
+
+// ---------- resources ----------
+const RES=[
+  ['Interview questions to ask',
+   '<p style="color:#5b6b7a;margin-bottom:8px">Start warm, then work in a few real situations. There are no perfect answers — you\'re listening for kindness, honesty, and good judgment.</p>'
+   +'<b>Getting to know them</b><ul><li>Tell me about yourself and what drew you to caregiving.</li><li>Tell me about someone you\'ve cared for and what that was like.</li><li>Which tasks are you most confident with? Any you\'d want more training on?</li></ul>'
+   +'<b>Real situations</b><ul><li>If my mother asked you the same question over and over, how would you respond?</li><li>If she accused you of taking something you hadn\'t, what would you do?</li><li>If she became upset or refused care, how would you handle it?</li><li>If she seemed more confused or weak than usual, what would you do?</li><li>If she fell during your shift, what are your first steps?</li></ul>'
+   +'<b>Reliability & boundaries</b><ul><li>What would you do if you woke up sick on a day you were scheduled?</li><li>What does being dependable mean to you?</li><li>How would you handle being offered a gift or asked to keep something from us?</li></ul>'
+   +'<b>Quick phone screen (5 min)</b><ul><li>Are you available for this schedule?</li><li>How far are you willing to travel?</li><li>Tell me in a sentence why you got into caregiving.</li><li>Are you comfortable completing a background check?</li></ul>'],
+  ['Scoring & comparing candidates',
+   '<p>After each interview, score them on the five things that matter most (right on their card above): communication, experience, warmth and patience, reliability, and your gut feeling. Add a few notes while it\'s fresh. When you\'ve met a few people, the scores make it easy to compare instead of relying on memory. Trust the gut-feeling score more than you\'d expect — this is someone coming into your loved one\'s home.</p>'],
+  ['Checking references',
+   '<p style="color:#5b6b7a;margin-bottom:8px">Call at least two. Past employers and families they\'ve cared for are best. Ask:</p>'
+   +'<ul><li>How do you know them, and for how long?</li><li>What were they responsible for?</li><li>Were they reliable and on time?</li><li>How did they handle a hard moment or an emergency?</li><li>Would you hire them again to care for your own family member?</li><li>Is there anything I should know?</li></ul>'
+   +'<p>Listen for hesitation as much as words. A warm, specific reference is worth a lot.</p>'],
+  ['Before they start: a checklist',
+   '<ul><li>Confirm their driver\'s license and auto insurance if they\'ll drive.</li><li>Run a background check (or decide together to skip it) — your call.</li><li>Do a short <b>paid trial shift</b> so everyone can feel the fit.</li><li>Exchange emergency contacts, and a backup plan if they can\'t make it.</li><li>Write down the daily routine, medications, likes and dislikes, and house rules.</li><li>Agree on pay, hours, duties, and how you\'ll communicate.</li><li>Share the door codes / keys only once you\'re confident.</li></ul>'],
+  ['A simple work agreement',
+   '<p style="color:#5b6b7a;margin-bottom:8px">Putting it in writing keeps everyone comfortable. Cover:</p>'
+   +'<ul><li><b>Who, what, where:</b> caregiver name, the person they\'ll care for, the address.</li><li><b>Schedule:</b> days and hours, and how to request time off.</li><li><b>Pay:</b> rate, how often, how (check, app), and mileage if any.</li><li><b>Duties:</b> the main things you expect, and anything that\'s off the table.</li><li><b>Start date</b> and a check-in date to see how it\'s going.</li></ul>'
+   +'<p>A shared note or a one-page letter you both sign is plenty to start.</p>'],
+  ['What is fair to pay?',
+   '<p>In Missouri, private caregivers commonly earn about <b>$18–$28 an hour</b>, depending on experience, the level of care, and overnight or live-in arrangements. More hands-on care (transfers, memory care, medication help) sits at the higher end. Paying a fair, dependable rate is the single best way to keep a wonderful caregiver.</p>'],
+  ['Red flags to watch for',
+   '<ul><li>Vague about past jobs or unwilling to give references.</li><li>Pushes to be paid only in cash and off the books.</li><li>Talks about past clients in a way that feels disrespectful.</li><li>Won\'t agree to a background check without a clear reason.</li><li>Late or a no-show for the interview itself.</li><li>Anything that makes your loved one uncomfortable — that matters most.</li></ul>'],
+  ['Paying a caregiver directly (taxes)',
+   '<p>When you hire and pay a caregiver yourself, you may become a "household employer," which can involve payroll taxes (sometimes called the "nanny tax") once you pay above a yearly threshold. It\'s very manageable, and many families use a payroll service to handle it. A quick chat with a tax professional, or a service like this, keeps everything clean. HomeTogether Hire plans to offer a payroll option to make this effortless.</p>'],
+];
+$('resources').innerHTML=RES.map(r=>'<details class="acc"><summary>'+r[0]+'</summary><div class="body">'+r[1]+'</div></details>').join('');
+
+// ---------- membership ($25/mo) ----------
+const BILLING_EP='https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-billing?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966';
+const NOTIFY_EP='https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-notify?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966';
+async function notify(action,payload){ try{ const {data:{session}}=await sb.auth.getSession(); await fetch(NOTIFY_EP,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(session?.access_token||'')},body:JSON.stringify(Object.assign({action},payload))}); }catch(e){} }
+let FAMILY_ACTIVE=false;
+async function billing(action){
+  const {data:{session}}=await sb.auth.getSession();
+  const r=await fetch(BILLING_EP,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(session?.access_token||'')},body:JSON.stringify({action})});
+  return r.json();
+}
+window.subscribe=async function(btn){ btn.disabled=true; btn.textContent='Opening secure checkout…'; const d=await billing('subscribe'); if(d&&d.url){location.href=d.url;} else {btn.disabled=false;btn.textContent='Become a member — $25/month';alert((d&&d.error)||'Could not start checkout.');} };
+window.manageMembership=async function(btn){ btn.disabled=true; const d=await billing('portal'); if(d&&d.url){location.href=d.url;} else {btn.disabled=false;alert((d&&d.error)||'Could not open billing.');} };
+function renderMember(){
+  FAMILY_ACTIVE = FAMILY && FAMILY.subscription_status==='active';
+  const c=$('memberCard'); c.style.display='';
+  let html = FAMILY_ACTIVE
+    ? '<h2>Your membership</h2><p style="color:var(--muted)">You’re a member. <b>$25/month</b>, and you can cancel anytime.</p><div style="margin-top:12px"><button class="btn btn-ghost" onclick="manageMembership(this)">Manage or cancel</button></div>'
+    : '<h2>Become a member</h2><p style="color:var(--muted)">Browsing caregivers and posting a job are free. To <b>message caregivers and hire directly</b>, join for <b>$25/month</b>. Cancel anytime, no contract.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-teal" onclick="subscribe(this)">Become a member — $25/month</button><a class="btn btn-ghost" href="/membership">See everything you get →</a></div>';
+  if(SOLO_ELIGIBLE){
+    html+='<div style="margin-top:16px;border-top:1px solid var(--line);padding-top:14px">'
+      +'<label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">'
+      +'<input type="checkbox" style="width:auto;margin-top:3px" onclick="toggleSolo(this)"'+(HIDE_COLLAB?' checked':'')+'>'
+      +'<span><b style="color:var(--navy)">It’s just me for now</b><br><small style="color:var(--muted)">Hides the <b>Family team</b> and <b>Family board</b> tabs to keep things simple. Turn this off anytime you want to invite family to help.</small></span>'
+      +'</label></div>';
+  }
+  c.innerHTML=html;
+}
+
+async function handleSubReturn(){
+  history.replaceState({},'',location.pathname);
+  let tries=0;
+  const poll=async()=>{
+    const {data}=await sb.from('htl_families').select('*').eq('user_id',USER.id).maybeSingle();
+    if(data){ FAMILY=data; renderMember(); }
+    if(data && data.subscription_status==='active'){ loadJobs(); return; }
+    if(tries++<10) setTimeout(poll,2000);
+  };
+  poll();
+}
+
+// ---------- messages with caregivers ----------
+function mBubble(senderRole, myRole, otherName, text){
+  const mine=senderRole===myRole;
+  return '<div style="display:flex;justify-content:'+(mine?'flex-end':'flex-start')+';margin:4px 0"><div style="max-width:82%;background:'+(mine?'var(--teal)':'var(--bg)')+';color:'+(mine?'#fff':'var(--ink)')+';border-radius:12px;padding:8px 12px;font-size:14px"><div style="font-size:11px;opacity:.75;font-weight:700;margin-bottom:2px">'+esc(mine?'You':otherName)+'</div>'+esc(text)+'</div></div>';
+}
+async function loadMessages(){
+  const {data:reqs}=await sb.from('htl_contact_requests').select('*').eq('family_user_id',HOUSEHOLD).order('created_at',{ascending:false});
+  if(!reqs||!reqs.length){ $('msgList').innerHTML='<p class="hint">When you message a caregiver from the directory, your conversations show up here.</p>'; setBadge('messages',0); return; }
+  const cgIds=[...new Set(reqs.map(r=>r.caregiver_id))];
+  const {data:cgs}=await sb.from('htl_caregivers').select('id,display_name').in('id',cgIds);
+  const nameOf={}; (cgs||[]).forEach(c=>nameOf[c.id]=c.display_name||'Caregiver');
+  const ids=reqs.map(r=>r.id);
+  const {data:msgs}=await sb.from('htl_messages').select('*').in('request_id',ids).order('created_at',{ascending:true});
+  const byReq={}; (msgs||[]).forEach(m=>{(byReq[m.request_id]=byReq[m.request_id]||[]).push(m);});
+  setBadge('messages', reqs.filter(r=>r.seen_by_family===false).length);
+  $('msgList').innerHTML=reqs.map(r=>{
+    const other=nameOf[r.caregiver_id]||'Caregiver';
+    let h='<div style="border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px">';
+    h+='<div style="font-weight:800;color:var(--navy);margin-bottom:8px">'+esc(other)+'</div>';
+    h+=mBubble('family','family',other,r.message||'');
+    (byReq[r.id]||[]).forEach(m=>{ h+=mBubble(m.sender_role,'family',other,m.body||''); });
+    if(canAct()) h+='<div style="margin-top:10px;display:flex;gap:8px"><input class="mreply-in" data-req="'+r.id+'" placeholder="Write a reply…" style="flex:1;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit"><button class="btn btn-teal mreply-send" data-req="'+r.id+'" style="padding:8px 15px;font-size:13px">Send</button></div>';
+    return h+'</div>';
+  }).join('');
+  const unseen=reqs.filter(r=>r.seen_by_family===false).map(r=>r.id);
+  if(unseen.length){ sb.from('htl_contact_requests').update({seen_by_family:true}).in('id',unseen).then(()=>{},()=>{}); }
+}
+document.addEventListener('click', async e=>{
+  const b=e.target.closest('.mreply-send'); if(!b) return;
+  const req=b.dataset.req; const input=document.querySelector('.mreply-in[data-req="'+req+'"]');
+  const body=(input.value||'').trim(); if(!body) return;
+  b.disabled=true;
+  const {error}=await sb.from('htl_messages').insert({request_id:req,sender_user_id:USER.id,sender_role:'family',body});
+  if(error){ b.disabled=false; alert(error.message); return; }
+  sb.from('htl_contact_requests').update({seen_by_caregiver:false}).eq('id',req).then(()=>{},()=>{});
+  notify('message',{request_id:req});
+  input.value=''; loadMessages();
+});
+
+// ---------- family team (roles & permissions) ----------
+const ROLE_LABEL={owner:'Owner',member:'Member',helper:'Helper',viewer:'Viewer'};
+const ROLE_DESC={owner:'Full access · manages the team',member:'Can hire & message',helper:'Posts & shares only',viewer:'Can view only'};
+let LAST_INVITE=null;
+
+async function chooseHousehold(){
+  const {data:mems}=await sb.from('htl_family_members').select('*').eq('member_user_id',USER.id).eq('status','active');
+  MEMBERSHIPS=mems||[];
+  const owned=MEMBERSHIPS.find(m=>m.household_id===USER.id&&m.role==='owner');
+  const stored=localStorage.getItem('ht_hh');
+  let pick=MEMBERSHIPS.find(m=>m.household_id===stored)||owned||MEMBERSHIPS[0]||null;
+  HOUSEHOLD=pick?pick.household_id:USER.id;
+  MYROLE=pick?pick.role:'owner';
+}
+
+async function loadTeam(){
+  const {data,error}=await sb.from('htl_family_members').select('*').eq('household_id',HOUSEHOLD).neq('status','removed').order('created_at',{ascending:true});
+  if(error){ TEAM_OK=false; $('teamCard').style.display='none'; $('hhBanner').style.display='none'; MEMBERS=[]; return; } // team feature not installed yet
+  TEAM_OK=true; MEMBERS=data||[];
+  renderTeam(); renderHhBanner();
+}
+function renderTeam(){
+  const c=$('teamCard'); c.style.display='';
+  const rows=MEMBERS.map(m=>{
+    const nm=m.name||(m.member_user_id===USER.id?'You':(m.email||'Invited'));
+    const init=((nm.trim()[0])||'?').toUpperCase();
+    const pend=m.status==='invited';
+    let ctrl='';
+    if(ownerView()&&m.role!=='owner'){
+      ctrl='<div style="flex-basis:100%;display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px">'
+        +'<select class="mrole" data-id="'+m.id+'" style="width:auto;padding:5px 9px;font-size:12.5px">'
+        +'<option value="member"'+(m.role==='member'?' selected':'')+'>Member — can hire &amp; message</option>'
+        +'<option value="helper"'+(m.role==='helper'?' selected':'')+'>Helper — posts &amp; shares</option>'
+        +'<option value="viewer"'+(m.role==='viewer'?' selected':'')+'>Viewer — can view only</option></select>'
+        +(pend?'<button class="btn btn-ghost btn-sm mcopy" data-code="'+esc(m.invite_code||'')+'">Copy invite link</button>':'')
+        +'<button class="btn btn-ghost btn-sm mremove" data-id="'+m.id+'">Remove</button></div>';
+    }
+    return '<div class="mrow"><div class="mav">'+esc(init)+'</div>'
+      +'<div class="mmeta"><b>'+esc(nm)+(m.member_user_id===USER.id?' (you)':'')+'</b>'
+      +'<small>'+(m.email?esc(m.email)+' · ':'')+ROLE_DESC[m.role]+(pend?' · invite pending':'')+'</small></div>'
+      +'<span class="rbadge '+(pend?'inv':m.role)+'">'+(pend?'Invited':ROLE_LABEL[m.role])+'</span>'
+      +ctrl+'</div>';
+  }).join('');
+  let invite='';
+  if(ownerView()){
+    const linkRow=LAST_INVITE?('<span>Invite link for '+esc(LAST_INVITE.label)+':</span> <code>'+esc(LAST_INVITE.link)+'</code><button class="btn btn-ghost btn-sm copybtn" onclick="copyLink(this,\''+esc(LAST_INVITE.link)+'\')">Copy</button>'):'';
+    invite='<div id="inviteMsg" class="msg"></div>'
+      +'<div id="inviteLinkBox" class="invite" style="'+(LAST_INVITE?'':'display:none')+'">'+linkRow+'</div>'
+      +'<h3 style="margin-top:16px">Invite someone to help</h3>'
+      +'<div class="row"><div><label class="fld">Their name</label><input id="iv_name" placeholder="e.g. Michael"></div>'
+      +'<div><label class="fld">Their email</label><input id="iv_email" type="email" placeholder="michael@email.com"></div></div>'
+      +'<label class="fld">What can they do?</label>'
+      +'<div class="rolepick">'
+      +'<label><input type="radio" name="ivrole" value="member" checked><span><b>Member</b><small>Can hire &amp; message. Browse caregivers, message them, review applicants, keep notes. For a sibling or spouse.</small></span></label>'
+      +'<label><input type="radio" name="ivrole" value="helper"><span><b>Helper</b><small>Posts &amp; shares only. Can post the job and share the link, but can\'t see applicants or messages. For a niece or nephew helping spread the word.</small></span></label>'
+      +'<label><input type="radio" name="ivrole" value="viewer"><span><b>Viewer</b><small>Can view only. Sees the applicants, messages, and the family board, but can\'t change or send anything. For an out-of-town relative keeping an eye on things.</small></span></label>'
+      +'</div>'
+      +'<button class="btn btn-teal" id="ivBtn" onclick="sendInvite(this)">Create invite link →</button>'
+      +'<p class="hint">You\'ll get a private link to send them however you like. They create a free account and land right in your family\'s hiring workspace.</p>';
+  }
+  const sub=ownerView()
+    ? '<p style="color:var(--muted);margin-bottom:10px">Caring is a team effort. Invite family to help, and choose what each person can do.</p>'
+    : '<p style="color:var(--muted);margin-bottom:10px">The people helping with this family\'s hiring.</p>';
+  c.innerHTML='<h2>Family team</h2>'+sub+'<div>'+rows+'</div>'+invite;
+}
+window.sendInvite=async function(btn){
+  const name=$('iv_name').value.trim(), email=$('iv_email').value.trim();
+  const role=(document.querySelector('input[name=ivrole]:checked')||{}).value||'member';
+  if(!email){msg('inviteMsg','Please enter their email address.','err');return;}
+  btn.disabled=true;btn.textContent='Creating…';
+  const {data,error}=await sb.rpc('htl_invite_member',{p_email:email,p_name:name,p_role:role});
+  btn.disabled=false;btn.textContent='Create invite link →';
+  if(error){msg('inviteMsg',error.message,'err');return;}
+  LAST_INVITE={link:'https://tryhometogether.com/family?invite='+data.invite_code,label:name||email};
+  notify('invite',{email:email,link:LAST_INVITE.link,inviter:MYNAME});
+  await loadTeam();
+  msg('inviteMsg','Invite ready. Send them the link below.','ok');
+};
+function renderHhBanner(){
+  const b=$('hhBanner');
+  let sw='';
+  if(MEMBERSHIPS.length>1){
+    sw='<label class="fld" style="margin-top:0">Whose hiring are you working on?</label><select id="hhPick" style="width:auto;padding:7px 11px;margin-bottom:12px">'+MEMBERSHIPS.map(m=>{
+      const nm=m.household_id===USER.id?'My family':'A family I help with';
+      return '<option value="'+m.household_id+'"'+(m.household_id===HOUSEHOLD?' selected':'')+'>'+esc(nm)+' — '+ROLE_LABEL[m.role]+'</option>';
+    }).join('')+'</select>';
+  }
+  if(HOUSEHOLD!==USER.id){
+    const owner=MEMBERS.find(m=>m.role==='owner');
+    const oname=(owner&&owner.name)?owner.name:'this family';
+    b.style.display='';
+    b.innerHTML=sw+'<div class="hhbar"><svg aria-hidden="true" style="width:20px;height:20px;flex:none"><use href="/assets/icons.svg#i-family"/></svg><div><b>You\'re helping '+esc(oname)+'\'s hiring.</b><br><small style="color:var(--muted)">Your role: '+ROLE_DESC[MYROLE]+'</small></div><span class="rbadge '+MYROLE+'">'+ROLE_LABEL[MYROLE]+'</span></div>';
+  } else if(sw){ b.style.display=''; b.innerHTML=sw; }
+  else { b.style.display='none'; }
+}
+function applyRoleVisibility(){
+  // billing lives with the account owner of their own family only
+  if(!(ownerView()&&HOUSEHOLD===USER.id)) $('memberCard').style.display='none';
+}
+
+// ---------- filing-cabinet tabs ----------
+let TEAM_OK=true, BOARD_OK=true, BUDGET_OK=true, ACTIVE_TAB=null, HIDE_COLLAB=false, SOLO_ELIGIBLE=false;
+const TAB_DEFS=[
+  {k:'applicants',label:'Applicants',roles:['owner','member','viewer']},
+  {k:'post',      label:'Post a job',roles:['owner','member','helper']},
+  {k:'messages',  label:'Messages',  roles:['owner','member','viewer']},
+  {k:'people',    label:'People',roles:['owner','member','viewer']},
+  {k:'team',      label:'Family team',roles:['owner','member','helper','viewer']},
+  {k:'board',     label:'Family board',roles:['owner','member','helper','viewer']},
+  {k:'budget',    label:'Budget',    roles:['owner','member','viewer']},
+  {k:'documents', label:'Documents', roles:['owner','member','viewer']},
+  {k:'directory', label:'Directory', roles:['owner','member','helper','viewer']},
+  {k:'toolkit',   label:'Toolkit',   roles:['owner','member','helper','viewer']},
+];
+function visibleTabs(){
+  return TAB_DEFS.filter(t=>t.roles.includes(MYROLE))
+    .filter(t=>!(t.k==='team'&&!TEAM_OK))
+    .filter(t=>!(t.k==='board'&&!BOARD_OK))
+    .filter(t=>!(t.k==='budget'&&!BUDGET_OK))
+    .filter(t=>!(HIDE_COLLAB && (t.k==='team'||t.k==='board')));
+}
+window.toggleSolo=function(cb){
+  HIDE_COLLAB=cb.checked;
+  if(cb.checked) localStorage.setItem('ht_hide_collab_'+USER.id,'1'); else localStorage.removeItem('ht_hide_collab_'+USER.id);
+  renderTabs(); switchTab(ACTIVE_TAB);
+};
+function renderTabs(){
+  const tabs=visibleTabs();
+  $('ftabs').innerHTML=tabs.map(t=>
+    '<div class="ftab" data-tab="'+t.k+'">'+esc(t.label)+'<span class="badge" data-badge="'+t.k+'"></span></div>'
+  ).join('');
+  $('ftabs').querySelectorAll('.ftab').forEach(el=>el.onclick=()=>switchTab(el.dataset.tab));
+}
+function switchTab(k){
+  const tabs=visibleTabs().map(t=>t.k);
+  if(!tabs.includes(k)) k=tabs[0];
+  ACTIVE_TAB=k;
+  document.querySelectorAll('#ftabs .ftab').forEach(el=>el.classList.toggle('on',el.dataset.tab===k));
+  document.querySelectorAll('.folder .pane').forEach(p=>p.classList.toggle('on',p.dataset.pane===k));
+}
+function setBadge(k,n){
+  const el=document.querySelector('.badge[data-badge="'+k+'"]');
+  if(el) el.textContent=n>0?String(n):'';
+}
+function defaultTab(){
+  if(isViewer()) return JOBS.length? 'applicants':'board';
+  if(!canSeeApplicants()) return 'post';
+  return JOBS.length? 'applicants':'post';
+}
+
+// ---------- family board (discussion + votes) ----------
+let BOARD_PENDING=0;
+function fmtWhen(ts){ if(!ts)return''; const d=new Date(ts),now=new Date(); return d.toDateString()===now.toDateString()? d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'}) : d.toLocaleDateString([],{month:'short',day:'numeric'}); }
+async function loadBoard(){
+  const {data:votes,error}=await sb.from('htl_family_votes').select('*').eq('household_id',HOUSEHOLD).order('created_at',{ascending:false});
+  if(error){ BOARD_OK=false; return; }
+  BOARD_OK=true;
+  const writable=canBoardWrite();
+  $('newVoteBtn').style.display=writable?'':'none';
+  $('boardCompose').style.display=writable?'':'none';
+  $('boardViewNote').style.display=writable?'none':'';
+  const vids=(votes||[]).map(v=>v.id);
+  let ballots=[];
+  if(vids.length){ const {data:bs}=await sb.from('htl_family_ballots').select('*').in('vote_id',vids); ballots=bs||[]; }
+  renderVotes(votes||[],ballots);
+  const {data:posts}=await sb.from('htl_family_posts').select('*').eq('household_id',HOUSEHOLD).order('created_at',{ascending:true});
+  renderFeed(posts||[]);
+  loadTasks();
+  const myV=new Set(ballots.filter(b=>b.voter_user_id===USER.id).map(b=>b.vote_id));
+  BOARD_PENDING=writable?(votes||[]).filter(v=>v.status==='open'&&!myV.has(v.id)).length:0;
+  setBadge('board',BOARD_PENDING);
+}
+function voteCard(v,bs){
+  const total=bs.length, mine=bs.find(b=>b.voter_user_id===USER.id);
+  const tag=v.kind==='candidate'?'<span class="pill" style="background:var(--honey);color:var(--navy-deep)">Hiring vote</span>':'';
+  const writable=canBoardWrite();
+  const opts=(v.options||[]).map((o,i)=>{
+    const cnt=bs.filter(b=>b.choice===i).length, pct=total?Math.round(cnt/total*100):0;
+    const voters=bs.filter(b=>b.choice===i).map(b=>b.voter_name||'Someone').join(', ');
+    return '<div class="voteopt'+(mine&&mine.choice===i?' mine':'')+'"'+(writable?' onclick="castVote(\''+v.id+'\','+i+')"':' aria-disabled="true"')+' title="'+esc(voters)+'">'
+      +'<div class="fill" style="width:'+pct+'%"></div>'
+      +'<span class="lbl">'+esc(o)+'</span><span class="cnt">'+cnt+(total?' · '+pct+'%':'')+'</span></div>';
+  }).join('');
+  const canClose=writable&&(v.author_user_id===USER.id||MYROLE==='owner');
+  return '<div class="votecard">'
+    +'<div style="display:flex;justify-content:space-between;gap:8px;align-items:start;flex-wrap:wrap"><div class="voteq">'+esc(v.question||'')+'</div>'+tag+'</div>'
+    +'<div class="hint" style="margin-top:1px">Started by '+esc(v.author_name||'someone')+' · '+total+' vote'+(total===1?'':'s')+'</div>'
+    +opts
+    +(!writable?'':(mine?'<div class="voters">You voted "'+esc(v.options[mine.choice]||'')+'". Tap another choice to change it.</div>':'<div class="voters">Tap a choice to cast your vote.</div>'))
+    +(canClose?'<div style="margin-top:10px"><button class="btn btn-ghost btn-sm" onclick="closeVote(\''+v.id+'\')">Close this vote</button></div>':'')
+    +'</div>';
+}
+function decisionEntry(v,bs){
+  const total=bs.length;
+  const counts=(v.options||[]).map((o,i)=>bs.filter(b=>b.choice===i).length);
+  const max=Math.max(0,...counts);
+  const winners=(v.options||[]).filter((o,i)=>counts[i]===max&&max>0);
+  const outcome=max===0?'No votes were cast':(winners.length>1?'Tie: '+winners.join(' / '):winners[0]);
+  const when=v.created_at?new Date(v.created_at).toLocaleDateString([],{month:'short',day:'numeric'}):'';
+  return '<div class="votecard" style="background:#f6faf7">'
+    +'<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:start"><div class="voteq">'+esc(v.question||'')+'</div><span class="pill" style="background:#e8f6ee;color:#15803d">Decided</span></div>'
+    +'<div class="hint">'+(v.kind==='candidate'?'Hiring decision · ':'')+esc(when)+' · '+total+' vote'+(total===1?'':'s')+'</div>'
+    +'<div style="margin-top:8px;font-weight:800;color:var(--navy)">Result: '+esc(outcome)+(max&&total?' ('+max+' of '+total+')':'')+'</div>'
+    +'</div>';
+}
+function renderVotes(votes,ballots){
+  const byVote={}; ballots.forEach(b=>{(byVote[b.vote_id]=byVote[b.vote_id]||[]).push(b);});
+  const open=votes.filter(v=>v.status==='open'), closed=votes.filter(v=>v.status!=='open');
+  const list=$('voteList'); if(!list) return;
+  list.innerHTML=open.length? open.map(v=>voteCard(v,byVote[v.id]||[])).join('')
+    : '<p class="hint">No open votes. Start one when the family needs to decide something together, like who to hire or how to split the days.</p>';
+  const dw=$('decisionWrap');
+  if(dw){ if(closed.length){ dw.style.display=''; $('decisionList').innerHTML=closed.map(v=>decisionEntry(v,byVote[v.id]||[])).join(''); } else dw.style.display='none'; }
+}
+function renderFeed(posts){
+  const feed=$('boardFeed'); if(!feed) return;
+  if(!posts.length){ feed.innerHTML='<p class="hint">No messages yet. Start the conversation about what your family needs.</p>'; return; }
+  feed.innerHTML=posts.map(p=>{
+    const nm=p.author_name||'Family', init=((nm.trim()[0])||'?').toUpperCase();
+    return '<div class="bmsg"><div class="bav">'+esc(init)+'</div><div class="bb"><div class="bn">'+esc(nm)+'<small>'+esc(fmtWhen(p.created_at))+'</small></div><div class="bt">'+esc(p.body||'')+'</div></div></div>';
+  }).join('');
+}
+function renderVoteKindRow(){
+  const row=$('voteKindRow'); if(!row) return;
+  let html='<label><input type="radio" name="vkind" value="poll" checked onchange="setVoteKind(\'poll\')"><span><b>A question</b><small>Yes/no, or your own choices</small></span></label>';
+  if(canSeeApplicants()){
+    html+='<label><input type="radio" name="vkind" value="candidate" onchange="setVoteKind(\'candidate\')"><span><b>Who to hire</b><small>Vote among your applicants</small></span></label>';
+  }
+  row.innerHTML=html;
+}
+window.setVoteKind=function(k){
+  $('pollArea').style.display=k==='poll'?'':'none';
+  $('candArea').style.display=k==='candidate'?'':'none';
+  if(k==='candidate'){ buildCandList(); if(!$('vq').value.trim())$('vq').value='Who should we hire?'; }
+};
+function buildCandList(){
+  const seen=new Set(), uniq=[];
+  (ALL_APPS||[]).filter(a=>['new','reviewing','contacted','interviewing'].includes(a.status)).forEach(a=>{
+    const n=(a.applicant_name||'').trim(); if(n&&!seen.has(n.toLowerCase())){ seen.add(n.toLowerCase()); uniq.push(n); }
+  });
+  $('candList').innerHTML=uniq.length
+    ? uniq.map(n=>'<label style="display:flex;gap:8px;align-items:center;margin:6px 0"><input type="checkbox" class="cand" value="'+esc(n)+'" style="width:auto"> '+esc(n)+'</label>').join('')
+    : '<p class="hint">No candidates in the running yet. Add some applicants first, then start a hiring vote.</p>';
+}
+window.toggleVoteForm=function(){ const f=$('voteForm'); const opening=f.style.display==='none'; f.style.display=opening?'':'none'; if(opening){ renderVoteKindRow(); setVoteKind('poll'); $('vq').value=''; $('vq').focus(); } };
+window.addVoteOption=function(){ const i=document.createElement('input'); i.className='vopt'; i.placeholder='Another choice'; i.style.marginBottom='6px'; $('voptWrap').appendChild(i); };
+window.startVote=async function(btn){
+  const kind=(document.querySelector('input[name=vkind]:checked')||{}).value||'poll';
+  let q=$('vq').value.trim(), options;
+  if(kind==='candidate'){
+    options=[...document.querySelectorAll('.cand:checked')].map(c=>c.value);
+    if(options.length<2){ msg('voteMsg','Pick at least two candidates to vote between.','err'); return; }
+    if(!q) q='Who should we hire?';
+  } else {
+    options=[...document.querySelectorAll('.vopt')].map(i=>i.value.trim()).filter(Boolean);
+    if(options.length<2) options=['Yes','No'];
+    if(!q){ msg('voteMsg','Please enter what the family should decide.','err'); return; }
+  }
+  btn.disabled=true;btn.textContent='Posting…';
+  const {error}=await sb.from('htl_family_votes').insert({household_id:HOUSEHOLD,author_user_id:USER.id,author_name:MYNAME,question:q,options,kind});
+  btn.disabled=false;btn.textContent='Post this vote';
+  if(error){ msg('voteMsg',error.message,'err'); return; }
+  $('vq').value=''; document.querySelectorAll('.vopt').forEach((i,ix)=>{ if(ix<2)i.value=''; else i.remove(); });
+  toggleVoteForm(); loadBoard();
+};
+window.castVote=async function(voteId,idx){
+  const {error}=await sb.from('htl_family_ballots').upsert({vote_id:voteId,voter_user_id:USER.id,voter_name:MYNAME,choice:idx},{onConflict:'vote_id,voter_user_id'});
+  if(error){ alert(error.message); return; }
+  loadBoard();
+};
+window.closeVote=async function(id){
+  if(!confirm('Close this vote? Family members won\'t be able to change their answers after that.'))return;
+  const {error}=await sb.from('htl_family_votes').update({status:'closed'}).eq('id',id);
+  if(error){ alert(error.message); return; }
+  loadBoard();
+};
+window.postBoard=async function(btn){
+  const body=$('boardInput').value.trim(); if(!body)return;
+  btn.disabled=true;
+  const {error}=await sb.from('htl_family_posts').insert({household_id:HOUSEHOLD,author_user_id:USER.id,author_name:MYNAME,body});
+  btn.disabled=false;
+  if(error){ alert(error.message); return; }
+  $('boardInput').value=''; loadBoard();
+};
+document.addEventListener('keydown',e=>{ if(e.target&&e.target.id==='boardInput'&&e.key==='Enter'){ e.preventDefault(); postBoard($('boardSend')); }});
+
+// ---------- who's doing what (tasks) ----------
+function memberOptions(selectedId, unassignedLabel){
+  const opts=[];
+  if(unassignedLabel!=null) opts.push('<option value="">'+esc(unassignedLabel)+'</option>');
+  MEMBERS.filter(m=>m.member_user_id).forEach(m=>{
+    const nm=m.member_user_id===USER.id?'Me':(m.name||m.email||'Member');
+    opts.push('<option value="'+m.member_user_id+'"'+(selectedId===m.member_user_id?' selected':'')+'>'+esc(nm)+'</option>');
+  });
+  return opts.join('');
+}
+function taskAssigneeOptions(selectedId){ return memberOptions(selectedId,'Unassigned'); }
+async function loadTasks(){
+  const {data,error}=await sb.from('htl_family_tasks').select('*').eq('household_id',HOUSEHOLD).order('created_at',{ascending:true});
+  const sec=$('taskSection'); if(!sec) return;
+  if(error){ sec.style.display='none'; return; }   // task feature not installed yet
+  sec.style.display='';
+  $('taskAssignee').innerHTML=taskAssigneeOptions(null);
+  renderTasks(data||[]);
+}
+function renderTasks(tasks){
+  const wrap=$('taskList'); if(!wrap) return;
+  const writable=canBoardWrite();
+  $('taskAdd').style.display=writable?'':'none';
+  const open=tasks.filter(t=>t.status!=='done'), done=tasks.filter(t=>t.status==='done');
+  const row=t=>{
+    const who=t.assignee_name||(t.assignee_user_id?'Assigned':'Unassigned');
+    const check=writable
+      ? '<div class="tcheck tdone" data-id="'+t.id+'" data-done="'+(t.status==='done'?'1':'0')+'">'+(t.status==='done'?'✓':'')+'</div>'
+      : '<div class="tcheck">'+(t.status==='done'?'✓':'')+'</div>';
+    const ctrl=writable
+      ? '<select class="tassign-sel" data-id="'+t.id+'" style="width:auto;padding:4px 8px;font-size:12.5px">'+taskAssigneeOptions(t.assignee_user_id)+'</select>'
+        +'<button class="tdel" data-id="'+t.id+'" title="Remove task">✕</button>'
+      : '<span class="tassign">'+esc(who)+'</span>';
+    return '<div class="task'+(t.status==='done'?' done':'')+'">'+check+'<span class="tt">'+esc(t.title||'')+'</span>'+ctrl+'</div>';
+  };
+  wrap.innerHTML=(open.length?open.map(row).join(''):'<p class="hint">Nothing on the list yet. Add what needs doing and assign it, so the work is shared.</p>')
+    +(done.length?('<details style="margin-top:10px"><summary style="cursor:pointer;color:var(--muted);font-weight:700;font-size:13px">Done ('+done.length+')</summary>'+done.map(row).join('')+'</details>'):'');
+}
+window.addTask=async function(btn){
+  const title=$('taskTitle').value.trim(); if(!title) return;
+  const sel=$('taskAssignee'); const uid=sel.value||null; const nm=uid?sel.options[sel.selectedIndex].text:null;
+  btn.disabled=true;
+  const {error}=await sb.from('htl_family_tasks').insert({household_id:HOUSEHOLD,title,assignee_user_id:uid,assignee_name:nm,created_by:USER.id,created_by_name:MYNAME});
+  btn.disabled=false;
+  if(error){ alert(error.message); return; }
+  $('taskTitle').value=''; sel.value=''; loadTasks();
+};
+document.addEventListener('change',async e=>{
+  const s=e.target.closest('.tassign-sel'); if(!s) return;
+  const uid=s.value||null, nm=uid?s.options[s.selectedIndex].text:null;
+  const {error}=await sb.from('htl_family_tasks').update({assignee_user_id:uid,assignee_name:nm}).eq('id',s.dataset.id);
+  if(error) alert(error.message); loadTasks();
+});
+document.addEventListener('click',async e=>{
+  const c=e.target.closest('.tdone');
+  if(c){ const done=c.dataset.done==='1'; const {error}=await sb.from('htl_family_tasks').update({status:done?'open':'done',done_at:done?null:new Date().toISOString()}).eq('id',c.dataset.id); if(error)alert(error.message); loadTasks(); return; }
+  const d=e.target.closest('.tdel');
+  if(d){ if(!confirm('Remove this task?'))return; const {error}=await sb.from('htl_family_tasks').delete().eq('id',d.dataset.id); if(error)alert(error.message); loadTasks(); return; }
+});
+document.addEventListener('keydown',e=>{ if(e.target&&e.target.id==='taskTitle'&&e.key==='Enter'){ e.preventDefault(); addTask($('taskAddBtn')); }});
+
+// ---------- care budget + hire calculator ----------
+let BUDGET=null, EXPENSES=[];
+function money(n){ n=Number(n)||0; return '$'+n.toLocaleString('en-US',{minimumFractionDigits:(n%1?2:0),maximumFractionDigits:2}); }
+function curYM(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+function monthExpenses(){ const ym=curYM(); return EXPENSES.filter(e=>String(e.spent_on||'').slice(0,7)===ym); }
+async function loadBudget(){
+  const {data:b,error}=await sb.from('htl_family_budget').select('*').eq('household_id',HOUSEHOLD).maybeSingle();
+  if(error){ BUDGET_OK=false; return; }   // budget feature not installed yet
+  BUDGET_OK=true;
+  BUDGET = (b && b.monthly_amount!=null) ? Number(b.monthly_amount) : null;
+  const {data:ex}=await sb.from('htl_family_expenses').select('*').eq('household_id',HOUSEHOLD).order('spent_on',{ascending:false});
+  EXPENSES=ex||[];
+  const pb=$('expPaidBy'); if(pb) pb.innerHTML=memberOptions(USER.id,null);
+  const ed=$('expDate'); if(ed && !ed.value) ed.value=new Date().toISOString().slice(0,10);
+  renderBudget(); renderExpenses(); calcCost();
+}
+function renderBudget(){
+  const bs=$('budgetSet'); if(!bs) return;
+  if(canAct()){
+    bs.innerHTML='<div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap"><div><label class="fld" style="margin-top:0">Amount per month ($)</label><input id="budgetInput" inputmode="decimal" placeholder="e.g. 2000" value="'+(BUDGET!=null?BUDGET:'')+'" style="max-width:160px"></div><button class="btn btn-teal btn-sm" onclick="saveBudget(this)">Save</button></div>';
+  } else {
+    bs.innerHTML='<p>Monthly care budget: <b>'+(BUDGET!=null?money(BUDGET):'not set')+'</b></p>';
+  }
+  const spent=monthExpenses().reduce((s,e)=>s+Number(e.amount||0),0);
+  const bar=$('budgetBar');
+  if(BUDGET!=null && BUDGET>0){
+    const pct=Math.min(100, spent/BUDGET*100), left=BUDGET-spent;
+    bar.innerHTML='<div class="bbar'+(left<0?' over':'')+'"><span style="width:'+pct+'%"></span></div>'
+      +'<div class="hint">Spent <b>'+money(spent)+'</b> of <b>'+money(BUDGET)+'</b> this month · '
+      +(left>=0?('<b>'+money(left)+'</b> left'):('<b style="color:#b91c1c">'+money(-left)+' over</b>'))+'</div>';
+  } else {
+    bar.innerHTML=spent>0?'<div class="hint">Spent <b>'+money(spent)+'</b> this month. Set a budget above to track how much is left.</div>':'';
+  }
+}
+function renderExpenses(){
+  const list=$('expenseList'); if(!list) return;
+  const add=$('expenseAdd'); if(add) add.style.display=canAct()?'':'none';
+  const me=monthExpenses();
+  if(!me.length){ list.innerHTML='<p class="hint">No expenses logged this month yet.</p>'; renderSplit([]); return; }
+  list.innerHTML=me.map(e=>{
+    const dt=e.spent_on?new Date(e.spent_on+'T00:00:00').toLocaleDateString([],{month:'short',day:'numeric'}):'';
+    return '<div class="expense"><span class="el">'+esc(e.label||'Expense')+'<small>'+(e.paid_by?'paid by '+esc(e.paid_by):'')+(dt?' · '+dt:'')+'</small></span>'
+      +'<span class="ea">'+money(e.amount)+'</span>'
+      +(canAct()?'<button class="tdel expdel" data-id="'+e.id+'" title="Remove">✕</button>':'')+'</div>';
+  }).join('');
+  renderSplit(me);
+}
+function renderSplit(me){
+  const box=$('splitBox'); if(!box) return;
+  const members=MEMBERS.filter(m=>m.member_user_id);
+  if(members.length<2 || !me.length){ box.innerHTML=''; return; }
+  const total=me.reduce((s,e)=>s+Number(e.amount||0),0), fair=total/members.length;
+  const paid={}; me.forEach(e=>{ if(e.paid_by_user_id) paid[e.paid_by_user_id]=(paid[e.paid_by_user_id]||0)+Number(e.amount||0); });
+  const rows=members.map(m=>{
+    const p=paid[m.member_user_id]||0, bal=p-fair;
+    const nm=m.member_user_id===USER.id?'You':(m.name||m.email||'Member');
+    const tag=Math.abs(bal)<0.01?'<span class="hint">even</span>':(bal>0?'<span class="owed">is owed '+money(bal)+'</span>':'<span class="owe">owes '+money(-bal)+'</span>');
+    return '<div class="split"><span>'+esc(nm)+' <span class="hint">paid '+money(p)+'</span></span>'+tag+'</div>';
+  }).join('');
+  box.innerHTML='<div style="background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px"><div style="font-weight:800;color:var(--navy);margin-bottom:6px">If split evenly ('+money(fair)+' each this month)</div>'+rows+'</div>';
+}
+window.calcCost=function(){
+  const out=$('calcOut'); if(!out) return;
+  const rate=parseFloat(($('calcRate')||{}).value)||0, hrs=parseFloat(($('calcHours')||{}).value)||0;
+  if(!(rate>0)||!(hrs>0)){ out.innerHTML=''; return; }
+  const weekly=rate*hrs, monthly=weekly*52/12;
+  let cards='<div class="calccard"><div class="cl">Per week</div><div class="cv">'+money(weekly)+'</div><div class="cs">'+hrs+' hrs × '+money(rate)+'</div></div>'
+    +'<div class="calccard"><div class="cl">Per month</div><div class="cv">'+money(monthly)+'</div><div class="cs">about '+Math.round(hrs*52/12)+' hrs/mo</div></div>';
+  if(BUDGET!=null && BUDGET>0){
+    const left=BUDGET-monthly, over=left<0;
+    cards+='<div class="calccard '+(over?'over':'impact')+'"><div class="cl">'+(over?'Over budget':'Leaves in budget')+'</div><div class="cv">'+money(Math.abs(left))+'</div><div class="cs">of your '+money(BUDGET)+'/mo budget</div></div>';
+  }
+  out.innerHTML='<div class="calcgrid">'+cards+'</div>';
+};
+window.saveBudget=async function(btn){
+  const v=parseFloat($('budgetInput').value);
+  if(!(v>=0)){ alert('Please enter a monthly amount.'); return; }
+  btn.disabled=true;
+  const {error}=await sb.from('htl_family_budget').upsert({household_id:HOUSEHOLD,monthly_amount:v,updated_by:USER.id},{onConflict:'household_id'});
+  btn.disabled=false;
+  if(error){ alert(error.message); return; }
+  BUDGET=v; renderBudget(); calcCost();
+};
+window.addExpense=async function(btn){
+  const label=$('expLabel').value.trim(), amount=parseFloat($('expAmount').value);
+  if(!label || !(amount>0)){ alert('Please enter what it was for and an amount.'); return; }
+  const sel=$('expPaidBy'), uid=sel.value||null;
+  const m=uid?MEMBERS.find(x=>x.member_user_id===uid):null;
+  const nm=m?(m.member_user_id===USER.id?MYNAME:(m.name||m.email||'Member')):MYNAME;
+  const on=$('expDate').value||null;
+  btn.disabled=true;
+  const row={household_id:HOUSEHOLD,label,amount,paid_by:nm,paid_by_user_id:uid,created_by:USER.id};
+  if(on) row.spent_on=on;
+  const {error}=await sb.from('htl_family_expenses').insert(row);
+  btn.disabled=false;
+  if(error){ alert(error.message); return; }
+  $('expLabel').value=''; $('expAmount').value=''; loadBudget();
+};
+document.addEventListener('click',async e=>{
+  const d=e.target.closest('.expdel'); if(!d) return;
+  if(!confirm('Remove this expense?'))return;
+  const {error}=await sb.from('htl_family_expenses').delete().eq('id',d.dataset.id);
+  if(error){ alert(error.message); return; }
+  loadBudget();
+});
+document.addEventListener('keydown',e=>{ if(e.target&&(e.target.id==='expLabel'||e.target.id==='expAmount')&&e.key==='Enter'){ e.preventDefault(); addExpense($('expAddBtn')); }});
+
+// ---------- documents + e-sign ----------
+function docCaregiverOptions(){
+  const seen=new Set(), opts=['<option value="">— no one yet —</option>'];
+  (ALL_APPS||[]).filter(a=>a.caregiver_id).forEach(a=>{
+    if(seen.has(a.caregiver_id))return; seen.add(a.caregiver_id);
+    opts.push('<option value="'+a.caregiver_id+'" data-name="'+esc(a.applicant_name||'Caregiver')+'">'+esc(a.applicant_name||'Caregiver')+'</option>');
+  });
+  return opts.join('');
+}
+async function loadDocs(){
+  const list=$('docList'); if(!list) return;
+  const {data,error}=await sb.from('htl_documents').select('*').eq('household_id',HOUSEHOLD).order('created_at',{ascending:false});
+  if(error){ list.innerHTML='<p class="hint">Documents will appear here once this feature is switched on.</p>'; const a=$('docAdd'); if(a)a.style.display='none'; return; }
+  const add=$('docAdd'); if(add) add.style.display=canAct()?'':'none';
+  if($('docCaregiver')) $('docCaregiver').innerHTML=docCaregiverOptions();
+  renderDocs(data||[]);
+}
+function renderDocs(docs){
+  const list=$('docList'); if(!list) return;
+  if(!docs.length){ list.innerHTML='<p class="hint">No documents yet. Add one above to send it for signing or keep a signed copy on file.</p>'; return; }
+  const badge={draft:['Not sent','#eef1f4','#6b7280'],sent:['Awaiting signature','#fff2df','#a5661a'],signed:['Signed','#e8f6ee','#15803d'],uploaded:['On file','#e6f1f3','#155A68']};
+  list.innerHTML=docs.map(d=>{
+    const b=badge[d.status]||badge.draft;
+    let meta='';
+    if(d.status==='signed'&&d.signed_by_name) meta='Signed by '+esc(d.signed_by_name)+(d.signed_at?' · '+new Date(d.signed_at).toLocaleDateString():'');
+    else if(d.status==='sent') meta='Sent to '+esc(d.signer_name||'caregiver')+' to sign';
+    else if(d.signer_name) meta='For '+esc(d.signer_name);
+    let actions=(d.file_url?'<a class="btn btn-ghost btn-sm" href="'+esc(d.file_url)+'" target="_blank" rel="noopener">View</a>':'');
+    if(d.signed_file_url) actions+='<a class="btn btn-ghost btn-sm" href="'+esc(d.signed_file_url)+'" target="_blank" rel="noopener">Signed copy</a>';
+    if(canAct()){
+      if(d.status!=='signed') actions+='<button class="btn btn-ghost btn-sm" onclick="document.getElementById(\'su-'+d.id+'\').click()">Upload signed copy</button><input id="su-'+d.id+'" type="file" accept=".pdf,image/*" style="display:none" onchange="uploadSignedCopy(\''+d.id+'\',this)">';
+      actions+='<button class="tdel docdel" data-id="'+d.id+'" title="Remove document">✕</button>';
+    }
+    return '<div class="docrow"><div class="di"><svg aria-hidden="true" style="width:18px;height:18px"><use href="/assets/icons.svg#i-doc"/></svg></div>'
+      +'<div class="dm"><b>'+esc(d.title||'Document')+'</b>'+(meta?'<small>'+meta+'</small>':'')+'</div>'
+      +'<span class="pill" style="background:'+b[1]+';color:'+b[2]+'">'+b[0]+'</span>'
+      +'<div style="display:flex;gap:6px;flex-wrap:wrap;flex-basis:100%;margin-top:6px">'+actions+'</div></div>';
+  }).join('');
+}
+window.uploadDoc=async function(btn){
+  const inp=$('docFile'); const f=inp.files&&inp.files[0];
+  if(!f){ msg('docMsg','Please choose a file to upload.','err'); return; }
+  const title=$('docTitle').value.trim()||f.name;
+  const sel=$('docCaregiver'); const cgId=sel.value||null; const cgName=cgId?sel.options[sel.selectedIndex].dataset.name:null;
+  btn.disabled=true; btn.textContent='Uploading…';
+  const ext=(f.name.split('.').pop()||'pdf').toLowerCase();
+  const path=USER.id+'/doc-'+Date.now()+'.'+ext;
+  const {error:ue}=await sb.storage.from('family-documents').upload(path,f,{upsert:true,contentType:f.type});
+  if(ue){ btn.disabled=false; btn.textContent='Add document'; msg('docMsg','Upload failed: '+ue.message,'err'); return; }
+  const {data:pu}=sb.storage.from('family-documents').getPublicUrl(path);
+  const row={household_id:HOUSEHOLD,title,file_path:path,file_url:pu.publicUrl,created_by:USER.id,status:cgId?'sent':'draft'};
+  if(cgId){ row.caregiver_id=cgId; row.signer_name=cgName; }
+  const {error}=await sb.from('htl_documents').insert(row);
+  btn.disabled=false; btn.textContent='Add document';
+  if(error){ msg('docMsg',error.message,'err'); return; }
+  $('docTitle').value=''; inp.value=''; sel.value='';
+  if(cgId) notify('doc',{caregiver_id:cgId,title:title});
+  msg('docMsg', cgId?('Sent to '+cgName+' to sign. They\'ll see it in their caregiver portal.'):'Document saved.','ok');
+  loadDocs();
+};
+window.uploadSignedCopy=async function(docId,input){
+  const f=input.files&&input.files[0]; if(!f)return;
+  const ext=(f.name.split('.').pop()||'pdf').toLowerCase();
+  const path=USER.id+'/signed-'+Date.now()+'.'+ext;
+  const {error:ue}=await sb.storage.from('family-documents').upload(path,f,{upsert:true,contentType:f.type});
+  if(ue){ alert('Upload failed: '+ue.message); return; }
+  const {data:pu}=sb.storage.from('family-documents').getPublicUrl(path);
+  const {error}=await sb.from('htl_documents').update({signed_file_path:path,signed_file_url:pu.publicUrl,status:'signed',signed_at:new Date().toISOString()}).eq('id',docId);
+  if(error){ alert(error.message); return; }
+  loadDocs();
+};
+document.addEventListener('click',async e=>{
+  const d=e.target.closest('.docdel'); if(!d)return;
+  if(!confirm('Remove this document?'))return;
+  const {error}=await sb.from('htl_documents').delete().eq('id',d.dataset.id);
+  if(error){ alert(error.message); return; }
+  loadDocs();
+});
+document.addEventListener('change',async e=>{
+  const p=e.target.closest('#hhPick'); if(p){ localStorage.setItem('ht_hh',p.value); location.reload(); return; }
+  const r=e.target.closest('.mrole'); if(r){ const {error}=await sb.rpc('htl_set_member_role',{p_member_id:r.dataset.id,p_role:r.value}); if(error)alert(error.message); await loadTeam(); }
+});
+document.addEventListener('click',async e=>{
+  const rm=e.target.closest('.mremove');
+  if(rm){ if(!confirm('Remove this person from your family team? They\'ll lose access right away.'))return; const {error}=await sb.rpc('htl_remove_member',{p_member_id:rm.dataset.id}); if(error){alert(error.message);return;} await loadTeam(); return; }
+  const cp=e.target.closest('.mcopy');
+  if(cp){ const link='https://tryhometogether.com/family?invite='+cp.dataset.code; navigator.clipboard.writeText(link).then(()=>{cp.textContent='Copied!';setTimeout(()=>cp.textContent='Copy invite link',1500);}); }
+});
+
+async function boot(){
+  let user=null;
+  try{ const r=await sb.auth.getUser(); user=(r&&r.data&&r.data.user)||null; }
+  catch(e){ try{ await sb.auth.signOut(); }catch(_){} user=null; }
+  const params=new URLSearchParams(location.search);
+  if(user){
+    USER=user;
+    show('authView',false);show('dashView',true);$('logoutBtn').style.display='';
+    try{
+    const {data}=await sb.from('htl_families').select('*').eq('user_id',user.id).maybeSingle();
+    if(!data){await sb.from('htl_families').insert({user_id:user.id,email:user.email});}
+    FAMILY=data;
+    // make sure I have an owner membership for my own family, then handle any invite
+    await sb.rpc('htl_ensure_owner');
+    const invite=params.get('invite');
+    if(invite){
+      const {data:acc}=await sb.rpc('htl_accept_invite',{p_code:invite});
+      history.replaceState({},'',location.pathname);
+      if(acc&&acc.ok){ localStorage.setItem('ht_hh',acc.household); }
+      else if(acc&&acc.error){ setTimeout(()=>alert(acc.error),300); }
+    }
+    await chooseHousehold();
+    const {data:act}=await sb.rpc('htl_household_active',{p_hh:HOUSEHOLD});
+    FAMILY_ACTIVE=!!act;
+    show('authView',false);show('dashView',true);$('logoutBtn').style.display='';
+    await loadTeam();
+    const others=MEMBERS.filter(m=>!(m.member_user_id===USER.id && m.role==='owner'));
+    SOLO_ELIGIBLE = ownerView() && HOUSEHOLD===USER.id && others.length===0;
+    HIDE_COLLAB = SOLO_ELIGIBLE && localStorage.getItem('ht_hide_collab_'+USER.id)==='1';
+    const myRow=MEMBERS.find(m=>m.member_user_id===USER.id);
+    MYNAME=(myRow&&myRow.name)||(FAMILY&&FAMILY.name)||((USER.email||'').split('@')[0])||'Family';
+    if(ownerView()&&HOUSEHOLD===USER.id) renderMember();
+    await loadBoard();
+    await loadBudget();
+    loadDocs();
+    applyRoleVisibility();
+    renderTabs();
+    setBadge('board',BOARD_PENDING);
+    await loadJobs();
+    switchTab(defaultTab());
+    if(canSeeApplicants()) loadMessages();
+    if(params.get('sub')==='ok'){ handleSubReturn(); }
+    // came from "Become a member" while logged out -> finish the intent by opening checkout
+    if(localStorage.getItem('ht_join_intent')==='1'){
+      localStorage.removeItem('ht_join_intent');
+      if(ownerView() && HOUSEHOLD===USER.id && !FAMILY_ACTIVE){
+        const d=await billing('subscribe');
+        if(d&&d.url){ location.href=d.url; return; }
+      }
+    }
+    }catch(e){ console.warn('dash boot error',e); }
+  }
+  else{
+    show('authView',true);show('dashView',false);$('logoutBtn').style.display='none';showTab('signup');
+    if(params.get('invite')){
+      $('inviteHi').style.display='';
+      $('inviteHi').innerHTML='<h3 style="margin:0 0 4px">You\'ve been invited to help with a family\'s caregiver search.</h3><p style="color:var(--muted);margin:0">Create your free account (or log in) below and you\'ll join their hiring team right away.</p>';
+    }
+  }
+}
+if(!isConfigured()){$('cfgWarn').style.display='block';show('authView',true);}else{boot();}
+</script>
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4>
+      <a href="/directory">Browse caregivers</a>
+      <a href="/membership">Membership</a>
+      <a href="/resources">Resources</a>
+      <a href="/caregiver">For caregivers</a>
+    </div>
+    <div class="ftcol"><h4>HomeTogether TV</h4>
+      <a href="/">How it works</a>
+      <a href="/get">The device</a>
+      <a href="/guides">Guides</a>
+    </div>
+    <div class="ftcol"><h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/help">Help &amp; contact</a>
+      <a href="/resources">Resource center</a>
+    </div>
+    <div class="ftcol"><h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/returns">Returns</a>
+    </div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+</footer>
+</body>
+</html>

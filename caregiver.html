@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caregiver Account · HomeTogether Hire</title>
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#143A5E; --navy-deep:#0e2c49; --teal:#1E7A8C; --teal-deep:#155A68;
+  --teal-soft:#e6f1f3; --honey:#EFCE85; --honey-deep:#C9821C;
+  --ink:#16283a; --muted:#5b6b7a; --line:#e4e8ee; --card:#ffffff; --bg:#f6f8fa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:26px 20px 80px}
+.brandbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.brand{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--navy)}
+.brand small{display:block;font-family:'Nunito Sans';font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
+h1{font-family:'Fraunces',serif;font-weight:700;color:var(--navy);font-size:clamp(24px,4vw,30px);margin-bottom:6px;text-wrap:balance}
+h2{font-family:'Fraunces',serif;font-weight:600;color:var(--navy);font-size:19px;margin:0 0 12px}
+.lede{color:var(--muted);font-size:16px;margin-bottom:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:0 1px 2px rgba(20,58,94,.04)}
+label.fld{display:block;font-weight:700;font-size:13px;color:var(--navy);margin:14px 0 5px}
+input,textarea,select{width:100%;font:inherit;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--teal)}
+textarea{min-height:96px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:12px 22px;font:inherit;font-weight:800;cursor:pointer}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-honey{background:var(--honey);color:var(--navy-deep)}
+.btn-ghost{background:transparent;color:var(--teal-deep);border:1.5px solid var(--line)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tab{flex:1;text-align:center;padding:10px;border-radius:10px;border:1.5px solid var(--line);font-weight:800;cursor:pointer;color:var(--muted);background:#fff}
+.tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chip{border:1.5px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:700;cursor:pointer;background:#fff;color:var(--muted)}
+.chip.sel{background:var(--teal-soft);color:var(--teal-deep);border-color:var(--teal)}
+.msg{padding:11px 14px;border-radius:10px;font-size:14px;font-weight:700;margin:12px 0;display:none}
+.msg.err{display:block;background:#fdecec;color:#b91c1c}
+.msg.ok{display:block;background:#e8f6ee;color:#15803d}
+.hint{color:var(--muted);font-size:13px;margin-top:4px}
+.status-grid{display:grid;gap:10px}
+.st{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;background:var(--bg);font-weight:700;font-size:14px}
+.st .dot{width:10px;height:10px;border-radius:50%;background:#c7cdd4;flex:none}
+.st.done .dot{background:#15803d}
+.st.warn .dot{background:var(--honey-deep)}
+.avatar{width:84px;height:84px;border-radius:50%;object-fit:cover;border:2px solid var(--line);background:var(--teal-soft)}
+.banner{background:linear-gradient(120deg,#fff7e6,#fdeccb);border:1px solid var(--honey);border-radius:12px;padding:12px 15px;font-size:13.5px;color:#7a5312;margin-bottom:18px}
+.foot{margin-top:24px;font-size:13px;color:var(--muted)}
+.foot a{color:var(--teal-deep)}
+.pvmodal{position:fixed;inset:0;background:rgba(14,44,73,.55);display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow:auto;z-index:60}
+.pvmodal.on{display:flex}
+.pvsheet{background:#fff;border-radius:18px;max-width:600px;width:100%;padding:26px}
+.pvx{float:right;cursor:pointer;font-size:22px;color:var(--muted);border:none;background:none}
+.pvav{width:72px;height:72px;border-radius:50%;object-fit:cover;background:var(--teal-soft);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--teal-deep);font-size:22px;flex:none}
+.pvb{font-size:11.5px;font-weight:800;border-radius:999px;padding:3px 9px;margin-right:6px}
+.pvchip{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:12.5px;font-weight:700;color:var(--muted);display:inline-block;margin:3px 4px 0 0}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="/htnav.css">
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">Two ways to get care</div>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/hire">For families</a>
+    <a href="/resources">Resources</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" id="logoutBtn" href="#" style="display:none">Log out</a>
+</div></header>
+<div class="wrap">
+  
+
+  <div id="cfgWarn" class="banner" style="display:none">This page isn't connected yet. (Setup in progress.)</div>
+
+  <!-- ============ LOGGED OUT ============ -->
+  <section id="authView" style="display:none">
+    <h1>Get hired directly by local families.</h1>
+    <p class="lede">Build a profile families can find, meet on video, and hire, on your terms. Free to join, always. No monthly fees eating into your pay.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px">
+      <div style="background:var(--teal-soft);border-radius:12px;padding:15px 16px"><div style="font-family:Fraunces,serif;font-weight:700;color:var(--navy);font-size:15.5px;margin-bottom:3px">Set your own rate</div><div style="font-size:13.5px;color:var(--muted)">Charge what you're worth and keep 100%. No agency taking a cut of your pay.</div></div>
+      <div style="background:var(--teal-soft);border-radius:12px;padding:15px 16px"><div style="font-family:Fraunces,serif;font-weight:700;color:var(--navy);font-size:15.5px;margin-bottom:3px">Choose your clients</div><div style="font-size:13.5px;color:var(--muted)">Pick the families and the schedule that fit your life.</div></div>
+      <div style="background:var(--teal-soft);border-radius:12px;padding:15px 16px"><div style="font-family:Fraunces,serif;font-weight:700;color:var(--navy);font-size:15.5px;margin-bottom:3px">Show families the real you</div><div style="font-size:13.5px;color:var(--muted)">A short video interview lets families connect with you before they ever call.</div></div>
+      <div style="background:var(--teal-soft);border-radius:12px;padding:15px 16px"><div style="font-family:Fraunces,serif;font-weight:700;color:var(--navy);font-size:15.5px;margin-bottom:3px">Free to join, always</div><div style="font-size:13.5px;color:var(--muted)">Build your profile at no cost. We never charge you a monthly fee to talk to families.</div></div>
+    </div>
+
+    <div style="margin-bottom:22px">
+      <h2 style="margin-bottom:14px">What to expect</h2>
+      <ol style="list-style:none;counter-reset:s;padding:0;margin:0;display:flex;flex-direction:column;gap:12px">
+        <li style="counter-increment:s;display:flex;gap:13px;align-items:flex-start"><span style="flex:none;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-family:Fraunces,serif;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px">1</span><div style="font-size:14.5px"><b style="color:var(--navy)">Create your free account</b> just below, it takes about a minute.</div></li>
+        <li style="counter-increment:s;display:flex;gap:13px;align-items:flex-start"><span style="flex:none;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-family:Fraunces,serif;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px">2</span><div style="font-size:14.5px"><b style="color:var(--navy)">Build your profile</b>, your experience, skills, rate, and how far you'll travel. Add a photo and record a short video interview so families can meet you.</div></li>
+        <li style="counter-increment:s;display:flex;gap:13px;align-items:flex-start"><span style="flex:none;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-family:Fraunces,serif;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px">3</span><div style="font-size:14.5px"><b style="color:var(--navy)">Get verified</b>, complete a background check to earn the ✓ badge families look for. It builds trust fast.</div></li>
+        <li style="counter-increment:s;display:flex;gap:13px;align-items:flex-start"><span style="flex:none;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-family:Fraunces,serif;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px">4</span><div style="font-size:14.5px"><b style="color:var(--navy)">Go live and get hired</b>, families near you find your profile, message you, and you choose who to work with. You keep your full rate.</div></li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="tabs">
+        <div class="tab on" id="tabSignup" onclick="showTab('signup')">Create account</div>
+        <div class="tab" id="tabLogin" onclick="showTab('login')">Log in</div>
+      </div>
+      <div id="authMsg" class="msg"></div>
+      <label class="fld">Email</label>
+      <input id="authEmail" type="email" autocomplete="email" placeholder="you@email.com">
+      <label class="fld">Password</label>
+      <input id="authPass" type="password" autocomplete="current-password" placeholder="At least 8 characters">
+      <div style="margin-top:18px">
+        <button class="btn btn-teal" id="authBtn" onclick="doAuth()">Create my account →</button>
+      </div>
+      <p class="hint" id="loginHelp" style="display:none">Forgot your password? <a href="#" onclick="doReset(event)">Email me a reset link</a></p>
+    </div>
+    <p class="foot">Looking for care instead? <a href="/hire">Find a caregiver →</a></p>
+  </section>
+
+  <!-- ============ LOGGED IN: PROFILE EDITOR ============ -->
+  <section id="profileView" style="display:none">
+    <p style="font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:6px">Your caregiver profile</p>
+    <h1>This is how families meet you</h1>
+    <p class="lede">Keep it warm and real, it's the first impression they get of you. The more complete it is, the more families reach out.</p>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <h2 id="onboardTitle" style="margin:0">Getting ready to go live</h2>
+        <button class="btn btn-ghost" style="padding:8px 14px;font-size:13px" onclick="previewProfile()">Preview my profile</button>
+      </div>
+      <div style="height:8px;background:var(--line);border-radius:99px;margin:14px 0 4px;overflow:hidden"><div id="onboardFill" style="height:100%;background:var(--honey);width:0;transition:width .35s"></div></div>
+      <p class="hint" id="onboardSub" style="margin-bottom:12px"></p>
+      <div class="status-grid" id="statusGrid"></div>
+    </div>
+
+    <div class="card" id="inboxCard" style="display:none;border-color:var(--honey)">
+      <h2>Families interested in you</h2>
+      <div id="inboxList"></div>
+    </div>
+
+    <div class="card" id="docsCard" style="display:none;border-color:var(--teal)">
+      <h2>Documents to sign</h2>
+      <p style="color:var(--muted);margin-bottom:10px">A family has sent you a document to review and sign. Read it, then type your full name to sign, it goes right back to them.</p>
+      <div id="docsList"></div>
+    </div>
+
+    <div class="card" id="interviewCard" style="border-color:var(--teal)">
+      <h2>Your video interview</h2>
+      <div id="ivMsg" class="msg"></div>
+      <div id="ivIdle">
+        <p style="color:var(--muted);margin-bottom:12px">Record a short video so families can meet you. Samantha asks a few friendly questions in her own voice, and you answer to the camera. It takes about five minutes, there are no wrong answers, and you can redo it any time. Families see it once your profile is live.</p>
+        <div id="ivHasVideo" style="display:none;margin-bottom:12px"><video id="ivSaved" controls playsinline style="width:100%;border-radius:12px;background:#000;max-height:320px"></video></div>
+        <button class="btn btn-teal" id="ivStartBtn" onclick="startVideoInterview()">Start my video interview</button>
+      </div>
+      <div id="ivActive" style="display:none">
+        <video id="ivPreview" autoplay muted playsinline style="width:100%;border-radius:12px;background:#000;max-height:340px"></video>
+        <div style="margin-top:12px;display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;border-radius:50%;background:#e0322f;display:inline-block"></span><b style="color:#b91c1c">Recording</b> <span class="hint" id="ivProgress"></span></div>
+        <div id="ivQ" style="font-family:'Fraunces',serif;font-size:18px;color:var(--navy);margin:10px 0"></div>
+        <p class="hint" id="ivStatus"></p>
+        <div style="margin-top:10px"><button class="btn btn-teal" id="ivNextBtn" onclick="nextQuestion()">Next question →</button></div>
+        <audio id="ivAudio"></audio>
+      </div>
+      <div id="ivDone" style="display:none"><p style="font-weight:700;color:#15803d">Your video interview is saved. Families will see it once your profile is live. Thank you!</p></div>
+    </div>
+
+    <div class="card">
+      <h2 id="photoCard">Your photo</h2>
+      <div style="display:flex;align-items:center;gap:18px">
+        <img id="avatarImg" class="avatar" alt="Your photo" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='84' height='84'><rect width='84' height='84' fill='%23e6f1f3'/></svg>">
+        <div>
+          <input id="photoInput" type="file" accept="image/*" style="display:none" onchange="uploadPhoto(this)">
+          <button class="btn btn-ghost" onclick="document.getElementById('photoInput').click()">Upload a photo</button>
+          <p class="hint">A friendly, clear headshot helps families choose you.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>About you</h2>
+      <div id="profMsg" class="msg"></div>
+      <div class="row">
+        <div><label class="fld">Display name (families see this)</label><input id="p_display" placeholder="e.g. Maria G."></div>
+        <div><label class="fld">Full name (private, for the office)</label><input id="p_full" placeholder="Maria Gonzalez"></div>
+      </div>
+      <label class="fld">Phone <span style="font-weight:600;color:var(--muted)">(so we recognize you for your interview, and families can reach you)</span></label>
+      <input id="p_phone" inputmode="tel" placeholder="(417) 000-0000">
+      <div class="row">
+        <div><label class="fld">City</label><input id="p_city" placeholder="Springfield"></div>
+        <div><label class="fld">State</label><input id="p_state" placeholder="MO" value="MO"></div>
+      </div>
+      <label class="fld">Service area (how far you'll travel)</label>
+      <input id="p_area" placeholder="e.g. Springfield + 20 miles">
+      <div class="row">
+        <div><label class="fld">Years of experience</label><input id="p_years" inputmode="numeric" placeholder="5"></div>
+        <div><label class="fld">Hourly rate ($)</label><input id="p_rate" inputmode="decimal" placeholder="26"></div>
+      </div>
+      <label class="fld">Your intro (families read this first)</label>
+      <textarea id="p_bio" placeholder="What you love about caregiving, who you've cared for, what families can count on with you."></textarea>
+
+      <label class="fld">Care you provide</label>
+      <div class="opts" id="skillsOpts"></div>
+      <label class="fld">Certifications</label>
+      <div class="opts" id="certsOpts"></div>
+      <label class="fld">Availability</label>
+      <div class="opts" id="availOpts"></div>
+
+      <div class="row" style="margin-top:14px">
+        <div><label class="fld">OK with pets?</label><select id="p_pets"><option value="">Choose…</option><option>Yes</option><option>Depends on the animal</option><option>No</option></select></div>
+        <div><label class="fld">OK if someone smokes?</label><select id="p_smoke"><option value="">Choose…</option><option>Yes</option><option>Depends</option><option>No</option></select></div>
+      </div>
+      <div class="opts" style="margin-top:14px">
+        <label class="chip" style="cursor:pointer"><input type="checkbox" id="p_license" style="width:auto;margin-right:6px">Driver's license</label>
+        <label class="chip" style="cursor:pointer"><input type="checkbox" id="p_transport" style="width:auto;margin-right:6px">Reliable transportation</label>
+        <label class="chip" style="cursor:pointer"><input type="checkbox" id="p_insurance" style="width:auto;margin-right:6px">Auto insurance</label>
+      </div>
+
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-teal" id="saveBtn" onclick="saveProfile()">Save my profile</button>
+        <a class="btn btn-honey" id="badgeBtn" href="/hire#join" style="display:none">Get my ✓ badge</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="pvmodal" id="pvModal" onclick="if(event.target===this)this.classList.remove('on')"><div class="pvsheet" id="pvSheet"></div></div>
+
+<script type="module">
+import { sb, isConfigured, esc } from './account.js';
+
+const SKILLS=['Companionship','Personal care','Dementia care','Mobility','Medication reminders','Meal prep','Transportation','Overnight'];
+const CERTS=['CNA','CPR / First Aid','HHA','Dementia Care Certified','Med Tech'];
+const AVAIL=['Weekdays','Weekends','Mornings','Evenings','Overnight','Live-in'];
+const sel={skills:new Set(),certs:new Set(),avail:new Set()};
+let MODE='signup', PROFILE=null, USER=null;
+
+const $=id=>document.getElementById(id);
+function show(id,on){ $(id).style.display = on?'':'none'; }
+function msg(el,txt,kind){ const m=$(el); m.textContent=txt; m.className='msg '+(kind||''); }
+
+function renderChips(host,list,key){
+  $(host).innerHTML = list.map(v=>'<span class="chip" data-v="'+esc(v)+'">'+esc(v)+'</span>').join('');
+  $(host).querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
+    const v=c.dataset.v; if(sel[key].has(v)){sel[key].delete(v);c.classList.remove('sel');} else {sel[key].add(v);c.classList.add('sel');}
+  });
+}
+renderChips('skillsOpts',SKILLS,'skills');
+renderChips('certsOpts',CERTS,'certs');
+renderChips('availOpts',AVAIL,'avail');
+
+window.showTab=function(m){
+  MODE=m;
+  $('tabSignup').classList.toggle('on',m==='signup');
+  $('tabLogin').classList.toggle('on',m==='login');
+  $('authBtn').textContent = m==='signup'?'Create my account →':'Log in →';
+  $('authPass').autocomplete = m==='signup'?'new-password':'current-password';
+  show('loginHelp', m==='login');
+  msg('authMsg','','');
+};
+
+window.doAuth=async function(){
+  const email=$('authEmail').value.trim(), pass=$('authPass').value;
+  if(!email||!pass){ msg('authMsg','Please enter your email and a password.','err'); return; }
+  if(MODE==='signup' && pass.length<8){ msg('authMsg','Please use at least 8 characters.','err'); return; }
+  $('authBtn').disabled=true;
+  try{
+    if(MODE==='signup'){
+      const {data,error}=await sb.auth.signUp({email,password:pass});
+      if(error) throw error;
+      if(!data.session){ msg('authMsg','Almost there — check your email to confirm your account, then come back and log in.','ok'); $('authBtn').disabled=false; return; }
+    } else {
+      const {error}=await sb.auth.signInWithPassword({email,password:pass});
+      if(error) throw error;
+    }
+    await boot();
+  }catch(e){ msg('authMsg', friendly(e), 'err'); $('authBtn').disabled=false; }
+};
+
+window.doReset=async function(ev){
+  ev.preventDefault();
+  const email=$('authEmail').value.trim();
+  if(!email){ msg('authMsg','Enter your email above first, then click reset.','err'); return; }
+  const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+'/caregiver.html'});
+  msg('authMsg', error?friendly(error):'Sent. Check your email for a link to reset your password.', error?'err':'ok');
+};
+
+$('logoutBtn').onclick=async(e)=>{ e.preventDefault(); await sb.auth.signOut(); location.reload(); };
+
+function friendly(e){
+  const m=(e&&e.message)||'Something went wrong.';
+  if(/already registered/i.test(m)) return 'That email already has an account. Try logging in instead.';
+  if(/invalid login/i.test(m)) return 'Email or password not recognized. Try again, or reset your password.';
+  return m;
+}
+
+function fill(){
+  const p=PROFILE||{};
+  $('p_display').value=p.display_name||''; $('p_full').value=p.full_name||''; $('p_phone').value=p.phone||'';
+  $('p_city').value=p.city||''; $('p_state').value=p.state||'MO';
+  $('p_area').value=p.service_area||''; $('p_years').value=p.years||''; $('p_rate').value=p.hourly_rate||'';
+  $('p_bio').value=p.bio||''; $('p_pets').value=p.ok_pets||''; $('p_smoke').value=p.ok_smoking||'';
+  $('p_license').checked=!!p.has_license; $('p_transport').checked=!!p.has_transport; $('p_insurance').checked=!!p.has_insurance;
+  sel.skills=new Set(p.skills||[]); sel.certs=new Set(p.certs||[]); sel.avail=new Set(p.availability||[]);
+  [['skillsOpts','skills'],['certsOpts','certs'],['availOpts','avail']].forEach(([h,k])=>{
+    document.querySelectorAll('#'+h+' .chip').forEach(c=>c.classList.toggle('sel', sel[k].has(c.dataset.v)));
+  });
+  if(p.photo_url) $('avatarImg').src=p.photo_url;
+  renderStatus();
+}
+
+function renderStatus(){
+  const p=PROFILE||{};
+  const profileDone=!!(p.display_name&&p.bio&&p.city&&p.hourly_rate&&(p.skills&&p.skills.length));
+  const steps=[
+    {done:profileDone, label:'Build your profile', hint:'Add your intro, city, rate, and the care you provide, below.'},
+    {done:!!p.photo_url, label:'Add a photo', hint:'A warm, clear headshot helps families choose you.', scroll:'photoCard'},
+    {done:!!p.video_intro_url, label:'Record your video interview', hint:'Meet families on camera in a few minutes.', scroll:'interviewCard'},
+    {done:!!p.background_checked, label:'Background check', hint:'Our team handles this, nothing for you to do yet.'},
+    {done:!!p.published, label:'Live in the directory', hint:'Our team reviews everything and publishes your profile.'},
+  ];
+  const doneN=steps.filter(s=>s.done).length;
+  $('onboardTitle').textContent = p.published?'Your profile is live! <svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-celebrate"/></svg>':'Getting ready to go live';
+  $('onboardFill').style.width=Math.round(doneN/steps.length*100)+'%';
+  $('onboardSub').textContent = p.published?'Families can find and message you in the directory.':('You’ve done '+doneN+' of '+steps.length+' steps. Finish the first three, and our team takes it from there.');
+  $('statusGrid').innerHTML = steps.map(s=>{
+    const act=(!s.done&&s.scroll)?' <a href="#" onclick="document.getElementById(\''+s.scroll+'\').scrollIntoView({behavior:\'smooth\',block:\'center\'});return false" style="color:var(--teal-deep);font-weight:800">Do this &rarr;</a>':'';
+    return '<div class="st '+(s.done?'done':'')+'"><span class="dot"></span><div><b>'+esc(s.label)+'</b>'+(s.done?'':' <span class="hint" style="display:inline">&middot; '+esc(s.hint)+act+'</span>')+'</div></div>';
+  }).join('');
+}
+
+window.previewProfile=function(){
+  const p=PROFILE||{};
+  const first=(p.display_name||'You').split(' ')[0];
+  const inits=((p.display_name||'').trim().split(/\s+/).map(x=>x[0]||'').join('').slice(0,2)||'YOU').toUpperCase();
+  const av=p.photo_url?'<img class="pvav" src="'+esc(p.photo_url)+'">':'<div class="pvav">'+esc(inits)+'</div>';
+  const vid=p.video_intro_url
+    ? '<h3 style="font-family:Fraunces,serif;color:var(--navy);margin:16px 0 6px">Meet '+esc(first)+'</h3><video controls playsinline src="'+esc(p.video_intro_url)+'" style="width:100%;border-radius:12px;background:#000;max-height:340px"></video>'
+    : '<div style="background:var(--teal-soft);border-radius:12px;padding:14px;color:var(--teal-deep);font-size:13.5px;margin-top:12px">Your video interview will appear here once you record it below.</div>';
+  const badges=(p.background_checked?'<span class="pvb" style="background:#e8f6ee;color:#15803d">✓ Background checked</span>':'')+((p.video_intro_url||p.interview_done)?'<span class="pvb" style="background:var(--teal-soft);color:var(--teal-deep)">Interviewed</span>':'');
+  $('pvSheet').innerHTML='<button class="pvx" onclick="document.getElementById(\'pvModal\').classList.remove(\'on\')">&times;</button>'
+    +'<div style="display:flex;gap:14px;align-items:center">'+av+'<div><div style="font-family:Fraunces,serif;font-weight:600;font-size:22px;color:var(--navy)">'+esc(p.display_name||'Your name')+'</div><div class="hint">'+esc(p.city||'')+(p.service_area?' · serves '+esc(p.service_area):'')+'</div>'+(badges?'<div style="margin-top:6px">'+badges+'</div>':'')+'</div></div>'
+    +vid
+    +(p.bio?'<p style="margin-top:14px;font-size:15px">'+esc(p.bio)+'</p>':'')
+    +(p.hourly_rate?'<div style="margin-top:12px;font-weight:800;color:var(--navy)">$'+Number(p.hourly_rate)+' / hour</div>':'')
+    +((p.skills&&p.skills.length)?'<div style="margin-top:10px">'+p.skills.map(s=>'<span class="pvchip">'+esc(s)+'</span>').join('')+'</div>':'')
+    +((p.certs&&p.certs.length)?'<p style="margin-top:10px;font-size:14px"><b>Certifications:</b> '+esc(p.certs.join(', '))+'</p>':'')
+    +((p.availability&&p.availability.length)?'<p style="font-size:14px"><b>Available:</b> '+esc(p.availability.join(', '))+'</p>':'')
+    +'<p class="hint" style="margin-top:16px">This is exactly how your profile looks to families once it’s published.</p>';
+  $('pvModal').classList.add('on');
+};
+window.uploadPhoto=async function(input){
+  const f=input.files&&input.files[0]; if(!f||!USER) return;
+  const ext=(f.name.split('.').pop()||'jpg').toLowerCase();
+  const path=USER.id+'/avatar.'+ext;
+  msg('profMsg','Uploading photo…','ok');
+  const {error}=await sb.storage.from('caregiver-photos').upload(path,f,{upsert:true,contentType:f.type});
+  if(error){ msg('profMsg','Photo upload failed: '+error.message,'err'); return; }
+  const {data}=sb.storage.from('caregiver-photos').getPublicUrl(path);
+  const url=data.publicUrl+'?t='+Date.now();
+  $('avatarImg').src=url;
+  await sb.from('htl_caregivers').update({photo_url:data.publicUrl}).eq('user_id',USER.id);
+  if(PROFILE) PROFILE.photo_url=data.publicUrl;
+  msg('profMsg','Photo saved.','ok'); renderStatus();
+};
+
+window.saveProfile=async function(){
+  if(!USER) return;
+  $('saveBtn').disabled=true;
+  // Only the caregiver-editable fields (never user_id, never trust fields).
+  const fields={
+    email:USER.email,
+    display_name:$('p_display').value.trim(), full_name:$('p_full').value.trim(),
+    phone:$('p_phone').value.trim(),
+    city:$('p_city').value.trim(), state:($('p_state').value.trim()||'MO').toUpperCase(),
+    service_area:$('p_area').value.trim(),
+    years:parseInt($('p_years').value)||null, hourly_rate:parseFloat($('p_rate').value)||null,
+    bio:$('p_bio').value.trim(),
+    skills:[...sel.skills], certs:[...sel.certs], availability:[...sel.avail],
+    ok_pets:$('p_pets').value, ok_smoking:$('p_smoke').value,
+    has_license:$('p_license').checked, has_transport:$('p_transport').checked, has_insurance:$('p_insurance').checked,
+  };
+  let error;
+  if(PROFILE && PROFILE.id){
+    ({error}=await sb.from('htl_caregivers').update(fields).eq('user_id',USER.id));
+    if(!error) PROFILE=Object.assign(PROFILE||{},fields);
+  } else {
+    const {data,error:e}=await sb.from('htl_caregivers').insert({...fields,user_id:USER.id}).select().maybeSingle();
+    error=e; if(!e) PROFILE=data;
+  }
+  $('saveBtn').disabled=false;
+  if(error){ msg('profMsg', error.message, 'err'); return; }
+  msg('profMsg','Saved. Thank you.','ok');
+  renderStatus();
+};
+
+async function loadProfile(){
+  const {data}=await sb.from('htl_caregivers').select('*').eq('user_id',USER.id).maybeSingle();
+  PROFILE=data; fill();
+}
+
+// ---------- video interview ----------
+const IV_QS=[
+  {id:'intro',   text:"Tell me a little about yourself, and what first drew you to caregiving."},
+  {id:'q2',      text:"Tell me about someone you've cared for, and what that was like for you."},
+  {id:'q3',      text:"If the person kept asking you the same question over and over, how would you respond?"},
+  {id:'q4',      text:"What would you do if someone became upset, or didn't want your help in that moment?"},
+  {id:'q5',      text:"What would you do if they seemed more confused, or more unwell, than usual?"},
+  {id:'q6',      text:"Why should a family trust you to care for someone they love? Anything else you'd like them to know?"},
+  {id:'closing', text:"That's everything — thank you so much."},
+];
+let ivStream=null, ivRecorder=null, ivChunks=[], ivIndex=0;
+
+function renderInterviewCard(){
+  const has=PROFILE&&PROFILE.video_intro_url;
+  show('ivHasVideo', !!has);
+  if(has){ $('ivSaved').src=PROFILE.video_intro_url; $('ivStartBtn').textContent='Redo my video interview'; }
+  else { $('ivStartBtn').textContent='Start my video interview'; }
+}
+
+window.startVideoInterview=async function(){
+  if(!PROFILE||!PROFILE.id){ msg('ivMsg','Please save your profile first (below), then start your interview.','err'); return; }
+  msg('ivMsg','','');
+  try{ ivStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:true}); }
+  catch(e){ msg('ivMsg','I could not turn on your camera and microphone. Please allow access and try again.','err'); return; }
+  $('ivPreview').srcObject=ivStream;
+  ivChunks=[]; ivIndex=0;
+  const mime=MediaRecorder.isTypeSupported('video/webm;codecs=vp8,opus')?'video/webm;codecs=vp8,opus':'video/webm';
+  try{ ivRecorder=new MediaRecorder(ivStream,{mimeType:mime}); }
+  catch(e){ ivRecorder=new MediaRecorder(ivStream); }
+  ivRecorder.ondataavailable=e=>{ if(e.data&&e.data.size) ivChunks.push(e.data); };
+  ivRecorder.onstop=uploadVideo;
+  ivRecorder.start();
+  show('ivIdle',false); show('ivActive',true); show('ivDone',false);
+  playQuestion(0);
+};
+function playQuestion(i){
+  ivIndex=i; const q=IV_QS[i]; const last=(i>=IV_QS.length-1);
+  $('ivQ').textContent=q.text;
+  $('ivProgress').textContent='Question '+(i+1)+' of '+IV_QS.length;
+  $('ivNextBtn').textContent=last?'Finish & save my interview':'Next question →';
+  $('ivStatus').textContent='Listen, then answer to the camera. Take your time, and press the button when you’re ready to continue.';
+  const a=$('ivAudio'); a.src='/interview-audio/'+q.id+'.mp3'; a.play().catch(()=>{});
+}
+window.nextQuestion=function(){
+  if(ivIndex>=IV_QS.length-1){ finishInterview(); return; }
+  playQuestion(ivIndex+1);
+};
+function finishInterview(){
+  $('ivStatus').textContent='Saving your interview, one moment…'; $('ivNextBtn').disabled=true;
+  try{ ivRecorder.stop(); }catch(e){ uploadVideo(); }
+}
+async function uploadVideo(){
+  try{ (ivStream.getTracks()||[]).forEach(t=>t.stop()); }catch(e){}
+  const blob=new Blob(ivChunks,{type:'video/webm'});
+  const path=USER.id+'/interview-'+Date.now()+'.webm';
+  const {error}=await sb.storage.from('interview-videos').upload(path,blob,{upsert:true,contentType:'video/webm'});
+  $('ivNextBtn').disabled=false;
+  if(error){ show('ivActive',false); show('ivIdle',true); msg('ivMsg','Upload didn’t go through: '+error.message,'err'); return; }
+  const {data}=sb.storage.from('interview-videos').getPublicUrl(path);
+  await sb.from('htl_caregivers').update({video_intro_url:data.publicUrl}).eq('user_id',USER.id);
+  if(PROFILE) PROFILE.video_intro_url=data.publicUrl;
+  show('ivActive',false); show('ivDone',true); renderInterviewCard(); renderStatus();
+}
+
+// ---------- messages: families interested in you ----------
+function msgBubble(senderRole, myRole, otherName, text){
+  const mine = senderRole===myRole;
+  return '<div style="display:flex;justify-content:'+(mine?'flex-end':'flex-start')+';margin:4px 0"><div style="max-width:82%;background:'+(mine?'var(--teal)':'var(--bg)')+';color:'+(mine?'#fff':'var(--ink)')+';border-radius:12px;padding:8px 12px;font-size:14px"><div style="font-size:11px;opacity:.75;font-weight:700;margin-bottom:2px">'+esc(mine?'You':otherName)+'</div>'+esc(text)+'</div></div>';
+}
+function renderThread(r, msgs, myRole, otherName){
+  const isNew = myRole==='caregiver' && r.seen_by_caregiver===false;
+  let h='<div style="border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px">';
+  h+='<div style="font-weight:800;color:var(--navy);margin-bottom:2px">'+esc(otherName)+(isNew?' <span style="color:var(--honey-deep);font-size:12px">• new</span>':'')+'</div>';
+  h+='<div class="hint" style="margin-bottom:8px">'+(r.family_contact?esc(r.family_contact):'')+'</div>';
+  h+=msgBubble('family',myRole,otherName,r.message||'');
+  (msgs||[]).forEach(m=>{ h+=msgBubble(m.sender_role,myRole,otherName,m.body||''); });
+  h+='<div style="margin-top:10px;display:flex;gap:8px"><input class="reply-in" data-req="'+r.id+'" placeholder="Write a reply…" style="flex:1;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit"><button class="btn btn-teal reply-send" data-req="'+r.id+'" style="padding:8px 15px;font-size:13px">Send</button></div>';
+  return h+'</div>';
+}
+async function loadInbox(){
+  if(!PROFILE||!PROFILE.id){ show('inboxCard',false); return; }
+  const {data:reqs}=await sb.from('htl_contact_requests').select('*').eq('caregiver_id',PROFILE.id).order('created_at',{ascending:false});
+  if(!reqs||!reqs.length){ show('inboxCard',false); return; }
+  const ids=reqs.map(r=>r.id);
+  const {data:msgs}=await sb.from('htl_messages').select('*').in('request_id',ids).order('created_at',{ascending:true});
+  const byReq={}; (msgs||[]).forEach(m=>{(byReq[m.request_id]=byReq[m.request_id]||[]).push(m);});
+  show('inboxCard',true);
+  $('inboxList').innerHTML=reqs.map(r=>renderThread(r,byReq[r.id]||[],'caregiver',r.family_name||'A family')).join('');
+  const unseen=reqs.filter(r=>r.seen_by_caregiver===false).map(r=>r.id);
+  if(unseen.length){ sb.from('htl_contact_requests').update({seen_by_caregiver:true}).in('id',unseen).then(()=>{},()=>{}); }
+}
+const NOTIFY_EP='https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-notify?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966';
+async function notify(action,payload){ try{ const {data:{session}}=await sb.auth.getSession(); await fetch(NOTIFY_EP,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(session?.access_token||'')},body:JSON.stringify(Object.assign({action},payload))}); }catch(e){} }
+document.addEventListener('click', async e=>{
+  const b=e.target.closest('.reply-send'); if(!b) return;
+  const req=b.dataset.req; const input=document.querySelector('.reply-in[data-req="'+req+'"]');
+  const body=(input.value||'').trim(); if(!body) return;
+  b.disabled=true;
+  const {error}=await sb.from('htl_messages').insert({request_id:req,sender_user_id:USER.id,sender_role:'caregiver',body});
+  if(error){ b.disabled=false; alert(error.message); return; }
+  sb.from('htl_contact_requests').update({seen_by_family:false}).eq('id',req).then(()=>{},()=>{});
+  notify('message',{request_id:req});
+  input.value=''; loadInbox();
+});
+
+// ---------- documents to sign ----------
+async function loadDocsToSign(){
+  if(!PROFILE||!PROFILE.id){ $('docsCard').style.display='none'; return; }
+  const {data,error}=await sb.from('htl_documents').select('*').eq('caregiver_id',PROFILE.id).order('created_at',{ascending:false});
+  if(error||!data||!data.length){ $('docsCard').style.display='none'; return; }
+  show('docsCard',true);
+  $('docsList').innerHTML=data.map(d=>{
+    const view=d.file_url?' · <a href="'+esc(d.file_url)+'" target="_blank" rel="noopener" style="color:var(--teal-deep);font-weight:800">View document</a>':'';
+    if(d.status==='signed'){
+      return '<div style="border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px"><b>'+esc(d.title||'Document')+'</b> <span style="display:inline-block;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:800;background:#e8f6ee;color:#15803d">Signed</span>'+view
+        +'<div style="color:var(--muted);font-size:13px;margin-top:4px">Signed'+(d.signed_at?' on '+new Date(d.signed_at).toLocaleDateString():'')+'. Thank you.</div></div>';
+    }
+    return '<div class="docsign" data-id="'+d.id+'" style="border:1.5px solid var(--teal);border-radius:12px;padding:14px;margin-bottom:10px">'
+      +'<b>'+esc(d.title||'Document')+'</b>'+view
+      +'<p style="color:var(--muted);font-size:13px;margin:8px 0 6px">Type your full name to sign. This is your legal electronic signature.</p>'
+      +'<input class="signName" placeholder="Your full legal name" style="margin-bottom:8px">'
+      +'<label style="display:flex;gap:8px;align-items:flex-start;font-size:13.5px;margin-bottom:10px;cursor:pointer"><input type="checkbox" class="signConsent" style="width:auto;margin-top:3px"><span>I have read this document and agree to sign it electronically.</span></label>'
+      +'<button class="btn btn-teal" style="padding:9px 18px;font-size:14px" onclick="signDoc(\''+d.id+'\',this)">Sign document</button>'
+      +'</div>';
+  }).join('');
+}
+window.signDoc=async function(id,btn){
+  const wrap=btn.closest('.docsign');
+  const name=(wrap.querySelector('.signName').value||'').trim();
+  const consent=wrap.querySelector('.signConsent').checked;
+  if(!name){ alert('Please type your full name to sign.'); return; }
+  if(!consent){ alert('Please check the box to agree to sign electronically.'); return; }
+  btn.disabled=true; btn.textContent='Signing…';
+  const {error}=await sb.from('htl_documents').update({status:'signed',signed_by_name:name,signature_consent:true,signed_at:new Date().toISOString()}).eq('id',id);
+  btn.disabled=false; btn.textContent='Sign document';
+  if(error){ alert(error.message); return; }
+  loadDocsToSign();
+};
+
+async function boot(){
+  let user=null;
+  try{ const r=await sb.auth.getUser(); user=(r&&r.data&&r.data.user)||null; }
+  catch(e){ try{ await sb.auth.signOut(); }catch(_){} user=null; }
+  if(user){
+    USER=user; show('authView',false); show('profileView',true); $('logoutBtn').style.display='';
+    try{ await loadProfile(); renderInterviewCard(); loadInbox(); loadDocsToSign(); }catch(e){ console.warn('load error',e); }
+  } else {
+    show('authView',true); show('profileView',false); $('logoutBtn').style.display='none'; showTab('signup');
+  }
+}
+
+if(!isConfigured()){ $('cfgWarn').style.display='block'; show('authView',true); }
+else { boot(); }
+</script>
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4>
+      <a href="/directory">Browse caregivers</a>
+      <a href="/membership">Membership</a>
+      <a href="/resources">Resources</a>
+      <a href="/caregiver">For caregivers</a>
+    </div>
+    <div class="ftcol"><h4>HomeTogether TV</h4>
+      <a href="/">How it works</a>
+      <a href="/get">The device</a>
+      <a href="/guides">Guides</a>
+    </div>
+    <div class="ftcol"><h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/help">Help &amp; contact</a>
+      <a href="/resources">Resource center</a>
+    </div>
+    <div class="ftcol"><h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/returns">Returns</a>
+    </div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+</footer>
+</body>
+</html>

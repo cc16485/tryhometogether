@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin · HomeTogether Hire</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#143A5E;--navy-deep:#0e2c49;--teal:#1E7A8C;--teal-deep:#155A68;--teal-soft:#e6f1f3;--honey:#EFCE85;--honey-deep:#C9821C;--ink:#16283a;--muted:#5b6b7a;--line:#e4e8ee;--card:#fff;--bg:#f6f8fa;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:1000px;margin:0 auto;padding:24px 18px 80px}
+.brandbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.brand{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--navy)}
+.brand small{display:block;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
+h1{font-family:'Fraunces',serif;font-weight:700;color:var(--navy);font-size:26px;margin-bottom:6px}
+h2{font-family:'Fraunces',serif;font-weight:600;color:var(--navy);font-size:18px;margin:22px 0 10px}
+.lede{color:var(--muted);margin-bottom:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
+label.fld{display:block;font-weight:700;font-size:13px;color:var(--navy);margin:12px 0 5px}
+input{width:100%;font:inherit;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px}
+input:focus{outline:none;border-color:var(--teal)}
+.btn{display:inline-flex;align-items:center;gap:7px;border:none;border-radius:999px;padding:10px 18px;font:inherit;font-weight:800;cursor:pointer;background:var(--teal);color:#fff}
+.btn-sm{padding:6px 12px;font-size:13px}
+.btn-ghost{background:transparent;color:var(--teal-deep);border:1.5px solid var(--line)}
+.btn-honey{background:var(--honey);color:var(--navy-deep)}
+.btn-danger{background:#fbe9e9;color:#b91c1c;border:1.5px solid #f3caca}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.msg{padding:10px 13px;border-radius:9px;font-size:14px;font-weight:700;margin:10px 0;display:none}
+.msg.err{display:block;background:#fdecec;color:#b91c1c}.msg.ok{display:block;background:#e8f6ee;color:#15803d}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;min-width:110px}
+.stat b{display:block;font-size:22px;color:var(--navy);font-family:'Fraunces',serif}
+.stat span{font-size:12.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.tabs{display:flex;gap:6px;margin:18px 0 12px;flex-wrap:wrap}
+.tab{padding:8px 15px;border-radius:999px;border:1.5px solid var(--line);font-weight:800;cursor:pointer;color:var(--muted);background:#fff;font-size:14px}
+.tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.cg{border:1px solid var(--line);border-radius:12px;padding:15px;margin-bottom:10px;background:#fff}
+.cg-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.nm{font-weight:800;color:var(--navy);font-size:16px}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:800;margin-left:6px}
+.p-pub{background:#e8f6ee;color:#15803d}.p-pend{background:#fef3e2;color:#b45309}.p-draft{background:#eef1f4;color:#667}
+.flags{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0;font-size:13.5px}
+.flags label{display:flex;gap:6px;align-items:center;cursor:pointer;font-weight:700;color:var(--ink)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.meta{font-size:13px;color:var(--muted);margin-top:3px}
+.hide{display:none}
+</style>
+<link rel="stylesheet" href="/htnav.css">
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">Two ways to get care</div>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost btn-sm" id="logoutBtn" href="#" style="display:none">Log out</a>
+</div></header>
+<div class="wrap">
+  
+
+  <div id="cfgWarn" class="msg err" style="display:none">Not connected yet.</div>
+
+  <!-- LOGIN -->
+  <section id="authView" style="display:none">
+    <h1>Admin sign in</h1>
+    <p class="lede">Sign in with your HomeTogether Hire admin account.</p>
+    <div class="card" style="max-width:420px">
+      <div id="authMsg" class="msg"></div>
+      <label class="fld">Email</label>
+      <input id="email" type="email" autocomplete="email">
+      <label class="fld">Password</label>
+      <input id="pass" type="password" autocomplete="current-password">
+      <div style="margin-top:16px"><button class="btn" id="loginBtn" onclick="login()">Log in →</button></div>
+      <p class="meta" style="margin-top:12px">First time? <a href="#" onclick="createAdmin(event)" style="color:var(--teal-deep);font-weight:700">Create your admin account</a> (use samantha@mo-care.com).</p>
+    </div>
+  </section>
+
+  <!-- ADMIN -->
+  <section id="adminView" style="display:none">
+    <h1>HomeTogether Hire admin</h1>
+    <div id="adminMsg" class="msg"></div>
+    <div class="stats" id="stats"></div>
+    <div class="tabs">
+      <div class="tab on" data-tab="review" onclick="setTab('review')">Needs review</div>
+      <div class="tab" data-tab="published" onclick="setTab('published')">Published</div>
+      <div class="tab" data-tab="all" onclick="setTab('all')">All caregivers</div>
+      <div class="tab" data-tab="families" onclick="setTab('families')">Families & jobs</div>
+      <div class="tab" data-tab="reviews" onclick="setTab('reviews')">Reviews</div>
+    </div>
+    <div id="list"></div>
+  </section>
+</div>
+
+<script type="module">
+import { sb, isConfigured, esc } from './account.js';
+const ADMIN_ENDPOINT='https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-admin?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966';
+const $=id=>document.getElementById(id);
+const show=(id,on)=>{$(id).style.display=on?'':'none';};
+const msg=(el,t,k)=>{const m=$(el);m.textContent=t;m.className='msg '+(k||'');};
+let DATA={caregivers:[],families:[],jobs:[],applications:[],reviews:[]}, TAB='review';
+
+async function api(body){
+  const {data:{session}}=await sb.auth.getSession();
+  const r=await fetch(ADMIN_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(session?.access_token||'')},body:JSON.stringify(body)});
+  return r.json();
+}
+
+window.login=async function(){
+  const email=$('email').value.trim(), pass=$('pass').value;
+  if(!email||!pass){msg('authMsg','Enter your email and password.','err');return;}
+  $('loginBtn').disabled=true;
+  const {error}=await sb.auth.signInWithPassword({email,password:pass});
+  if(error){msg('authMsg',error.message,'err');$('loginBtn').disabled=false;return;}
+  await boot();
+};
+window.createAdmin=async function(ev){
+  ev.preventDefault();
+  const email=$('email').value.trim(), pass=$('pass').value;
+  if(!email||pass.length<8){msg('authMsg','Enter your email and a password of at least 8 characters, then click this.','err');return;}
+  const {data,error}=await sb.auth.signUp({email,password:pass});
+  if(error){msg('authMsg',error.message,'err');return;}
+  if(!data.session){msg('authMsg','Account made. Check your email to confirm, then log in.','ok');return;}
+  await boot();
+};
+$('logoutBtn').onclick=async(e)=>{e.preventDefault();await sb.auth.signOut();location.reload();};
+
+window.setTab=function(t){TAB=t;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.tab===t));render();};
+
+async function refresh(){
+  const d=await api({action:'list'});
+  if(d.error){msg('adminMsg',d.error==='not an admin account'?'This account is not an admin. Ask to be added to ADMIN_EMAILS.':d.error,'err');return false;}
+  DATA=d; renderStats(); render(); return true;
+}
+
+function renderStats(){
+  const pending=DATA.caregivers.filter(c=>!c.published && (c.profile_status==='pending_review'||c.interview_done||c.background_checked)).length;
+  $('stats').innerHTML=[
+    ['Caregivers',DATA.caregivers.length],['Published',DATA.caregivers.filter(c=>c.published).length],
+    ['Families',DATA.families.length],['Jobs',DATA.jobs.length],['Applications',DATA.applications.length]
+  ].map(([l,n])=>'<div class="stat"><b>'+n+'</b><span>'+l+'</span></div>').join('');
+}
+
+function statusPill(c){
+  if(c.published) return '<span class="pill p-pub">Published</span>';
+  if(c.profile_status==='pending_review') return '<span class="pill p-pend">Pending review</span>';
+  return '<span class="pill p-draft">'+esc(c.profile_status||'draft')+'</span>';
+}
+
+function cgCard(c){
+  return '<div class="cg"><div class="cg-head"><div><span class="nm">'+esc(c.display_name||c.full_name||'Caregiver')+'</span>'+statusPill(c)
+    +'<div class="meta">'+esc(c.city||'')+(c.hourly_rate?' · $'+c.hourly_rate+'/hr':'')+(c.email?' · '+esc(c.email):'')+(c.phone?' · '+esc(c.phone):'')+'</div></div>'
+    +'<div>'+(c.published
+        ? '<button class="btn btn-ghost btn-sm" onclick="pub(\''+c.id+'\',false)">Unpublish</button>'
+        : '<button class="btn btn-honey btn-sm" onclick="pub(\''+c.id+'\',true)">Publish to directory</button>')+'</div></div>'
+    +(c.bio?'<div class="meta" style="margin-top:6px">'+esc(c.bio)+'</div>':'')
+    +(c.video_intro_url?'<video controls playsinline src="'+esc(c.video_intro_url)+'" style="width:100%;max-width:420px;border-radius:10px;background:#000;margin-top:8px"></video>':'')
+    +(c.interview?iv(c.interview):'')
+    +'<div class="flags">'
+    +flag(c,'interview_done','Interviewed')+flag(c,'background_checked','Background checked')+flag(c,'badge_verified','✓ Verified badge')
+    +'</div>'
+    +'<div class="actions"><button class="btn-danger btn btn-sm" onclick="del(\'htl_caregivers\',\''+c.id+'\')">Delete</button></div></div>';
+}
+function flag(c,k,label){return '<label><input type="checkbox" '+(c[k]?'checked':'')+' onchange="setFlag(\''+c.id+'\',\''+k+'\',this.checked)"> '+label+'</label>';}
+function iv(v){
+  const r=v.rubric&&v.rubric.ratings||null;
+  const chips=r?Object.keys(r).map(k=>{const n=r[k]||0;const col=n>=4?'#15803d':(n>=3?'#b45309':'#b91c1c');return '<span style="display:inline-block;margin:2px 5px 2px 0;padding:1px 8px;border-radius:999px;background:color-mix(in srgb,'+col+' 12%,transparent);color:'+col+';font-weight:700;font-size:11.5px">'+k.replace(/_/g,' ')+' '+n+'/5</span>';}).join(''):'';
+  const dm={advance:'Advance',advance_with_conditions:'Advance with conditions',keep_for_future:'Keep for future',do_not_advance:'Do not advance',needs_review:'Needs review'};
+  return '<div style="margin-top:8px;background:var(--bg);border-radius:10px;padding:10px 12px">'
+    +'<b style="color:#15803d;font-size:13px"><svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-mic"/></svg> Phone interview</b>'+(v.durationSec?' · '+Math.round(v.durationSec/60)+' min':'')
+    +(v.recordingUrl?' · <a href="'+esc(v.recordingUrl)+'" target="_blank" rel="noopener">▶ Listen</a>':'')
+    +(v.summary?'<div style="margin-top:5px;font-size:13.5px;color:var(--muted)">'+esc(v.summary)+'</div>':'')
+    +(chips?'<div style="margin-top:6px">'+chips+'</div>':'')
+    +(v.rubric&&v.rubric.suggested_decision?'<div style="margin-top:4px;font-size:12.5px;color:var(--muted)">AI suggestion: <b>'+esc(dm[v.rubric.suggested_decision]||v.rubric.suggested_decision)+'</b> (your call, never decline on this alone)</div>':'')
+    +(v.transcript?'<details style="margin-top:6px"><summary style="cursor:pointer;font-size:13px">Transcript</summary><div style="margin-top:6px;font-size:13px;color:var(--muted);white-space:pre-wrap;max-height:220px;overflow:auto">'+esc(v.transcript)+'</div></details>':'')
+    +'</div>';
+}
+
+window.pub=async function(id,v){const d=await api({action:'publish',id,published:v});if(d.error){alert(d.error);return;}await refresh();};
+window.setFlag=async function(id,k,v){const body={action:'flags',id};body[k]=v;const d=await api(body);if(d.error){alert(d.error);}await refresh();};
+window.del=async function(table,id){if(!confirm('Delete this permanently?'))return;const d=await api({action:'delete',table,id});if(d.error){alert(d.error);return;}await refresh();};
+
+function render(){
+  let html='';
+  if(TAB==='families'){
+    if(!DATA.jobs.length && !DATA.families.length){html='<div class="card">No families or jobs yet.</div>';}
+    else{
+      html=DATA.jobs.map(j=>{
+        const apps=DATA.applications.filter(a=>a.job_id===j.id);
+        const fam=DATA.families.find(f=>f.user_id===j.family_user_id);
+        return '<div class="cg"><div class="nm">'+esc(j.title||'Untitled job')+'</div>'
+          +'<div class="meta">'+esc((fam&&fam.name)||'')+(fam&&fam.email?' · '+esc(fam.email):'')+' · '+esc(j.city||'')+' · '+apps.length+' applicant(s)</div>'
+          +(apps.length?'<div class="flags" style="margin-top:8px">'+apps.map(a=>esc(a.applicant_name||'?')+' ('+esc(a.status||'new')+')').join(' · ')+'</div>':'')
+          +'<div class="actions"><button class="btn-danger btn btn-sm" onclick="del(\'htl_jobs\',\''+j.id+'\')">Delete job</button></div></div>';
+      }).join('');
+    }
+    $('list').innerHTML=html;return;
+  }
+  if(TAB==='reviews'){
+    const revs=DATA.reviews||[];
+    if(!revs.length){$('list').innerHTML='<div class="card">No reviews yet.</div>';return;}
+    const cgName=id=>{const c=DATA.caregivers.find(x=>x.id===id);return c?(c.display_name||c.full_name||'Caregiver'):'Caregiver';};
+    const stars=n=>{let s='';for(let i=1;i<=5;i++)s+=(i<=(n||0)?'★':'☆');return s;};
+    $('list').innerHTML=revs.map(r=>'<div class="cg"><div class="cg-head"><div><span class="nm">'+esc(cgName(r.caregiver_id))+'</span> <span style="color:#C9821C;font-weight:800">'+stars(r.rating)+'</span>'
+      +'<div class="meta">by '+esc(r.family_name||'a family')+(r.created_at?' · '+new Date(r.created_at).toLocaleDateString('en-US'):'')+'</div></div>'
+      +'<button class="btn-danger btn btn-sm" onclick="del(\'htl_reviews\',\''+r.id+'\')">Remove</button></div>'
+      +(r.body?'<p style="margin-top:6px;font-size:14px">'+esc(r.body)+'</p>':'')+'</div>').join('');
+    return;
+  }
+  let list=DATA.caregivers;
+  if(TAB==='review') list=list.filter(c=>!c.published);
+  else if(TAB==='published') list=list.filter(c=>c.published);
+  if(!list.length){$('list').innerHTML='<div class="card">Nothing here yet.</div>';return;}
+  $('list').innerHTML=list.map(cgCard).join('');
+}
+
+async function boot(){
+  const {data:{user}}=await sb.auth.getUser();
+  if(user){show('authView',false);show('adminView',true);$('logoutBtn').style.display='';const ok=await refresh();}
+  else{show('authView',true);show('adminView',false);$('logoutBtn').style.display='none';}
+}
+if(!isConfigured()){$('cfgWarn').style.display='block';show('authView',true);}else{boot();}
+</script>
+</body>
+</html>

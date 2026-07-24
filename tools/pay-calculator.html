@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caregiver Pay Calculator: What Should I Pay a Caregiver? | HomeTogether Hire</title>
+<meta name="description" content="Estimate a fair hourly wage and your real monthly cost when you hire a caregiver directly: wage range by care type and experience, weekly gross pay, likely overtime, and estimated household-employer costs. A free interactive tool.">
+<link rel="canonical" href="https://tryhometogether.com/tools/pay-calculator">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Caregiver Pay Calculator">
+<meta property="og:description" content="Estimate a fair caregiver wage and your true monthly cost, including employer costs.">
+<meta property="og:url" content="https://tryhometogether.com/tools/pay-calculator">
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/htnav.css">
+<style>
+:root{--navy:#0D365F;--navy-deep:#092647;--teal:#1F7A8C;--teal-deep:#155A68;--teal-soft:#EAF4F6;--honey:#F0A63A;--honey-deep:#C17A12;--good:#2E9B63;--ink:#16283a;--muted:#55677a;--faint:#8a978f;--line:#e4e1d8;--card:#fff;--bg:#FAF9F6;--panel:#F2F0E9;
+--serif:'Fraunces',Georgia,serif;--sans:'Nunito Sans',-apple-system,system-ui,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);letter-spacing:-.012em;text-wrap:balance}
+a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+.crumbs{font-size:13px;color:var(--faint);padding:18px 0 0}.crumbs a{color:var(--muted);font-weight:700}
+.hero{padding:26px 0 4px}
+.eye{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:10px}
+.hero h1{font-size:clamp(28px,4.6vw,40px);line-height:1.08;margin-bottom:12px}
+.hero p{font-size:17px;color:var(--muted);max-width:62ch}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin:26px 0 8px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
+.fld{margin-bottom:18px}
+.fld label{display:block;font-weight:800;color:var(--navy);font-size:14.5px;margin-bottom:8px}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{flex:1 1 auto;min-width:90px;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:11px 10px;font-family:var(--sans);font-weight:700;font-size:14px;color:var(--ink);cursor:pointer;transition:.12s}
+.seg button small{display:block;font-weight:600;color:var(--faint);font-size:11.5px;margin-top:2px}
+.seg button.on{border-color:var(--teal);background:var(--teal-soft);color:var(--navy-deep)}
+.seg button.on small{color:var(--teal-deep)}
+.rangewrap{display:flex;align-items:center;gap:14px}
+.rangewrap input[type=range]{flex:1}
+.hrs{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:22px;min-width:92px;text-align:right}
+.hrs span{font-size:13px;color:var(--muted);font-family:var(--sans);font-weight:700}
+.checks{display:flex;flex-direction:column;gap:9px}
+.checks label{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px;color:var(--ink);cursor:pointer}
+.checks input{width:18px;height:18px;accent-color:var(--teal)}
+/* result */
+.result{position:sticky;top:76px}
+.result .big{background:linear-gradient(120deg,var(--navy),var(--teal-deep));color:#fff;border-radius:16px;padding:22px 24px;text-align:center;margin-bottom:14px}
+.result .big .lbl{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#bcd0e0}
+.result .big .range{font-family:var(--serif);font-weight:700;font-size:40px;line-height:1.1;margin:4px 0 2px}
+.result .big .per{color:rgba(255,255,255,.8);font-size:14px}
+.rows{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.row{display:flex;justify-content:space-between;align-items:baseline;padding:13px 18px;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:none}
+.row .k{color:var(--muted);font-weight:700}
+.row .v{font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums}
+.row.total{background:var(--teal-soft)}
+.row.total .v{font-size:19px}
+.row .sub{display:block;font-size:12px;color:var(--faint);font-weight:600}
+.otflag{background:#FFF7E6;border:1px solid var(--honey);border-radius:10px;padding:10px 14px;margin-top:12px;font-size:13px;color:#5c4a22;display:none}
+.otflag.show{display:block}
+.advice{background:var(--panel);border-radius:12px;padding:14px 16px;margin-top:14px;font-size:13px;color:var(--muted)}
+.advice b{color:var(--navy)}
+.ask{margin-top:22px}
+.ask h2{font-size:22px;margin-bottom:6px}
+.ask p{color:var(--muted);font-size:15px;margin-bottom:12px}
+.ask ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ask li{background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px 14px;font-size:14px;font-weight:700;color:var(--ink);display:flex;gap:9px}
+.ask li::before{content:"✓";color:var(--good);font-weight:900}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 6px}
+.btn{background:var(--honey);color:#3a2708;border-radius:12px;padding:13px 22px;font-weight:800;font-size:15px}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--teal-deep)}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:24px 0 46px;font-size:13px;color:var(--faint)}
+footer a{color:var(--muted);font-weight:700;margin-right:14px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.result{position:static}.ask ul{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://tryhometogether.com/"},
+{"@type":"ListItem","position":2,"name":"Resources","item":"https://tryhometogether.com/resources"},
+{"@type":"ListItem","position":3,"name":"Caregiver pay calculator","item":"https://tryhometogether.com/tools/pay-calculator"}
+]}
+</script>
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">Two ways to get care</div>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/directory">Browse caregivers</a>
+    <details class="res"><summary>Resources ▾</summary>
+      <div class="menu">
+        <div class="gh">A guided family support center</div>
+        <a href="/resources#find">Find the right caregiver<small>Interview, compare, check references</small></a>
+        <a href="/resources#employer">Become a prepared employer<small>Pay, agreements, payroll, records</small></a>
+        <a href="/resources#manage">Manage care successfully<small>Routines, schedules, care plans</small></a>
+        <a href="/resources#difficult">Handle difficult moments<small>Calm help when something's wrong</small></a>
+        <div class="sep"></div>
+        <a href="/resources#learn">Caregiving Learning Center<small>Dementia course, care skills</small></a>
+        <a href="/resources">All resources →</a>
+      </div></details>
+    <a href="/membership" class="hide-sm">Membership</a>
+    <a href="/caregiver" class="hide-sm">For caregivers</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="cta" href="/directory">Find a caregiver</a>
+</div></header>
+
+<div class="wrap">
+<div class="crumbs"><a href="/">Home</a> › <a href="/resources">Resources</a> › Pay calculator</div>
+
+<div class="hero">
+  <p class="eye">Become a prepared employer</p>
+  <h1>What should I pay a caregiver?</h1>
+  <p>Set a fair wage and see your true monthly cost, including the employer costs most families forget. Adjust the details below and the numbers update as you go.</p>
+</div>
+
+<div class="grid">
+  <div class="panel">
+    <div class="fld">
+      <label>Type of care</label>
+      <div class="seg" id="care">
+        <button data-v="companion" class="on">Companion<small>Company, meals, errands</small></button>
+        <button data-v="personal">Personal care<small>Bathing, dressing, mobility</small></button>
+        <button data-v="specialized">Specialized<small>Dementia, higher needs</small></button>
+      </div>
+    </div>
+    <div class="fld">
+      <label>Experience &amp; credentials</label>
+      <div class="seg" id="exp">
+        <button data-v="new">Newer<small>Some experience</small></button>
+        <button data-v="experienced" class="on">Experienced<small>Several years</small></button>
+        <button data-v="certified">CNA / HHA<small>Certified</small></button>
+      </div>
+    </div>
+    <div class="fld">
+      <label>Your area</label>
+      <div class="seg" id="area">
+        <button data-v="lower">Lower-cost<small>Rural / small town</small></button>
+        <button data-v="average" class="on">Average<small>Most metros</small></button>
+        <button data-v="higher">Higher-cost<small>Big / coastal city</small></button>
+      </div>
+    </div>
+    <div class="fld">
+      <label>Hours per week</label>
+      <div class="rangewrap">
+        <input type="range" id="hours" min="2" max="60" step="1" value="20">
+        <span class="hrs"><span id="hoursOut">20</span> <span>hrs/wk</span></span>
+      </div>
+    </div>
+    <div class="fld" style="margin-bottom:0">
+      <label>Anything extra?</label>
+      <div class="checks">
+        <label><input type="checkbox" id="weekend"> Includes weekends or holidays</label>
+        <label><input type="checkbox" id="overnight"> Includes overnight care</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="result">
+    <div class="big">
+      <div class="lbl">Suggested wage</div>
+      <div class="range" id="wageRange">$20–$26</div>
+      <div class="per">per hour</div>
+    </div>
+    <div class="rows">
+      <div class="row"><span class="k">Weekly gross pay<span class="sub" id="weeklyNote">20 hrs at about $23/hr</span></span><span class="v" id="weekly">$460</span></div>
+      <div class="row"><span class="k">Monthly wages<span class="sub">about 4.3 weeks</span></span><span class="v" id="monthly">$1,978</span></div>
+      <div class="row"><span class="k">Est. employer costs<span class="sub">payroll taxes, roughly</span></span><span class="v" id="employer">$191</span></div>
+      <div class="row total"><span class="k">Estimated total / month</span><span class="v" id="total">$2,169</span></div>
+    </div>
+    <div class="otflag" id="otflag"></div>
+    <div class="advice"><b>These are estimates to plan with, not a quote or legal or tax advice.</b> Actual wages vary by person and area. Overtime, live-in, and household-employer tax rules differ by state, a payroll service or tax professional can confirm your situation.</div>
+  </div>
+</div>
+
+<div class="ask">
+  <h2>Before you make an offer</h2>
+  <p>A few things to confirm so the number you offer holds up:</p>
+  <ul>
+    <li>Exact schedule and total weekly hours</li>
+    <li>Who covers mileage or errands driving</li>
+    <li>Overtime expectations over 40 hours</li>
+    <li>Paid time off or holidays, if any</li>
+    <li>Whether you'll run payroll or use a service</li>
+    <li>How and how often they'll be paid</li>
+  </ul>
+</div>
+
+<div class="cta-row">
+  <a class="btn" href="/directory">Find caregivers to hire →</a>
+  <a class="btn ghost" href="/resources#employer">More on becoming an employer →</a>
+</div>
+</div>
+
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4>
+      <a href="/directory">Browse caregivers</a>
+      <a href="/membership">Membership</a>
+      <a href="/resources">Resources</a>
+      <a href="/caregiver">For caregivers</a>
+    </div>
+    <div class="ftcol"><h4>HomeTogether TV</h4>
+      <a href="/">How it works</a>
+      <a href="/get">The device</a>
+      <a href="/guides">Guides</a>
+    </div>
+    <div class="ftcol"><h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/help">Help &amp; contact</a>
+      <a href="/resources">Resource center</a>
+    </div>
+    <div class="ftcol"><h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/returns">Returns</a>
+    </div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+</footer>
+
+<script>
+var CARE={companion:[16,22],personal:[20,28],specialized:[24,34]};
+var EXP={new:-1.5,experienced:0,certified:3};
+var AREA={lower:0.9,average:1.0,higher:1.22};
+var s={care:'companion',exp:'experienced',area:'average',hours:20,weekend:false,overnight:false};
+function money(n){return '$'+Math.round(n).toLocaleString();}
+function seg(id){document.querySelectorAll('#'+id+' button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#'+id+' button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');s[id]=b.getAttribute('data-v');calc();});});}
+seg('care');seg('exp');seg('area');
+var hoursEl=document.getElementById('hours');
+hoursEl.addEventListener('input',function(){s.hours=+hoursEl.value;document.getElementById('hoursOut').textContent=s.hours;calc();});
+document.getElementById('weekend').addEventListener('change',function(e){s.weekend=e.target.checked;calc();});
+document.getElementById('overnight').addEventListener('change',function(e){s.overnight=e.target.checked;calc();});
+function calc(){
+  var base=CARE[s.care], shift=EXP[s.exp], mult=AREA[s.area];
+  var lo=(base[0]+shift)*mult, hi=(base[1]+shift)*mult;
+  if(s.weekend||s.overnight){hi+=1;}
+  lo=Math.max(14,lo);
+  var loR=Math.round(lo), hiR=Math.round(hi), mid=(lo+hi)/2;
+  document.getElementById('wageRange').textContent='$'+loR+'–$'+hiR;
+  var h=s.hours, reg=Math.min(h,40), ot=Math.max(0,h-40);
+  var weekly=reg*mid + ot*mid*1.5;
+  document.getElementById('weekly').textContent=money(weekly);
+  document.getElementById('weeklyNote').textContent=h+' hrs at about $'+Math.round(mid)+'/hr';
+  var monthly=weekly*4.33;
+  document.getElementById('monthly').textContent=money(monthly);
+  var emp=monthly*0.0965;
+  document.getElementById('employer').textContent=money(emp);
+  document.getElementById('total').textContent=money(monthly+emp);
+  var f=document.getElementById('otflag');
+  if(ot>0){f.classList.add('show');f.innerHTML='<b>Heads up, overtime.</b> At '+h+' hours a week, about '+ot+' are over 40. Household employers usually owe 1.5&times; pay for those hours (rules vary, and live-in arrangements can differ).';}
+  else{f.classList.remove('show');}
+}
+calc();
+</script>
+</body>
+</html>

@@ -253,7 +253,7 @@
 .callout-legal b{color:var(--heading);}
 .narrow{max-width:760px;margin:0 auto;}
 
-/* ---- "HomeTogether Local" outbound nav link ---- */
+/* ---- "HomeTogether Hire" outbound nav link ---- */
 nav.main > a.ht-local{display:inline-flex;align-items:center;gap:5px;background:var(--soft-teal);color:var(--sea-deep);border:1px solid color-mix(in srgb,var(--sea) 32%,transparent);border-radius:999px;padding:6px 13px;font-weight:800;}
 nav.main > a.ht-local:hover{background:var(--sea);color:#fff;}
 nav.main > a.ht-local span{font-size:15px;}

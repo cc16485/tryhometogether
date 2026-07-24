@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Checkout | HomeTogether</title>
 <meta name="robots" content="noindex">
-<link rel="canonical" href="https://tryhometogether.com/checkout.html">
+<link rel="canonical" href="https://tryhometogether.com/checkout">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .co-wrap{max-width:1080px;margin:0 auto;padding:34px 20px 70px;}
+  .co-wrap{max-width:1200px;margin:0 auto;padding:34px 20px 70px;}
   .co-head{text-align:center;margin-bottom:30px;}
   .co-head h1{font-family:var(--serif);color:var(--heading);font-size:34px;margin:14px 0 8px;}
   .co-head p{color:var(--muted);font-size:16.5px;max-width:56ch;margin:0 auto;}
@@ -65,40 +65,10 @@
           <b>No risk to try it.</b> 30-day money-back guarantee, cancel anytime with no contracts and no cancellation fees. If it isn't right for your family, you get your money back, simple as that.
         </div>
         <div class="co-trust">
-          <b>The device is part of your subscription.</b> If you ever cancel, we email you a prepaid return label, sending it back is easy and free. By subscribing you agree to our <a href="terms.html" style="color:var(--sea);">Terms</a> and <a href="returns.html" style="color:var(--sea);">Return Policy</a>.
+          <b>The device is part of your subscription.</b> If you ever cancel, we email you a prepaid return label, sending it back is easy and free. By subscribing you agree to our <a href="terms" style="color:var(--sea);">Terms</a> and <a href="returns" style="color:var(--sea);">Return Policy</a>.
         </div>
       </div>
-      <div class="co-help">Questions first? <a href="help.html#contact">Ask our support team</a> or read <a href="help.html">common questions</a>, we're happy to help before you buy.</div>
-      <div class="co-card" style="margin-top:22px;">
-        <h2>Already have HomeTogether?</h2>
-        <p style="font-size:14.5px;color:var(--muted);line-height:1.55;margin:0 0 12px;">You can add caregiver visits to the device you already own, no need to buy anything twice. Pick a plan and we'll confirm it against your existing HomeTogether account before the first visit.</p>
-        <select id="cgOnlyPlan" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;background:#fff;margin-bottom:10px;">
-          <option value="">Choose a visit plan&hellip;</option>
-          <option value="15_1">15-minute visit, 1x per day, Mon-Fri (5 days/week), $75/week</option>
-          <option value="15_2">15-minute visits, 2x per day, Mon-Fri (5 days/week), $130/week</option>
-          <option value="15_3">15-minute visits, 3x per day, Mon-Fri (5 days/week), $180/week</option>
-          <option value="30_1">30-minute visit, 1x per day, Mon-Fri (5 days/week), $125/week</option>
-          <option value="30_2">30-minute visits, 2x per day, Mon-Fri (5 days/week), $220/week</option>
-          <option value="30_3">30-minute visits, 3x per day, Mon-Fri (5 days/week), $300/week</option>
-        </select>
-        <button class="btn btn-primary" style="width:100%;" onclick="var v=document.getElementById('cgOnlyPlan').value; if(!v){alert('Pick a visit plan first.');return;} location.href='order.html?plan='+v+'&existing=1';">Add visits to my device &rarr;</button>
-        <div style="border-top:1px solid var(--border);margin:18px 0 14px;"></div>
-        <div style="font-weight:700;color:var(--heading);font-size:15px;margin-bottom:8px;">Or add device add-ons</div>
-        <label style="display:flex;gap:9px;align-items:flex-start;font-size:14px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="ex-addon" value="Built-in cellular internet ($35/month)" style="margin-top:3px;"><span>Built-in cellular internet, $35/month</span></label>
-        <label style="display:flex;gap:9px;align-items:flex-start;font-size:14px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="ex-addon" id="exSensors" value="sensors" style="margin-top:3px;"><span>Whole-home safety sensing, from $15/month</span></label>
-        <select id="exSensorQty" style="display:none;width:100%;padding:8px 10px;font-size:14px;border:1px solid var(--border);border-radius:8px;background:#fff;margin-bottom:8px;">
-          <option value="1 extra room ($15/month)">1 extra room, $15/month</option>
-          <option value="2 extra rooms ($20/month)">2 extra rooms, $20/month</option>
-          <option value="3 extra rooms ($25/month)">3 extra rooms, $25/month</option>
-          <option value="4 extra rooms ($30/month)">4 extra rooms, $30/month</option>
-        </select>
-        <label style="display:flex;gap:9px;align-items:flex-start;font-size:14px;margin-bottom:12px;cursor:pointer;"><input type="checkbox" class="ex-addon" value="Connected health readings ($10/month)" style="margin-top:3px;"><span>Connected health readings, $10/month</span></label>
-        <input type="text" id="exName" placeholder="Your name" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;">
-        <input type="email" id="exEmail" placeholder="Email on your HomeTogether account" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;margin-bottom:10px;">
-        <button class="btn btn-secondary" id="exSubmit" style="width:100%;border:1.5px solid var(--sea);color:var(--sea-deep);background:#fff;border-radius:10px;padding:12px;font-weight:700;cursor:pointer;">Request my add-ons &rarr;</button>
-        <div id="exDone" style="display:none;font-size:14px;color:var(--sea-deep);font-weight:600;margin-top:10px;text-align:center;">Request received! We'll add it to your subscription and confirm by email, usually within one business day.</div>
-        <div style="font-size:12.5px;color:var(--faint);margin-top:8px;line-height:1.5;">Add-ons are added to your existing monthly bill, nothing new to set up. We'll confirm everything by email before any change.</div>
-      </div>
+      <div class="co-help">Questions first? <a href="help#contact">Ask our support team</a> or read <a href="help">common questions</a>, we're happy to help before you buy.</div>      </div>
     </div>
 
     <div class="co-card">
@@ -151,8 +121,40 @@
         <a class="btn btn-primary btn-lg" href="https://buy.stripe.com/eVq7sDbvP4c49l2eee0oM01">Continue to secure payment &rarr;</a>
         <div class="co-note">You'll finish on Stripe's secure page and return here when you're done.</div>
       </div>
-      <div class="co-note">🔒 Encrypted checkout powered by Stripe</div>
+      <div class="co-note"><svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-lock"/></svg> Encrypted checkout powered by Stripe</div>
     </div>
+  </div>
+  <div style="max-width:560px;margin:26px auto 0;">
+      <div class="co-card" style="margin-top:22px;background:#EAF4F6;border:1.5px solid #1F7A8C;">
+        <span style="display:inline-block;background:#14606F;color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;border-radius:999px;padding:4px 12px;margin-bottom:10px;">For existing customers</span>
+        <h2 style="margin-top:0;">Already have HomeTogether?</h2>
+        <p style="font-size:14.5px;color:var(--muted);line-height:1.55;margin:0 0 12px;">You can add caregiver visits to the device you already own, no need to buy anything twice. Pick a plan and we'll confirm it against your existing HomeTogether account before the first visit.</p>
+        <select id="cgOnlyPlan" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;background:#fff;margin-bottom:10px;">
+          <option value="">Choose a visit plan&hellip;</option>
+          <option value="15_1">15-minute visit, 1x per day, Mon-Fri (5 days/week), $75/week</option>
+          <option value="15_2">15-minute visits, 2x per day, Mon-Fri (5 days/week), $130/week</option>
+          <option value="15_3">15-minute visits, 3x per day, Mon-Fri (5 days/week), $180/week</option>
+          <option value="30_1">30-minute visit, 1x per day, Mon-Fri (5 days/week), $125/week</option>
+          <option value="30_2">30-minute visits, 2x per day, Mon-Fri (5 days/week), $220/week</option>
+          <option value="30_3">30-minute visits, 3x per day, Mon-Fri (5 days/week), $300/week</option>
+        </select>
+        <button class="btn btn-primary" style="width:100%;" onclick="var v=document.getElementById('cgOnlyPlan').value; if(!v){alert('Pick a visit plan first.');return;} location.href='order.html?plan='+v+'&existing=1';">Add visits to my device &rarr;</button>
+        <div style="border-top:1px solid var(--border);margin:18px 0 14px;"></div>
+        <div style="font-weight:700;color:var(--heading);font-size:15px;margin-bottom:8px;">Or add device add-ons</div>
+        <label style="display:flex;gap:9px;align-items:flex-start;font-size:14px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="ex-addon" value="Built-in cellular internet ($35/month)" style="margin-top:3px;"><span>Built-in cellular internet, $35/month</span></label>
+        <label style="display:flex;gap:9px;align-items:flex-start;font-size:14px;margin-bottom:8px;cursor:pointer;"><input type="checkbox" class="ex-addon" id="exSensors" value="sensors" style="margin-top:3px;"><span>Whole-home safety sensing, from $15/month</span></label>
+        <select id="exSensorQty" style="display:none;width:100%;padding:8px 10px;font-size:14px;border:1px solid var(--border);border-radius:8px;background:#fff;margin-bottom:8px;">
+          <option value="1 extra room ($15/month)">1 extra room, $15/month</option>
+          <option value="2 extra rooms ($20/month)">2 extra rooms, $20/month</option>
+          <option value="3 extra rooms ($25/month)">3 extra rooms, $25/month</option>
+          <option value="4 extra rooms ($30/month)">4 extra rooms, $30/month</option>
+        </select>
+        <label style="display:flex;gap:9px;align-items:flex-start;font-size:14px;margin-bottom:12px;cursor:pointer;"><input type="checkbox" class="ex-addon" value="Connected health readings ($10/month)" style="margin-top:3px;"><span>Connected health readings, $10/month</span></label>
+        <input type="text" id="exName" placeholder="Your name" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;">
+        <input type="email" id="exEmail" placeholder="Email on your HomeTogether account" style="width:100%;padding:10px 12px;font-size:15px;border:1px solid var(--border);border-radius:9px;margin-bottom:10px;">
+        <button class="btn btn-secondary" id="exSubmit" style="width:100%;border:1.5px solid var(--sea);color:var(--sea-deep);background:#fff;border-radius:10px;padding:12px;font-weight:700;cursor:pointer;">Request my add-ons &rarr;</button>
+        <div id="exDone" style="display:none;font-size:14px;color:var(--sea-deep);font-weight:600;margin-top:10px;text-align:center;">Request received! We'll add it to your subscription and confirm by email, usually within one business day.</div>
+        <div style="font-size:12.5px;color:var(--faint);margin-top:8px;line-height:1.5;">Add-ons are added to your existing monthly bill, nothing new to set up. We'll confirm everything by email before any change.</div>
   </div>
 </div>
 

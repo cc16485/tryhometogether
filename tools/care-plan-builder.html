@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Care Plan Builder for Home Caregivers (Free) | HomeTogether Hire</title>
+<meta name="description" content="Build a clear, printable care plan for your loved one in minutes. Capture conditions, medications, daily needs, routines, comforts and triggers, and emergency info, everything a caregiver needs on day one.">
+<link rel="canonical" href="https://tryhometogether.com/tools/care-plan-builder">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Care Plan Builder">
+<meta property="og:description" content="Build a clear, printable care plan your caregiver can follow from day one.">
+<meta property="og:url" content="https://tryhometogether.com/tools/care-plan-builder">
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/htnav.css">
+<style>
+:root{--navy:#0D365F;--navy-deep:#092647;--teal:#1F7A8C;--teal-deep:#155A68;--teal-soft:#EAF4F6;--honey:#F0A63A;--honey-deep:#C17A12;--good:#2E9B63;--ink:#16283a;--muted:#55677a;--faint:#8a978f;--line:#e4e1d8;--card:#fff;--bg:#FAF9F6;--panel:#F2F0E9;
+--serif:'Fraunces',Georgia,serif;--sans:'Nunito Sans',-apple-system,system-ui,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);letter-spacing:-.012em;text-wrap:balance}
+a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+.crumbs{font-size:13px;color:var(--faint);padding:18px 0 0}.crumbs a{color:var(--muted);font-weight:700}
+.hero{padding:26px 0 4px}
+.eye{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:10px}
+.hero h1{font-size:clamp(28px,4.6vw,40px);line-height:1.08;margin-bottom:12px}
+.hero p{font-size:17px;color:var(--muted);max-width:62ch}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin:24px 0 8px;align-items:start}
+.form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.form h2{font-size:18px;margin:18px 0 10px}.form h2:first-child{margin-top:0}
+.f{margin-bottom:13px}
+.f label{display:block;font-weight:800;color:var(--navy);font-size:13px;margin-bottom:5px}
+.f input,.f textarea,.f select{width:100%;font-family:var(--sans);font-size:14.5px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.f input:focus,.f textarea:focus,.f select:focus{outline:none;border-color:var(--teal);background:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.needs{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.needs label{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;color:var(--ink);cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+.needs input{width:16px;height:16px;accent-color:var(--teal)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{background:var(--honey);color:#3a2708;border-radius:12px;padding:12px 20px;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:var(--sans)}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--teal-deep)}
+.docwrap{position:sticky;top:74px}
+.doc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 30px;font-size:14px;line-height:1.65;box-shadow:0 2px 4px rgba(13,54,95,.05),0 16px 40px rgba(13,54,95,.08);min-height:300px}
+.doc:focus{outline:2px solid var(--teal-soft)}
+.doc h3{font-family:var(--serif);text-align:center;font-size:21px;margin-bottom:2px}
+.doc .dsub{text-align:center;color:var(--muted);font-size:12.5px;margin-bottom:16px}
+.doc h4{font-family:var(--serif);font-size:15px;color:var(--navy);margin:15px 0 3px;border-bottom:1px solid var(--line);padding-bottom:3px}
+.doc .r{margin:3px 0}.doc .r b{color:var(--navy)}
+.doc ul{margin:3px 0 3px 20px}
+.doc .miss{color:#b23b3b}
+.editnote{font-size:12.5px;color:var(--faint);text-align:center;margin-top:8px}
+.advice{background:var(--panel);border-radius:12px;padding:14px 16px;margin-top:14px;font-size:13px;color:var(--muted)}.advice b{color:var(--navy)}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:24px 0 46px;font-size:13px;color:var(--faint)}
+footer a{color:var(--muted);font-weight:700;margin-right:14px}
+@media(max-width:840px){.grid{grid-template-columns:1fr}.docwrap{position:static}}
+@media print{header.htnav,.crumbs,.hero,.form,.bar,footer,.advice,.editnote{display:none!important}.grid{display:block}.doc{border:none;box-shadow:none;padding:0}body{background:#fff}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://tryhometogether.com/"},
+{"@type":"ListItem","position":2,"name":"Resources","item":"https://tryhometogether.com/resources#manage"},
+{"@type":"ListItem","position":3,"name":"Care plan builder","item":"https://tryhometogether.com/tools/care-plan-builder"}
+]}
+</script>
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">Two ways to get care</div>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/directory">Browse caregivers</a>
+    <details class="res"><summary>Resources ▾</summary>
+      <div class="menu">
+        <div class="gh">A guided family support center</div>
+        <a href="/resources#find">Find the right caregiver<small>Interview, compare, check references</small></a>
+        <a href="/resources#employer">Become a prepared employer<small>Pay, agreements, payroll, records</small></a>
+        <a href="/resources#manage">Manage care successfully<small>Routines, schedules, care plans</small></a>
+        <a href="/resources#difficult">Handle difficult moments<small>Calm help when something's wrong</small></a>
+        <div class="sep"></div>
+        <a href="/resources#learn">Caregiving Learning Center<small>Dementia course, care skills</small></a>
+        <a href="/resources">All resources →</a>
+      </div></details>
+    <a href="/membership" class="hide-sm">Membership</a>
+    <a href="/caregiver" class="hide-sm">For caregivers</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="cta" href="/directory">Find a caregiver</a>
+</div></header>
+
+<div class="wrap">
+<div class="crumbs"><a href="/">Home</a> › <a href="/resources#manage">Manage care successfully</a> › Care plan builder</div>
+<div class="hero">
+  <p class="eye">Manage care successfully</p>
+  <h1>Build your loved one's care plan</h1>
+  <p>The single most useful thing you can hand a caregiver. Fill in what you know and we'll build a clear, printable care plan, so anyone stepping in knows exactly how to care for your person.</p>
+</div>
+
+<div class="grid">
+  <div class="form">
+    <h2>Who this is for</h2>
+    <div class="two">
+      <div class="f"><label>Name</label><input id="name" placeholder="e.g. Margaret Flores"></div>
+      <div class="f"><label>Age (optional)</label><input id="age" placeholder="e.g. 82"></div>
+    </div>
+    <div class="f"><label>Conditions / diagnoses</label><input id="cond" placeholder="e.g. early Alzheimer's, arthritis"></div>
+    <div class="f"><label>Allergies</label><input id="allerg" placeholder="e.g. penicillin, none known"></div>
+
+    <h2>Health &amp; daily needs</h2>
+    <div class="f"><label>Medications (name, dose, when)</label><textarea id="meds" rows="3" placeholder="e.g. Donepezil 10mg, morning · Lisinopril 20mg, morning"></textarea></div>
+    <div class="two">
+      <div class="f"><label>Mobility</label><select id="mob"><option>Walks independently</option><option>Uses a cane or walker</option><option>Uses a wheelchair</option><option>Needs help to stand and transfer</option></select></div>
+      <div class="f"><label>Diet / eating notes</label><input id="diet" placeholder="e.g. low salt, soft foods"></div>
+    </div>
+    <div class="f"><label>Hearing, vision &amp; communication</label><input id="comm" placeholder="e.g. hard of hearing on the left, wears glasses"></div>
+    <div class="f"><label>Help needed with</label><div class="needs" id="needs"></div></div>
+
+    <h2>Who they are</h2>
+    <div class="f"><label>Daily routine (morning / day / evening)</label><textarea id="routine" rows="3" placeholder="e.g. Coffee &amp; news at 7 · rests after lunch · calls daughter at 5"></textarea></div>
+    <div class="two">
+      <div class="f"><label>Comforts &amp; likes</label><input id="likes" placeholder="e.g. gospel music, her cat, warm blankets"></div>
+      <div class="f"><label>Triggers &amp; dislikes</label><input id="triggers" placeholder="e.g. loud TV, being rushed"></div>
+    </div>
+    <div class="f"><label>A good day looks like…</label><input id="goodday" placeholder="e.g. a short walk, a call from family, an early night"></div>
+
+    <h2>In an emergency</h2>
+    <div class="two">
+      <div class="f"><label>Emergency contact</label><input id="ec" placeholder="Name &amp; phone"></div>
+      <div class="f"><label>Doctor</label><input id="phys" placeholder="Name &amp; phone"></div>
+    </div>
+    <div class="f"><label>Important notes (hospital preference, advance directive, etc.)</label><input id="enotes" placeholder="Optional"></div>
+
+    <div class="bar">
+      <button class="btn" onclick="gen()">Build care plan →</button>
+      <button class="btn ghost" onclick="window.print()">Print / save PDF</button>
+    </div>
+  </div>
+
+  <div class="docwrap">
+    <div class="doc" id="doc" contenteditable="true" spellcheck="false"></div>
+    <div class="editnote">Edit anything before printing. Keep a copy in the home where the caregiver can find it.</div>
+    <div class="advice"><b>Tip:</b> update this whenever things change, and review it with any new caregiver on their first day. Pair it with the <a href="/tools/first-day-checklist">first-day checklist</a>.</div>
+  </div>
+</div>
+</div>
+
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4>
+      <a href="/directory">Browse caregivers</a>
+      <a href="/membership">Membership</a>
+      <a href="/resources">Resources</a>
+      <a href="/caregiver">For caregivers</a>
+    </div>
+    <div class="ftcol"><h4>HomeTogether TV</h4>
+      <a href="/">How it works</a>
+      <a href="/get">The device</a>
+      <a href="/guides">Guides</a>
+    </div>
+    <div class="ftcol"><h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/help">Help &amp; contact</a>
+      <a href="/resources">Resource center</a>
+    </div>
+    <div class="ftcol"><h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/returns">Returns</a>
+    </div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+</footer>
+
+<script>
+var NEEDS=["Bathing","Dressing","Toileting","Meals &amp; feeding","Medication reminders","Mobility &amp; transfers","Companionship","Light housekeeping","Transportation","Overnight supervision"];
+var nc=document.getElementById('needs');
+NEEDS.forEach(function(d,i){var l=document.createElement('label');l.innerHTML='<input type="checkbox" data-n="'+i+'"> <span>'+d+'</span>';nc.appendChild(l);});
+function v(id){return (document.getElementById(id).value||'').trim();}
+function row(label,id,fb){var val=v(id);return '<div class="r"><b>'+label+':</b> '+(val||'<span class="miss">['+fb+']</span>')+'</div>';}
+function gen(){
+  var name=v('name')||'<span class="miss">[name]</span>', age=v('age');
+  var needs=[];document.querySelectorAll('#needs input:checked').forEach(function(c){needs.push(NEEDS[+c.getAttribute('data-n')]);});
+  var h='<h3>Care Plan</h3><div class="dsub">For '+name+(age?', age '+age:'')+' · updated '+new Date().toLocaleDateString()+'</div>';
+  h+='<h4>Health</h4>'+row('Conditions','cond','conditions or diagnoses')+row('Allergies','allerg','allergies')+row('Mobility','mob','')+row('Diet','diet','diet notes')+row('Hearing, vision &amp; communication','comm','notes');
+  h+='<h4>Medications</h4>'+((v('meds'))?'<div class="r">'+v('meds').replace(/\n/g,'<br>')+'</div>':'<div class="r miss">[list medications: name, dose, when]</div>');
+  h+='<h4>Help needed with</h4>'+(needs.length?'<ul>'+needs.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>':'<div class="r miss">[select the help needed]</div>');
+  h+='<h4>Daily routine</h4>'+((v('routine'))?'<div class="r">'+v('routine').replace(/\n/g,'<br>')+'</div>':'<div class="r miss">[morning / day / evening routine]</div>');
+  h+='<h4>Who they are</h4>'+row('Comforts &amp; likes','likes','what soothes and pleases them')+row('Triggers &amp; dislikes','triggers','what to avoid')+row('A good day','goodday','what a good day looks like');
+  h+='<h4>In an emergency</h4>'+row('Emergency contact','ec','name &amp; phone')+row('Doctor','phys','name &amp; phone')+(v('enotes')?row('Notes','enotes',''):'')+'<div class="r" style="color:#b23b3b;font-weight:700;margin-top:6px">In a medical emergency, call 911.</div>';
+  document.getElementById('doc').innerHTML=h;
+}
+['name','age','cond','allerg','meds','mob','diet','comm','routine','likes','triggers','goodday','ec','phys','enotes'].forEach(function(id){var e=document.getElementById(id);if(e)e.addEventListener('input',gen);});
+document.querySelectorAll('#needs input').forEach(function(c){c.addEventListener('change',gen);});
+gen();
+</script>
+</body>
+</html>

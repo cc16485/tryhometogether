@@ -1,2 +1,13 @@
 node_modules/
 .DS_Store
+.wrangler/
+
+# Backend / dev — never publish to the public GitHub Pages repo
+supabase/
+db/
+backups/
+*.py
+*.pyc
+__pycache__/
+*.bak-*
+index.html.bak-*

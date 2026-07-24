@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply · HomeTogether Hire</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#143A5E;--navy-deep:#0e2c49;--teal:#1E7A8C;--teal-deep:#155A68;--teal-soft:#e6f1f3;--honey:#EFCE85;--honey-deep:#C9821C;--ink:#16283a;--muted:#5b6b7a;--line:#e4e8ee;--card:#fff;--bg:#f6f8fa;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.wrap{max-width:640px;margin:0 auto;padding:26px 20px 90px}
+.brand{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--navy);margin-bottom:20px}
+.brand small{display:block;font-family:'Nunito Sans';font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-deep)}
+h1{font-family:'Fraunces',serif;font-weight:700;color:var(--navy);font-size:clamp(23px,4vw,29px);margin-bottom:6px;text-wrap:balance}
+h2{font-family:'Fraunces',serif;font-weight:600;color:var(--navy);font-size:18px;margin:0 0 10px}
+.lede{color:var(--muted);font-size:16px;margin-bottom:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:0 1px 2px rgba(20,58,94,.04)}
+.offer .photo{width:72px;height:72px;border-radius:14px;object-fit:cover;border:1.5px solid var(--line);background:var(--teal-soft);float:right;margin-left:14px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.tag{background:var(--teal-soft);color:var(--teal-deep);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700}
+.kv{display:grid;grid-template-columns:120px 1fr;gap:4px 12px;margin-top:10px;font-size:14.5px}
+.kv b{color:var(--navy)}
+.pay{background:linear-gradient(120deg,#fff7e6,#fdeccb);border:1px solid var(--honey);border-radius:12px;padding:12px 15px;margin-top:14px;font-weight:700;color:#7a5312}
+label.fld{display:block;font-weight:700;font-size:13px;color:var(--navy);margin:14px 0 5px}
+input,textarea{width:100%;font:inherit;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+input:focus,textarea:focus{outline:none;border-color:var(--teal)}
+textarea{min-height:90px;resize:vertical}
+.optin{background:var(--teal-soft);border-radius:12px;padding:14px 16px;margin-top:16px;display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer}
+.optin input{width:18px;height:18px;margin-top:3px;accent-color:var(--teal-deep)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:13px 24px;font:inherit;font-weight:800;cursor:pointer;background:var(--teal);color:#fff}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.msg{padding:11px 14px;border-radius:10px;font-size:14px;font-weight:700;margin:12px 0;display:none}
+.msg.err{display:block;background:#fdecec;color:#b91c1c}.msg.ok{display:block;background:#e8f6ee;color:#15803d}
+.hint{color:var(--muted);font-size:13px}
+.hp{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="/" class="brand" style="text-decoration:none">HomeTogether Hire<small>Caregiver application</small></a>
+
+  <div id="loading" class="card"><p class="hint">Loading this job…</p></div>
+
+  <div id="notfound" class="card" style="display:none">
+    <h1>This link isn't active</h1>
+    <p class="lede">The job may have been filled or the link may be incomplete. If a family sent you this, ask them for a fresh link.</p>
+    <a class="btn" href="/hire">Explore HomeTogether Hire →</a>
+  </div>
+
+  <div id="content" style="display:none">
+    <!-- THE OFFER -->
+    <div class="card offer">
+      <img id="lovedImg" class="photo" alt="" style="display:none">
+      <span class="hint" id="fromFamily"></span>
+      <h1 id="jobTitle"></h1>
+      <p class="lede" id="jobCity"></p>
+      <div class="meta" id="needs"></div>
+      <div id="about"></div>
+      <div class="kv" id="kv"></div>
+      <div class="pay" id="pay" style="display:none"></div>
+    </div>
+
+    <!-- APPLY -->
+    <div class="card">
+      <h2>Apply for this role</h2>
+      <div id="applyMsg" class="msg"></div>
+      <input class="hp" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="fld">Your name</label>
+      <input id="a_name" autocomplete="name" placeholder="Your full name">
+      <label class="fld">Email</label>
+      <input id="a_email" type="email" autocomplete="email" placeholder="you@email.com">
+      <label class="fld">Phone</label>
+      <input id="a_phone" inputmode="tel" autocomplete="tel" placeholder="(417) 000-0000">
+      <label class="fld">A short note to the family</label>
+      <textarea id="a_msg" placeholder="A few sentences about your experience and why you'd be a good fit."></textarea>
+
+      <label class="optin">
+        <input type="checkbox" id="a_public">
+        <span><b>Also join HomeTogether Hire (free).</b> Let other families near you find and hire you too. Our team reviews new caregivers before any profile goes public, and we'll be in touch about a quick interview and your ✓ badge.</span>
+      </label>
+
+      <div style="margin-top:18px"><button class="btn" id="applyBtn" onclick="submitApp()">Send my application →</button></div>
+    </div>
+  </div>
+
+  <div id="done" class="card" style="display:none">
+    <h1>Application sent <svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-celebrate"/></svg></h1>
+    <p class="lede" id="doneMsg"></p>
+    <a class="btn" href="/hire">About HomeTogether Hire →</a>
+  </div>
+</div>
+
+<script type="module">
+import { sb, esc } from './account.js';
+const APPLY_ENDPOINT='https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-apply?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966';
+const $=id=>document.getElementById(id);
+const show=(id,on)=>{$(id).style.display=on?'':'none';};
+const params=new URLSearchParams(location.search);
+const CODE=params.get('job')||'';
+let JOB=null;
+
+async function load(){
+  if(!CODE){ show('loading',false); show('notfound',true); return; }
+  const {data,error}=await sb.rpc('htl_public_job',{p_code:CODE});
+  const job=Array.isArray(data)?data[0]:data;
+  show('loading',false);
+  if(error||!job){ show('notfound',true); return; }
+  JOB=job; renderOffer(job); show('content',true);
+}
+
+function renderOffer(j){
+  $('jobTitle').textContent=j.title||'Caregiving role';
+  $('jobCity').textContent=j.city?('In '+j.city):'';
+  const ff=(j.family_first||'').trim();
+  $('fromFamily').textContent=(ff && ff.toLowerCase()!=='the')?('A job from '+ff+"'s family"):'';
+  if(j.recipient_photo_url){ $('lovedImg').src=j.recipient_photo_url; $('lovedImg').style.display=''; }
+  $('needs').innerHTML=(j.care_needs||[]).map(n=>'<span class="tag">'+esc(n)+'</span>').join('');
+  if(j.recipient_about){
+    const who=j.recipient_name?esc(j.recipient_name):'Your loved one';
+    $('about').innerHTML='<h2 style="margin-top:14px">About '+(j.recipient_name?esc(j.recipient_name):'them')+(j.recipient_age?', '+j.recipient_age:'')+'</h2><p style="font-size:15px">'+esc(j.recipient_about)+'</p>';
+  }
+  const kv=[];
+  if(j.schedule) kv.push(['Schedule',j.schedule]);
+  if(j.hours_per_week) kv.push(['Hours','about '+String(j.hours_per_week).replace(/^about /,'')+' / week']);
+  if(j.start_date) kv.push(['Starts',j.start_date]);
+  if(j.home_notes) kv.push(['Good to know',j.home_notes]);
+  if(j.description) kv.push(['About the role',j.description]);
+  $('kv').innerHTML=kv.map(([k,v])=>'<b>'+esc(k)+'</b><span>'+esc(v)+'</span>').join('');
+  if(j.rate){ $('pay').style.display=''; $('pay').textContent='Pay: $'+esc(j.rate)+' '+esc(j.pay_unit||'per hour')+(j.pay_notes?' · '+esc(j.pay_notes):''); }
+}
+
+window.submitApp=async function(){
+  const name=$('a_name').value.trim(), email=$('a_email').value.trim(), phone=$('a_phone').value.trim();
+  if(!name){ msg('Please add your name.','err'); return; }
+  if(!email && !phone){ msg('Please add an email or phone so the family can reach you.','err'); return; }
+  $('applyBtn').disabled=true; $('applyBtn').textContent='Sending…';
+  try{
+    const r=await fetch(APPLY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      job_code:CODE, applicant_name:name, applicant_email:email, applicant_phone:phone,
+      message:$('a_msg').value.trim(), made_public:$('a_public').checked, website:$('website').value
+    })});
+    const d=await r.json();
+    if(!d.ok){ throw new Error(d.error||'Something went wrong.'); }
+    show('content',false);
+    $('doneMsg').textContent=d.made_public
+      ? "The family has your application, and you're now in line to join HomeTogether Hire. Watch your email for next steps."
+      : "The family has your application and will reach out if it's a good fit. Thank you!";
+    show('done',true);
+    window.scrollTo(0,0);
+  }catch(e){ msg(e.message,'err'); $('applyBtn').disabled=false; $('applyBtn').textContent='Send my application →'; }
+};
+function msg(t,k){ const m=$('applyMsg'); m.textContent=t; m.className='msg '+k; }
+
+load();
+</script>
+</body>
+</html>
