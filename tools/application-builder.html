@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caregiver Application Builder (Free, Personalized) | HomeTogether Hire</title>
+<meta name="description" content="Create a professional caregiver job application personalized to your family and your job in minutes. Fill in the role, and get a clean, printable application for candidates to complete. Free for families hiring privately.">
+<link rel="canonical" href="https://tryhometogether.com/tools/application-builder">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Caregiver Application Builder">
+<meta property="og:description" content="Fill in your job and get a personalized, printable caregiver application for candidates to complete.">
+<meta property="og:url" content="https://tryhometogether.com/tools/application-builder">
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/htnav.css">
+<style>
+:root{--navy:#0D365F;--navy-deep:#092647;--teal:#1F7A8C;--teal-deep:#155A68;--teal-soft:#EAF4F6;--honey:#F0A63A;--honey-deep:#C17A12;--good:#2E9B63;--ink:#16283a;--muted:#55677a;--faint:#8a978f;--line:#e4e1d8;--card:#fff;--bg:#FAF9F6;--panel:#F2F0E9;
+--serif:'Fraunces',Georgia,serif;--sans:'Nunito Sans',-apple-system,system-ui,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);letter-spacing:-.012em;text-wrap:balance}
+a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+.crumbs{font-size:13px;color:var(--faint);padding:18px 0 0}.crumbs a{color:var(--muted);font-weight:700}
+.hero{padding:26px 0 4px}
+.eye{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:10px}
+.hero h1{font-size:clamp(28px,4.6vw,40px);line-height:1.08;margin-bottom:12px}
+.hero p{font-size:17px;color:var(--muted);max-width:62ch}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin:24px 0 8px;align-items:start}
+.form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.form h2{font-size:18px;margin:18px 0 10px}.form h2:first-child{margin-top:0}
+.f{margin-bottom:13px}
+.f label{display:block;font-weight:800;color:var(--navy);font-size:13px;margin-bottom:5px}
+.f input,.f select,.f textarea{width:100%;font-family:var(--sans);font-size:14.5px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--teal);background:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.checks label{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;color:var(--ink);cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+.checks input{width:16px;height:16px;accent-color:var(--teal);flex:none}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{background:var(--honey);color:#3a2708;border-radius:12px;padding:12px 20px;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:var(--sans)}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--teal-deep)}
+/* document */
+.docwrap{position:sticky;top:74px}
+.doc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px 32px;font-size:14px;line-height:1.6;box-shadow:0 2px 4px rgba(13,54,95,.05),0 16px 40px rgba(13,54,95,.08);min-height:300px}
+.doc:focus{outline:2px solid var(--teal-soft)}
+.doc h3{font-family:var(--serif);text-align:center;font-size:21px;margin-bottom:3px}
+.doc .dsub{text-align:center;color:var(--muted);font-size:12.5px;margin-bottom:16px}
+.doc .abt{background:var(--teal-soft);border:1px solid #cfe6ea;border-radius:11px;padding:13px 16px;margin-bottom:18px;font-size:13px}
+.doc .abt .ah{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:14px;margin-bottom:7px}
+.doc .abt .ar{display:flex;gap:8px;margin:3px 0}
+.doc .abt .ar b{color:var(--navy);min-width:96px;flex:none;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.doc .sec{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:15px;margin:20px 0 8px;border-bottom:2px solid var(--line);padding-bottom:4px}
+.doc .q{margin:9px 0}
+.doc .q .ql{font-weight:800;color:var(--ink);font-size:12.5px;display:block;margin-bottom:3px}
+.doc .blk{border-bottom:1px solid #9aa7b2;height:20px;margin-top:2px}
+.doc .blk.tall{height:44px}
+.doc .row2{display:flex;gap:16px}.doc .row2>div{flex:1}
+.doc .opt{display:inline-block;margin-right:16px;font-size:13px}
+.doc .cb{font-family:var(--serif);font-size:15px;vertical-align:-1px;margin-right:3px}
+.doc .consent{font-size:12px;color:var(--muted);line-height:1.5;margin:14px 0 10px;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:11px 13px}
+.doc .sig{display:flex;gap:30px;margin-top:14px;flex-wrap:wrap}
+.doc .sig .s{flex:1 1 200px}
+.doc .sig .line{border-bottom:1px solid #333;height:26px;margin-bottom:4px}
+.doc .sig small{color:var(--muted);font-size:12px}
+.editnote{font-size:12.5px;color:var(--faint);text-align:center;margin-top:8px}
+.advice{background:#FFF7E6;border:1px solid var(--honey);border-radius:12px;padding:14px 18px;margin:16px 0 4px;font-size:13.5px;color:#5c4a22}
+.advice b{color:var(--navy)}
+.next{background:var(--teal-soft);border:1px solid #cfe6ea;border-radius:12px;padding:14px 18px;margin:14px 0 4px;font-size:13.5px;color:var(--ink)}
+.next b{color:var(--navy)}.next a{color:var(--teal-deep)}
+footer{border-top:1px solid var(--line);margin-top:36px}
+@media(max-width:840px){.grid{grid-template-columns:1fr}.docwrap{position:static}.checks{grid-template-columns:1fr}}
+@media print{
+  header.htnav,.crumbs,.hero,.form,.bar,footer,.advice,.editnote,.next{display:none!important}
+  .grid{display:block}.docwrap{position:static}
+  .doc{border:none;box-shadow:none;padding:0;font-size:13px}
+  body{background:#fff}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://tryhometogether.com/"},
+{"@type":"ListItem","position":2,"name":"Resources","item":"https://tryhometogether.com/resources"},
+{"@type":"ListItem","position":3,"name":"Application builder","item":"https://tryhometogether.com/tools/application-builder"}
+]}
+</script>
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">HomeTogether, by Caring Companions</div>
+      <a class="si" href="/"><span class="sw">HomeTogether <b>home</b></span><small>See both ways to care</small></a>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/tv"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/directory">Browse caregivers</a>
+    <details class="res"><summary>Resources ▾</summary>
+      <div class="menu">
+        <div class="gh">A guided family support center</div>
+        <a href="/resources#find">Find the right caregiver<small>Interview, compare, check references</small></a>
+        <a href="/resources#employer">Become a prepared employer<small>Pay, agreements, payroll, records</small></a>
+        <a href="/resources#manage">Manage care successfully<small>Routines, schedules, care plans</small></a>
+        <a href="/resources#difficult">Handle difficult moments<small>Calm help when something's wrong</small></a>
+        <div class="sep"></div>
+        <a href="/resources#learn">Caregiving Learning Center<small>Dementia course, care skills</small></a>
+        <a href="/resources">All resources →</a>
+      </div></details>
+    <a href="/membership" class="hide-sm">Membership</a>
+    <a href="/caregiver" class="hide-sm">For caregivers</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="cta" href="/directory">Find a caregiver</a>
+</div></header>
+
+<div class="wrap">
+<div class="crumbs"><a href="/">Home</a> › <a href="/resources">Resources</a> › Application builder</div>
+
+<div class="hero">
+  <p class="eye">Become a prepared employer</p>
+  <h1>Build a caregiver application</h1>
+  <p>Answer a few questions about your job, and we'll create a clean, professional application, personalized to your family and role, for candidates to fill out. Print it, or hand it to anyone who's interested. It's the organized way to start.</p>
+</div>
+
+<div class="grid">
+  <div class="form">
+    <h2>About your job</h2>
+    <div class="two">
+      <div class="f"><label>Family / employer name</label><input id="employer" placeholder="Your name"></div>
+      <div class="f"><label>Care is for (first name)</label><input id="client" placeholder="e.g. Margaret"></div>
+    </div>
+    <div class="two">
+      <div class="f"><label>Job title</label><input id="jobtitle" placeholder="e.g. Weekend caregiver"></div>
+      <div class="f"><label>City / area</label><input id="location" placeholder="e.g. Springfield, MO"></div>
+    </div>
+    <div class="two">
+      <div class="f"><label>Schedule (days &amp; hours)</label><input id="schedule" placeholder="e.g. Sat & Sun, 9am–3pm"></div>
+      <div class="f"><label>Pay</label><input id="wage" placeholder="e.g. $22/hour"></div>
+    </div>
+
+    <h2>What you're looking for</h2>
+    <p style="font-size:12.5px;color:var(--muted);margin:-4px 0 10px">Tick your must-haves, we'll list them on the application.</p>
+    <div class="checks" id="reqs"></div>
+
+    <h2>What they'll help with</h2>
+    <div class="checks" id="duties"></div>
+    <div class="f" style="margin-top:10px"><label>Anything else about the role</label><textarea id="note" rows="2" placeholder="Optional, e.g. our dog is friendly; parking in the driveway"></textarea></div>
+
+    <div class="bar">
+      <button class="btn" onclick="gen()">Generate application →</button>
+      <button class="btn ghost" onclick="window.print()">Print / save PDF</button>
+    </div>
+  </div>
+
+  <div class="docwrap">
+    <div class="doc" id="doc" contenteditable="true" spellcheck="false"></div>
+    <div class="editnote">You can edit any wording right in the document before printing.</div>
+    <div class="next"><b>What's next:</b> print this for candidates to fill in and sign, or hand it out with your job. Soon, you'll be able to send it through your HomeTogether Hire hub so applicants complete it online and everything lands in one place. Pair it with the <a href="/tools/work-agreement-builder">work agreement</a> and <a href="/tools/interview-builder">interview questions</a>.</div>
+    <div class="advice"><b>This is a plain-language template, not legal advice.</b> Ask only what's relevant to the job, and run a background check only with the applicant's written consent. Household-employer and hiring rules vary by state; a payroll service or employment professional can help.</div>
+  </div>
+</div>
+</div>
+
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4>
+      <a href="/directory">Browse caregivers</a>
+      <a href="/membership">Membership</a>
+      <a href="/resources">Resources</a>
+      <a href="/guides">Hire guides</a>
+      <a href="/caregiver">For caregivers</a>
+    </div>
+    <div class="ftcol"><h4>HomeTogether TV</h4>
+      <a href="/tv">How it works</a>
+      <a href="/shop">Shop</a>
+      <a href="/tv-guides">TV guides</a>
+    </div>
+    <div class="ftcol"><h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/help">Help &amp; contact</a>
+      <a href="/resources">Resource center</a>
+    </div>
+    <div class="ftcol"><h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/returns">Returns</a>
+    </div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+</footer>
+
+<script>
+var REQS=["Driver's license &amp; reliable car","CPR / First Aid certified","Experience with dementia","Comfortable with lifting &amp; transfers","Non-smoker","Able to cook meals","Available overnight","Willing to run errands"];
+var DUTIES=["Companionship","Meals &amp; nutrition","Light housekeeping","Laundry","Medication reminders","Bathing &amp; dressing","Mobility &amp; transfers","Transportation","Errands &amp; shopping","Overnight care"];
+function build(list,box){var c=document.getElementById(box);list.forEach(function(d,i){var l=document.createElement('label');l.innerHTML='<input type="checkbox" data-i="'+i+'"> <span>'+d+'</span>';c.appendChild(l);});}
+build(REQS,'reqs');build(DUTIES,'duties');
+function val(id){return (document.getElementById(id).value||'').trim();}
+function or(id,fb){return val(id)||('<span style="color:#b23b3b">['+fb+']</span>');}
+function picked(box,list){var out=[];document.querySelectorAll('#'+box+' input:checked').forEach(function(c){out.push(list[+c.getAttribute('data-i')]);});return out;}
+function blk(tall){return '<div class="blk'+(tall?' tall':'')+'"></div>';}
+function cb(t){return '<span class="opt"><span class="cb">&#9744;</span>'+t+'</span>';}
+function gen(){
+  var emp=or('employer','your name'),cl=or('client','name'),jt=val('jobtitle')||'Caregiver',loc=or('location','city'),sch=or('schedule','days & hours'),pay=or('wage','pay');
+  var reqs=picked('reqs',REQS),duties=picked('duties',DUTIES),note=val('note');
+  var h='';
+  h+='<h3>Caregiver Application</h3><div class="dsub">'+jt+(cl.indexOf('[')<0?' &middot; caring for '+cl:'')+'</div>';
+  // About the position (personalized)
+  h+='<div class="abt"><div class="ah">About this position</div>';
+  h+='<div class="ar"><b>Family</b><span>'+emp+'</span></div>';
+  h+='<div class="ar"><b>Care for</b><span>'+cl+'</span></div>';
+  h+='<div class="ar"><b>Location</b><span>'+loc+'</span></div>';
+  h+='<div class="ar"><b>Schedule</b><span>'+sch+'</span></div>';
+  h+='<div class="ar"><b>Pay</b><span>'+pay+'</span></div>';
+  if(duties.length)h+='<div class="ar"><b>Help with</b><span>'+duties.join(', ')+'</span></div>';
+  if(reqs.length)h+='<div class="ar"><b>Looking for</b><span>'+reqs.join(', ')+'</span></div>';
+  if(note)h+='<div class="ar"><b>Notes</b><span>'+note+'</span></div>';
+  h+='</div>';
+  // Applicant section
+  h+='<div style="font-size:12.5px;color:#55677a;margin-bottom:6px">Please complete this application. Thank you for your interest, we look forward to meeting you.</div>';
+  h+='<div class="sec">Your details</div>';
+  h+='<div class="q"><span class="ql">Full name</span>'+blk()+'</div>';
+  h+='<div class="row2"><div class="q"><span class="ql">Phone</span>'+blk()+'</div><div class="q"><span class="ql">Email</span>'+blk()+'</div></div>';
+  h+='<div class="row2"><div class="q"><span class="ql">City you live in</span>'+blk()+'</div><div class="q"><span class="ql">Legally eligible to work in the U.S.?</span>'+cb('Yes')+cb('No')+'</div></div>';
+  h+='<div class="row2"><div class="q"><span class="ql">Reliable transportation?</span>'+cb('Yes')+cb('No')+'</div><div class="q"><span class="ql">Non-smoker?</span>'+cb('Yes')+cb('No')+'</div></div>';
+
+  h+='<div class="sec">Experience</div>';
+  h+='<div class="q"><span class="ql">Years of caregiving experience</span>'+blk()+'</div>';
+  h+='<div class="q"><span class="ql">Most recent caregiving role, where, when, and what you did</span>'+blk(true)+'</div>';
+  h+='<div class="q"><span class="ql">Certifications</span>'+cb('CNA')+cb('HHA')+cb('CPR')+cb('First Aid')+cb('Other:')+'</div>';
+
+  // Comfortable with — reflect the job's duties/reqs
+  var comfort=(duties.concat(reqs));
+  if(comfort.length){
+    h+='<div class="q"><span class="ql">Which of these are you comfortable doing? (tick all that apply)</span><div style="margin-top:4px">';
+    comfort.forEach(function(d){h+=cb(d);});
+    h+='</div></div>';
+  }
+  h+='<div class="q"><span class="ql">Can you work this schedule ('+sch+')? If not, what works for you?</span>'+blk(true)+'</div>';
+
+  h+='<div class="sec">References</div>';
+  h+='<div class="row2"><div class="q"><span class="ql">Reference 1, name &amp; relationship</span>'+blk()+'</div><div class="q"><span class="ql">Phone</span>'+blk()+'</div></div>';
+  h+='<div class="row2"><div class="q"><span class="ql">Reference 2, name &amp; relationship</span>'+blk()+'</div><div class="q"><span class="ql">Phone</span>'+blk()+'</div></div>';
+  h+='<div class="q"><span class="ql">Why do you think you\'d be a good fit for '+cl+'?</span>'+blk(true)+'</div>';
+
+  h+='<div class="sec">Consent &amp; signature</div>';
+  h+='<div class="consent">The information above is true and complete to the best of my knowledge. I authorize '+emp+' to contact my references, and I consent to a background check being run as part of this hiring process. I understand a background check has limits and does not guarantee anything.</div>';
+  h+='<div class="sig"><div class="s"><div class="line"></div><small>Applicant signature</small></div><div class="s"><div class="line"></div><small>Date</small></div></div>';
+  document.getElementById('doc').innerHTML=h;
+}
+['employer','client','jobtitle','location','schedule','wage','note'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',gen);});
+document.querySelectorAll('#reqs input,#duties input').forEach(function(c){c.addEventListener('change',gen);});
+gen();
+</script>
+</body>
+</html>
