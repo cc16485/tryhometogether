@@ -31,7 +31,11 @@ a{color:var(--teal-deep);font-weight:700;text-decoration:none}
 .eye{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:10px}
 .hero h1{font-size:clamp(30px,5vw,44px);line-height:1.1;margin-bottom:14px}
 .hero p{font-size:19px;color:var(--muted);max-width:64ch}
-section.grp{padding:34px 0 8px}
+.filterbar{display:flex;flex-wrap:wrap;gap:9px;margin:26px 0 2px}
+.fpill{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:9px 17px;font-weight:800;font-size:13.5px;cursor:pointer;font-family:var(--sans);transition:background .12s,color .12s,border-color .12s}
+.fpill:hover{border-color:var(--teal);color:var(--teal-deep)}
+.fpill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+section.grp{padding:30px 0 8px}
 .grp h2{font-size:26px;margin-bottom:4px}
 .grp .sub{color:var(--muted);font-size:15.5px;margin-bottom:18px}
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -55,6 +59,7 @@ section.grp{padding:34px 0 8px}
 .lg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
 .li2{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-weight:700;color:var(--ink);font-size:14.5px;text-decoration:none}
 .li2:hover{border-color:var(--teal)}.li2 .tg{color:var(--faint);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.noresult{display:none;color:var(--muted);padding:24px 0 8px;font-size:16px}
 @media(max-width:620px){.lg{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">
@@ -106,12 +111,20 @@ section.grp{padding:34px 0 8px}
   <p>Warm, plain-language guides on keeping a real bond with an aging parent, even from far away, even when technology has always been hard. From the family behind Caring Companions.</p>
 </div>
 
+<div class="filterbar" role="tablist" aria-label="Filter guides by topic">
+  <button class="fpill active" data-filter="all">All guides</button>
+  <button class="fpill" data-filter="calls">Video calling</button>
+  <button class="fpill" data-filter="distance">From far away</button>
+  <button class="fpill" data-filter="wellbeing">Loneliness &amp; wellbeing</button>
+  <button class="fpill" data-filter="devices">Devices</button>
+</div>
+
 <div class="rescall">
   <div class="rc"><b>Already have HomeTogether?</b><div>Our help center has step-by-step setup, tutorials, and answers, from placing the device to scheduling family calls.</div></div>
   <a href="/help">Open the Help center →</a>
 </div>
 
-<section class="grp">
+<section class="grp" data-cat="calls">
   <h2>Making video calls easy</h2>
   <p class="sub">For a parent who finds phones and tablets hard, or won't touch them at all.</p>
   <div class="cards">
@@ -127,10 +140,16 @@ section.grp{padding:34px 0 8px}
       <p>Why they resist (it's fear, not stubbornness), and gentle ways to make seeing each other feel safe and easy instead of stressful.</p>
       <span class="more">Read the guide →</span>
     </a>
+    <a class="g" href="/guides/family-group-video-calls">
+      <span class="tag">Family calls</span>
+      <h3>How to make family group video calls actually work</h3>
+      <p>Keep the whole family's calls joyful instead of chaotic, and make sure the grandparents stay right in the middle of it.</p>
+      <span class="more">Read the guide →</span>
+    </a>
   </div>
 </section>
 
-<section class="grp">
+<section class="grp" data-cat="distance">
   <h2>Staying close from far away</h2>
   <p class="sub">Being present in the ways that matter, even from a few states over.</p>
   <div class="cards">
@@ -146,22 +165,10 @@ section.grp{padding:34px 0 8px}
       <p>Why sharing an experience beats a status-check call, and easy ways to actually do things together across the miles.</p>
       <span class="more">Read the guide →</span>
     </a>
-    <a class="g" href="/guides/family-group-video-calls">
-      <span class="tag">Family calls</span>
-      <h3>How to make family group video calls actually work</h3>
-      <p>Keep the whole family's calls joyful instead of chaotic, and make sure the grandparents stay right in the middle of it.</p>
-      <span class="more">Read the guide →</span>
-    </a>
-    <a class="g" href="/guides/staying-connected-with-a-parent-who-has-dementia">
-      <span class="tag">Dementia care</span>
-      <h3>Staying connected with a parent who has dementia</h3>
-      <p>What actually helps on a call, how routine and a familiar face calm anxiety, what to avoid, and gentle ways to stay present.</p>
-      <span class="more">Read the guide →</span>
-    </a>
   </div>
 </section>
 
-<section class="grp">
+<section class="grp" data-cat="wellbeing">
   <h2>Loneliness, safety &amp; wellbeing</h2>
   <p class="sub">Noticing when a parent is struggling, and building habits that protect them.</p>
   <div class="cards">
@@ -177,10 +184,16 @@ section.grp{padding:34px 0 8px}
       <p>How to build an easy daily rhythm that eases loneliness and catches small problems early, and when to add professional help.</p>
       <span class="more">Read the guide →</span>
     </a>
+    <a class="g" href="/guides/staying-connected-with-a-parent-who-has-dementia">
+      <span class="tag">Dementia care</span>
+      <h3>Staying connected with a parent who has dementia</h3>
+      <p>What actually helps on a call, how routine and a familiar face calm anxiety, what to avoid, and gentle ways to stay present.</p>
+      <span class="more">Read the guide →</span>
+    </a>
   </div>
 </section>
 
-<section class="grp">
+<section class="grp" data-cat="devices">
   <h2>Choosing the right device</h2>
   <p class="sub">An honest look at the options before you buy anything.</p>
   <div class="lg">
@@ -190,6 +203,8 @@ section.grp{padding:34px 0 8px}
     <a class="li2" href="/virtual-caregiving">Add virtual caregiving visits <span class="tg">Service</span></a>
   </div>
 </section>
+
+<p class="noresult">No guides in this topic yet. <a href="#" onclick="document.querySelector('.fpill').click();return false;">Show all guides →</a></p>
 
 <div class="band">
   <h2>Two ways HomeTogether can help</h2>
@@ -233,5 +248,28 @@ section.grp{padding:34px 0 8px}
 </div>
 <div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
 </footer>
+<script>
+(function(){
+  var pills=document.querySelectorAll('.fpill');
+  var groups=document.querySelectorAll('section.grp');
+  var none=document.querySelector('.noresult');
+  function apply(f){
+    var shown=0;
+    groups.forEach(function(g){
+      var on=(f==='all'||g.getAttribute('data-cat')===f);
+      g.style.display=on?'':'none';
+      if(on)shown++;
+    });
+    if(none)none.style.display=shown?'none':'block';
+  }
+  pills.forEach(function(p){
+    p.addEventListener('click',function(){
+      pills.forEach(function(x){x.classList.remove('active');});
+      p.classList.add('active');
+      apply(p.getAttribute('data-filter'));
+    });
+  });
+})();
+</script>
 </body>
 </html>

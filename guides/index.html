@@ -65,6 +65,11 @@ footer a{color:var(--muted);font-weight:700}
 .li2{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-weight:700;color:var(--ink);font-size:14.5px;text-decoration:none}
 .li2:hover{border-color:var(--teal)}.li2 .tg{color:var(--faint);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
 @media(max-width:620px){.lg{grid-template-columns:1fr}}
+.filterbar{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 2px}
+.fpill{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:9px 17px;font-weight:800;font-size:13.5px;cursor:pointer;font-family:var(--sans);transition:background .12s,color .12s,border-color .12s}
+.fpill:hover{border-color:var(--teal);color:var(--teal-deep)}
+.fpill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.noresult{display:none;color:var(--muted);padding:24px 0 8px;font-size:16px}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
@@ -126,7 +131,16 @@ footer a{color:var(--muted);font-weight:700}
   <a href="/resources">Open the Resources center →</a>
 </div>
 
-<section class="grp">
+<div class="filterbar" role="tablist" aria-label="Filter guides by topic">
+  <button class="fpill active" data-filter="all">All guides</button>
+  <button class="fpill" data-filter="hiring">Hiring &amp; employer</button>
+  <button class="fpill" data-filter="connect">Staying connected</button>
+  <button class="fpill" data-filter="skills">Care skills</button>
+  <button class="fpill" data-filter="managing">Managing care</button>
+  <button class="fpill" data-filter="tools">Tools &amp; help</button>
+</div>
+
+<section class="grp" data-cat="hiring">
   <h2>Hiring a caregiver</h2>
   <p class="sub">Finding, vetting, and paying for someone you trust in your loved one's home.</p>
   <div class="cards">
@@ -145,7 +159,7 @@ footer a{color:var(--muted);font-weight:700}
   </div>
 </section>
 
-<section class="grp">
+<section class="grp" data-cat="connect">
   <h2>Staying connected</h2>
   <p class="sub">Keeping a face-to-face bond with a parent far away, or one who finds technology hard. <a href="/tv-guides">See all our TV &amp; connection guides →</a></p>
   <div class="cards">
@@ -170,7 +184,7 @@ footer a{color:var(--muted);font-weight:700}
   </div>
 </section>
 
-<section class="grp">
+<section class="grp" data-cat="hiring">
   <h2>Hiring &amp; employer guides</h2>
   <p class="sub">Vetting a caregiver well, and the practical side of hiring directly.</p>
   <div class="lg">
@@ -183,7 +197,7 @@ footer a{color:var(--muted);font-weight:700}
   </div>
 </section>
 
-<section class="grp">
+<section class="grp" data-cat="skills">
   <h2>Caregiving skills</h2>
   <p class="sub">Practical, compassionate how-to from people who do this every day.</p>
   <div class="lg">
@@ -196,7 +210,7 @@ footer a{color:var(--muted);font-weight:700}
   </div>
 </section>
 
-<section class="grp">
+<section class="grp" data-cat="managing">
   <h2>Managing care</h2>
   <p class="sub">Keeping care working smoothly after the hire.</p>
   <div class="lg">
@@ -207,7 +221,7 @@ footer a{color:var(--muted);font-weight:700}
   </div>
 </section>
 
-<section class="grp">
+<section class="grp" data-cat="tools">
   <h2>Interactive tools</h2>
   <p class="sub">Fill-in builders and calculators you can use and print.</p>
   <div class="lg">
@@ -226,7 +240,7 @@ footer a{color:var(--muted);font-weight:700}
   </div>
 </section>
 
-<section class="grp">
+<section class="grp" data-cat="tools">
   <h2>When something's wrong</h2>
   <p class="sub">Calm, step-by-step help for the hard moments.</p>
   <div class="lg">
@@ -284,5 +298,28 @@ footer a{color:var(--muted);font-weight:700}
 </div>
 <div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
 </footer>
+<script>
+(function(){
+  var pills=document.querySelectorAll(".fpill");
+  var groups=document.querySelectorAll("section.grp");
+  var none=document.querySelector(".noresult");
+  function apply(f){
+    var shown=0;
+    groups.forEach(function(g){
+      var on=(f==="all"||g.getAttribute("data-cat")===f);
+      g.style.display=on?"":"none";
+      if(on)shown++;
+    });
+    if(none)none.style.display=shown?"none":"block";
+  }
+  pills.forEach(function(p){
+    p.addEventListener("click",function(){
+      pills.forEach(function(x){x.classList.remove("active");});
+      p.classList.add("active");
+      apply(p.getAttribute("data-filter"));
+    });
+  });
+})();
+</script>
 </body>
 </html>
