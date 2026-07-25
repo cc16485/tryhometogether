@@ -93,6 +93,7 @@ audio{width:100%;margin-top:10px}
 
   <div id="grid" class="grid"></div>
   <div id="empty" class="empty" style="display:none"></div>
+  <div id="gate" class="empty" style="display:none"></div>
   <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:26px">New to hiring a caregiver? <a href="/guides/how-to-hire-a-caregiver" style="color:var(--teal-deep);font-weight:700">How to hire someone you trust</a> · <a href="/guides/cost-of-in-home-care-missouri" style="color:var(--teal-deep);font-weight:700">What care costs in Missouri</a></p>
 </div>
 
@@ -251,7 +252,20 @@ window.sendMessage=async function(cgId,name){
   document.getElementById('msgArea').innerHTML='<div style="margin-top:14px;background:#e8f6ee;border-radius:10px;padding:14px;font-weight:700;color:#15803d">Sent! '+esc(name)+' will see your message in their account and can reply. You’ll find the conversation in your family dashboard under “Messages.”</div>';
 };
 
-load();
+// The directory is a free bonus INSIDE the portal, so browsing requires a (free) account.
+async function init(){
+  let user=null;
+  try{ const r=await sb.auth.getUser(); user=r&&r.data&&r.data.user||null; }catch(e){}
+  if(user){ load(); return; }
+  const fl=document.querySelector('.filters'); if(fl) fl.style.display='none';
+  $('grid').style.display='none'; $('empty').style.display='none';
+  const g=$('gate'); g.style.display='';
+  g.innerHTML='<p style="font-size:16px;margin-bottom:6px"><b>The caregiver directory is a free bonus for HomeTogether Hire families.</b></p>'
+    +'<p style="margin-bottom:18px">Create your free account to browse vetted, background-checked caregivers near you, then invite the ones you like to your job.</p>'
+    +'<a class="btn" href="/family">Create your free account, or log in &rarr;</a>'
+    +'<p style="margin-top:16px;font-size:13.5px;color:var(--muted)">Browsing is free. Messaging and hiring is $25/month, cancel anytime.<br>Or <a href="/family" style="color:var(--teal-deep);font-weight:700">post a job</a> and applicants come straight to you, no browsing needed.</p>';
+}
+init();
 </script>
 <footer class="htfoot"><div class="ftin">
   <div class="ftbrand">
