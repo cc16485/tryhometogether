@@ -619,6 +619,13 @@ function renderPipeline(apps){
   return summary+groups;
 }
 
+function appTags(a){
+  var t='<span class="pill" style="background:#e6f1f3;color:#155A68;font-weight:700">Via your link</span>';
+  t+= a.made_public
+    ? ' <span class="pill" style="background:#fff3d6;color:#8a5b12;font-weight:700">Also joined the directory</span>'
+    : ' <span class="pill" style="background:#eef1f4;color:#55677A;font-weight:700">Applying to you only</span>';
+  return '<div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">'+t+'</div>';
+}
 function viewerApplicant(a){
   const contact=(a.applicant_phone||a.applicant_email)&&FAMILY_ACTIVE
     ? '<p class="hint">'+(a.applicant_phone?esc(a.applicant_phone):'')+(a.applicant_email?' · '+esc(a.applicant_email):'')+'</p>' : '';
@@ -627,6 +634,7 @@ function viewerApplicant(a){
   return '<div class="applicant"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center">'
     +'<b>'+esc(a.applicant_name||'Applicant')+'</b>'
     +'<span class="pill" style="background:#eef1f4;color:#55677A">'+esc(a.status||'new')+'</span></div>'
+    +appTags(a)
     +contact
     +(a.message?'<p style="font-size:14px;margin:6px 0">'+esc(a.message)+'</p>':'')
     +rating+notes+'</div>';
@@ -648,6 +656,7 @@ function renderApplicant(a){
     +'<b>'+esc(a.applicant_name||'Applicant')+'</b>'
     +'<select class="appstatus" data-app="'+a.id+'" style="width:auto;padding:5px 10px">'
     +statuses.map(s=>'<option'+(a.status===s?' selected':'')+'>'+s+'</option>').join('')+'</select></div>'
+    +appTags(a)
     +((a.applicant_phone||a.applicant_email)?(FAMILY_ACTIVE
         ? '<p class="hint">'+(a.applicant_phone?'<a href="tel:'+esc(a.applicant_phone)+'">'+esc(a.applicant_phone)+'</a>':'')+(a.applicant_email?' · '+esc(a.applicant_email):'')+'</p>'
         : '<p class="hint" style="background:#fff7e6;border:1px solid var(--honey);border-radius:8px;padding:6px 10px;color:#7a5312"><svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-lock"/></svg> Contact details are members-only. <a href="#" onclick="document.getElementById(\'memberCard\').scrollIntoView({behavior:\'smooth\'});return false" style="color:var(--honey-deep);font-weight:800">Become a member to reach them &rarr;</a></p>'):'')
