@@ -785,7 +785,7 @@ svg[aria-hidden="true"]{width:1.15em;height:1.15em;display:inline-block;vertical
       <h2>Rates, area &amp; availability</h2>
       <p class="hint">You're in control, change any of this anytime.</p>
       <div style="display:grid;gap:14px">
-        <input class="zip" id="cg_rate" placeholder="Your hourly rate (e.g. $26)">
+        <input class="zip" id="cg_rate" placeholder="Your hourly rate (e.g. $22)">
         <input class="zip" id="cg_area" placeholder="Service area ZIP or city, how far you'll travel">
       </div>
       <p class="hint" style="margin:20px 0 10px">When are you available?</p>
@@ -861,7 +861,7 @@ function initials(n){return n.split(' ').map(function(w){return w[0]}).join('').
 var HIRED={1:14,2:9,3:11,4:12,5:7,6:10};
 var REPLY={1:'about 1 hr',2:'about 2 hrs',3:'about 1 hr',4:'about 3 hrs',5:'about 2 hrs',6:'about 1 hr'};
 var CG=[
- {id:1,name:'Maria Delgado',city:'Springfield, MO',near:1,rate:26,years:12,rating:4.9,reviews:86,g:0,
+ {id:1,name:'Maria Delgado',city:'Springfield, MO',near:1,rate:22,years:12,rating:4.9,reviews:86,g:0,
   skills:['Dementia care','Personal care','Companionship','Medication'],
   certs:['CNA','CPR / First Aid','Dementia Care Certified'],
   services:['Dementia & memory care','Bathing & hygiene','Medication reminders','Companionship','Meal preparation'],
@@ -869,7 +869,7 @@ var CG=[
   avail:[1,1,1,1,1,0,0],
   rev:[{n:'Karen P.',d:'2 weeks ago',s:5,t:"Maria is a godsend. My mother has Alzheimer's and Maria brings such calm to the house. She noticed a UTI before any of us did."},
        {n:'David L.',d:'1 month ago',s:5,t:"Reliable, kind, and genuinely skilled. Dad looks forward to her visits every day."}]},
- {id:2,name:'James Okafor',city:'Kansas City, MO',near:0,rate:24,years:8,rating:4.8,reviews:54,g:1,
+ {id:2,name:'James Okafor',city:'Kansas City, MO',near:0,rate:19,years:8,rating:4.8,reviews:54,g:1,
   skills:['Mobility','Post-surgery','Companionship','Transportation'],
   certs:['CNA','CPR / First Aid'],
   services:['Mobility & transfers','Post-surgery recovery','Transportation & errands','Companionship'],
@@ -877,7 +877,7 @@ var CG=[
   avail:[1,1,1,1,1,1,0],
   rev:[{n:'Susan M.',d:'3 weeks ago',s:5,t:"James helped my husband recover after his hip replacement. Careful, encouraging, and always on time."},
        {n:'Ray T.',d:'2 months ago',s:4,t:"Great with transfers and very dependable. Would recommend."}]},
- {id:3,name:'Linda Hartmann',city:'Joplin, MO',near:1,rate:23,years:15,rating:5.0,reviews:39,g:2,
+ {id:3,name:'Linda Hartmann',city:'Joplin, MO',near:1,rate:25,years:15,rating:5.0,reviews:39,g:2,
   skills:['Companionship','Meal prep','Medication','Transportation'],
   certs:['CPR / First Aid','HHA'],
   services:['Companionship','Meals & light housekeeping','Medication reminders','Transportation & errands'],
@@ -885,7 +885,7 @@ var CG=[
   avail:[1,1,1,1,1,0,0],
   rev:[{n:'Nancy W.',d:'1 week ago',s:5,t:"Linda feels like family now. Mom's face lights up when she arrives."},
        {n:'Gary H.',d:'6 weeks ago',s:5,t:"Wonderful cook and even better company. Truly caring person."}]},
- {id:4,name:'Grace Nguyen',city:'St. Louis, MO',near:0,rate:28,years:10,rating:4.9,reviews:72,g:3,
+ {id:4,name:'Grace Nguyen',city:'St. Louis, MO',near:0,rate:20,years:10,rating:4.9,reviews:72,g:3,
   skills:['Dementia care','Medication','Personal care','Companionship'],
   certs:['CNA','Dementia Care Certified','Med Tech'],
   services:['Dementia & memory care','Medication management','Personal care','Companionship'],
@@ -893,7 +893,7 @@ var CG=[
   avail:[1,1,1,1,1,1,1],
   rev:[{n:'Michael B.',d:'2 weeks ago',s:5,t:"Grace organized my father's medications and caught a dangerous interaction. Sharp and compassionate."},
        {n:'Ellen R.',d:'5 weeks ago',s:5,t:"She's endlessly patient with my mother's repetition. A real professional."}]},
- {id:5,name:'Robert Ellis',city:'Columbia, MO',near:0,rate:25,years:6,rating:4.7,reviews:41,g:4,
+ {id:5,name:'Robert Ellis',city:'Columbia, MO',near:0,rate:18,years:6,rating:4.7,reviews:41,g:4,
   skills:['Mobility','Companionship','Meal prep','Post-surgery'],
   certs:['CNA','CPR / First Aid'],
   services:['Overnight care','Mobility & transfers','Companionship','Meal preparation'],
@@ -901,7 +901,7 @@ var CG=[
   avail:[0,0,1,1,1,1,1],
   rev:[{n:'Patty K.',d:'3 weeks ago',s:5,t:"Robert does overnights for my dad so I can finally sleep. Total peace of mind."},
        {n:'Jim F.',d:'2 months ago',s:4,t:"Dependable and kind. Handles the hard nights well."}]},
- {id:6,name:'Aisha Rahman',city:'Springfield, MO',near:1,rate:27,years:9,rating:4.9,reviews:63,g:5,
+ {id:6,name:'Aisha Rahman',city:'Springfield, MO',near:1,rate:24,years:9,rating:4.9,reviews:63,g:5,
   skills:['Personal care','Companionship','Medication','Post-surgery'],
   certs:['CNA','CPR / First Aid','HHA'],
   services:['Personal care & hygiene','Hospice & comfort care','Medication reminders','Companionship'],
@@ -1246,7 +1246,7 @@ function cgPayNow(btn){
 }
 function renderCgDash(){
   var d=document.getElementById('cgDash'); if(!d) return;
-  var rate=CGS.rate ? (String(CGS.rate).charAt(0)==='$'?CGS.rate:'$'+CGS.rate) : '$26';
+  var rate=CGS.rate ? (String(CGS.rate).charAt(0)==='$'?CGS.rate:'$'+CGS.rate) : '$22';
   var skills=(CGS.skills.length?CGS.skills:['Companionship']).slice(0,4);
   var profile='<div class="cg" style="cursor:default">'+
     '<div class="cg-top"><div class="av" style="background:linear-gradient(135deg,#1E7A8C,#155A68)">'+cgEsc(cgInitials(CGS.name))+'<span class="vb" style="background:var(--faint)">…</span></div>'+
