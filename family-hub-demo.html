@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Hiring Hub (Interactive Preview) | HomeTogether Hire</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/htnav.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D365F;--teal:#1F7A8C;--teal-deep:#155A68;--teal-soft:#EAF4F6;--honey:#F0A63A;--honey-deep:#C17A12;--good:#2E9B63;--good-soft:#E4F3EC;--ink:#16283a;--muted:#55677a;--faint:#8a978f;--line:#e4e1d8;--bg:#FAF9F6;--rose:#C15B54;
+--serif:'Fraunces',Georgia,serif;--sans:'Nunito Sans',-apple-system,system-ui,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.55}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);letter-spacing:-.012em}
+a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+.banner{background:var(--navy);color:#fff;text-align:center;font-size:13.5px;font-weight:700;padding:9px 16px}
+.banner b{color:var(--honey)}
+.hd{padding:26px 0 6px}
+.hd .eye{font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:8px}
+.hd h1{font-size:clamp(25px,4vw,34px);margin-bottom:8px}
+.hd p{color:var(--muted);font-size:16px;max-width:64ch}
+/* job bar */
+.job{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0 6px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;box-shadow:0 8px 24px rgba(13,54,95,.05)}
+.job .ji{flex:1;min-width:220px}
+.job .jt{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:19px}
+.job .js{font-size:13.5px;color:var(--muted)}
+.linkbox{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px dashed #b9c6ce;border-radius:10px;padding:8px 8px 8px 13px;font-size:13px;color:var(--muted)}
+.linkbox code{font-family:var(--sans);color:var(--teal-deep);font-weight:700}
+.linkbox button{background:var(--teal);color:#fff;border:none;border-radius:8px;padding:8px 13px;font-weight:800;font-size:12.5px;cursor:pointer;white-space:nowrap;font-family:var(--sans)}
+/* flow legend */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:16px 0 8px;background:var(--teal-soft);border:1px solid #cfe6ea;border-radius:14px;padding:14px 12px}
+.flow .st{flex:1;min-width:120px;text-align:center;padding:4px 8px;position:relative;font-size:12px}
+.flow .st .n{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:13px;display:block;margin-bottom:2px}
+.flow .st .d{color:var(--muted);font-size:11.5px;line-height:1.35}
+.flow .st.auto .n{color:var(--honey-deep)}
+.flow .arr{align-self:center;color:var(--faint);font-weight:800;padding:0 2px}
+/* applicants */
+h2.sec{font-size:20px;margin:24px 0 4px}
+.subsec{color:var(--muted);font-size:14px;margin-bottom:14px}
+.app{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:14px;box-shadow:0 2px 4px rgba(13,54,95,.04),0 10px 26px rgba(13,54,95,.05);transition:border-color .2s}
+.app.done{border-color:#bfe3cf}
+.app.rej{opacity:.72}
+.app .top{display:flex;align-items:center;gap:13px;margin-bottom:12px}
+.av{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;font-size:15px}
+.app .nm{font-weight:800;color:var(--ink);font-size:16px}
+.app .meta{font-size:12.5px;color:var(--faint)}
+.badge{margin-left:auto;font-size:12px;font-weight:800;border-radius:20px;padding:5px 13px;white-space:nowrap}
+.b-applied{background:var(--teal-soft);color:var(--teal-deep)}
+.b-offered{background:#FCEFD6;color:var(--honey-deep)}
+.b-auto{background:#FCEFD6;color:var(--honey-deep)}
+.b-hired{background:var(--good-soft);color:var(--good)}
+.b-rej{background:#f0e6e5;color:var(--rose)}
+/* steps */
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.step{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--faint);background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:5px 11px}
+.step.on{color:var(--good);border-color:#bfe3cf;background:var(--good-soft)}
+.step.pending{color:var(--honey-deep);border-color:#f0d9ad;background:#FCEFD6}
+.step .ic{font-size:12px}
+.acts{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.btn{border:none;border-radius:11px;padding:11px 18px;font-weight:800;font-size:14px;cursor:pointer;font-family:var(--sans)}
+.btn.primary{background:var(--honey);color:#3a2708}
+.btn.primary:hover{background:var(--honey-deep);color:#fff}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--teal-deep)}
+.btn.rej{background:#fff;border:1px solid #e3cfcd;color:var(--rose)}
+.btn.sign{background:var(--teal);color:#fff}
+.hint{font-size:12.5px;color:var(--muted);margin-top:9px;display:flex;align-items:center;gap:6px}
+.hint b{color:var(--honey-deep)}
+.autolog{font-size:13px;color:var(--good);font-weight:700;margin-top:8px}
+/* reject preview */
+.rejbox{background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:13px 15px;margin-top:10px;font-size:13px;color:var(--muted);line-height:1.55}
+.rejbox b{color:var(--navy)}
+footer{border-top:1px solid var(--line);margin-top:30px}
+@media(max-width:640px){.flow .st{min-width:100%}.flow .arr{transform:rotate(90deg);padding:2px 0}}
+</style>
+</head>
+<body>
+<div class="banner">Interactive preview &middot; <b>click the buttons</b> to see how hiring flows, automatically</div>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">HomeTogether, by Caring Companions</div>
+      <a class="si" href="/"><span class="sw">HomeTogether <b>home</b></span><small>See both ways to care</small></a>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/tv"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/directory">Browse caregivers</a>
+    <a href="/membership" class="hide-sm">Membership</a>
+    <a href="/caregiver" class="hide-sm">For caregivers</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="cta" href="/hire">Get started</a>
+</div></header>
+
+<div class="wrap">
+<div class="hd">
+  <p class="eye">Your hiring hub</p>
+  <h1>One job, one link, everyone in one place.</h1>
+  <p>This is what a family sees after posting a job. You make one decision, offer or not, and once a caregiver signs the offer, the rest of the paperwork sends itself.</p>
+</div>
+
+<div class="job">
+  <div class="ji">
+    <div class="jt">Weekend caregiver for Margaret</div>
+    <div class="js">Springfield, MO · Sat &amp; Sun, 9am–3pm · $22/hour · Posted 6 days ago</div>
+  </div>
+  <div class="linkbox"><code id="joblink">hometogether.com/j/margaret-wknd</code><button onclick="copyLink()" id="copyBtn">Copy link</button></div>
+</div>
+<p style="font-size:12.5px;color:var(--faint);margin:0 0 6px">Share that link by text, email, or Facebook. Every application lands below, automatically.</p>
+
+<div class="flow">
+  <div class="st"><span class="n">1. Application</span><span class="d">Sent with your link, they fill it in</span></div>
+  <div class="arr">→</div>
+  <div class="st"><span class="n">2. You decide</span><span class="d">Send an offer, or a kind no</span></div>
+  <div class="arr">→</div>
+  <div class="st"><span class="n">3. They sign</span><span class="d">The offer letter</span></div>
+  <div class="arr">→</div>
+  <div class="st auto"><span class="n">4. Auto-sends</span><span class="d">Agreement, background check &amp; more, on their own</span></div>
+</div>
+
+<h2 class="sec">Applicants</h2>
+<p class="subsec">Everyone who applied through your link. Newest first.</p>
+<div id="list"></div>
+</div>
+
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4><a href="/directory">Browse caregivers</a><a href="/membership">Membership</a><a href="/resources">Resources</a><a href="/guides">Hire guides</a></div>
+    <div class="ftcol"><h4>HomeTogether TV</h4><a href="/tv">How it works</a><a href="/shop">Shop</a><a href="/tv-guides">TV guides</a></div>
+    <div class="ftcol"><h4>Company</h4><a href="/about">About</a><a href="/help">Help &amp; contact</a></div>
+    <div class="ftcol"><h4>Legal</h4><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Interactive preview, sample data.</div>
+</footer>
+
+<script>
+var STEPS=['Application','Offer','Agreement','Background check','Availability','Ready'];
+var apps=[
+  {id:'m',name:'Maria Gomez',init:'MG',applied:'2 days ago',state:'applied'},
+  {id:'j',name:'James Carter',init:'JC',applied:'3 days ago',state:'applied'},
+  {id:'l',name:'Linda Powell',init:'LP',applied:'5 days ago',state:'offered'}
+];
+var doneSteps={applied:1,offered:2,signing:2,hired:6,rejected:1};
+function copyLink(){var t=document.getElementById('joblink').textContent;if(navigator.clipboard)navigator.clipboard.writeText('https://'+t);var b=document.getElementById('copyBtn');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy link';},1400);}
+function badge(s){
+  if(s==='applied')return '<span class="badge b-applied">Application complete</span>';
+  if(s==='offered')return '<span class="badge b-offered">Offer sent · awaiting signature</span>';
+  if(s==='signing')return '<span class="badge b-auto">Signed! Sending paperwork…</span>';
+  if(s==='hired')return '<span class="badge b-hired">Ready for first day 🎉</span>';
+  if(s==='rejected')return '<span class="badge b-rej">Kind reply sent</span>';
+  return '';
+}
+function stepsHtml(a){
+  var done=doneSteps[a.state];
+  var pendingIdx=(a.state==='offered')?1:-1; // "Offer" pending during offered
+  var h='<div class="steps">';
+  STEPS.forEach(function(s,i){
+    var cls='step';
+    if(i<done)cls+=' on';
+    else if(i===pendingIdx)cls+=' pending';
+    var ic=(i<done)?'✓':(i===pendingIdx?'…':'○');
+    h+='<span class="'+cls+'"><span class="ic">'+ic+'</span>'+s+'</span>';
+  });
+  h+='</div>';
+  return h;
+}
+function acts(a){
+  if(a.state==='applied')return '<div class="acts"><button class="btn ghost" onclick="viewApp(\''+a.id+'\')">View application</button><button class="btn primary" onclick="sendOffer(\''+a.id+'\')">Send offer →</button><button class="btn rej" onclick="reject(\''+a.id+'\')">Send a kind no</button></div>';
+  if(a.state==='offered')return '<div class="acts"><button class="btn sign" onclick="sign(\''+a.id+'\')">✍️ Simulate: they sign</button></div><div class="hint"><b>Automatic:</b> the moment they sign, the work agreement, background-check consent, and availability form send on their own.</div>';
+  if(a.state==='signing')return '<div class="autolog" id="log-'+a.id+'">Signed! Auto-sending the rest…</div>';
+  if(a.state==='hired')return '<div class="autolog">✓ Offer signed · ✓ Work agreement sent · ✓ Background-check consent sent · ✓ Availability sent</div><div class="hint" style="color:var(--good)">Everything sent automatically. Maria is ready to start Saturday.</div>';
+  if(a.state==='rejected')return '<div class="rejbox"><b>Sent:</b> "Hi '+a.name.split(' ')[0]+', thank you so much for applying to help with Margaret. We\'ve decided to move forward with another caregiver this time, but we truly appreciate the care you clearly bring, and we\'d welcome you to apply again. Warmly, The Reynolds Family."</div>';
+  return '';
+}
+function render(){
+  var h='';
+  apps.forEach(function(a){
+    var cls='app'+(a.state==='hired'?' done':'')+(a.state==='rejected'?' rej':'');
+    h+='<div class="'+cls+'"><div class="top"><div class="av">'+a.init+'</div><div><div class="nm">'+a.name+'</div><div class="meta">Applied '+a.applied+'</div></div>'+badge(a.state)+'</div>'+stepsHtml(a)+acts(a)+'</div>';
+  });
+  document.getElementById('list').innerHTML=h;
+}
+function find(id){return apps.filter(function(a){return a.id===id;})[0];}
+function sendOffer(id){find(id).state='offered';render();}
+function reject(id){find(id).state='rejected';render();}
+function viewApp(id){alert('Opens '+find(id).name+"'s completed application, filled in when they applied through your link.");}
+function sign(id){
+  var a=find(id);a.state='signing';render();
+  var log=document.getElementById('log-'+id);
+  var msgs=['Signed! Auto-sending the rest…','Sending work agreement… ✓','Sending background-check consent… ✓','Sending availability form… ✓','All done!'];
+  var i=0;
+  var t=setInterval(function(){
+    i++;
+    if(i<msgs.length){var el=document.getElementById('log-'+id);if(el)el.textContent=msgs[i];}
+    else{clearInterval(t);a.state='hired';render();}
+  },850);
+}
+render();
+</script>
+</body>
+</html>
