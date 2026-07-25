@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caregiver Pay Log (Free, Saves On Your Device) | HomeTogether Hire</title>
+<meta name="description" content="A simple pay log to record every caregiver payment: date, hours, rate, and amount, with a running total. Good for your taxes and fair to your caregiver. Free, and it saves on your device as you go.">
+<link rel="canonical" href="https://tryhometogether.com/tools/pay-log">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Caregiver Pay Log">
+<meta property="og:description" content="Record every caregiver payment with a running total. Good for taxes, fair to your caregiver.">
+<meta property="og:url" content="https://tryhometogether.com/tools/pay-log">
+<meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/htnav.css">
+<style>
+:root{--navy:#0D365F;--teal:#1F7A8C;--teal-deep:#155A68;--teal-soft:#EAF4F6;--honey:#F0A63A;--honey-deep:#C17A12;--good:#2E9B63;--ink:#16283a;--muted:#55677a;--faint:#8a978f;--line:#e4e1d8;--card:#fff;--bg:#FAF9F6;
+--serif:'Fraunces',Georgia,serif;--sans:'Nunito Sans',-apple-system,system-ui,sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);letter-spacing:-.012em;text-wrap:balance}
+a{color:var(--teal-deep);font-weight:700;text-decoration:none}
+.wrap{max-width:900px;margin:0 auto;padding:0 22px}
+.crumbs{font-size:13px;color:var(--faint);padding:18px 0 0}.crumbs a{color:var(--muted);font-weight:700}
+.hero{padding:26px 0 4px}
+.eye{font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--honey-deep);margin-bottom:10px}
+.hero h1{font-size:clamp(28px,4.6vw,38px);line-height:1.08;margin-bottom:12px}
+.hero p{font-size:16.5px;color:var(--muted);max-width:64ch}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0 8px;box-shadow:0 2px 4px rgba(13,54,95,.04),0 12px 30px rgba(13,54,95,.05)}
+.names{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.names label{display:block;font-weight:800;color:var(--navy);font-size:12.5px;margin-bottom:5px}
+.names input{width:100%;font-family:var(--sans);font-size:14.5px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink)}
+table.log{width:100%;border-collapse:collapse}
+table.log th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);font-weight:800;padding:6px 8px;border-bottom:1.5px solid var(--line)}
+table.log td{padding:5px 6px;border-bottom:1px solid var(--line)}
+table.log input{width:100%;font-family:var(--sans);font-size:14px;padding:8px 8px;border:1px solid transparent;border-radius:7px;background:transparent;color:var(--ink)}
+table.log input:focus{outline:none;border-color:var(--teal);background:var(--bg)}
+table.log input[type=number]{text-align:right}
+.del{background:none;border:none;color:var(--faint);font-size:15px;cursor:pointer;padding:4px 8px;border-radius:6px}
+.del:hover{color:#c1554e;background:#f7ecea}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:12px;border-top:2px solid var(--line)}
+.tot .lab{font-weight:800;color:var(--navy);font-size:15px}
+.tot .amt{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--navy)}
+.tot .cnt{font-size:12.5px;color:var(--faint);font-weight:700}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+.btn{background:var(--honey);color:#3a2708;border-radius:11px;padding:11px 18px;font-weight:800;font-size:14.5px;border:none;cursor:pointer;font-family:var(--sans)}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--teal-deep)}
+.btn.add{background:var(--teal);color:#fff}
+.clr{margin-left:auto;background:none;border:none;color:var(--faint);font-weight:700;font-size:13px;cursor:pointer;text-decoration:underline}
+.saved{font-size:12.5px;color:var(--good);font-weight:700;display:flex;align-items:center;gap:6px;margin-top:12px}
+.advice{background:#FFF7E6;border:1px solid var(--honey);border-radius:12px;padding:14px 18px;margin:16px 0 4px;font-size:13.5px;color:#5c4a22}.advice b{color:var(--navy)}.advice a{color:var(--honey-deep)}
+footer{border-top:1px solid var(--line);margin-top:36px}
+@media(max-width:640px){.names{grid-template-columns:1fr}table.log input{font-size:13px;padding:7px 5px}}
+@media print{header.htnav,.crumbs,.bar,.clr,.saved,footer,.advice,.hero p{display:none!important}.panel{border:none;box-shadow:none;padding:0}body{background:#fff}.del{display:none}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://tryhometogether.com/"},
+{"@type":"ListItem","position":2,"name":"Resources","item":"https://tryhometogether.com/resources"},
+{"@type":"ListItem","position":3,"name":"Pay log","item":"https://tryhometogether.com/tools/pay-log"}
+]}
+</script>
+</head>
+<body>
+<header class="htnav hire"><div class="in">
+  <span class="brand"><a class="wm" href="/directory">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+    <div class="menu">
+      <div class="gh">HomeTogether, by Caring Companions</div>
+      <a class="si" href="/"><span class="sw">HomeTogether <b>home</b></span><small>See both ways to care</small></a>
+      <a class="si current" href="/directory"><span class="sw">HomeTogether <b>Hire</b></span><small>Find &amp; hire a caregiver near you</small><span class="here">You're here</span></a>
+      <a class="si" href="/tv"><span class="sw">HomeTogether <b class="tvb">TV</b></span><small>Stay close through the TV</small></a>
+    </div></details></span>
+  <nav class="links">
+    <a href="/directory">Browse caregivers</a>
+    <a href="/membership" class="hide-sm">Membership</a>
+    <a href="/caregiver" class="hide-sm">For caregivers</a>
+    <a href="/help">Help</a>
+  </nav>
+  <span class="spacer"></span>
+  <a class="cta" href="/directory">Find a caregiver</a>
+</div></header>
+
+<div class="wrap">
+<div class="crumbs"><a href="/">Home</a> › <a href="/resources">Resources</a> › Pay log</div>
+
+<div class="hero">
+  <p class="eye">Become a prepared employer</p>
+  <h1>Caregiver pay log</h1>
+  <p>Jot down each payment as you go, date, hours, rate, and amount, and it keeps a running total. Handy at tax time, and fair to your caregiver. It saves right here on your device; nothing is sent anywhere.</p>
+</div>
+
+<div class="panel">
+  <div class="names">
+    <div><label>Family / employer</label><input id="emp" placeholder="Your name"></div>
+    <div><label>Caregiver</label><input id="cg" placeholder="Their name"></div>
+  </div>
+  <table class="log">
+    <thead><tr><th style="width:26%">Date</th><th style="width:18%">Hours</th><th style="width:20%">Rate ($/hr)</th><th style="width:24%">Amount ($)</th><th style="width:12%"></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div class="bar">
+    <button class="btn add" onclick="addRow()">+ Add a payment</button>
+    <button class="btn ghost" onclick="window.print()">Print / save PDF</button>
+    <button class="clr" onclick="clearAll()">Clear log</button>
+  </div>
+  <div class="tot"><span><span class="lab">Total paid</span> <span class="cnt" id="cnt"></span></span><span class="amt" id="total">$0.00</span></div>
+  <div class="saved"><svg aria-hidden="true" style="width:15px;height:15px;color:var(--good)"><use href="/assets/icons.svg#i-check"/></svg> Saved on this device</div>
+</div>
+
+<div class="advice"><b>Keeping this matters.</b> If you pay a caregiver more than about $2,800 a year, they're your household employee, and good records make tax time simple (and protect you both). See the <a href="/tools/employer-tax-timeline">tax timeline</a> for what to file and when. Not tax advice.</div>
+</div>
+
+<footer class="htfoot"><div class="ftin">
+  <div class="ftbrand">
+    <div class="ftwm">HomeTogether<b>.</b></div>
+    <p>Helping families stay close to and care for the people they love. A Caring Companions company, Springfield, Missouri, since 2017.</p>
+    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+  </div>
+  <div class="ftcols">
+    <div class="ftcol"><h4>HomeTogether Hire</h4><a href="/directory">Browse caregivers</a><a href="/membership">Membership</a><a href="/resources">Resources</a><a href="/guides">Hire guides</a><a href="/caregiver">For caregivers</a></div>
+    <div class="ftcol"><h4>HomeTogether TV</h4><a href="/tv">How it works</a><a href="/shop">Shop</a><a href="/tv-guides">TV guides</a></div>
+    <div class="ftcol"><h4>Company</h4><a href="/about">About</a><a href="/help">Help &amp; contact</a><a href="/resources">Resource center</a></div>
+    <div class="ftcol"><h4>Legal</h4><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/returns">Returns</a></div>
+  </div>
+</div>
+<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+</footer>
+
+<script>
+var KEY='ht_paylog_v1';
+var st={emp:'',cg:'',rows:[]};
+try{var s=JSON.parse(localStorage.getItem(KEY));if(s&&s.rows)st=s;}catch(e){}
+if(!st.rows.length)st.rows=[{d:'',h:'',r:'',a:''}];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}}
+function money(n){return '$'+(isFinite(n)?n:0).toFixed(2);}
+function calcTotal(){var t=0;st.rows.forEach(function(r){t+=parseFloat(r.a)||0;});return t;}
+function updTotal(){document.getElementById('total').textContent=money(calcTotal());document.getElementById('cnt').textContent=st.rows.filter(function(r){return r.a;}).length+' payment'+(st.rows.filter(function(r){return r.a;}).length===1?'':'s');}
+function renderRows(){
+  var tb=document.getElementById('rows');tb.innerHTML='';
+  st.rows.forEach(function(r,i){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td><input type="date" data-i="'+i+'" data-k="d" value="'+(r.d||'')+'"></td>'+
+      '<td><input type="number" step="0.25" min="0" placeholder="0" data-i="'+i+'" data-k="h" value="'+(r.h||'')+'"></td>'+
+      '<td><input type="number" step="0.01" min="0" placeholder="0" data-i="'+i+'" data-k="r" value="'+(r.r||'')+'"></td>'+
+      '<td><input type="number" step="0.01" min="0" placeholder="0.00" data-i="'+i+'" data-k="a" value="'+(r.a||'')+'"></td>'+
+      '<td style="text-align:center"><button class="del" data-i="'+i+'" title="Remove" aria-label="Remove row">&#10005;</button></td>';
+    tb.appendChild(tr);
+  });
+  updTotal();
+}
+document.getElementById('rows').addEventListener('input',function(e){
+  var el=e.target;if(!el.dataset.k)return;
+  var i=+el.dataset.i,k=el.dataset.k;
+  st.rows[i][k]=el.value;
+  if(k==='h'||k==='r'){
+    var h=parseFloat(st.rows[i].h),rt=parseFloat(st.rows[i].r);
+    if(isFinite(h)&&isFinite(rt)){st.rows[i].a=(h*rt).toFixed(2);var ai=el.closest('tr').querySelector('[data-k="a"]');if(ai)ai.value=st.rows[i].a;}
+  }
+  updTotal();save();
+});
+document.getElementById('rows').addEventListener('click',function(e){
+  var b=e.target.closest('.del');if(!b)return;
+  st.rows.splice(+b.dataset.i,1);if(!st.rows.length)st.rows=[{d:'',h:'',r:'',a:''}];
+  renderRows();save();
+});
+function addRow(){st.rows.push({d:'',h:'',r:'',a:''});renderRows();save();
+  var ins=document.querySelectorAll('#rows tr:last-child input');if(ins[0])ins[0].focus();}
+function clearAll(){if(!confirm('Clear the whole pay log? This can\'t be undone.'))return;st.rows=[{d:'',h:'',r:'',a:''}];renderRows();save();}
+['emp','cg'].forEach(function(id){var el=document.getElementById(id);el.value=st[id]||'';el.addEventListener('input',function(){st[id]=el.value;save();});});
+renderRows();
+</script>
+</body>
+</html>
