@@ -134,7 +134,7 @@ button{font-family:inherit}
 .sec-head p{color:var(--muted);font-size:17px;margin:12px 0 0}
 
 /* how it works, a real sequence, so numbered */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;position:relative}
 .step .n{position:absolute;top:-16px;left:24px;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--serif);font-weight:700;display:grid;place-items:center;font-size:16px}
 .step h3{font-size:18px;margin:8px 0 7px}
@@ -251,7 +251,8 @@ button{font-family:inherit}
 @media (max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:34px}
   .hero-vis{min-height:340px;margin-top:8px}
-  .steps,.cg-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .cg-grid{grid-template-columns:1fr}
   .res-body{grid-template-columns:1fr}
   .filters{position:static}
   .p-grid{grid-template-columns:1fr}
@@ -263,6 +264,7 @@ html,body{overflow-x:hidden}
 svg[aria-hidden="true"]{width:1.15em;height:1.15em;display:inline-block;vertical-align:-0.18em}
 .hero-grid>*{min-width:0}
 @media (max-width:560px){
+  .steps{grid-template-columns:1fr}
   .finder .fr{flex-direction:column}
   .finder .fr .btn{width:100%;justify-content:center}
   .hero-vis{min-height:0;display:flex;flex-direction:column;gap:10px;margin-top:4px}
