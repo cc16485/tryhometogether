@@ -147,9 +147,10 @@ footer{border-top:1px solid var(--line);margin-top:30px}
 <script>
 var STEPS=['Application','Offer','Agreement','Background check','Availability','Ready'];
 var apps=[
-  {id:'m',name:'Maria Gomez',init:'MG',applied:'2 days ago',state:'applied'},
-  {id:'j',name:'James Carter',init:'JC',applied:'3 days ago',state:'applied'},
-  {id:'l',name:'Linda Powell',init:'LP',applied:'5 days ago',state:'offered'}
+  {id:'m',name:'Maria Gomez',init:'MG',applied:'today',state:'applied'},
+  {id:'j',name:'James Carter',init:'JC',applied:'yesterday',state:'applied'},
+  {id:'l',name:'Linda Powell',init:'LP',applied:'4 days ago',state:'offered'},
+  {id:'d',name:'Denise Alvarez',init:'DA',applied:'6 days ago',state:'hired'}
 ];
 var doneSteps={applied:1,offered:2,signing:2,hired:6,rejected:1};
 function copyLink(){var t=document.getElementById('joblink').textContent;if(navigator.clipboard)navigator.clipboard.writeText('https://'+t);var b=document.getElementById('copyBtn');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy link';},1400);}
