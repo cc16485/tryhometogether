@@ -254,16 +254,22 @@ window.sendMessage=async function(cgId,name){
 
 // The directory is a free bonus INSIDE the portal, so browsing requires a (free) account.
 async function init(){
-  let user=null;
+  let user=null, active=false;
   try{ const r=await sb.auth.getUser(); user=r&&r.data&&r.data.user||null; }catch(e){}
-  if(user){ load(); return; }
+  if(user){
+    try{ const {data:fam}=await sb.from('htl_families').select('subscription_status').eq('user_id',user.id).maybeSingle(); active=!!(fam&&fam.subscription_status==='active'); }catch(e){}
+  }
+  if(active){ load(); return; }
   const fl=document.querySelector('.filters'); if(fl) fl.style.display='none';
   $('grid').style.display='none'; $('empty').style.display='none';
   const g=$('gate'); g.style.display='';
-  g.innerHTML='<p style="font-size:16px;margin-bottom:6px"><b>The caregiver directory is a free bonus for HomeTogether Hire families.</b></p>'
-    +'<p style="margin-bottom:18px">Create your free account to browse vetted, background-checked caregivers near you, then invite the ones you like to your job.</p>'
-    +'<a class="btn" href="/family">Create your free account, or log in &rarr;</a>'
-    +'<p style="margin-top:16px;font-size:13.5px;color:var(--muted)">Browsing is free. Messaging and hiring is $25/month, cancel anytime.<br>Or <a href="/family" style="color:var(--teal-deep);font-weight:700">post a job</a> and applicants come straight to you, no browsing needed.</p>';
+  const cta = user
+    ? '<button class="btn" onclick="subscribeNow(this)">Become a member, $25/month &rarr;</button>'
+    : '<a class="btn" href="/family">Create your free account &rarr;</a>';
+  g.innerHTML='<p style="font-size:16px;margin-bottom:6px"><b>The caregiver directory comes with HomeTogether Hire membership.</b></p>'
+    +'<p style="margin-bottom:18px">Browse vetted, background-checked caregivers near you and invite the ones you like to your job. Included with membership, $25/month, cancel anytime.</p>'
+    + cta
+    +'<p style="margin-top:16px;font-size:13.5px;color:var(--muted)"><b>Posting a job is always free</b>, and every applicant comes straight to your portal. The directory is a member bonus. <a href="/family" style="color:var(--teal-deep);font-weight:700">Post a job free &rarr;</a></p>';
 }
 init();
 </script>

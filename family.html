@@ -806,7 +806,7 @@ function renderMember(){
   const c=$('memberCard'); c.style.display='';
   let html = FAMILY_ACTIVE
     ? '<h2>Your membership</h2><p style="color:var(--muted)">You’re a member. <b>$25/month</b>, and you can cancel anytime.</p><div style="margin-top:12px"><button class="btn btn-ghost" onclick="manageMembership(this)">Manage or cancel</button></div>'
-    : '<h2>Become a member</h2><p style="color:var(--muted)">Browsing caregivers and posting a job are free. To <b>message caregivers and hire directly</b>, join for <b>$25/month</b>. Cancel anytime, no contract.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-teal" onclick="subscribe(this)">Become a member, $25/month</button><a class="btn btn-ghost" href="/membership">See everything you get →</a></div>';
+    : '<h2>Become a member</h2><p style="color:var(--muted)">Posting a job and reviewing applicants is free. To <b>browse the caregiver directory, see contact details, and message and hire directly</b>, join for <b>$25/month</b>. Cancel anytime, no contract.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-teal" onclick="subscribe(this)">Become a member, $25/month</button><a class="btn btn-ghost" href="/membership">See everything you get →</a></div>';
   if(SOLO_ELIGIBLE){
     html+='<div style="margin-top:16px;border-top:1px solid var(--line);padding-top:14px">'
       +'<label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">'
