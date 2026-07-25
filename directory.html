@@ -166,6 +166,7 @@ function card(c){
 
 window.openCg=function(id){
   const c=CGS.find(x=>x.id===id); if(!c) return;
+  const first=esc((c.display_name||'them').split(' ')[0]);
   const av=c.photo_url?'<img class="av" style="width:72px;height:72px" src="'+esc(c.photo_url)+'" alt="">':'<div class="av" style="width:72px;height:72px;font-size:22px">'+esc(initials(c.display_name))+'</div>';
   const vid=c.video_intro_url?'<h3 style="font-family:Fraunces,serif;color:var(--navy);margin:16px 0 6px">Meet '+esc((c.display_name||'them').split(' ')[0])+'</h3><video controls playsinline src="'+esc(c.video_intro_url)+'" style="width:100%;border-radius:12px;background:#000;max-height:360px"></video>':'';
   const clip=(!c.video_intro_url&&c.interview&&c.interview.recordingUrl)?'<h3 style="font-family:Fraunces,serif;color:var(--navy);margin:16px 0 4px">Hear their interview</h3><audio controls src="'+esc(c.interview.recordingUrl)+'"></audio>':'';
@@ -177,7 +178,8 @@ window.openCg=function(id){
     +'<div class="badges">'+((c.interview_done||c.video_intro_url)?'<span class="b intv">Interviewed</span>':'')+'</div></div></div>'
     +'<div style="margin-top:14px">'+(c.background_checked
         ? '<span class="bigcheck"><span class="sh"><svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-shield"/></svg></span> Background check passed</span>'
-        : '<span class="bigpending">Background check not yet completed</span>')+'</div>'
+        : '<span class="bigpending">Background check not yet completed</span>'
+          +'<div style="margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--muted);line-height:1.55">Want peace of mind before you hire '+first+'? You can cover their check. We invite '+first+' to complete a national background check through our account, with their consent, and the ✓ appears here once it clears. $45, one time.<div style="margin-top:10px"><button class="btn" style="padding:9px 16px;font-size:14px" onclick="sponsorCheck(this,\''+c.id+'\')">Cover '+first+'’s background check ($45) →</button></div></div>')+'</div>'
     +(c.bio?'<p style="margin-top:14px;font-size:15px">'+esc(c.bio)+'</p>':'')
     +(c.hourly_rate?'<div class="rate">$'+Number(c.hourly_rate)+' / hour</div>':'')
     +((c.skills||[]).length?'<div class="chips" style="margin-top:12px">'+c.skills.map(s=>'<span class="chip">'+esc(s)+'</span>').join('')+'</div>':'')
@@ -196,6 +198,19 @@ window.closeModal=function(){ $('modal').classList.remove('on'); };
 
 const BILLING_EP='https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-billing?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966';
 const NOTIFY_EP='https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-notify?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966';
+const LOCAL_ENDPOINT='https://zngsgedlsxinbygwmxwn.supabase.co/functions/v1/ht-local?token=htorder_078070ed7c3e8e7619e567dcfaddfc400e43147a';
+// Family covers a caregiver's background check. We (the account) always order the check;
+// the family just funds it and sees the badge when it clears, so no FCRA duty falls on them.
+window.sponsorCheck=async function(btn,cgId){
+  btn.disabled=true; const t=btn.textContent; btn.textContent='Opening secure checkout…';
+  try{
+    const r=await fetch(LOCAL_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'paylink',caregiver_id:cgId,direct:true,sponsor:'family'})});
+    const d=await r.json();
+    if(d&&d.ok&&d.link){ location.href=d.link; return; }
+    alert((d&&d.error)||'We could not open checkout right now. Please email support@tryhometogether.com and we will help.');
+  }catch(e){ alert('Something went wrong opening checkout. Please email support@tryhometogether.com.'); }
+  btn.disabled=false; btn.textContent=t;
+};
 async function notify(action,payload){ try{ const {data:{session}}=await sb.auth.getSession(); await fetch(NOTIFY_EP,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(session?.access_token||'')},body:JSON.stringify(Object.assign({action},payload))}); }catch(e){} }
 window.subscribeNow=async function(btn){
   btn.disabled=true; btn.textContent='Opening secure checkout…';
