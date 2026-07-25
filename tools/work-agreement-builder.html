@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Caregiver Work Agreement Builder (Free Template) | HomeTogether Hire</title>
-<meta name="description" content="Create a clear caregiver work agreement in minutes. Fill in the schedule, pay, duties, mileage, privacy, home access, and notice, and get an editable, printable agreement both of you can sign. Free template for hiring privately.">
+<meta name="description" content="Create a clear caregiver work agreement in minutes. We pre-fill the standard terms and pick what most families do, you just confirm a few choices and get an editable, printable agreement to sign. Free for hiring privately.">
 <link rel="canonical" href="https://tryhometogether.com/tools/work-agreement-builder">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Caregiver Work Agreement Builder">
-<meta property="og:description" content="Fill in the details, get an editable, printable caregiver work agreement to sign.">
+<meta property="og:description" content="We pre-fill the standard terms, you confirm a few choices, and get a printable caregiver work agreement to sign.">
 <meta property="og:url" content="https://tryhometogether.com/tools/work-agreement-builder">
 <meta property="og:image" content="https://tryhometogether.com/assets/hero-family-tv.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,9 @@ a{color:var(--teal-deep);font-weight:700;text-decoration:none}
 .hero p{font-size:17px;color:var(--muted);max-width:62ch}
 .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin:24px 0 8px;align-items:start}
 .form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px}
-.form h2{font-size:18px;margin:18px 0 10px}.form h2:first-child{margin-top:0}
+.form h2{font-size:18px;margin:20px 0 4px}.form h2:first-child{margin-top:0}
+.secnote{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.secnote.tip{background:var(--teal-soft);border:1px solid #cfe6ea;border-radius:9px;padding:9px 12px;color:var(--teal-deep);font-weight:700}
 .f{margin-bottom:13px}
 .f label{display:block;font-weight:800;color:var(--navy);font-size:13px;margin-bottom:5px}
 .f input,.f select,.f textarea{width:100%;font-family:var(--sans);font-size:14.5px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
@@ -42,7 +44,15 @@ a{color:var(--teal-deep);font-weight:700;text-decoration:none}
 .duties{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .duties label{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;color:var(--ink);cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
 .duties input{width:16px;height:16px;accent-color:var(--teal)}
-.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+/* guided choices */
+.choice{margin-bottom:15px}
+.cq{font-weight:800;color:var(--navy);font-size:13.5px;margin-bottom:7px}
+.opt{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink);cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 12px;margin-bottom:6px;font-weight:600}
+.opt input{width:16px;height:16px;accent-color:var(--teal);flex:none}
+.opt:has(input:checked){border-color:var(--teal);background:#fff;box-shadow:0 0 0 1.5px var(--teal)}
+.opt .rec{font-style:normal;font-size:10px;font-weight:800;color:var(--honey-deep);background:#FCEFD6;border-radius:20px;padding:2px 8px;margin-left:auto;white-space:nowrap}
+.customin{width:100%;font-family:var(--sans);font-size:14px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--bg);margin-top:1px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .btn{background:var(--honey);color:#3a2708;border-radius:12px;padding:12px 20px;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:var(--sans)}
 .btn.ghost{background:#fff;border:1px solid var(--line);color:var(--teal-deep)}
 /* document */
@@ -61,9 +71,8 @@ a{color:var(--teal-deep);font-weight:700;text-decoration:none}
 .editnote{font-size:12.5px;color:var(--faint);text-align:center;margin-top:8px}
 .advice{background:#FFF7E6;border:1px solid var(--honey);border-radius:12px;padding:14px 18px;margin:16px 0 4px;font-size:13.5px;color:#5c4a22}
 .advice b{color:var(--navy)}
-footer{border-top:1px solid var(--line);margin-top:36px;padding:24px 0 46px;font-size:13px;color:var(--faint)}
-footer a{color:var(--muted);font-weight:700;margin-right:14px}
-@media(max-width:840px){.grid{grid-template-columns:1fr}.docwrap{position:static}}
+footer{border-top:1px solid var(--line);margin-top:36px}
+@media(max-width:840px){.grid{grid-template-columns:1fr}.docwrap{position:static}.duties{grid-template-columns:1fr}}
 @media print{
   header.htnav,.crumbs,.hero,.form,.bar,footer,.advice,.editnote{display:none!important}
   .grid{display:block}.docwrap{position:static}
@@ -115,12 +124,13 @@ footer a{color:var(--muted);font-weight:700;margin-right:14px}
 <div class="hero">
   <p class="eye">Become a prepared employer</p>
   <h1>Build a caregiver work agreement</h1>
-  <p>Families often hire someone and never clearly discuss expectations. Fill in the details and we'll write a clear, plain-language agreement you can both edit, print, and sign. Nothing fancy, just everyone on the same page.</p>
+  <p>You don't need to know what belongs in an agreement, we do. The standard terms are written for you, and for the few things that vary, we've already picked what most families choose. Just confirm, and you're done.</p>
 </div>
 
 <div class="grid">
   <div class="form">
-    <h2>The basics</h2>
+    <h2>From your job</h2>
+    <p class="secnote">These come straight from the role you're hiring for. In your hub, they fill in automatically.</p>
     <div class="two">
       <div class="f"><label>Family / employer name</label><input id="employer" placeholder="Your name"></div>
       <div class="f"><label>Caregiver name</label><input id="caregiver" placeholder="Their name"></div>
@@ -129,44 +139,68 @@ footer a{color:var(--muted);font-weight:700;margin-right:14px}
       <div class="f"><label>Care is for (first name)</label><input id="client" placeholder="e.g. Margaret"></div>
       <div class="f"><label>Start date</label><input id="start" type="date"></div>
     </div>
-
-    <h2>Schedule &amp; pay</h2>
-    <div class="f"><label>Schedule (days &amp; hours)</label><input id="schedule" placeholder="e.g. Mon, Wed, Fri, 9am–1pm"></div>
+    <div class="f"><label>Schedule (days &amp; hours)</label><input id="schedule" placeholder="e.g. Sat & Sun, 9am–3pm"></div>
     <div class="two">
       <div class="f"><label>Hourly wage</label><input id="wage" placeholder="$22"></div>
       <div class="f"><label>Paid</label><select id="freq"><option>weekly</option><option>every two weeks</option><option>twice a month</option></select></div>
     </div>
-    <div class="two">
-      <div class="f"><label>Pay method</label><input id="method" placeholder="e.g. direct deposit"></div>
-      <div class="f"><label>Overtime over 40 hrs/wk</label><select id="ot"><option>1.5× the hourly rate</option><option>not expected to exceed 40 hours</option></select></div>
-    </div>
-
-    <h2>Duties</h2>
+    <div class="f"><label>They'll help with</label></div>
     <div class="duties" id="duties"></div>
-    <div class="f" style="margin-top:10px"><label>Anything else about duties</label><textarea id="dutiesNote" rows="2" placeholder="Optional"></textarea></div>
 
-    <h2>The details that prevent problems</h2>
-    <div class="two">
-      <div class="f"><label>Breaks</label><input id="breaks" value="An unpaid 30-minute break on shifts over 6 hours"></div>
-      <div class="f"><label>Paid time off / holidays</label><input id="pto" placeholder="e.g. major holidays paid, or none"></div>
+    <h2>Just a few choices</h2>
+    <p class="secnote tip">We've pre-picked what most families do. Change anything you like.</p>
+
+    <div class="choice"><div class="cq">Overtime, over 40 hours a week</div>
+      <label class="opt"><input type="radio" name="ot" value="15" checked><span>Paid at 1.5× the hourly rate</span> <em class="rec">usually required</em></label>
+      <label class="opt"><input type="radio" name="ot" value="under"><span>Hours won't go over 40 a week</span></label>
     </div>
-    <div class="two">
-      <div class="f"><label>Mileage reimbursement</label><input id="mileage" placeholder="e.g. $0.67/mile for errands"></div>
-      <div class="f"><label>Other expenses</label><input id="expenses" placeholder="e.g. groceries reimbursed with receipts"></div>
+
+    <div class="choice"><div class="cq">Breaks</div>
+      <label class="opt"><input type="radio" name="breaks" value="std" checked><span>Unpaid 30-min break on shifts over 6 hours</span> <em class="rec">most families</em></label>
+      <label class="opt"><input type="radio" name="breaks" value="none"><span>No set breaks; rest as the day allows</span></label>
     </div>
-    <div class="f"><label>Home access (keys / codes)</label><input id="access" placeholder="e.g. keypad code provided, not to be shared"></div>
-    <div class="f"><label>Notice to end employment</label><input id="notice" value="Two weeks' written notice by either side, or immediately for a serious concern"></div>
+
+    <div class="choice"><div class="cq">Paid time off &amp; holidays</div>
+      <label class="opt"><input type="radio" name="pto" value="holidays" checked><span>Major holidays paid</span> <em class="rec">most families</em></label>
+      <label class="opt"><input type="radio" name="pto" value="none"><span>No paid time off</span></label>
+      <label class="opt"><input type="radio" name="pto" value="custom"><span>Something specific…</span></label>
+      <input class="customin" id="pto_custom" placeholder="e.g. 5 paid days off per year plus major holidays" style="display:none">
+    </div>
+
+    <div class="choice"><div class="cq">Driving &amp; mileage</div>
+      <label class="opt"><input type="radio" name="mileage" value="irs" checked><span>Errand mileage reimbursed at the standard IRS rate</span> <em class="rec">most families</em></label>
+      <label class="opt"><input type="radio" name="mileage" value="none"><span>No driving required for this role</span></label>
+      <label class="opt"><input type="radio" name="mileage" value="custom"><span>Something specific…</span></label>
+      <input class="customin" id="mileage_custom" placeholder="e.g. $0.67/mile, gas reimbursed with receipts" style="display:none">
+    </div>
+
+    <div class="choice"><div class="cq">Start with a trial period?</div>
+      <label class="opt"><input type="radio" name="trial" value="yes" checked><span>Yes, first two weeks as a trial</span> <em class="rec">recommended</em></label>
+      <label class="opt"><input type="radio" name="trial" value="no"><span>No trial period</span></label>
+    </div>
+
+    <div class="choice"><div class="cq">Notice to end the arrangement</div>
+      <label class="opt"><input type="radio" name="notice" value="2wk" checked><span>Two weeks either way (or right away for a serious concern)</span> <em class="rec">most families</em></label>
+      <label class="opt"><input type="radio" name="notice" value="1wk"><span>One week either way</span></label>
+    </div>
+
+    <div class="choice"><div class="cq">Home access</div>
+      <label class="opt"><input type="radio" name="access" value="keypad" checked><span>A keypad code (not to be shared)</span> <em class="rec">most families</em></label>
+      <label class="opt"><input type="radio" name="access" value="key"><span>A house key (returned at the end)</span></label>
+      <label class="opt"><input type="radio" name="access" value="home"><span>A family member is always home</span></label>
+    </div>
+
+    <div class="f" style="margin-top:6px"><label>Anything else about the role (optional)</label><textarea id="extra" rows="2" placeholder="e.g. our dog is friendly; please text if you'll be more than 10 minutes late"></textarea></div>
 
     <div class="bar">
-      <button class="btn" onclick="gen()">Generate agreement →</button>
       <button class="btn ghost" onclick="window.print()">Print / save PDF</button>
     </div>
   </div>
 
   <div class="docwrap">
     <div class="doc" id="doc" contenteditable="true" spellcheck="false"></div>
-    <div class="editnote">You can edit any wording right in the document before printing.</div>
-    <div class="advice"><b>This is a plain-language template, not legal advice.</b> Employment and household-employer rules vary by state. For anything you're unsure about, a payroll service or an employment or tax professional can help.</div>
+    <div class="editnote">Updates as you go. You can also edit any wording right in the document before printing.</div>
+    <div class="advice"><b>This is a plain-language template, not legal advice.</b> Employment and household-employer rules vary by state. For anything unusual, a payroll service or an employment or tax professional can help.</div>
   </div>
 </div>
 </div>
@@ -187,7 +221,7 @@ footer a{color:var(--muted);font-weight:700;margin-right:14px}
     </div>
     <div class="ftcol"><h4>HomeTogether TV</h4>
       <a href="/tv">How it works</a>
-      <a href="/get">The device</a>
+      <a href="/shop">Shop</a>
       <a href="/tv-guides">TV guides</a>
     </div>
     <div class="ftcol"><h4>Company</h4>
@@ -209,32 +243,46 @@ footer a{color:var(--muted);font-weight:700;margin-right:14px}
 var DUTIES=["Companionship","Meals &amp; nutrition","Light housekeeping","Laundry","Medication reminders","Bathing &amp; dressing","Mobility &amp; transfers","Transportation","Errands &amp; shopping","Overnight care"];
 var dc=document.getElementById('duties');
 DUTIES.forEach(function(d,i){var l=document.createElement('label');l.innerHTML='<input type="checkbox" data-d="'+i+'"> <span>'+d+'</span>';dc.appendChild(l);});
-function val(id){return (document.getElementById(id).value||'').trim();}
+function val(id){var el=document.getElementById(id);return el?(el.value||'').trim():'';}
 function or(id,fb){return val(id)||('<span style="color:#b23b3b">['+fb+']</span>');}
+function radio(n){var el=document.querySelector('input[name="'+n+'"]:checked');return el?el.value:'';}
 function gen(){
   var emp=or('employer','family name'),cg=or('caregiver','caregiver name'),cl=or('client','name'),start=val('start')||'<span style="color:#b23b3b">[start date]</span>';
   var duties=[];document.querySelectorAll('#duties input:checked').forEach(function(c){duties.push(DUTIES[+c.getAttribute('data-d')]);});
-  var dn=val('dutiesNote');
   var dutiesHtml=duties.length?('<ul>'+duties.map(function(d){return '<li>'+d+'</li>';}).join('')+'</ul>'):'<span style="color:#b23b3b">[select duties]</span>';
-  if(dn)dutiesHtml+='<div>'+dn+'</div>';
+  var ot=(radio('ot')==='under')?'Hours are not expected to exceed 40 in a week.':'Overtime over 40 hours in a week is paid at 1.5 times the hourly rate.';
+  var breaks=(radio('breaks')==='none')?'The caregiver may take short breaks as the day allows.':'An unpaid 30-minute break is provided on shifts longer than 6 hours.';
+  var ptoV=radio('pto'),pto=ptoV==='none'?'No paid time off is included.':ptoV==='custom'?(val('pto_custom')||'<span style="color:#b23b3b">[time off details]</span>'):'Major holidays are paid.';
+  var mV=radio('mileage'),mileage=mV==='none'?'No driving is required for this role.':mV==='custom'?(val('mileage_custom')||'<span style="color:#b23b3b">[mileage details]</span>'):'When the caregiver drives for errands, mileage is reimbursed at the standard IRS rate.';
+  var notice=(radio('notice')==='1wk')?'One week of written notice by either side, or immediately for a serious concern.':'Two weeks of written notice by either side, or immediately for a serious concern.';
+  var acc=radio('access'),access=acc==='key'?'A house key is provided and will be returned when the arrangement ends.':acc==='home'?'A family member is present during shifts, so no separate home access is needed.':'Home access is by a keypad code, which is kept private and not shared.';
+  var trial=(radio('trial')==='yes');
+  var extra=val('extra');
+  var n=0;function num(){return ++n;}
   var h='';
   h+='<h3>Caregiver Work Agreement</h3><div class="dsub">A shared understanding between '+emp+' and '+cg+'</div>';
-  h+='<div class="cl">This agreement is between <b>'+emp+'</b> ("the family") and <b>'+cg+'</b> ("the caregiver"), for in-home care of <b>'+cl+'</b>, beginning <b>'+start+'</b>.</div>';
-  h+='<div class="cl"><b>1. Schedule.</b> '+or('schedule','days and hours')+'. Changes will be discussed in advance whenever possible.</div>';
-  h+='<div class="cl"><b>2. Pay.</b> '+or('wage','wage')+' per hour, paid '+val('freq')+' by '+or('method','pay method')+'. Overtime: '+val('ot')+'.</div>';
-  h+='<div class="cl"><b>3. Duties.</b> The caregiver will help with:'+dutiesHtml+'</div>';
-  h+='<div class="cl"><b>4. Breaks.</b> '+or('breaks','breaks')+'.</div>';
-  h+='<div class="cl"><b>5. Time off &amp; holidays.</b> '+or('pto','time off')+'.</div>';
-  h+='<div class="cl"><b>6. Mileage &amp; expenses.</b> '+or('mileage','mileage')+'. Other expenses: '+or('expenses','how expenses are handled')+'.</div>';
-  h+='<div class="cl"><b>7. Privacy.</b> The caregiver will keep the family\'s personal, medical, and household information confidential, and will not share photos or details of '+cl+' without the family\'s permission.</div>';
-  h+='<div class="cl"><b>8. Home access.</b> '+or('access','home access')+'.</div>';
-  h+='<div class="cl"><b>9. Ending this arrangement.</b> '+or('notice','notice')+'. Final pay and any keys or property will be returned promptly.</div>';
+  h+='<div class="cl">This agreement is between <b>'+emp+'</b> ("the family") and <b>'+cg+'</b> ("the caregiver"), for the in-home care of <b>'+cl+'</b>, beginning <b>'+start+'</b>.</div>';
+  if(trial)h+='<div class="cl"><b>'+num()+'. Trial period.</b> The first two weeks are a trial for both people. Either the family or the caregiver may end the arrangement during this time, with no hard feelings on either side.</div>';
+  h+='<div class="cl"><b>'+num()+'. Schedule.</b> '+or('schedule','days and hours')+'. Changes will be discussed in advance whenever possible.</div>';
+  h+='<div class="cl"><b>'+num()+'. Pay.</b> '+or('wage','wage')+' per hour, paid '+val('freq')+'. '+ot+'</div>';
+  h+='<div class="cl"><b>'+num()+'. Duties.</b> The caregiver will help with:'+dutiesHtml+'</div>';
+  h+='<div class="cl"><b>'+num()+'. Breaks.</b> '+breaks+'</div>';
+  h+='<div class="cl"><b>'+num()+'. Time off &amp; holidays.</b> '+pto+'</div>';
+  h+='<div class="cl"><b>'+num()+'. Driving &amp; expenses.</b> '+mileage+' Any other approved expenses are reimbursed with receipts.</div>';
+  h+='<div class="cl"><b>'+num()+'. Privacy.</b> The caregiver will keep the family\'s personal, medical, and household information confidential, and will not share photos or details of '+cl+' without the family\'s permission.</div>';
+  h+='<div class="cl"><b>'+num()+'. Home access.</b> '+access+'</div>';
+  h+='<div class="cl"><b>'+num()+'. Ending this arrangement.</b> '+notice+' Final pay and any keys or property will be returned promptly.</div>';
+  if(extra)h+='<div class="cl"><b>'+num()+'. Other.</b> '+extra+'</div>';
   h+='<div class="cl" style="color:#55677a;font-size:12.5px">This agreement can be updated any time both people agree in writing.</div>';
   h+='<div class="sig"><div class="s"><div class="line"></div><small>Family signature &amp; date</small></div><div class="s"><div class="line"></div><small>Caregiver signature &amp; date</small></div></div>';
   document.getElementById('doc').innerHTML=h;
 }
-['employer','caregiver','client','start','schedule','wage','freq','method','ot','breaks','pto','mileage','expenses','access','notice','dutiesNote'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',gen);});
-document.querySelectorAll('#duties input').forEach(function(c){c.addEventListener('change',gen);});
+// reveal custom inputs
+function toggleCustom(name,id){document.querySelectorAll('input[name="'+name+'"]').forEach(function(r){r.addEventListener('change',function(){document.getElementById(id).style.display=(radio(name)==='custom')?'block':'none';gen();});});}
+toggleCustom('pto','pto_custom');toggleCustom('mileage','mileage_custom');
+['employer','caregiver','client','start','schedule','wage','freq','extra','pto_custom','mileage_custom'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',gen);});
+document.querySelectorAll('#duties input,input[name="ot"],input[name="breaks"],input[name="notice"],input[name="access"],input[name="trial"]').forEach(function(c){c.addEventListener('change',gen);});
+document.querySelectorAll('input[name="pto"],input[name="mileage"]').forEach(function(c){c.addEventListener('change',gen);});
 gen();
 </script>
 </body>
