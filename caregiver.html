@@ -282,7 +282,7 @@ window.doAuth=async function(){
     if(MODE==='signup'){
       const {data,error}=await sb.auth.signUp({email,password:pass});
       if(error) throw error;
-      if(!data.session){ msg('authMsg','Almost there — check your email to confirm your account, then come back and log in.','ok'); $('authBtn').disabled=false; return; }
+      if(!data.session){ msg('authMsg','Almost there, check your email to confirm your account, then come back and log in.','ok'); $('authBtn').disabled=false; return; }
     } else {
       const {error}=await sb.auth.signInWithPassword({email,password:pass});
       if(error) throw error;
@@ -421,7 +421,7 @@ const IV_QS=[
   {id:'q4',      text:"What would you do if someone became upset, or didn't want your help in that moment?"},
   {id:'q5',      text:"What would you do if they seemed more confused, or more unwell, than usual?"},
   {id:'q6',      text:"Why should a family trust you to care for someone they love? Anything else you'd like them to know?"},
-  {id:'closing', text:"That's everything — thank you so much."},
+  {id:'closing', text:"That's everything, thank you so much."},
 ];
 let ivStream=null, ivRecorder=null, ivChunks=[], ivIndex=0;
 

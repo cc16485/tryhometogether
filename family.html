@@ -482,7 +482,7 @@ window.doAuth=async function(){
     if(MODE==='signup'){
       const {data,error}=await sb.auth.signUp({email,password:pass});
       if(error)throw error;
-      if(!data.session){msg('authMsg','Almost there — check your email to confirm, then log in.','ok');$('authBtn').disabled=false;return;}
+      if(!data.session){msg('authMsg','Almost there, check your email to confirm, then log in.','ok');$('authBtn').disabled=false;return;}
       await sb.from('htl_families').insert({user_id:data.user.id,email,name});
     } else {
       const {error}=await sb.auth.signInWithPassword({email,password:pass});
@@ -587,12 +587,12 @@ function renderJob(j,apps){
     +'<p style="color:#5b6b7a;margin-bottom:8px">Post this link anywhere caregivers look. Anyone who opens it sees your job and can apply, and only you see the applicants.</p>'
     +'<ul>'
     +'<li><b>Browse HomeTogether Hire\'s directory</b> (below) and invite vetted, background-checked caregivers directly.</li>'
-    +'<li><b>Facebook</b> — local community groups, "caregiver jobs [your town]" groups, and Marketplace.</li>'
-    +'<li><b>Nextdoor</b> — your neighborhood is a great source of nearby, trusted help.</li>'
-    +'<li><b>Local CNA & nursing programs</b> — community colleges and trade schools; students and new grads make wonderful caregivers.</li>'
-    +'<li><b>Churches, senior centers, and your Area Agency on Aging</b> — bulletin boards and staff often know someone.</li>'
+    +'<li><b>Facebook</b>, local community groups, "caregiver jobs [your town]" groups, and Marketplace.</li>'
+    +'<li><b>Nextdoor</b>, your neighborhood is a great source of nearby, trusted help.</li>'
+    +'<li><b>Local CNA & nursing programs</b>, community colleges and trade schools; students and new grads make wonderful caregivers.</li>'
+    +'<li><b>Churches, senior centers, and your Area Agency on Aging</b>, bulletin boards and staff often know someone.</li>'
     +'<li><b>Indeed or Craigslist</b> (gigs / jobs) if you want wider reach.</li>'
-    +'<li><b>People you already know</b> — friends, neighbors, and your loved one\'s own circle. Word of mouth finds some of the best caregivers.</li>'
+    +'<li><b>People you already know</b>, friends, neighbors, and your loved one\'s own circle. Word of mouth finds some of the best caregivers.</li>'
     +'</ul></div></details>'
     +(canSeeApplicants()?renderPipeline(apps):'<p class="hint" style="background:var(--teal-soft);border-radius:10px;padding:10px 12px">Applicants and messages are kept with the family organizer and members. Thank you for helping get this job in front of caregivers!</p>')
     +'</div>';
@@ -650,7 +650,7 @@ function renderApplicant(a){
     +'</div>'
     +'<label class="fld" style="margin-top:8px">Your private notes</label>'
     +'<textarea class="appnotes" placeholder="What stood out, questions to follow up on…">'+esc(a.family_notes||'')+'</textarea>'
-    +'<input class="appreason" style="margin-top:8px" placeholder="If not a fit, or no longer with you — why? (private)" value="'+esc(a.end_reason||'')+'">'
+    +'<input class="appreason" style="margin-top:8px" placeholder="If not a fit, or no longer with you, why? (private)" value="'+esc(a.end_reason||'')+'">'
     +'<div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">'
     +'<button class="btn btn-teal btn-sm appsave" data-app="'+a.id+'">Save</button>'
     +(canReview?'<button class="btn btn-honey btn-sm" onclick="leaveReview(\''+a.caregiver_id+'\',this)">★ Leave a public review</button>':'')
@@ -708,7 +708,7 @@ function renderHistory(){
     '<div style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px">'
     +'<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center"><b>'+esc(a.applicant_name||'Applicant')+'</b>'+badge(a.status)+'</div>'
     +'<div class="hint">for '+esc(jobTitle(a.job_id))+(a.applicant_phone?' · '+esc(a.applicant_phone):'')+'</div>'
-    +(a.interview_type&&itype[a.interview_type]?'<div style="font-size:13.5px;margin-top:4px">'+itype[a.interview_type]+(a.interview_date?' · '+esc(a.interview_date):'')+(a.interview_outcome?' — '+esc(a.interview_outcome):'')+'</div>':'')
+    +(a.interview_type&&itype[a.interview_type]?'<div style="font-size:13.5px;margin-top:4px">'+itype[a.interview_type]+(a.interview_date?' · '+esc(a.interview_date):'')+(a.interview_outcome?', '+esc(a.interview_outcome):'')+'</div>':'')
     +(a.end_reason?'<div style="font-size:13.5px;margin-top:4px;color:var(--muted)"><b>Why:</b> '+esc(a.end_reason)+'</div>':'')
     +'</div>'
   ).join('');
@@ -741,19 +741,19 @@ document.addEventListener('click',async e=>{
 // ---------- resources ----------
 const RES=[
   ['Interview questions to ask',
-   '<p style="color:#5b6b7a;margin-bottom:8px">Start warm, then work in a few real situations. There are no perfect answers — you\'re listening for kindness, honesty, and good judgment.</p>'
+   '<p style="color:#5b6b7a;margin-bottom:8px">Start warm, then work in a few real situations. There are no perfect answers, you\'re listening for kindness, honesty, and good judgment.</p>'
    +'<b>Getting to know them</b><ul><li>Tell me about yourself and what drew you to caregiving.</li><li>Tell me about someone you\'ve cared for and what that was like.</li><li>Which tasks are you most confident with? Any you\'d want more training on?</li></ul>'
    +'<b>Real situations</b><ul><li>If my mother asked you the same question over and over, how would you respond?</li><li>If she accused you of taking something you hadn\'t, what would you do?</li><li>If she became upset or refused care, how would you handle it?</li><li>If she seemed more confused or weak than usual, what would you do?</li><li>If she fell during your shift, what are your first steps?</li></ul>'
    +'<b>Reliability & boundaries</b><ul><li>What would you do if you woke up sick on a day you were scheduled?</li><li>What does being dependable mean to you?</li><li>How would you handle being offered a gift or asked to keep something from us?</li></ul>'
    +'<b>Quick phone screen (5 min)</b><ul><li>Are you available for this schedule?</li><li>How far are you willing to travel?</li><li>Tell me in a sentence why you got into caregiving.</li><li>Are you comfortable completing a background check?</li></ul>'],
   ['Scoring & comparing candidates',
-   '<p>After each interview, score them on the five things that matter most (right on their card above): communication, experience, warmth and patience, reliability, and your gut feeling. Add a few notes while it\'s fresh. When you\'ve met a few people, the scores make it easy to compare instead of relying on memory. Trust the gut-feeling score more than you\'d expect — this is someone coming into your loved one\'s home.</p>'],
+   '<p>After each interview, score them on the five things that matter most (right on their card above): communication, experience, warmth and patience, reliability, and your gut feeling. Add a few notes while it\'s fresh. When you\'ve met a few people, the scores make it easy to compare instead of relying on memory. Trust the gut-feeling score more than you\'d expect, this is someone coming into your loved one\'s home.</p>'],
   ['Checking references',
    '<p style="color:#5b6b7a;margin-bottom:8px">Call at least two. Past employers and families they\'ve cared for are best. Ask:</p>'
    +'<ul><li>How do you know them, and for how long?</li><li>What were they responsible for?</li><li>Were they reliable and on time?</li><li>How did they handle a hard moment or an emergency?</li><li>Would you hire them again to care for your own family member?</li><li>Is there anything I should know?</li></ul>'
    +'<p>Listen for hesitation as much as words. A warm, specific reference is worth a lot.</p>'],
   ['Before they start: a checklist',
-   '<ul><li>Confirm their driver\'s license and auto insurance if they\'ll drive.</li><li>Run a background check (or decide together to skip it) — your call.</li><li>Do a short <b>paid trial shift</b> so everyone can feel the fit.</li><li>Exchange emergency contacts, and a backup plan if they can\'t make it.</li><li>Write down the daily routine, medications, likes and dislikes, and house rules.</li><li>Agree on pay, hours, duties, and how you\'ll communicate.</li><li>Share the door codes / keys only once you\'re confident.</li></ul>'],
+   '<ul><li>Confirm their driver\'s license and auto insurance if they\'ll drive.</li><li>Run a background check (or decide together to skip it), your call.</li><li>Do a short <b>paid trial shift</b> so everyone can feel the fit.</li><li>Exchange emergency contacts, and a backup plan if they can\'t make it.</li><li>Write down the daily routine, medications, likes and dislikes, and house rules.</li><li>Agree on pay, hours, duties, and how you\'ll communicate.</li><li>Share the door codes / keys only once you\'re confident.</li></ul>'],
   ['A simple work agreement',
    '<p style="color:#5b6b7a;margin-bottom:8px">Putting it in writing keeps everyone comfortable. Cover:</p>'
    +'<ul><li><b>Who, what, where:</b> caregiver name, the person they\'ll care for, the address.</li><li><b>Schedule:</b> days and hours, and how to request time off.</li><li><b>Pay:</b> rate, how often, how (check, app), and mileage if any.</li><li><b>Duties:</b> the main things you expect, and anything that\'s off the table.</li><li><b>Start date</b> and a check-in date to see how it\'s going.</li></ul>'
@@ -761,7 +761,7 @@ const RES=[
   ['What is fair to pay?',
    '<p>In Missouri, private caregivers commonly earn about <b>$18–$28 an hour</b>, depending on experience, the level of care, and overnight or live-in arrangements. More hands-on care (transfers, memory care, medication help) sits at the higher end. Paying a fair, dependable rate is the single best way to keep a wonderful caregiver.</p>'],
   ['Red flags to watch for',
-   '<ul><li>Vague about past jobs or unwilling to give references.</li><li>Pushes to be paid only in cash and off the books.</li><li>Talks about past clients in a way that feels disrespectful.</li><li>Won\'t agree to a background check without a clear reason.</li><li>Late or a no-show for the interview itself.</li><li>Anything that makes your loved one uncomfortable — that matters most.</li></ul>'],
+   '<ul><li>Vague about past jobs or unwilling to give references.</li><li>Pushes to be paid only in cash and off the books.</li><li>Talks about past clients in a way that feels disrespectful.</li><li>Won\'t agree to a background check without a clear reason.</li><li>Late or a no-show for the interview itself.</li><li>Anything that makes your loved one uncomfortable, that matters most.</li></ul>'],
   ['Paying a caregiver directly (taxes)',
    '<p>When you hire and pay a caregiver yourself, you may become a "household employer," which can involve payroll taxes (sometimes called the "nanny tax") once you pay above a yearly threshold. It\'s very manageable, and many families use a payroll service to handle it. A quick chat with a tax professional, or a service like this, keeps everything clean. HomeTogether Hire plans to offer a payroll option to make this effortless.</p>'],
 ];
@@ -777,14 +777,14 @@ async function billing(action){
   const r=await fetch(BILLING_EP,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(session?.access_token||'')},body:JSON.stringify({action})});
   return r.json();
 }
-window.subscribe=async function(btn){ btn.disabled=true; btn.textContent='Opening secure checkout…'; const d=await billing('subscribe'); if(d&&d.url){location.href=d.url;} else {btn.disabled=false;btn.textContent='Become a member — $25/month';alert((d&&d.error)||'Could not start checkout.');} };
+window.subscribe=async function(btn){ btn.disabled=true; btn.textContent='Opening secure checkout…'; const d=await billing('subscribe'); if(d&&d.url){location.href=d.url;} else {btn.disabled=false;btn.textContent='Become a member, $25/month';alert((d&&d.error)||'Could not start checkout.');} };
 window.manageMembership=async function(btn){ btn.disabled=true; const d=await billing('portal'); if(d&&d.url){location.href=d.url;} else {btn.disabled=false;alert((d&&d.error)||'Could not open billing.');} };
 function renderMember(){
   FAMILY_ACTIVE = FAMILY && FAMILY.subscription_status==='active';
   const c=$('memberCard'); c.style.display='';
   let html = FAMILY_ACTIVE
     ? '<h2>Your membership</h2><p style="color:var(--muted)">You’re a member. <b>$25/month</b>, and you can cancel anytime.</p><div style="margin-top:12px"><button class="btn btn-ghost" onclick="manageMembership(this)">Manage or cancel</button></div>'
-    : '<h2>Become a member</h2><p style="color:var(--muted)">Browsing caregivers and posting a job are free. To <b>message caregivers and hire directly</b>, join for <b>$25/month</b>. Cancel anytime, no contract.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-teal" onclick="subscribe(this)">Become a member — $25/month</button><a class="btn btn-ghost" href="/membership">See everything you get →</a></div>';
+    : '<h2>Become a member</h2><p style="color:var(--muted)">Browsing caregivers and posting a job are free. To <b>message caregivers and hire directly</b>, join for <b>$25/month</b>. Cancel anytime, no contract.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-teal" onclick="subscribe(this)">Become a member, $25/month</button><a class="btn btn-ghost" href="/membership">See everything you get →</a></div>';
   if(SOLO_ELIGIBLE){
     html+='<div style="margin-top:16px;border-top:1px solid var(--line);padding-top:14px">'
       +'<label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">'
@@ -877,9 +877,9 @@ function renderTeam(){
     if(ownerView()&&m.role!=='owner'){
       ctrl='<div style="flex-basis:100%;display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px">'
         +'<select class="mrole" data-id="'+m.id+'" style="width:auto;padding:5px 9px;font-size:12.5px">'
-        +'<option value="member"'+(m.role==='member'?' selected':'')+'>Member — can hire &amp; message</option>'
-        +'<option value="helper"'+(m.role==='helper'?' selected':'')+'>Helper — posts &amp; shares</option>'
-        +'<option value="viewer"'+(m.role==='viewer'?' selected':'')+'>Viewer — can view only</option></select>'
+        +'<option value="member"'+(m.role==='member'?' selected':'')+'>Member, can hire &amp; message</option>'
+        +'<option value="helper"'+(m.role==='helper'?' selected':'')+'>Helper, posts &amp; shares</option>'
+        +'<option value="viewer"'+(m.role==='viewer'?' selected':'')+'>Viewer, can view only</option></select>'
         +(pend?'<button class="btn btn-ghost btn-sm mcopy" data-code="'+esc(m.invite_code||'')+'">Copy invite link</button>':'')
         +'<button class="btn btn-ghost btn-sm mremove" data-id="'+m.id+'">Remove</button></div>';
     }
@@ -930,7 +930,7 @@ function renderHhBanner(){
   if(MEMBERSHIPS.length>1){
     sw='<label class="fld" style="margin-top:0">Whose hiring are you working on?</label><select id="hhPick" style="width:auto;padding:7px 11px;margin-bottom:12px">'+MEMBERSHIPS.map(m=>{
       const nm=m.household_id===USER.id?'My family':'A family I help with';
-      return '<option value="'+m.household_id+'"'+(m.household_id===HOUSEHOLD?' selected':'')+'>'+esc(nm)+' — '+ROLE_LABEL[m.role]+'</option>';
+      return '<option value="'+m.household_id+'"'+(m.household_id===HOUSEHOLD?' selected':'')+'>'+esc(nm)+', '+ROLE_LABEL[m.role]+'</option>';
     }).join('')+'</select>';
   }
   if(HOUSEHOLD!==USER.id){
@@ -1302,7 +1302,7 @@ document.addEventListener('keydown',e=>{ if(e.target&&(e.target.id==='expLabel'|
 
 // ---------- documents + e-sign ----------
 function docCaregiverOptions(){
-  const seen=new Set(), opts=['<option value="">— no one yet —</option>'];
+  const seen=new Set(), opts=['<option value="">(no one yet)</option>'];
   (ALL_APPS||[]).filter(a=>a.caregiver_id).forEach(a=>{
     if(seen.has(a.caregiver_id))return; seen.add(a.caregiver_id);
     opts.push('<option value="'+a.caregiver_id+'" data-name="'+esc(a.applicant_name||'Caregiver')+'">'+esc(a.applicant_name||'Caregiver')+'</option>');

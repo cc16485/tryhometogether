@@ -202,7 +202,7 @@ window.subscribeNow=async function(btn){
   const {data:{session}}=await sb.auth.getSession();
   const r=await fetch(BILLING_EP,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(session?.access_token||'')},body:JSON.stringify({action:'subscribe'})});
   const d=await r.json();
-  if(d&&d.url){ location.href=d.url; } else { btn.disabled=false; btn.textContent='Become a member — $25/month'; alert((d&&d.error)||'Could not start checkout.'); }
+  if(d&&d.url){ location.href=d.url; } else { btn.disabled=false; btn.textContent='Become a member, $25/month'; alert((d&&d.error)||'Could not start checkout.'); }
 };
 window.messageCg=async function(cgId,name){
   const {data:{user}}=await sb.auth.getUser();
@@ -213,7 +213,7 @@ window.messageCg=async function(cgId,name){
   }
   const {data:fam}=await sb.from('htl_families').select('subscription_status').eq('user_id',user.id).maybeSingle();
   if(!fam || fam.subscription_status!=='active'){
-    area.innerHTML='<div style="margin-top:14px;background:#fff7e6;border:1px solid var(--honey);border-radius:10px;padding:14px"><p style="margin-bottom:10px;color:#7a5312">To message '+esc(name)+' and hire directly, become a HomeTogether Hire member. <b>$25/month, cancel anytime.</b></p><button class="btn" style="background:var(--honey);color:var(--navy-deep)" onclick="subscribeNow(this)">Become a member — $25/month</button> <a href="/family-tour" style="color:var(--teal-deep);font-weight:800;margin-left:8px">See what’s inside →</a></div>';
+    area.innerHTML='<div style="margin-top:14px;background:#fff7e6;border:1px solid var(--honey);border-radius:10px;padding:14px"><p style="margin-bottom:10px;color:#7a5312">To message '+esc(name)+' and hire directly, become a HomeTogether Hire member. <b>$25/month, cancel anytime.</b></p><button class="btn" style="background:var(--honey);color:var(--navy-deep)" onclick="subscribeNow(this)">Become a member, $25/month</button> <a href="/family-tour" style="color:var(--teal-deep);font-weight:800;margin-left:8px">See what’s inside →</a></div>';
     return;
   }
   area.innerHTML='<div style="margin-top:14px;border-top:1px solid var(--line);padding-top:14px">'
