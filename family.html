@@ -484,6 +484,7 @@ window.doAuth=async function(){
       if(error)throw error;
       if(!data.session){msg('authMsg','Almost there, check your email to confirm, then log in.','ok');$('authBtn').disabled=false;return;}
       await sb.from('htl_families').insert({user_id:data.user.id,email,name});
+      alertNewLead(name);
     } else {
       const {error}=await sb.auth.signInWithPassword({email,password:pass});
       if(error)throw error;
@@ -493,6 +494,18 @@ window.doAuth=async function(){
 };
 window.doReset=async function(ev){ev.preventDefault();const email=$('authEmail').value.trim();if(!email){msg('authMsg','Enter your email above first.','err');return;}const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+'/family.html'});msg('authMsg',error?friendly(error):'Sent. Check your email.',error?'err':'ok');};
 $('logoutBtn').onclick=async(e)=>{e.preventDefault();await sb.auth.signOut();location.reload();};
+// Fire-and-forget: tell the office a new family just signed up (never blocks or breaks signup).
+async function alertNewLead(name){
+  try{
+    const {data:{session}}=await sb.auth.getSession();
+    if(!session) return;
+    fetch('https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-lead-alert?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+session.access_token},
+      body:JSON.stringify({name:name||''})
+    }).catch(function(){});
+  }catch(e){}
+}
 
 window.uploadLoved=async function(input){
   const f=input.files&&input.files[0];if(!f||!USER)return;
@@ -1399,7 +1412,7 @@ async function boot(){
     show('authView',false);show('dashView',true);$('logoutBtn').style.display='';
     try{
     const {data}=await sb.from('htl_families').select('*').eq('user_id',user.id).maybeSingle();
-    if(!data){await sb.from('htl_families').insert({user_id:user.id,email:user.email});}
+    if(!data){await sb.from('htl_families').insert({user_id:user.id,email:user.email});alertNewLead('');}
     FAMILY=data;
     // make sure I have an owner membership for my own family, then handle any invite
     await sb.rpc('htl_ensure_owner');
