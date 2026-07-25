@@ -186,7 +186,7 @@ textarea{min-height:80px;resize:vertical}
 </head>
 <body>
 <header class="htnav hire"><div class="in">
-  <span class="brand"><a class="wm" href="/hire">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+  <span class="brand"><a class="wm" href="/">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
     <div class="menu">
       <div class="gh">HomeTogether, by Caring Companions</div>
       <a class="si" href="/"><span class="sw">HomeTogether <b>home</b></span><small>See both ways to care</small></a>
@@ -998,7 +998,7 @@ function defaultTab(){
 
 // ---------- family board (discussion + votes) ----------
 let BOARD_PENDING=0;
-function fmtWhen(ts){ if(!ts)return''; const d=new Date(ts),now=new Date(); return d.toDateString()===now.toDateString()? d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'}) : d.toLocaleDateString([],{month:'short',day:'numeric'}); }
+function fmtWhen(ts){ if(!ts)return''; const d=new Date(ts),now=new Date(); return d.toDateString()===now.toDateString()? d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'}) : d.toLocaleDateString('en-US',{year:'numeric',month:'2-digit',day:'2-digit'}); }
 async function loadBoard(){
   const {data:votes,error}=await sb.from('htl_family_votes').select('*').eq('household_id',HOUSEHOLD).order('created_at',{ascending:false});
   if(error){ BOARD_OK=false; return; }
@@ -1044,7 +1044,7 @@ function decisionEntry(v,bs){
   const max=Math.max(0,...counts);
   const winners=(v.options||[]).filter((o,i)=>counts[i]===max&&max>0);
   const outcome=max===0?'No votes were cast':(winners.length>1?'Tie: '+winners.join(' / '):winners[0]);
-  const when=v.created_at?new Date(v.created_at).toLocaleDateString([],{month:'short',day:'numeric'}):'';
+  const when=v.created_at?new Date(v.created_at).toLocaleDateString('en-US',{year:'numeric',month:'2-digit',day:'2-digit'}):'';
   return '<div class="votecard" style="background:#f6faf7">'
     +'<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:start"><div class="voteq">'+esc(v.question||'')+'</div><span class="pill" style="background:#e8f6ee;color:#15803d">Decided</span></div>'
     +'<div class="hint">'+(v.kind==='candidate'?'Hiring decision · ':'')+esc(when)+' · '+total+' vote'+(total===1?'':'s')+'</div>'
@@ -1233,7 +1233,7 @@ function renderExpenses(){
   const me=monthExpenses();
   if(!me.length){ list.innerHTML='<p class="hint">No expenses logged this month yet.</p>'; renderSplit([]); return; }
   list.innerHTML=me.map(e=>{
-    const dt=e.spent_on?new Date(e.spent_on+'T00:00:00').toLocaleDateString([],{month:'short',day:'numeric'}):'';
+    const dt=e.spent_on?new Date(e.spent_on+'T00:00:00').toLocaleDateString('en-US',{year:'numeric',month:'2-digit',day:'2-digit'}):'';
     return '<div class="expense"><span class="el">'+esc(e.label||'Expense')+'<small>'+(e.paid_by?'paid by '+esc(e.paid_by):'')+(dt?' · '+dt:'')+'</small></span>'
       +'<span class="ea">'+money(e.amount)+'</span>'
       +(canAct()?'<button class="tdel expdel" data-id="'+e.id+'" title="Remove">✕</button>':'')+'</div>';
@@ -1324,7 +1324,7 @@ function renderDocs(docs){
   list.innerHTML=docs.map(d=>{
     const b=badge[d.status]||badge.draft;
     let meta='';
-    if(d.status==='signed'&&d.signed_by_name) meta='Signed by '+esc(d.signed_by_name)+(d.signed_at?' · '+new Date(d.signed_at).toLocaleDateString():'');
+    if(d.status==='signed'&&d.signed_by_name) meta='Signed by '+esc(d.signed_by_name)+(d.signed_at?' · '+new Date(d.signed_at).toLocaleDateString({OPT}):'');
     else if(d.status==='sent') meta='Sent to '+esc(d.signer_name||'caregiver')+' to sign';
     else if(d.signer_name) meta='For '+esc(d.signer_name);
     let actions=(d.file_url?'<a class="btn btn-ghost btn-sm" href="'+esc(d.file_url)+'" target="_blank" rel="noopener">View</a>':'');

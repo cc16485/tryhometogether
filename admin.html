@@ -52,7 +52,7 @@ input:focus{outline:none;border-color:var(--teal)}
 </head>
 <body>
 <header class="htnav hire"><div class="in">
-  <span class="brand"><a class="wm" href="/hire">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+  <span class="brand"><a class="wm" href="/">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
     <div class="menu">
       <div class="gh">HomeTogether, by Caring Companions</div>
       <a class="si" href="/"><span class="sw">HomeTogether <b>home</b></span><small>See both ways to care</small></a>
@@ -208,7 +208,7 @@ function render(){
     const cgName=id=>{const c=DATA.caregivers.find(x=>x.id===id);return c?(c.display_name||c.full_name||'Caregiver'):'Caregiver';};
     const stars=n=>{let s='';for(let i=1;i<=5;i++)s+=(i<=(n||0)?'★':'☆');return s;};
     $('list').innerHTML=revs.map(r=>'<div class="cg"><div class="cg-head"><div><span class="nm">'+esc(cgName(r.caregiver_id))+'</span> <span style="color:#C9821C;font-weight:800">'+stars(r.rating)+'</span>'
-      +'<div class="meta">by '+esc(r.family_name||'a family')+(r.created_at?' · '+new Date(r.created_at).toLocaleDateString('en-US'):'')+'</div></div>'
+      +'<div class="meta">by '+esc(r.family_name||'a family')+(r.created_at?' · '+new Date(r.created_at).toLocaleDateString('en-US',{year:'numeric',month:'2-digit',day:'2-digit'}):'')+'</div></div>'
       +'<button class="btn-danger btn btn-sm" onclick="del(\'htl_reviews\',\''+r.id+'\')">Remove</button></div>'
       +(r.body?'<p style="margin-top:6px;font-size:14px">'+esc(r.body)+'</p>':'')+'</div>').join('');
     return;

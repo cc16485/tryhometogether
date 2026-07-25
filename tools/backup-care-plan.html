@@ -67,7 +67,7 @@ footer a{color:var(--muted);font-weight:700;margin-right:14px}
 </head>
 <body>
 <header class="htnav hire"><div class="in">
-  <span class="brand"><a class="wm" href="/hire">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+  <span class="brand"><a class="wm" href="/">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
     <div class="menu">
       <div class="gh">HomeTogether, by Caring Companions</div>
       <a class="si" href="/"><span class="sw">HomeTogether <b>home</b></span><small>See both ways to care</small></a>
@@ -173,7 +173,7 @@ footer a{color:var(--muted);font-weight:700;margin-right:14px}
 function v(id){return (document.getElementById(id).value||'').trim();}
 function line(label,id,fb){var val=v(id);return '<div class="r"><b>'+label+':</b> '+(val||'<span class="miss">['+fb+']</span>')+'</div>';}
 function gen(){
- var h='<h3>Backup &amp; Coverage Plan</h3><div class="dsub">Keep this where everyone can find it · updated '+new Date().toLocaleDateString()+'</div>';
+ var h='<h3>Backup &amp; Coverage Plan</h3><div class="dsub">Keep this where everyone can find it · updated '+new Date().toLocaleDateString({OPT})+'</div>';
  h+='<h4>Who to call, in order</h4><ol>';
  h+='<li>'+(v('b1')||'<span class="miss">[backup 1]</span>')+'</li>';
  h+='<li>'+(v('b2')||'<span class="miss">[backup 2]</span>')+'</li>';

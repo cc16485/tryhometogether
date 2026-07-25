@@ -81,7 +81,7 @@ footer{border-top:1px solid var(--line);margin-top:36px}
 </head>
 <body>
 <header class="htnav hire"><div class="in">
-  <span class="brand"><a class="wm" href="/hire">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
+  <span class="brand"><a class="wm" href="/">HomeTogether <b>Hire</b></a><details class="switch"><summary class="cv" aria-label="Switch service">▾</summary>
     <div class="menu">
       <div class="gh">HomeTogether, by Caring Companions</div>
       <a class="si" href="/"><span class="sw">HomeTogether <b>home</b></span><small>See both ways to care</small></a>
@@ -205,8 +205,8 @@ footer{border-top:1px solid var(--line);margin-top:36px}
 function val(id){return (document.getElementById(id).value||'').trim();}
 function chk(id){return document.getElementById(id).checked;}
 function or(id,fb){return val(id)||('<span style="color:#b23b3b">['+fb+']</span>');}
-function today(){var d=new Date();return d.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});}
-function fmtDate(v){if(!v)return '<span style="color:#b23b3b">[start date]</span>';var d=new Date(v+'T00:00:00');return d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
+function today(){var d=new Date();return String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0')+'/'+d.getFullYear();}
+function fmtDate(v){if(!v)return '<span style="color:#b23b3b">[start date]</span>';var p=v.split('-');return p[1]+'/'+p[2]+'/'+p[0];}
 function gen(){
   var emp=or('employer','your name'),cg=or('caregiver','caregiver name'),cl=or('client','name'),loc=val('location'),jt=val('jobtitle')||'caregiver';
   var sch=or('schedule','days & hours'),wage=or('wage','pay'),freq=val('freq'),duties=val('duties'),note=val('note');
