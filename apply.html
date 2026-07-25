@@ -102,8 +102,18 @@ const params=new URLSearchParams(location.search);
 const CODE=params.get('job')||'';
 let JOB=null;
 
+const DEMO_JOB={
+  title:"Daytime caregiver for my mom", city:"Springfield, MO", family_first:"Karen",
+  recipient_name:"Eleanor", recipient_age:78,
+  recipient_about:"Mom is warm and independent but needs a hand with meals, medication reminders, and rides to appointments. She loves her garden and old movies, and mostly she'd love good company.",
+  care_needs:["Meals","Medication reminders","Rides to appointments","Companionship"],
+  schedule:"Weekdays, mornings", hours_per_week:25, start_date:"Monday, August 4",
+  rate:"18", pay_unit:"per hour", pay_notes:"paid weekly"
+};
+
 async function load(){
   if(!CODE){ show('loading',false); show('notfound',true); return; }
+  if(CODE==='demo'){ show('loading',false); JOB=DEMO_JOB; renderOffer(DEMO_JOB); show('content',true); return; }
   const {data,error}=await sb.rpc('htl_public_job',{p_code:CODE});
   const job=Array.isArray(data)?data[0]:data;
   show('loading',false);
@@ -136,6 +146,7 @@ window.submitApp=async function(){
   const name=$('a_name').value.trim(), email=$('a_email').value.trim(), phone=$('a_phone').value.trim();
   if(!name){ msg('Please add your name.','err'); return; }
   if(!email && !phone){ msg('Please add an email or phone so the family can reach you.','err'); return; }
+  if(CODE==='demo'){ show('content',false); $('doneMsg').textContent="This is an example job, so nothing was sent. On a real job link, the family would get your application right here."; show('done',true); window.scrollTo(0,0); return; }
   $('applyBtn').disabled=true; $('applyBtn').textContent='Sending…';
   try{
     const r=await fetch(APPLY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
