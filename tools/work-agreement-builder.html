@@ -52,6 +52,12 @@ a{color:var(--teal-deep);font-weight:700;text-decoration:none}
 .opt:has(input:checked){border-color:var(--teal);background:#fff;box-shadow:0 0 0 1.5px var(--teal)}
 .opt .rec{font-style:normal;font-size:10px;font-weight:800;color:var(--honey-deep);background:#FCEFD6;border-radius:20px;padding:2px 8px;margin-left:auto;white-space:nowrap}
 .customin{width:100%;font-family:var(--sans);font-size:14px;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--bg);margin-top:1px}
+.ext{display:flex;align-items:center;gap:9px;font-weight:600;font-size:13.5px;color:var(--ink);cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 12px;margin-bottom:7px}
+.ext input[type=checkbox]{width:16px;height:16px;accent-color:var(--teal);flex:none}
+.ext span{flex:1;line-height:1.35}
+.ext input[type=number]{width:56px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;font-family:var(--sans);font-size:13.5px;flex:none}
+.ext em{font-style:normal;font-size:10px;font-weight:800;color:var(--honey-deep);background:#FCEFD6;border-radius:20px;padding:2px 8px;flex:none;white-space:nowrap}
+.ext:has(input:checked){border-color:var(--teal);background:#fff}
 .bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .btn{background:var(--honey);color:#3a2708;border-radius:12px;padding:12px 20px;font-weight:800;font-size:15px;border:none;cursor:pointer;font-family:var(--sans)}
 .btn.ghost{background:#fff;border:1px solid var(--line);color:var(--teal-deep)}
@@ -155,11 +161,6 @@ footer{border-top:1px solid var(--line);margin-top:36px}
       <label class="opt"><input type="radio" name="ot" value="under"><span>Hours won't go over 40 a week</span></label>
     </div>
 
-    <div class="choice"><div class="cq">Breaks</div>
-      <label class="opt"><input type="radio" name="breaks" value="std" checked><span>Unpaid 30-min break on shifts over 6 hours</span> <em class="rec">most families</em></label>
-      <label class="opt"><input type="radio" name="breaks" value="none"><span>No set breaks; rest as the day allows</span></label>
-    </div>
-
     <div class="choice"><div class="cq">Paid time off &amp; holidays</div>
       <label class="opt"><input type="radio" name="pto" value="holidays" checked><span>Major holidays paid</span> <em class="rec">most families</em></label>
       <label class="opt"><input type="radio" name="pto" value="none"><span>No paid time off</span></label>
@@ -190,7 +191,18 @@ footer{border-top:1px solid var(--line);margin-top:36px}
       <label class="opt"><input type="radio" name="access" value="home"><span>A family member is always home</span></label>
     </div>
 
-    <div class="f" style="margin-top:6px"><label>Anything else about the role (optional)</label><textarea id="extra" rows="2" placeholder="e.g. our dog is friendly; please text if you'll be more than 10 minutes late"></textarea></div>
+    <h2>Optional extras</h2>
+    <p class="secnote">Add any that fit. The first two are on because most families want them; the rest are situational, leave them off to keep it short.</p>
+    <div class="opts2" id="extras">
+      <label class="ext"><input type="checkbox" id="ext_report" checked> <span>Report falls, injuries &amp; health changes right away</span> <em>most families</em></label>
+      <label class="ext"><input type="checkbox" id="ext_drugs" checked> <span>No drugs or alcohol while on duty</span> <em>most families</em></label>
+      <label class="ext"><input type="checkbox" id="ext_camera"> <span>Our home has security cameras (caregiver consents to being recorded)</span></label>
+      <label class="ext"><input type="checkbox" id="ext_social"> <span>Ask before posting about us on social media</span></label>
+      <label class="ext"><input type="checkbox" id="ext_cancel"> <span>Cancellation pay, we still pay if we cancel a shift last-minute</span></label>
+      <label class="ext"><input type="checkbox" id="ext_sick"> <span>Paid sick days per year:</span> <input type="number" id="ext_sick_n" value="3" min="0" max="30"></label>
+    </div>
+
+    <div class="f" style="margin-top:16px"><label>Anything else about the role (optional)</label><textarea id="extra" rows="2" placeholder="e.g. our dog is friendly; please text if you'll be more than 10 minutes late"></textarea></div>
 
     <div class="bar">
       <button class="btn ghost" onclick="window.print()">Print / save PDF</button>
@@ -246,12 +258,12 @@ DUTIES.forEach(function(d,i){var l=document.createElement('label');l.innerHTML='
 function val(id){var el=document.getElementById(id);return el?(el.value||'').trim():'';}
 function or(id,fb){return val(id)||('<span style="color:#b23b3b">['+fb+']</span>');}
 function radio(n){var el=document.querySelector('input[name="'+n+'"]:checked');return el?el.value:'';}
+function chk(id){var el=document.getElementById(id);return !!(el&&el.checked);}
 function gen(){
   var emp=or('employer','family name'),cg=or('caregiver','caregiver name'),cl=or('client','name'),start=val('start')||'<span style="color:#b23b3b">[start date]</span>';
   var duties=[];document.querySelectorAll('#duties input:checked').forEach(function(c){duties.push(DUTIES[+c.getAttribute('data-d')]);});
   var dutiesHtml=duties.length?('<ul>'+duties.map(function(d){return '<li>'+d+'</li>';}).join('')+'</ul>'):'<span style="color:#b23b3b">[select duties]</span>';
   var ot=(radio('ot')==='under')?'Hours are not expected to exceed 40 in a week.':'Overtime over 40 hours in a week is paid at 1.5 times the hourly rate.';
-  var breaks=(radio('breaks')==='none')?'The caregiver may take short breaks as the day allows.':'An unpaid 30-minute break is provided on shifts longer than 6 hours.';
   var ptoV=radio('pto'),pto=ptoV==='none'?'No paid time off is included.':ptoV==='custom'?(val('pto_custom')||'<span style="color:#b23b3b">[time off details]</span>'):'Major holidays are paid.';
   var mV=radio('mileage'),mileage=mV==='none'?'No driving is required for this role.':mV==='custom'?(val('mileage_custom')||'<span style="color:#b23b3b">[mileage details]</span>'):'When the caregiver drives for errands, mileage is reimbursed at the standard IRS rate.';
   var notice=(radio('notice')==='1wk')?'One week of written notice by either side, or immediately for a serious concern.':'Two weeks of written notice by either side, or immediately for a serious concern.';
@@ -265,12 +277,17 @@ function gen(){
   if(trial)h+='<div class="cl"><b>'+num()+'. Trial period.</b> The first two weeks are a trial for both people. Either the family or the caregiver may end the arrangement during this time, with no hard feelings on either side.</div>';
   h+='<div class="cl"><b>'+num()+'. Schedule.</b> '+or('schedule','days and hours')+'. Changes will be discussed in advance whenever possible.</div>';
   h+='<div class="cl"><b>'+num()+'. Pay.</b> '+or('wage','wage')+' per hour, paid '+val('freq')+'. '+ot+'</div>';
+  if(chk('ext_cancel'))h+='<div class="cl"><b>'+num()+'. Cancellation pay.</b> If the family cancels a scheduled shift with less than 24 hours\' notice, the caregiver will still be paid for that shift.</div>';
   h+='<div class="cl"><b>'+num()+'. Duties.</b> The caregiver will help with:'+dutiesHtml+'</div>';
-  h+='<div class="cl"><b>'+num()+'. Breaks.</b> '+breaks+'</div>';
   h+='<div class="cl"><b>'+num()+'. Time off &amp; holidays.</b> '+pto+'</div>';
+  if(chk('ext_sick')){var sn=parseInt(val('ext_sick_n')||'0',10);h+='<div class="cl"><b>'+num()+'. Paid sick days.</b> The caregiver receives '+sn+' paid sick '+(sn===1?'day':'days')+' per year.</div>';}
   h+='<div class="cl"><b>'+num()+'. Driving &amp; expenses.</b> '+mileage+' Any other approved expenses are reimbursed with receipts.</div>';
   h+='<div class="cl"><b>'+num()+'. Privacy.</b> The caregiver will keep the family\'s personal, medical, and household information confidential, and will not share photos or details of '+cl+' without the family\'s permission.</div>';
+  if(chk('ext_social'))h+='<div class="cl"><b>'+num()+'. Photos &amp; social media.</b> The caregiver will not post or share photos, videos, or stories about '+cl+' or the family on social media without the family\'s permission.</div>';
   h+='<div class="cl"><b>'+num()+'. Home access.</b> '+access+'</div>';
+  if(chk('ext_camera'))h+='<div class="cl"><b>'+num()+'. Recording in the home.</b> The family\'s home may have security cameras or monitors. The caregiver understands they may be recorded while working, and consents to this.</div>';
+  if(chk('ext_drugs'))h+='<div class="cl"><b>'+num()+'. No drugs or alcohol on duty.</b> The caregiver will not use, or be under the influence of, alcohol or drugs while caring for '+cl+'.</div>';
+  if(chk('ext_report'))h+='<div class="cl"><b>'+num()+'. Reporting concerns.</b> The caregiver will let the family know right away about any fall, injury, accident, or noticeable change in '+cl+'\'s health, and will call 911 first in a true emergency.</div>';
   h+='<div class="cl"><b>'+num()+'. Ending this arrangement.</b> '+notice+' Final pay and any keys or property will be returned promptly.</div>';
   if(extra)h+='<div class="cl"><b>'+num()+'. Other.</b> '+extra+'</div>';
   h+='<div class="cl" style="color:#55677a;font-size:12.5px">This agreement can be updated any time both people agree in writing.</div>';
@@ -281,8 +298,9 @@ function gen(){
 function toggleCustom(name,id){document.querySelectorAll('input[name="'+name+'"]').forEach(function(r){r.addEventListener('change',function(){document.getElementById(id).style.display=(radio(name)==='custom')?'block':'none';gen();});});}
 toggleCustom('pto','pto_custom');toggleCustom('mileage','mileage_custom');
 ['employer','caregiver','client','start','schedule','wage','freq','extra','pto_custom','mileage_custom'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',gen);});
-document.querySelectorAll('#duties input,input[name="ot"],input[name="breaks"],input[name="notice"],input[name="access"],input[name="trial"]').forEach(function(c){c.addEventListener('change',gen);});
+document.querySelectorAll('#duties input,input[name="ot"],input[name="notice"],input[name="access"],input[name="trial"]').forEach(function(c){c.addEventListener('change',gen);});
 document.querySelectorAll('input[name="pto"],input[name="mileage"]').forEach(function(c){c.addEventListener('change',gen);});
+document.querySelectorAll('#extras input').forEach(function(c){c.addEventListener('change',gen);c.addEventListener('input',gen);});
 gen();
 </script>
 </body>
