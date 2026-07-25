@@ -639,8 +639,18 @@ function viewerApplicant(a){
     +(a.message?'<p style="font-size:14px;margin:6px 0">'+esc(a.message)+'</p>':'')
     +rating+notes+'</div>';
 }
+function freeApplicant(a){
+  return '<div class="applicant"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center">'
+    +'<b>'+esc(a.applicant_name||'Applicant')+'</b>'
+    +'<span class="pill" style="background:#eef1f4;color:#55677A">'+esc(a.status||'new')+'</span></div>'
+    +appTags(a)
+    +(a.message?'<p style="font-size:14px;margin:6px 0">'+esc(a.message)+'</p>':'')
+    +'<div class="hint" style="background:#fff7e6;border:1px solid var(--honey);border-radius:8px;padding:9px 12px;color:#7a5312;margin-top:8px;line-height:1.5"><svg aria-hidden="true" class="htc-emoji" style="width:1.1em;height:1.1em;vertical-align:-.16em"><use href="/assets/icons.svg#i-lock"/></svg> <b>Join to work with your applicants.</b> Membership unlocks their contact details, the organizer (rate, notes, interview log), messaging, paperwork &amp; e-sign, and the caregiver directory. <a href="#" onclick="document.getElementById(\'memberCard\').scrollIntoView({behavior:\'smooth\'});return false" style="color:var(--honey-deep);font-weight:800">See membership &rarr;</a></div>'
+    +'</div>';
+}
 function renderApplicant(a){
   if(!canAct()) return viewerApplicant(a);
+  if(!FAMILY_ACTIVE) return freeApplicant(a);
   const scores=a.family_scores||{};
   const stars=SCORE_CATS.map(([k,label])=>{
     let row='<div class="score"><span>'+label+'</span><span class="stars" data-cat="'+k+'" data-app="'+a.id+'">';
@@ -806,7 +816,7 @@ function renderMember(){
   const c=$('memberCard'); c.style.display='';
   let html = FAMILY_ACTIVE
     ? '<h2>Your membership</h2><p style="color:var(--muted)">You’re a member. <b>$25/month</b>, and you can cancel anytime.</p><div style="margin-top:12px"><button class="btn btn-ghost" onclick="manageMembership(this)">Manage or cancel</button></div>'
-    : '<h2>Become a member</h2><p style="color:var(--muted)">Posting a job and reviewing applicants is free. To <b>browse the caregiver directory, see contact details, and message and hire directly</b>, join for <b>$25/month</b>. Cancel anytime, no contract.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-teal" onclick="subscribe(this)">Become a member, $25/month</button><a class="btn btn-ghost" href="/membership">See everything you get →</a></div>';
+    : '<h2>Become a member</h2><p style="color:var(--muted)">Posting a job and seeing who applied is free. Membership (<b>$25/month</b>, cancel anytime) unlocks everything to work your applicants: <b>their contact details, your applicant organizer, messaging, the paperwork &amp; e-sign workspace, and the caregiver directory</b>.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-teal" onclick="subscribe(this)">Become a member, $25/month</button><a class="btn btn-ghost" href="/membership">See everything you get →</a></div>';
   if(SOLO_ELIGIBLE){
     html+='<div style="margin-top:16px;border-top:1px solid var(--line);padding-top:14px">'
       +'<label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">'
@@ -1333,6 +1343,11 @@ function docCaregiverOptions(){
 }
 async function loadDocs(){
   const list=$('docList'); if(!list) return;
+  if(!FAMILY_ACTIVE){
+    const add=$('docAdd'); if(add) add.style.display='none';
+    list.innerHTML='<div class="hint" style="background:#fff7e6;border:1px solid var(--honey);border-radius:8px;padding:10px 13px;color:#7a5312;line-height:1.5"><svg aria-hidden="true" class="htc-emoji" style="width:1.1em;height:1.1em;vertical-align:-.16em"><use href="/assets/icons.svg#i-lock"/></svg> <b>The document &amp; e-sign workspace is part of membership.</b> Send agreements to caregivers to e-sign and keep signed copies safely in one place. <a href="/membership" style="color:var(--honey-deep);font-weight:800">See membership &rarr;</a></div>';
+    return;
+  }
   const {data,error}=await sb.from('htl_documents').select('*').eq('household_id',HOUSEHOLD).order('created_at',{ascending:false});
   if(error){ list.innerHTML='<p class="hint">Documents will appear here once this feature is switched on.</p>'; const a=$('docAdd'); if(a)a.style.display='none'; return; }
   const add=$('docAdd'); if(add) add.style.display=canAct()?'':'none';
