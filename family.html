@@ -2,6 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1125638243330448');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1125638243330448&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Family Account · HomeTogether Hire</title>
 <meta name="robots" content="index,follow">
@@ -496,6 +514,7 @@ window.doReset=async function(ev){ev.preventDefault();const email=$('authEmail')
 $('logoutBtn').onclick=async(e)=>{e.preventDefault();await sb.auth.signOut();location.reload();};
 // Fire-and-forget: tell the office a new family just signed up (never blocks or breaks signup).
 async function alertNewLead(name){
+  try{ window.fbq && window.fbq('track','CompleteRegistration'); }catch(e){}
   try{
     const {data:{session}}=await sb.auth.getSession();
     if(!session) return;
@@ -544,6 +563,7 @@ window.postJob=async function(){
   const {data,error}=await sb.from('htl_jobs').insert(row).select().maybeSingle();
   $('postBtn').disabled=false;
   if(error){msg('jobMsg',error.message,'err');return;}
+  try{ window.fbq && window.fbq('track','Lead',{content_name:'post_job'}); }catch(e){}
   msg('jobMsg','Posted! Your invite link is ready below.','ok');
   ['j_title','j_desc','j_city','j_sched','j_hours','j_start','j_rname','j_rage','j_rabout','j_home','j_rate','j_paynotes'].forEach(i=>$(i).value='');
   needSel.clear();$('needsOpts').querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));
