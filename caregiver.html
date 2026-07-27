@@ -309,6 +309,20 @@ window.doAuth=async function(){
   }catch(e){ msg('authMsg', friendly(e), 'err'); $('authBtn').disabled=false; }
 };
 
+// Fire-and-forget: push a new caregiver into GoHighLevel (tagged) + notify the office. Never blocks profile save.
+async function caregiverAlert(name, phone){
+  try{ window.fbq && window.fbq('track','CompleteRegistration'); }catch(e){}
+  try{
+    const {data:{session}}=await sb.auth.getSession();
+    if(!session) return;
+    fetch('https://lrlczrpehjpncqixubuk.supabase.co/functions/v1/htl-lead-alert?token=htlpub_2759f8e9044b96f40a720f25bd6143f35556a966',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+session.access_token},
+      body:JSON.stringify({role:'caregiver', name:name||'', phone:phone||''})
+    }).catch(function(){});
+  }catch(e){}
+}
+
 window.doReset=async function(ev){
   ev.preventDefault();
   const email=$('authEmail').value.trim();
@@ -418,7 +432,7 @@ window.saveProfile=async function(){
     if(!error) PROFILE=Object.assign(PROFILE||{},fields);
   } else {
     const {data,error:e}=await sb.from('htl_caregivers').insert({...fields,user_id:USER.id}).select().maybeSingle();
-    error=e; if(!e) PROFILE=data;
+    error=e; if(!e){ PROFILE=data; caregiverAlert(fields.full_name||fields.display_name||'', fields.phone||''); }
   }
   $('saveBtn').disabled=false;
   if(error){ msg('profMsg', error.message, 'err'); return; }
