@@ -406,6 +406,7 @@ svg[aria-hidden="true"]{width:1.15em;height:1.15em;display:inline-block;vertical
     <div>
       <span class="eyebrow">HomeTogether Hire · for families hiring privately</span>
       <h1>Hire privately, without the chaos.</h1>
+<div id="foundingBadge" style="background:#fff7e6;border:1.5px solid #EFCE85;border-radius:11px;padding:11px 16px;margin:14px auto 0;max-width:640px;font-size:15px;color:#7a5312;font-weight:700;text-align:center">🏅 Founding offer: the first 100 families get <b>3 months of membership free</b> — automatic at sign-up, no card needed.</div>
       <p class="lede">More families are hiring a caregiver directly, and it gets overwhelming fast: applicants scattered across texts, emails, and Facebook, and no idea what paperwork you need. HomeTogether Hire keeps it organized. <b>Post your job, share one link anywhere, and every applicant comes into one place</b>, with the application and hiring paperwork handled for you. Posting your job is free. A $25/month membership (cancel anytime) also unlocks our caregiver directory, applicant contact details, and messaging, so you can reach and hire the people you like.</p>
       <div class="finder">
         <div class="lab">Start hiring, the organized way</div>
@@ -1327,5 +1328,14 @@ loadInterviewNumber();
 </div>
 <div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
 </footer>
+
+<script>
+(async function(){try{
+  const r=await fetch('https://lrlczrpehjpncqixubuk.supabase.co/rest/v1/rpc/htl_founding_left',{method:'POST',headers:{'Content-Type':'application/json','apikey':'', 'Authorization':'Bearer '+('')},body:'{}'});
+  const n=await r.json(); const el=document.getElementById('foundingBadge');
+  if(el && typeof n==='number' && n>0 && n<=100) el.innerHTML='🏅 Founding offer: <b>3 months of membership free</b> — '+n+' of 100 spots left. Automatic at sign-up, no card needed.';
+  if(el && n===0) el.style.display='none';
+}catch(e){}})();
+</script>
 </body>
 </html>

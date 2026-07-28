@@ -245,6 +245,7 @@ textarea{min-height:80px;resize:vertical}
       <div class="card" style="margin:0">
         <div style="font-weight:800;color:var(--navy,#0D365F);font-size:19px">Create your free account</div>
         <p class="hint" style="margin:4px 0 14px">Free to post · No card required · Cancel anytime</p>
+<div id="foundingBadge" style="background:#fff7e6;border:1px solid var(--honey);border-radius:9px;padding:8px 12px;margin:0 0 12px;font-size:13.5px;color:#7a5312;font-weight:700">🏅 Founding offer: the first 100 families get 3 months of membership free.</div>
         <div class="tabs">
           <div class="tab on" id="tabSignup" onclick="showTab('signup')">Create account</div>
           <div class="tab" id="tabLogin" onclick="showTab('login')">Log in</div>
@@ -861,10 +862,14 @@ async function billing(action){
 }
 window.subscribe=async function(btn){ btn.disabled=true; btn.textContent='Opening secure checkout…'; const d=await billing('subscribe'); if(d&&d.url){location.href=d.url;} else {btn.disabled=false;btn.textContent='Become a member, $25/month';alert((d&&d.error)||'Could not start checkout.');} };
 window.manageMembership=async function(btn){ btn.disabled=true; const d=await billing('portal'); if(d&&d.url){location.href=d.url;} else {btn.disabled=false;alert((d&&d.error)||'Could not open billing.');} };
+function foundingActive(){ return FAMILY && FAMILY.founding_until && new Date(FAMILY.founding_until) > new Date(); }
 function renderMember(){
-  FAMILY_ACTIVE = FAMILY && FAMILY.subscription_status==='active';
+  FAMILY_ACTIVE = !!(FAMILY && (FAMILY.subscription_status==='active' || foundingActive()));
   const c=$('memberCard'); c.style.display='';
-  let html = FAMILY_ACTIVE
+  const prettyUntil = foundingActive() ? new Date(FAMILY.founding_until).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '';
+  let html = (foundingActive() && FAMILY.subscription_status!=='active')
+    ? '<h2>🏅 Founding family #'+FAMILY.founding_number+'</h2><p style="color:var(--muted)">Your membership is <b>free until '+prettyUntil+'</b> — everything is unlocked: contact details, messaging, paperwork &amp; e-sign, and the directory. Our one ask: <a href="https://tryhometogether.com/feedback/" target="_blank" rel="noopener" style="color:var(--honey-deep);font-weight:800">tell us honestly how it’s going</a>. After your free months it’s $25/month, cancel anytime — no card needed until then.</p>'
+    : FAMILY_ACTIVE
     ? '<h2>Your membership</h2><p style="color:var(--muted)">You’re a member. <b>$25/month</b>, and you can cancel anytime.</p><div style="margin-top:12px"><button class="btn btn-ghost" onclick="manageMembership(this)">Manage or cancel</button></div>'
     : '<h2>Become a member</h2><p style="color:var(--muted)">Posting a job and seeing who applied is free. Membership (<b>$25/month</b>, cancel anytime) unlocks everything to work your applicants: <b>their contact details, your applicant organizer, messaging, the paperwork &amp; e-sign workspace, and the caregiver directory</b>.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-teal" onclick="subscribe(this)">Become a member, $25/month</button><a class="btn btn-ghost" href="/membership">See everything you get →</a></div>';
   if(SOLO_ELIGIBLE){
@@ -877,6 +882,21 @@ function renderMember(){
   c.innerHTML=html;
 }
 
+async function claimFounding(){
+  try{
+    if(!FAMILY || FAMILY.founding_number) return;
+    const {data,error}=await sb.rpc('htl_claim_founding');
+    if(error||!data) return;
+    if(data.number){
+      const {data:fam}=await sb.from('htl_families').select('*').eq('user_id',USER.id).maybeSingle();
+      if(fam) FAMILY=fam;
+      renderMember();
+      const hh=$('hhBanner');
+      if(hh){ hh.style.display=''; hh.className='card'; hh.style.background='var(--teal-soft)'; hh.style.borderColor='#bfe0e6';
+        hh.innerHTML='<b style="color:var(--navy)">🎉 Welcome, founding family #'+data.number+'!</b> <span style="color:var(--muted)">Your first 3 months of membership are free — everything is unlocked. '+(data.left>0?('('+data.left+' founding spots left.)'):'')+'</span>'; }
+    }
+  }catch(e){}
+}
 async function handleSubReturn(){
   history.replaceState({},'',location.pathname);
   let tries=0;
@@ -1485,8 +1505,12 @@ async function boot(){
     USER=user;
     show('authView',false);show('dashView',true);$('logoutBtn').style.display='';
     try{
-    const {data}=await sb.from('htl_families').select('*').eq('user_id',user.id).maybeSingle();
-    if(!data){await sb.from('htl_families').insert({user_id:user.id,email:user.email});alertNewLead('');}
+    let {data}=await sb.from('htl_families').select('*').eq('user_id',user.id).maybeSingle();
+    if(!data){
+      await sb.from('htl_families').insert({user_id:user.id,email:user.email});alertNewLead('');
+      const r2=await sb.from('htl_families').select('*').eq('user_id',user.id).maybeSingle();
+      data=r2.data;
+    }
     FAMILY=data;
     // make sure I have an owner membership for my own family, then handle any invite
     await sb.rpc('htl_ensure_owner');
@@ -1508,6 +1532,7 @@ async function boot(){
     const myRow=MEMBERS.find(m=>m.member_user_id===USER.id);
     MYNAME=(myRow&&myRow.name)||(FAMILY&&FAMILY.name)||((USER.email||'').split('@')[0])||'Family';
     if(ownerView()&&HOUSEHOLD===USER.id) renderMember();
+    if(ownerView()&&HOUSEHOLD===USER.id) await claimFounding();
     await loadBoard();
     await loadBudget();
     loadDocs();
@@ -1536,6 +1561,14 @@ async function boot(){
     }
   }
 }
+(async function foundingCounter(){
+  try{ const {data}=await sb.rpc('htl_founding_left');
+    const el=document.getElementById('foundingBadge');
+    if(el && typeof data==='number' && data>0 && data<=100)
+      el.innerHTML='🏅 Founding offer: 3 months of membership free — <b>'+data+' of 100 spots left</b>.';
+    if(el && data===0) el.style.display='none';
+  }catch(e){}
+})();
 if(!isConfigured()){$('cfgWarn').style.display='block';show('authView',true);}else{boot();}
 </script>
 <footer class="htfoot"><div class="ftin">
