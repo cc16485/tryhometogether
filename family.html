@@ -1022,7 +1022,8 @@ window.sendInvite=async function(btn){
   btn.disabled=false;btn.textContent='Create invite link →';
   if(error){msg('inviteMsg',error.message,'err');return;}
   LAST_INVITE={link:'https://tryhometogether.com/family?invite='+data.invite_code,label:name||email};
-  notify('invite',{email:email,link:LAST_INVITE.link,inviter:MYNAME});
+  /* the server now takes only the invite code and builds the email itself (address, link and name from the database) */
+  notify('invite',{invite_code:data.invite_code});
   await loadTeam();
   msg('inviteMsg','Invite ready. Send them the link below.','ok');
 };
