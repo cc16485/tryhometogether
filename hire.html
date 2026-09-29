@@ -1239,7 +1239,7 @@ function cgVerifyStart(ev){
   if(ev) ev.preventDefault();
   var em='';
   if(!CG_ID){
-    em=prompt('Enter the email you applied with, and we\u2019ll open your secure $45 background-check payment:');
+    em=prompt('Enter the email you applied with, and we\u2019ll email you your secure $45 background-check payment link:');
     if(!em) return;
   }
   var payload={kind:'paylink',direct:true};
@@ -1248,6 +1248,7 @@ function cgVerifyStart(ev){
     .then(function(r){return r.json();})
     .then(function(d){
       if(d&&d.ok&&d.link){ window.location.href=d.link; }
+      else if(d&&d.ok&&d.emailed){ alert('If we have an application with that email, we have just emailed you your secure $45 payment link. Check your inbox, and your spam folder too.'); }
       else alert((d&&d.error)||'We could not find that application. Double-check the email, or email support@tryhometogether.com and we will sort it out.');
     })
     .catch(function(){ alert('Something went wrong opening checkout. email support@tryhometogether.com and we will sort it out.'); });
