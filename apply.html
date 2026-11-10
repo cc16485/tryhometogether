@@ -21,7 +21,7 @@ src="https://www.facebook.com/tr?id=1125638243330448&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Apply · HomeTogether Hire</title>
+<title>Apply · Hired With Care</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -58,14 +58,14 @@ textarea{min-height:90px;resize:vertical}
 </head>
 <body>
 <div class="wrap">
-  <a href="/" class="brand" style="text-decoration:none">HomeTogether Hire<small>Caregiver application</small></a>
+  <a href="/" class="brand" style="text-decoration:none">Hired With Care<small>Caregiver application</small></a>
 
   <div id="loading" class="card"><p class="hint">Loading this job…</p></div>
 
   <div id="notfound" class="card" style="display:none">
     <h1>This link isn't active</h1>
     <p class="lede">The job may have been filled or the link may be incomplete. If a family sent you this, ask them for a fresh link.</p>
-    <a class="btn" href="/hire">Explore HomeTogether Hire →</a>
+    <a class="btn" href="/hire">Explore Hired With Care →</a>
   </div>
 
   <div id="content" style="display:none">
@@ -99,7 +99,7 @@ textarea{min-height:90px;resize:vertical}
 
       <label class="optin">
         <input type="checkbox" id="a_public">
-        <span><b>Optional: also add me to the HomeTogether Hire directory (free).</b> Let other nearby families find and invite me too. Our team reviews new caregivers before any profile goes public, and we'll be in touch about a quick interview and your ✓ badge. Leave this unchecked to apply to this family only.</span>
+        <span><b>Optional: also add me to the Hired With Care directory (free).</b> Let other nearby families find and invite me too. Our team reviews new caregivers before any profile goes public, and we'll be in touch about a quick interview and your ✓ badge. Leave this unchecked to apply to this family only.</span>
       </label>
 
       <div style="margin-top:18px"><button class="btn" id="applyBtn" onclick="submitApp()">Send my application →</button></div>
@@ -109,7 +109,7 @@ textarea{min-height:90px;resize:vertical}
   <div id="done" class="card" style="display:none">
     <h1>Application sent <svg aria-hidden="true" class="htc-emoji" style="width:1.15em;height:1.15em;vertical-align:-.16em"><use href="/assets/icons.svg#i-celebrate"/></svg></h1>
     <p class="lede" id="doneMsg"></p>
-    <a class="btn" href="/hire">About HomeTogether Hire →</a>
+    <a class="btn" href="/hire">About Hired With Care →</a>
   </div>
 </div>
 
@@ -177,7 +177,7 @@ window.submitApp=async function(){
     if(!d.ok){ throw new Error(d.error||'Something went wrong.'); }
     show('content',false);
     $('doneMsg').textContent=d.made_public
-      ? "The family has your application, and you're now in line to join HomeTogether Hire. Watch your email for next steps."
+      ? "The family has your application, and you're now in line to join Hired With Care. Watch your email for next steps."
       : "The family has your application and will reach out if it's a good fit. Thank you!";
     show('done',true);
     window.scrollTo(0,0);
