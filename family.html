@@ -634,7 +634,7 @@ function renderHome(){
 }
 
 function renderJob(j,apps){
-  const link='https://tryhometogether.com/apply?job='+j.invite_code;
+  const link='https://hiredwithcare.com/apply?job='+j.invite_code;
   return '<div class="job"><div style="display:flex;justify-content:space-between;align-items:start;gap:10px;flex-wrap:wrap">'
     +'<div><h3 style="margin-bottom:2px">'+esc(j.title||'Untitled job')+'</h3>'
     +'<span class="hint">'+esc(j.city||'')+(j.rate?' · $'+esc(j.rate)+' '+esc(j.pay_unit||''):'')+' · '+(apps.length)+' applicant'+(apps.length===1?'':'s')+'</span></div>'
@@ -862,7 +862,7 @@ function renderMember(){
   const c=$('memberCard'); c.style.display='';
   const prettyUntil = foundingActive() ? new Date(FAMILY.founding_until).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '';
   let html = (foundingActive() && FAMILY.subscription_status!=='active')
-    ? '<h2>🏅 Founding family #'+FAMILY.founding_number+'</h2><p style="color:var(--muted)">Your membership is <b>free until '+prettyUntil+'</b> — everything is unlocked: contact details, messaging, paperwork &amp; e-sign, and the directory. Our one ask: <a href="https://tryhometogether.com/feedback/" target="_blank" rel="noopener" style="color:var(--honey-deep);font-weight:800">tell us honestly how it’s going</a>. After your free months it’s $25/month, cancel anytime — no card needed until then.</p>'
+    ? '<h2>🏅 Founding family #'+FAMILY.founding_number+'</h2><p style="color:var(--muted)">Your membership is <b>free until '+prettyUntil+'</b> — everything is unlocked: contact details, messaging, paperwork &amp; e-sign, and the directory. Our one ask: <a href="https://hiredwithcare.com/feedback/" target="_blank" rel="noopener" style="color:var(--honey-deep);font-weight:800">tell us honestly how it’s going</a>. After your free months it’s $25/month, cancel anytime — no card needed until then.</p>'
     : FAMILY_ACTIVE
     ? '<h2>Your membership</h2><p style="color:var(--muted)">You’re a member. <b>$25/month</b>, and you can cancel anytime.</p><div style="margin-top:12px"><button class="btn btn-ghost" onclick="manageMembership(this)">Manage or cancel</button></div>'
     : '<h2>Become a member</h2><p style="color:var(--muted)">Posting a job and seeing who applied is free. Membership (<b>$25/month</b>, cancel anytime) unlocks everything to work your applicants: <b>their contact details, your applicant organizer, messaging, the paperwork &amp; e-sign workspace, and the caregiver directory</b>.</p><div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-teal" onclick="subscribe(this)">Become a member, $25/month</button><a class="btn btn-ghost" href="/membership">See everything you get →</a></div>';
@@ -1015,7 +1015,7 @@ window.sendInvite=async function(btn){
   const {data,error}=await sb.rpc('htl_invite_member',{p_email:email,p_name:name,p_role:role});
   btn.disabled=false;btn.textContent='Create invite link →';
   if(error){msg('inviteMsg',error.message,'err');return;}
-  LAST_INVITE={link:'https://tryhometogether.com/family?invite='+data.invite_code,label:name||email};
+  LAST_INVITE={link:'https://hiredwithcare.com/family?invite='+data.invite_code,label:name||email};
   /* the server now takes only the invite code and builds the email itself (address, link and name from the database) */
   notify('invite',{invite_code:data.invite_code});
   await loadTeam();
@@ -1488,7 +1488,7 @@ document.addEventListener('click',async e=>{
   const rm=e.target.closest('.mremove');
   if(rm){ if(!confirm('Remove this person from your family team? They\'ll lose access right away.'))return; const {error}=await sb.rpc('htl_remove_member',{p_member_id:rm.dataset.id}); if(error){alert(error.message);return;} await loadTeam(); return; }
   const cp=e.target.closest('.mcopy');
-  if(cp){ const link='https://tryhometogether.com/family?invite='+cp.dataset.code; navigator.clipboard.writeText(link).then(()=>{cp.textContent='Copied!';setTimeout(()=>cp.textContent='Copy invite link',1500);}); }
+  if(cp){ const link='https://hiredwithcare.com/family?invite='+cp.dataset.code; navigator.clipboard.writeText(link).then(()=>{cp.textContent='Copied!';setTimeout(()=>cp.textContent='Copy invite link',1500);}); }
 });
 
 async function boot(){
@@ -1570,7 +1570,7 @@ if(!isConfigured()){$('cfgWarn').style.display='block';show('authView',true);}el
   <div class="ftbrand">
     <div class="ftwm">Hired With Care<b>.</b></div>
     <p>Helping families hire and work with a private caregiver, the organized way. By Caring Companions, a family-owned home care agency in Springfield, Missouri, since 2017.</p>
-    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+    <p class="ftcontact"><a href="mailto:hello@hiredwithcare.com">hello@hiredwithcare.com</a></p>
   </div>
   <div class="ftcols">
     <div class="ftcol"><h4>Hired With Care</h4>
