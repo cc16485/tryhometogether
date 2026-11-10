@@ -1,4 +1,4 @@
-/* Caring Companions / HomeTogether — Accessibility widget.
+/* Caring Companions / Hired With Care — Accessibility widget.
    Larger text (page zoom, remembered across pages) + "read this page aloud."
    Read-aloud uses Samantha's ElevenLabs voice via the elevenlabs-tts function
    (cached server-side); if that's unavailable it silently falls back to the
@@ -163,7 +163,7 @@
   else build();
 })();
 
-/* HomeTogether brand switcher (TV / Local) — shared across every page */
+/* Hired With Care brand switcher (TV / Local) — shared across every page */
 (function () {
   function q(s) { return document.querySelector(s); }
   function setOpen(open) {

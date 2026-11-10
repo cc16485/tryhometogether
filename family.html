@@ -21,7 +21,7 @@ src="https://www.facebook.com/tr?id=1125638243330448&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Family Account · HomeTogether Hire</title>
+<title>Family Account · Hired With Care</title>
 <meta name="robots" content="index,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -204,7 +204,7 @@ textarea{min-height:80px;resize:vertical}
 </head>
 <body>
 <header class="htnav hire"><div class="in">
-  <span class="brand"><a class="wm" href="/hire">HomeTogether <b>Hire</b></a><span class="by">by Caring Companions</span></span>
+  <span class="brand"><a class="wm" href="/hire">Hired <b>With Care</b></a><span class="by">by Caring Companions</span></span>
   <nav class="links">
     <a href="/hire#watch">How it works</a>
     <a href="/resources">Resources</a>
@@ -231,7 +231,7 @@ textarea{min-height:80px;resize:vertical}
       .tstrip>span{display:flex;gap:9px;align-items:flex-start;line-height:1.35}
       .tstrip svg{width:19px;height:19px;color:var(--teal,#157A7C);flex:0 0 19px;margin-top:1px}
     </style>
-    <p style="color:var(--honey-deep,#C17A12);font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:13px;margin:0 0 8px">HomeTogether Hire · by Caring Companions</p>
+    <p style="color:var(--honey-deep,#C17A12);font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:13px;margin:0 0 8px">Hired With Care · by Caring Companions</p>
     <h1 style="margin:0 0 12px">Post your job free. Applicants come to you.</h1>
     <p class="lede" style="margin:0 0 4px;max-width:760px">Hiring a caregiver for Mom or Dad shouldn't mean a phone full of scattered texts and guesswork. Create your free account, post one job, and share a single link, and everyone who's interested lands in one organized place, ready for you to review, message, and hire. It takes about two minutes to start.</p>
 
@@ -644,7 +644,7 @@ function renderJob(j,apps){
     +'<details class="acc" style="margin:6px 0 2px"><summary>Where to share your job link to find caregivers</summary><div class="body">'
     +'<p style="color:#5b6b7a;margin-bottom:8px">Post this link anywhere caregivers look. Anyone who opens it sees your job and can apply, and only you see the applicants.</p>'
     +'<ul>'
-    +'<li><b>Browse HomeTogether Hire\'s directory</b> (below) and invite vetted, background-checked caregivers directly.</li>'
+    +'<li><b>Browse Hired With Care\'s directory</b> (below) and invite vetted, background-checked caregivers directly.</li>'
     +'<li><b>Facebook</b>, local community groups, "caregiver jobs [your town]" groups, and Marketplace.</li>'
     +'<li><b>Nextdoor</b>, your neighborhood is a great source of nearby, trusted help.</li>'
     +'<li><b>Local CNA & nursing programs</b>, community colleges and trade schools; students and new grads make wonderful caregivers.</li>'
@@ -738,7 +738,7 @@ function renderApplicant(a){
 }
 
 window.copyLink=function(btn,link){navigator.clipboard.writeText(link).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',1500);});};
-window.checkInfo=function(btn){const n=btn.closest('.applicant').querySelector('.checknote');n.style.display='';n.innerHTML='A background check runs through Checkr ($45, with the caregiver\'s consent). It\'s free if they already carry a HomeTogether Hire ✓ badge. This step turns on when the background-check system finishes moving to this project.';};
+window.checkInfo=function(btn){const n=btn.closest('.applicant').querySelector('.checknote');n.style.display='';n.innerHTML='A background check runs through Checkr ($45, with the caregiver\'s consent). It\'s free if they already carry a Hired With Care ✓ badge. This step turns on when the background-check system finishes moving to this project.';};
 window.waiveCheck=async function(id,btn){
   if(!confirm('Mark this candidate as "hiring without a background check"? You can still run one later.'))return;
   await sb.from('htl_applications').update({check_waived:true}).eq('id',id);
@@ -840,7 +840,7 @@ const RES=[
   ['Red flags to watch for',
    '<ul><li>Vague about past jobs or unwilling to give references.</li><li>Pushes to be paid only in cash and off the books.</li><li>Talks about past clients in a way that feels disrespectful.</li><li>Won\'t agree to a background check without a clear reason.</li><li>Late or a no-show for the interview itself.</li><li>Anything that makes your loved one uncomfortable, that matters most.</li></ul>'],
   ['Paying a caregiver directly (taxes)',
-   '<p>When you hire and pay a caregiver yourself, you may become a "household employer," which can involve payroll taxes (sometimes called the "nanny tax") once you pay above a yearly threshold. It\'s very manageable, and many families use a payroll service to handle it. A quick chat with a tax professional, or a service like this, keeps everything clean. HomeTogether Hire plans to offer a payroll option to make this effortless.</p>'],
+   '<p>When you hire and pay a caregiver yourself, you may become a "household employer," which can involve payroll taxes (sometimes called the "nanny tax") once you pay above a yearly threshold. It\'s very manageable, and many families use a payroll service to handle it. A quick chat with a tax professional, or a service like this, keeps everything clean. Hired With Care plans to offer a payroll option to make this effortless.</p>'],
 ];
 $('resources').innerHTML=RES.map(r=>'<details class="acc"><summary>'+r[0]+'</summary><div class="body">'+r[1]+'</div></details>').join('');
 
@@ -1568,12 +1568,12 @@ if(!isConfigured()){$('cfgWarn').style.display='block';show('authView',true);}el
 </script>
 <footer class="htfoot"><div class="ftin">
   <div class="ftbrand">
-    <div class="ftwm">HomeTogether<b>.</b></div>
+    <div class="ftwm">Hired With Care<b>.</b></div>
     <p>Helping families hire and work with a private caregiver, the organized way. By Caring Companions, a family-owned home care agency in Springfield, Missouri, since 2017.</p>
     <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
   </div>
   <div class="ftcols">
-    <div class="ftcol"><h4>HomeTogether Hire</h4>
+    <div class="ftcol"><h4>Hired With Care</h4>
       <a href="/directory">Browse caregivers</a>
       <a href="/membership">Membership</a>
       <a href="/resources">Resources</a>
@@ -1591,7 +1591,7 @@ if(!isConfigured()){$('cfgWarn').style.display='block';show('authView',true);}el
     </div>
   </div>
 </div>
-<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+<div class="ftbar">&copy; 2026 Hired With Care, by Caring Companions. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
 </footer>
 </body>
 </html>

@@ -21,7 +21,7 @@ src="https://www.facebook.com/tr?id=1125638243330448&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Find a Caregiver · HomeTogether Hire</title>
+<title>Find a Caregiver · Hired With Care</title>
 <meta name="robots" content="index,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -69,7 +69,7 @@ audio{width:100%;margin-top:10px}
 </head>
 <body>
 <header class="htnav hire"><div class="in">
-  <span class="brand"><a class="wm" href="/hire">HomeTogether <b>Hire</b></a><span class="by">by Caring Companions</span></span>
+  <span class="brand"><a class="wm" href="/hire">Hired <b>With Care</b></a><span class="by">by Caring Companions</span></span>
   <nav class="links">
     <a href="/hire#watch">How it works</a>
     <details class="res"><summary>Resources ▾</summary>
@@ -241,7 +241,7 @@ window.messageCg=async function(cgId,name){
   }
   const {data:fam}=await sb.from('htl_families').select('subscription_status').eq('user_id',user.id).maybeSingle();
   if(!fam || fam.subscription_status!=='active'){
-    area.innerHTML='<div style="margin-top:14px;background:#fff7e6;border:1px solid var(--honey);border-radius:10px;padding:14px"><p style="margin-bottom:10px;color:#7a5312">To message '+esc(name)+' and hire directly, become a HomeTogether Hire member. <b>$25/month, cancel anytime.</b></p><button class="btn" style="background:var(--honey);color:var(--navy-deep)" onclick="subscribeNow(this)">Become a member, $25/month</button> <a href="/family-tour" style="color:var(--teal-deep);font-weight:800;margin-left:8px">See what’s inside →</a></div>';
+    area.innerHTML='<div style="margin-top:14px;background:#fff7e6;border:1px solid var(--honey);border-radius:10px;padding:14px"><p style="margin-bottom:10px;color:#7a5312">To message '+esc(name)+' and hire directly, become a Hired With Care member. <b>$25/month, cancel anytime.</b></p><button class="btn" style="background:var(--honey);color:var(--navy-deep)" onclick="subscribeNow(this)">Become a member, $25/month</button> <a href="/family-tour" style="color:var(--teal-deep);font-weight:800;margin-left:8px">See what’s inside →</a></div>';
     return;
   }
   area.innerHTML='<div style="margin-top:14px;border-top:1px solid var(--line);padding-top:14px">'
@@ -278,7 +278,7 @@ async function init(){
   const cta = user
     ? '<button class="btn" onclick="subscribeNow(this)">Become a member, $25/month &rarr;</button>'
     : '<a class="btn" href="/family">Create your free account &rarr;</a>';
-  g.innerHTML='<p style="font-size:16px;margin-bottom:6px"><b>The caregiver directory comes with HomeTogether Hire membership.</b></p>'
+  g.innerHTML='<p style="font-size:16px;margin-bottom:6px"><b>The caregiver directory comes with Hired With Care membership.</b></p>'
     +'<p style="margin-bottom:18px">Browse vetted, background-checked caregivers near you and invite the ones you like to your job. Included with membership, $25/month, cancel anytime.</p>'
     + cta
     +'<p style="margin-top:16px;font-size:13.5px;color:var(--muted)"><b>Posting a job is always free</b>, and every applicant comes straight to your portal. The directory is a member bonus. <a href="/family" style="color:var(--teal-deep);font-weight:700">Post a job free &rarr;</a></p>';
@@ -287,12 +287,12 @@ init();
 </script>
 <footer class="htfoot"><div class="ftin">
   <div class="ftbrand">
-    <div class="ftwm">HomeTogether<b>.</b></div>
+    <div class="ftwm">Hired With Care<b>.</b></div>
     <p>Helping families hire and work with a private caregiver, the organized way. By Caring Companions, a family-owned home care agency in Springfield, Missouri, since 2017.</p>
     <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
   </div>
   <div class="ftcols">
-    <div class="ftcol"><h4>HomeTogether Hire</h4>
+    <div class="ftcol"><h4>Hired With Care</h4>
       <a href="/directory">Browse caregivers</a>
       <a href="/membership">Membership</a>
       <a href="/resources">Resources</a>
@@ -310,7 +310,7 @@ init();
     </div>
   </div>
 </div>
-<div class="ftbar">&copy; 2026 HomeTogether, a Caring Companions company. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
+<div class="ftbar">&copy; 2026 Hired With Care, by Caring Companions. Caregivers are independent providers hired directly by families. Background checks have limits and cannot guarantee safety.</div>
 </footer>
 </body>
 </html>
