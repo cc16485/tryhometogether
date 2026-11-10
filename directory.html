@@ -220,8 +220,8 @@ window.sponsorCheck=async function(btn,cgId){
     const r=await fetch(LOCAL_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'paylink',caregiver_id:cgId,direct:true,sponsor:'family'})});
     const d=await r.json();
     if(d&&d.ok&&d.link){ location.href=d.link; return; }
-    alert((d&&d.error)||'We could not open checkout right now. Please email support@tryhometogether.com and we will help.');
-  }catch(e){ alert('Something went wrong opening checkout. Please email support@tryhometogether.com.'); }
+    alert((d&&d.error)||'We could not open checkout right now. Please email hello@hiredwithcare.com and we will help.');
+  }catch(e){ alert('Something went wrong opening checkout. Please email hello@hiredwithcare.com.'); }
   btn.disabled=false; btn.textContent=t;
 };
 async function notify(action,payload){ try{ const {data:{session}}=await sb.auth.getSession(); await fetch(NOTIFY_EP,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(session?.access_token||'')},body:JSON.stringify(Object.assign({action},payload))}); }catch(e){} }
@@ -289,7 +289,7 @@ init();
   <div class="ftbrand">
     <div class="ftwm">Hired With Care<b>.</b></div>
     <p>Helping families hire and work with a private caregiver, the organized way. By Caring Companions, a family-owned home care agency in Springfield, Missouri, since 2017.</p>
-    <p class="ftcontact"><a href="mailto:support@tryhometogether.com">support@tryhometogether.com</a></p>
+    <p class="ftcontact"><a href="mailto:hello@hiredwithcare.com">hello@hiredwithcare.com</a></p>
   </div>
   <div class="ftcols">
     <div class="ftcol"><h4>Hired With Care</h4>
